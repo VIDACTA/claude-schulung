@@ -479,6 +479,52 @@ svg.dia .tag      { fill: var(--accent); font-family: var(--font); font-weight: 
 main.page ~ .site-footer { margin-top: 40px; }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
+/* ---------- Pitch / Workbrain ---------- */
+.promo-banner {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  margin: 40px 0 8px;
+  padding: 24px 26px;
+  background: var(--navy);
+  border-radius: var(--radius);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.promo-banner .pb-text { flex: 1; min-width: 260px; }
+.promo-banner .pb-eyebrow { color: var(--sky); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 6px; }
+.promo-banner h3 { margin: 0 0 6px; font-size: 1.4rem; color: #fff; letter-spacing: -.01em; }
+.promo-banner p { margin: 0; color: #cdd8ee; }
+.promo-banner .btn-sky { background: var(--sky); border-color: var(--sky); color: #0c1c48; font-weight: 700; }
+.promo-banner .btn-sky:hover { background: #8fccec; }
+
+.pitch-hero {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 16px;
+  padding: 48px 40px;
+  margin: 8px 0 8px;
+}
+.pitch-hero .pitch-eyebrow { color: var(--sky); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 14px; }
+.pitch-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 16px; text-wrap: balance; }
+.pitch-hero p.lead { color: #d3ddef; font-size: 1.2rem; max-width: 640px; margin: 0; }
+
+.pitch-quote {
+  font-size: 1.5rem; line-height: 1.4; color: var(--heading);
+  border-left: 4px solid var(--sky); padding-left: 20px; margin: 36px 0;
+  font-weight: 600; text-wrap: balance;
+}
+
+.benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+.benefit-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); }
+.benefit-card .bico { font-size: 24px; }
+.benefit-card h4 { margin: 8px 0 6px; color: var(--heading); font-size: 1.08rem; }
+.benefit-card p { margin: 0; color: var(--text-muted); font-size: .95rem; }
+
+.ring-legend { list-style: none; margin: 20px 0 0; padding: 0; }
+.ring-legend li { display: flex; align-items: flex-start; gap: 12px; margin: 10px 0; }
+.ring-legend .swatch { width: 18px; height: 18px; border-radius: 5px; flex: none; margin-top: 3px; }
+.ring-legend strong { color: var(--heading); }
+.ring-legend span { color: var(--text-muted); }
+
 /* ---------- Responsiv ---------- */
 @media (max-width: 640px) {
   body { font-size: 16px; }

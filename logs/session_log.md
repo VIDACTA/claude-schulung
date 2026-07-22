@@ -23,3 +23,11 @@
   Website/v-forms, Meta-EMPLOYMENT-Targeting, eine Stimme/Reel, BGM −15 dB, GEMA-Falle, Read-only-Default.
 - Interne IDs/Keys/Namen bewusst NICHT auf der Public-Site („beim Team erfragen").
 - Trainer-Leitfaden + Doku (PROJECT_META/CHANGELOG/README/state) aktualisiert.
+
+## 2026-07-22 (noch später) — v1.2.0: Workbrain-Pitch
+
+- Pitch-Seite `workbrain.html` (ADR-009 Ringaufbau) im Pitch-Stil: Problem/Vision, konzentrisches
+  Ring-Diagramm (0–3), Wissensfluss (einordnen→PR→Kurator, DSGVO-Gate), Nutzen-Karten, CTA.
+- Neue Pitch-Stile in style.css (Navy-Hero, Promo-Banner, Ring-Legende, Benefit-Cards).
+- Promo-Banner auf der Startseite verlinkt den Pitch.
+- Ringe nur konzeptuell benannt; keine Admin-Details/Team-/Repo-Interna auf der Public-Site.
