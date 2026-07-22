@@ -1,19 +1,22 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-22
-**Version:** 0.1.0 (in Entwicklung)
+**Version:** 1.0.0 (live)
 
 ## Wo wir stehen
-
-Etappe 1 des Plans (`implementation_plan.md`):
 
 - [x] Brainstorming abgeschlossen, Design genehmigt
 - [x] Projekt-Init (Doku-Struktur)
 - [x] Site-Gerüst (index.html, style.css, app.js)
-- [x] Modul 0 + Modul 1 als Muster
-- [ ] Feedback-Runde mit Dominik  ← **wir sind hier**
-- [ ] Modul 2–8 + Trainer-Leitfaden
-- [ ] Deploy GitHub Pages
+- [x] Alle 9 Module (0–8) ausformuliert
+- [x] Trainer-Leitfaden (docs/trainer-leitfaden.md)
+- [x] Deploy GitHub Pages → https://vidacta.github.io/claude-schulung/
+
+## Offen / nächste Schritte
+
+- Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell Platzhalter).
+- Interne Ansprechpartner + Richtlinien-Links in Modul 7 eintragen.
+- Optional: Feedback der ersten Schulung einarbeiten; Aufbaukurs Claude Code.
 
 ## Geklärte Entscheidungen
 

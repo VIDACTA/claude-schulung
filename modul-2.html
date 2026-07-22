@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modul 2: Gut prompten – wie du Claude klare Aufträge gibst und bessere Ergebnisse bekommst.">
+  <title>Modul 2 · Gut prompten — Claude-Schulung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <span class="mark">C</span>
+        <span>Claude-Schulung<small>VIDACTA · intern</small></span>
+      </a>
+      <span class="header-spacer"></span>
+      <div class="header-actions">
+        <a class="btn" href="index.html">Übersicht</a>
+        <button class="btn btn-icon" data-theme-toggle aria-label="Hell/Dunkel umschalten">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="index.html">Übersicht</a> › Modul 2</nav>
+
+    <div class="module-head">
+      <span class="num">Modul 2</span>
+      <h1>Gut prompten</h1>
+      <div class="meta">
+        <span>⏱️ ca. 25 Minuten</span>
+        <span>🎯 Baut auf Modul 1 auf</span>
+        <span>✍️ Das wichtigste Handwerk</span>
+      </div>
+    </div>
+
+    <div class="goals">
+      <strong>Was du nach diesem Modul kannst:</strong>
+      <ul>
+        <li>einen klaren Auftrag statt einer vagen Frage formulieren</li>
+        <li>die vier Bausteine eines guten Prompts einsetzen</li>
+        <li>schlechte Antworten durch Nachbessern in gute verwandeln</li>
+      </ul>
+    </div>
+
+    <div class="prose">
+
+      <p>
+        „Prompt" ist nur ein schickes Wort für <strong>deine Anweisung an Claude</strong>. Und hier
+        liegt das ganze Geheimnis: Die Qualität der Antwort hängt fast immer an der Qualität deiner
+        Anweisung. Gleiche KI, völlig anderes Ergebnis — je nachdem, wie du fragst.
+      </p>
+
+      <h2>Vage Frage vs. klarer Auftrag</h2>
+      <p>Schau dir den Unterschied an:</p>
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Vage</p>
+        <p>„Schreib was über unsere Ausbildung."</p>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">🟢 Klar</p>
+        <p>„Schreib einen freundlichen Instagram-Post (max. 4 Sätze) für Pflegekräfte aus dem Ausland,
+        die eine Anerkennung in Deutschland suchen. Ton: einladend, kein Werbe-Blabla. Mit einem Aufruf,
+        sich zu melden."</p>
+      </div>
+      <p>Die zweite Version liefert sofort etwas Brauchbares — weil sie <em>Kontext, Aufgabe, Format und Ton</em> nennt.</p>
+
+      <h2>Die vier Bausteine (K-A-F-T)</h2>
+      <p>Merk dir vier Fragen. Du musst nicht immer alle vier beantworten — aber je mehr, desto besser die Antwort:</p>
+      <ul>
+        <li><strong>K — Kontext:</strong> Wer bist du, worum geht's, für wen ist das Ergebnis?</li>
+        <li><strong>A — Aufgabe:</strong> Was genau soll Claude tun? (schreiben, zusammenfassen, prüfen …)</li>
+        <li><strong>F — Format:</strong> Wie soll das Ergebnis aussehen? (Liste, E-Mail, Tabelle, 3 Sätze …)</li>
+        <li><strong>T — Ton:</strong> Wie soll es klingen? (freundlich, formell, einfach, sachlich …)</li>
+      </ul>
+
+      <div class="prompt" data-copy="Kontext: Ich arbeite im VIDACTA-Bewerbermanagement. Eine Interessentin hat nach dem Ablauf des Anerkennungsverfahrens gefragt.
+Aufgabe: Schreib eine Antwort-E-Mail, die den Ablauf in einfachen Schritten erklärt.
+Format: kurze Begrüßung, nummerierte Schritte, freundlicher Abschluss.
+Ton: herzlich, geduldig, leicht verständlich (die Person spricht Deutsch als Fremdsprache).">Kontext: Ich arbeite im VIDACTA-Bewerbermanagement. Eine Interessentin hat nach dem Ablauf des Anerkennungsverfahrens gefragt.
+Aufgabe: Schreib eine Antwort-E-Mail, die den Ablauf in einfachen Schritten erklärt.
+Format: kurze Begrüßung, nummerierte Schritte, freundlicher Abschluss.
+Ton: herzlich, geduldig, leicht verständlich (die Person spricht Deutsch als Fremdsprache).</div>
+
+      <div class="callout info">
+        <p class="callout-title">ℹ️ Du musst das nicht auswendig können</p>
+        <p>K-A-F-T ist eine Eselsbrücke, kein Formular. Oft reicht: „Schreib mir X für Y, als Liste, freundlich."
+        Wenn eine Antwort daneben liegt, fehlt fast immer einer der vier Bausteine.</p>
+      </div>
+
+      <h2>Nachbessern ist normal — sogar erwünscht</h2>
+      <p>
+        Die erste Antwort ist selten perfekt. Das ist kein Fehler, sondern der Normalfall. Statt neu
+        anzufangen, redest du einfach weiter mit Claude — er behält den Zusammenhang:
+      </p>
+      <ul>
+        <li>„Mach es kürzer / länger."</li>
+        <li>„Formeller, bitte." · „Lockerer, bitte."</li>
+        <li>„Erklär es, als wäre ich Anfänger."</li>
+        <li>„Der zweite Absatz gefällt mir — bau den ersten ähnlich um."</li>
+        <li>„Gib mir drei Varianten zur Auswahl."</li>
+      </ul>
+
+      <div class="callout warn">
+        <p class="callout-title">⚠️ Häufige Anfänger-Fehler</p>
+        <p>
+          <strong>1. Zu wenig Kontext:</strong> Claude kennt eure Abläufe nicht — sag sie ihm.<br>
+          <strong>2. Alles auf einmal:</strong> Lieber Schritt für Schritt als ein Riesen-Auftrag.<br>
+          <strong>3. Ergebnis ungeprüft übernehmen:</strong> gerade bei Zahlen und Fakten — du bleibst verantwortlich.
+        </p>
+      </div>
+
+      <details class="accordion">
+        <summary>Profi-Kniff: Claude eine Rolle geben</summary>
+        <div class="acc-body">
+          <p>Wenn du willst, dass Claude aus einer bestimmten Perspektive schreibt, sag es ihm:
+          <em>„Antworte als erfahrene Personalreferentin"</em> oder <em>„Denk wie ein Lektor und
+          finde Schwächen in diesem Text."</em> Das schärft Ton und Fokus enorm.</p>
+        </div>
+      </details>
+
+      <div class="exercise">
+        <div class="head">🛠️ Übung 2 <span class="tag">12 Minuten</span></div>
+        <div class="body">
+          <ol>
+            <li>Denk dir eine echte kleine Aufgabe aus deinem Alltag aus (z. B. eine Absage freundlich formulieren, Stichpunkte zu einem Text machen).</li>
+            <li>Schreib den Prompt bewusst mit <strong>allen vier Bausteinen</strong> (K-A-F-T). Nur grüne/anonymisierte Inhalte (Ampel aus Modul 1!).</li>
+            <li>Lies die Antwort. Bessere sie mit <strong>mindestens zwei</strong> Nachbesser-Befehlen nach.</li>
+            <li>Vergleiche: Wie viel besser ist das Ergebnis als bei einer vagen Ein-Satz-Frage?</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="complete-bar" data-complete="2">
+      <span>K-A-F-T sitzt?</span>
+      <button class="btn btn-primary" data-complete-btn type="button">Modul als abgeschlossen markieren</button>
+    </div>
+
+    <nav class="module-nav">
+      <a class="prev" href="modul-1.html"><small>Zurück</small><strong>← Modul 1 · Desktop Basics</strong></a>
+      <a class="next" href="modul-3.html"><small>Weiter</small><strong>Modul 3 · Projekte &amp; Wissen →</strong></a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© VIDACTA Bildungsgruppe GmbH — interne Schulung</span>
+      <span>Modul 2 von 9</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

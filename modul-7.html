@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modul 7: Sicherheit & DSGVO – was darf rein, was nicht, und wie du KI-Ergebnisse zuverlässig prüfst.">
+  <title>Modul 7 · Sicherheit &amp; DSGVO — Claude-Schulung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <span class="mark">C</span>
+        <span>Claude-Schulung<small>VIDACTA · intern</small></span>
+      </a>
+      <span class="header-spacer"></span>
+      <div class="header-actions">
+        <a class="btn" href="index.html">Übersicht</a>
+        <button class="btn btn-icon" data-theme-toggle aria-label="Hell/Dunkel umschalten">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="index.html">Übersicht</a> › Modul 7</nav>
+
+    <div class="module-head">
+      <span class="num">Modul 7 · Wichtig</span>
+      <h1>Sicherheit &amp; DSGVO</h1>
+      <div class="meta">
+        <span>⏱️ ca. 25 Minuten</span>
+        <span>🎯 Pflichtmodul</span>
+        <span>🛡️ Schützt dich &amp; VIDACTA</span>
+      </div>
+    </div>
+
+    <div class="goals">
+      <strong>Was du nach diesem Modul kannst:</strong>
+      <ul>
+        <li>die Datenschutz-Ampel sicher auf reale Fälle anwenden</li>
+        <li>Halluzinationen erkennen und Ergebnisse zuverlässig prüfen</li>
+        <li>wissen, was du niemals mit KI tust — und wen du im Zweifel fragst</li>
+      </ul>
+    </div>
+
+    <div class="prose">
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Warum das bei VIDACTA besonders zählt</p>
+        <p>Wir arbeiten mit Daten von Menschen — Bewerber:innen, teils mit Bezug zu Gesundheit und
+        Qualifikationsnachweisen. Solche Daten sind besonders geschützt. Ein unbedachter Upload kann
+        einen Datenschutzverstoß bedeuten. Dieses Modul ist deshalb <strong>Pflicht</strong>, nicht Kür.</p>
+      </div>
+
+      <h2>1. Die Datenschutz-Ampel — jetzt fest verankert</h2>
+      <p>Du kennst sie aus Modul 1. Hier ist sie noch einmal als dein tägliches Werkzeug:</p>
+
+      <div class="ampel">
+        <div class="ampel-card g">
+          <h4><span class="dot"></span>Grün — nutzen</h4>
+          <ul>
+            <li>öffentliche Texte, Broschüren, Website-Inhalte</li>
+            <li>allgemeines Wissen ohne Personenbezug</li>
+            <li>erfundene Beispieldaten, eigene Entwürfe</li>
+          </ul>
+        </div>
+        <div class="ampel-card a">
+          <h4><span class="dot"></span>Gelb — erst anonymisieren</h4>
+          <ul>
+            <li>interne Texte ohne Namen/Kontaktdaten</li>
+            <li>Namen/Adressen/Daten vorher entfernen</li>
+            <li>„eine Bewerberin aus dem Ausland" statt echter Identität</li>
+          </ul>
+        </div>
+        <div class="ampel-card r">
+          <h4><span class="dot"></span>Rot — niemals</h4>
+          <ul>
+            <li>echte Bewerber-/Kundendaten</li>
+            <li>Gesundheits-, Ausweis- &amp; Urkundendaten</li>
+            <li>Passwörter, Zugangsdaten, Verträge mit Personenbezug</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>2. Checkliste: „Darf ich das hochladen?"</h2>
+      <p>Geh diese vier Fragen durch, bevor etwas in die KI wandert:</p>
+      <ol>
+        <li>Steht da ein <strong>Name</strong> oder etwas, das eine Person identifizierbar macht? → anonymisieren oder lassen.</li>
+        <li>Geht es um <strong>Gesundheit, Herkunft, Ausweise/Urkunden</strong>? → rot, nicht hochladen.</li>
+        <li>Würde ich das einer <strong>fremden Person</strong> zeigen? → wenn nein: nicht hochladen.</li>
+        <li>Bin ich <strong>unsicher</strong>? → nachfragen (Schulungs-Team / Datenschutzbeauftragte:r), im Zweifel: nein.</li>
+      </ol>
+
+      <div class="callout tip">
+        <p class="callout-title">💡 Anonymisieren bringt fast immer dasselbe Ergebnis</p>
+        <p>Für „E-Mail formulieren", „Ablauf erklären", „Text verbessern" braucht Claude keine echten
+        Namen. Ersetz sie durch Platzhalter — das Ergebnis ist genauso gut, und du bist auf der sicheren Seite.</p>
+      </div>
+
+      <h2>3. Halluzinationen — wenn Claude sich sicher irrt</h2>
+      <p>
+        KI erfindet manchmal Dinge, die überzeugend klingen, aber falsch sind: erfundene Zahlen,
+        Paragraphen, Fristen, Namen, Zitate. Das nennt man <strong>Halluzination</strong>. Claude ist
+        stark im Formulieren — aber keine verlässliche Faktenquelle.
+      </p>
+      <p><strong>So prüfst du:</strong></p>
+      <ul>
+        <li><strong>Zahlen, Fristen, Namen</strong> immer gegen eine echte Quelle abgleichen (interne Doku, offizielle Seite).</li>
+        <li>Bei rechtlichen/medizinischen Aussagen: als Entwurf behandeln, nie als verbindliche Auskunft weitergeben.</li>
+        <li>Frag Claude ruhig: <em>„Wie sicher bist du? Worauf stützt sich das?"</em> — aber verlass dich nicht allein darauf.</li>
+      </ul>
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Niemals ungeprüft nach außen</p>
+        <p>Alles, was an Bewerber:innen, Behörden oder in offizielle Kommunikation geht, prüfst du
+        vorher inhaltlich. <strong>Du unterschreibst mit deinem Namen — nicht die KI.</strong></p>
+      </div>
+
+      <h2>4. Was Claude nicht ist</h2>
+      <ul>
+        <li>keine Rechtsberatung, keine medizinische Beratung, keine amtliche Auskunft</li>
+        <li>kein Ersatz für deine fachliche Einschätzung</li>
+        <li>keine Ablage für personenbezogene Daten</li>
+      </ul>
+
+      <div class="callout info">
+        <p class="callout-title">ℹ️ VIDACTA-Regeln &amp; Ansprechpartner</p>
+        <p>Es gelten die internen Datenschutz- und KI-Richtlinien von VIDACTA. Bei Unsicherheiten wende
+        dich an dein Schulungs-Team oder die/den Datenschutzbeauftragte:n. <em>(Konkrete Ansprechpartner
+        und Richtlinien-Links trägt das Schulungs-Team hier für die interne Version ein.)</em></p>
+      </div>
+
+      <div class="exercise">
+        <div class="head">🛠️ Übung 7 <span class="tag">12 Minuten</span></div>
+        <div class="body">
+          <p>Ordne jeden Fall der richtigen Ampelfarbe zu — Lösung darunter aufklappen:</p>
+          <ol>
+            <li>Eine öffentliche Info-Broschüre zur Pflegeausbildung zusammenfassen.</li>
+            <li>Eine E-Mail von „Frau Müller, geb. 1988, Diagnose … " korrigieren.</li>
+            <li>Aus internen Stichpunkten (ohne Namen) einen Team-Aushang formulieren.</li>
+            <li>Eine eingescannte Anerkennungsurkunde „mal eben" auslesen lassen.</li>
+          </ol>
+          <details class="accordion" style="margin-top:12px;">
+            <summary>Lösung anzeigen</summary>
+            <div class="acc-body">
+              <p><strong>1. 🟢 Grün</strong> — öffentlich, kein Personenbezug.<br>
+              <strong>2. 🔴 Rot</strong> — Name + Gesundheitsdaten. Erst vollständig anonymisieren, dann höchstens gelb.<br>
+              <strong>3. 🟡 Gelb→🟢</strong> — ohne Namen unkritisch; kurz prüfen, ob wirklich nichts Personenbezogenes drinsteht.<br>
+              <strong>4. 🔴 Rot</strong> — Urkunde = personenbezogenes Dokument. Nicht hochladen.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="complete-bar" data-complete="7">
+      <span>Ampel &amp; Prüf-Reflex sitzen?</span>
+      <button class="btn btn-primary" data-complete-btn type="button">Modul als abgeschlossen markieren</button>
+    </div>
+
+    <nav class="module-nav">
+      <a class="prev" href="modul-6.html"><small>Zurück</small><strong>← Modul 6 · Claude Code</strong></a>
+      <a class="next" href="modul-8.html"><small>Weiter</small><strong>Modul 8 · Abschluss-Challenge →</strong></a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© VIDACTA Bildungsgruppe GmbH — interne Schulung</span>
+      <span>Modul 7 von 9</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

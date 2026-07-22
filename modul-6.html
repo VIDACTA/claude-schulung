@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modul 6: Claude Code – geführter Ausblick. Was das Entwickler-Werkzeug ist und wann es sich lohnt.">
+  <title>Modul 6 · Claude Code (Ausblick) — Claude-Schulung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <span class="mark">C</span>
+        <span>Claude-Schulung<small>VIDACTA · intern</small></span>
+      </a>
+      <span class="header-spacer"></span>
+      <div class="header-actions">
+        <a class="btn" href="index.html">Übersicht</a>
+        <button class="btn btn-icon" data-theme-toggle aria-label="Hell/Dunkel umschalten">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="index.html">Übersicht</a> › Modul 6</nav>
+
+    <div class="module-head">
+      <span class="num">Modul 6 · Ausblick</span>
+      <h1>Claude Code — ein Blick über den Tellerrand</h1>
+      <div class="meta">
+        <span>⏱️ ca. 20 Minuten</span>
+        <span>🎯 Optional / zum Kennenlernen</span>
+        <span>🧭 Kein Muss für den Alltag</span>
+      </div>
+    </div>
+
+    <div class="goals">
+      <strong>Was du nach diesem Modul kannst:</strong>
+      <ul>
+        <li>erklären, was Claude Code ist und wie es sich von Desktop/Cowork unterscheidet</li>
+        <li>einschätzen, ob es für deine Arbeit überhaupt relevant ist</li>
+        <li>eine ungefährliche Beispiel-Aufgabe nachvollziehen</li>
+      </ul>
+    </div>
+
+    <div class="prose">
+
+      <div class="callout info">
+        <p class="callout-title">ℹ️ Ganz entspannt lesen</p>
+        <p>Dieses Modul ist ein <strong>Ausblick</strong>, keine Pflicht. Für die allermeisten Aufgaben
+        im Büro reichen Desktop und Cowork vollkommen. Claude Code lohnt sich nur, wenn du viel mit
+        <strong>Dateien und Ordnern auf deinem Rechner</strong> arbeitest. Lies es als „gut zu wissen".</p>
+      </div>
+
+      <h2>Was ist Claude Code?</h2>
+      <p>
+        Claude Code ist Claude als <strong>Helfer für deinen Computer selbst</strong>: Er kann Dateien
+        und Ordner lesen, ordnen, umbenennen, Inhalte zusammenfassen oder Dokumente erzeugen — direkt
+        dort, wo deine Dateien liegen. Ursprünglich für Programmierer gebaut, aber auch für Datei-Fleißarbeit
+        nützlich.
+      </p>
+
+      <h2>Wann lohnt es sich — und wann nicht?</h2>
+      <div class="ampel" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+        <div class="ampel-card g">
+          <h4><span class="dot"></span>Könnte sich lohnen</h4>
+          <ul>
+            <li>du hast viele Dateien in Ordnern zu ordnen/umzubenennen</li>
+            <li>du willst viele Dokumente auf einmal zusammenfassen</li>
+            <li>du arbeitest regelmäßig mit Datei-Stapeln</li>
+          </ul>
+        </div>
+        <div class="ampel-card a">
+          <h4><span class="dot"></span>Eher nicht nötig</h4>
+          <ul>
+            <li>du schreibst &amp; recherchierst hauptsächlich → Desktop</li>
+            <li>du delegierst Aufgaben → Cowork</li>
+            <li>du willst „nur mal was fragen"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <p class="callout-title">⚠️ Nur mit IT-Freigabe installieren</p>
+        <p>Claude Code ist ein mächtigeres Werkzeug, das echte Dateien auf deinem Rechner verändern kann.
+        <strong>Installiere und nutze es nur nach Absprache mit der IT</strong> und nur mit unbedenklichen
+        (grünen) Dateien. Lass dir den Einstieg zeigen — allein losstürmen ist hier nicht der richtige Weg.</p>
+      </div>
+
+      <h2>Wie sieht das aus? (Beispiel)</h2>
+      <p>
+        Statt Menüs tippst du deinen Auftrag in normaler Sprache, und Claude Code schlägt vor, was er
+        tun würde — und fragt vor Änderungen nach. Ein harmloses Beispiel:
+      </p>
+
+      <div class="prompt" data-copy="In diesem Ordner liegen mehrere PDF-Infoblätter. Lies sie und erstelle eine Datei „uebersicht.md“, in der jedes Infoblatt mit Titel und 2 Sätzen Zusammenfassung aufgelistet ist. Ändere die PDFs selbst nicht.">In diesem Ordner liegen mehrere PDF-Infoblätter. Lies sie und erstelle eine Datei „uebersicht.md“, in der jedes Infoblatt mit Titel und 2 Sätzen Zusammenfassung aufgelistet ist. Ändere die PDFs selbst nicht.</div>
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Zwei eiserne Regeln</p>
+        <p><strong>1.</strong> Nur grüne/anonymisierte Dateien.<br>
+        <strong>2.</strong> Lies nach, was das Werkzeug tun will, <em>bevor</em> du bestätigst — besonders
+        bei „löschen", „überschreiben", „verschieben".</p>
+      </div>
+
+      <div class="exercise">
+        <div class="head">🧭 Aufgabe 6 <span class="tag">optional · nur mit Freigabe</span></div>
+        <div class="body">
+          <ol>
+            <li>Sprich mit der IT, ob Claude Code für dich sinnvoll und freigegeben ist.</li>
+            <li>Falls ja: Lass dir eine kurze Einführung geben und probiere die Beispiel-Aufgabe oben
+                mit einem <strong>Test-Ordner voller unbedenklicher Dateien</strong>.</li>
+            <li>Falls nein/unklar: Auch gut — du weißt jetzt, dass es das gibt und wann du danach fragst.</li>
+          </ol>
+        </div>
+      </div>
+
+      <details class="accordion">
+        <summary>Ich will später mehr lernen — wie?</summary>
+        <div class="acc-body">
+          <p>Sag deinem Schulungs-Team Bescheid. Für Interessierte gibt es einen eigenen, tieferen
+          Aufbaukurs zu Claude Code (Dateiarbeit, kleine Automatisierungen). Dieses Modul ist bewusst
+          nur der Türöffner.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="complete-bar" data-complete="6">
+      <span>Ausblick verstanden?</span>
+      <button class="btn btn-primary" data-complete-btn type="button">Modul als abgeschlossen markieren</button>
+    </div>
+
+    <nav class="module-nav">
+      <a class="prev" href="modul-5.html"><small>Zurück</small><strong>← Modul 5 · Skills &amp; Connectors</strong></a>
+      <a class="next" href="modul-7.html"><small>Weiter</small><strong>Modul 7 · Sicherheit &amp; DSGVO →</strong></a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© VIDACTA Bildungsgruppe GmbH — interne Schulung</span>
+      <span>Modul 6 von 9</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # Claude-Schulung
 
+**🌐 Live: <https://vidacta.github.io/claude-schulung/>**
+
 Interne Schulung für **VIDACTA-Mitarbeiter mit wenig bis keiner Vorerfahrung** zu:
 
 - **Claude Desktop** — die Chat-App im Alltag

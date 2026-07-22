@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modul 4: Cowork – der Agenten-Modus. Mehrstufige Aufgaben an Claude delegieren.">
+  <title>Modul 4 · Cowork — Claude-Schulung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <span class="mark">C</span>
+        <span>Claude-Schulung<small>VIDACTA · intern</small></span>
+      </a>
+      <span class="header-spacer"></span>
+      <div class="header-actions">
+        <a class="btn" href="index.html">Übersicht</a>
+        <button class="btn btn-icon" data-theme-toggle aria-label="Hell/Dunkel umschalten">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="index.html">Übersicht</a> › Modul 4</nav>
+
+    <div class="module-head">
+      <span class="num">Modul 4</span>
+      <h1>Cowork — der Agenten-Modus</h1>
+      <div class="meta">
+        <span>⏱️ ca. 30 Minuten</span>
+        <span>🎯 Baut auf Modul 1–3 auf</span>
+        <span>🤖 Aufgaben delegieren</span>
+      </div>
+    </div>
+
+    <div class="goals">
+      <strong>Was du nach diesem Modul kannst:</strong>
+      <ul>
+        <li>den Unterschied zwischen „chatten" und „einen Agenten arbeiten lassen" erklären</li>
+        <li>eine mehrstufige Aufgabe so formulieren, dass Cowork sie selbstständig erledigt</li>
+        <li>den geführten Cowork-Einrichtungsassistenten nutzen</li>
+        <li>erkennen, wann du eingreifen und Ergebnisse prüfen musst</li>
+      </ul>
+    </div>
+
+    <div class="prose">
+
+      <h2>Chat vs. Agent — der Unterschied</h2>
+      <p>
+        Bisher hast du <strong>gechattet</strong>: du fragst, Claude antwortet, du machst den nächsten
+        Schritt. <strong>Cowork</strong> ist der Agenten-Modus — hier gibst du ein <em>Ziel</em> vor,
+        und Claude erledigt die nötigen Schritte selbst hintereinander: recherchieren, sortieren,
+        ein Dokument oder eine Tabelle erstellen, Zwischenergebnisse zusammenführen.
+      </p>
+
+      <div class="callout info">
+        <p class="callout-title">ℹ️ Bild dazu</p>
+        <p>Chat = du fragst eine Kollegin etwas und bekommst eine Antwort.<br>
+        Cowork = du gibst einer Kollegin eine Aufgabe („Bereite mir bis später eine Übersicht vor"),
+        und sie erledigt die Teilschritte eigenständig und legt dir das Ergebnis hin.</p>
+      </div>
+
+      <h2>Wofür sich Cowork eignet</h2>
+      <ul>
+        <li>Aufgaben mit <strong>mehreren Schritten</strong> (erst recherchieren, dann ordnen, dann aufschreiben)</li>
+        <li>etwas <strong>Erstellen</strong>: eine Übersicht, ein Entwurfsdokument, eine Tabelle</li>
+        <li>Vergleiche und Zusammenstellungen aus mehreren Quellen</li>
+        <li>wiederkehrende „Fleißarbeit", die klar beschreibbar ist</li>
+      </ul>
+
+      <h2>Der geführte Einstieg</h2>
+      <p>
+        Cowork bringt einen <strong>Einrichtungsassistenten</strong> mit, der dich durch die ersten
+        Schritte führt: passende Fähigkeiten (Skills) und Werkzeuge auswählen und — falls von der IT
+        freigegeben — Datenquellen verbinden. Lass dich einmal durch diesen Assistenten führen, bevor
+        du loslegst; danach ist alles vorbereitet.
+      </p>
+
+      <div class="callout warn">
+        <p class="callout-title">⚠️ Verbindungen &amp; Freigaben</p>
+        <p>Wenn Cowork ein Werkzeug verbinden oder eine Aktion ausführen will (z. B. auf Dateien
+        zugreifen), <strong>fragt es nach</strong>. Lies solche Nachfragen und bestätige nur, was du
+        verstehst und willst. Verbindungen zu Firmen-Systemen laufen über die IT — im Zweifel nachfragen.
+        Mehr dazu in Modul 5.</p>
+      </div>
+
+      <h2>So gibst du einem Agenten eine gute Aufgabe</h2>
+      <p>
+        Dieselben Bausteine wie beim Prompten (Modul 2) — nur beschreibst du zusätzlich das
+        <strong>gewünschte Endergebnis</strong> und darfst mehrere Schritte in einem Auftrag nennen:
+      </p>
+
+      <div class="prompt" data-copy="Ich möchte einen kurzen Überblick über typische Aufgaben von Pflegekräften in Deutschland – als Orientierung für internationale Interessenten.
+Bitte:
+1. Sammle die 6–8 wichtigsten Aufgabenbereiche.
+2. Ordne sie in einer Tabelle: Aufgabenbereich | kurze Erklärung in einfacher Sprache.
+3. Schreib darunter eine 3-Sätze-Zusammenfassung für einen Info-Flyer.
+Verwende nur allgemeine, öffentlich bekannte Informationen – keine personenbezogenen Daten.">Ich möchte einen kurzen Überblick über typische Aufgaben von Pflegekräften in Deutschland – als Orientierung für internationale Interessenten.
+Bitte:
+1. Sammle die 6–8 wichtigsten Aufgabenbereiche.
+2. Ordne sie in einer Tabelle: Aufgabenbereich | kurze Erklärung in einfacher Sprache.
+3. Schreib darunter eine 3-Sätze-Zusammenfassung für einen Info-Flyer.
+Verwende nur allgemeine, öffentlich bekannte Informationen – keine personenbezogenen Daten.</div>
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Prüfen bleibt Pflicht</p>
+        <p>Ein Agent, der viele Schritte selbst macht, kann auch in mehreren Schritten danebenliegen.
+        Sieh das Ergebnis immer durch, bevor du es verwendest — besonders Zahlen, Fakten und alles,
+        was nach außen geht. Der Agent arbeitet <em>für</em> dich, nicht <em>statt</em> dir.</p>
+      </div>
+
+      <div class="exercise">
+        <div class="head">🛠️ Übung 4 <span class="tag">15 Minuten</span></div>
+        <div class="body">
+          <ol>
+            <li>Öffne Cowork und lass dich einmal durch den Einrichtungsassistenten führen.</li>
+            <li>Gib die Beispiel-Aufgabe oben (oder eine ähnliche aus deinem Bereich) als Auftrag.</li>
+            <li>Beobachte, wie Claude die Schritte nacheinander abarbeitet.</li>
+            <li>Prüfe das Ergebnis kritisch: Stimmt die Tabelle? Ist die Zusammenfassung brauchbar?
+                Bessere per Rückmeldung nach.</li>
+            <li><strong>Ampel-Check:</strong> Waren alle verwendeten Inhalte grün? ✅</li>
+          </ol>
+        </div>
+      </div>
+
+      <details class="accordion">
+        <summary>Was ist der Unterschied zu Claude Code?</summary>
+        <div class="acc-body">
+          <p>Cowork ist der Agenten-Modus für <strong>alle</strong> — ohne Technik-Kenntnisse, direkt in
+          der App. Claude Code ist dasselbe Prinzip, aber für Datei- und Ordner-Arbeit direkt auf dem
+          Rechner und eher für technische Nutzer. Einen ersten Blick darauf wirfst du in Modul 6 —
+          für die meisten reicht Cowork völlig.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="complete-bar" data-complete="4">
+      <span>Ersten Agenten-Auftrag gegeben?</span>
+      <button class="btn btn-primary" data-complete-btn type="button">Modul als abgeschlossen markieren</button>
+    </div>
+
+    <nav class="module-nav">
+      <a class="prev" href="modul-3.html"><small>Zurück</small><strong>← Modul 3 · Projekte &amp; Wissen</strong></a>
+      <a class="next" href="modul-5.html"><small>Weiter</small><strong>Modul 5 · Skills &amp; Connectors →</strong></a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© VIDACTA Bildungsgruppe GmbH — interne Schulung</span>
+      <span>Modul 4 von 9</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
