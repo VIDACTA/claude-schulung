@@ -1,0 +1,22 @@
+{
+  "project_name": "Claude-Schulung",
+  "type": "standalone-webapp",
+  "version": "0.1.0",
+  "description": "Interne Schulung für VIDACTA-Mitarbeiter zu Claude Desktop, Cowork & Code (Zielgruppe: Nicht-Techniker). Statische GitHub-Pages-Site.",
+  "active_task": "Etappe 1: Site-Gerüst + Modul 0/1 als Muster",
+  "stack": ["HTML", "CSS", "Vanilla JS"],
+  "build_step": false,
+  "hosting": "GitHub Pages (VIDACTA/claude-schulung)",
+  "features": {
+    "site_geruest": "in_progress",
+    "modul_0_willkommen": "in_progress",
+    "modul_1_desktop_basics": "in_progress",
+    "modul_2_bis_8": "planned",
+    "trainer_leitfaden": "planned"
+  },
+  "last_audit": {
+    "status": "IN_DEVELOPMENT",
+    "date": "2026-07-22"
+  },
+  "known_issues": {}
+}

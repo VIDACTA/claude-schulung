@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modul 1: Claude Desktop Basics – Oberfläche, Chats, Dateien und die Datenschutz-Ampel.">
+  <title>Modul 1 · Claude Desktop Basics — Claude-Schulung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <span class="mark">C</span>
+        <span>Claude-Schulung<small>VIDACTA · intern</small></span>
+      </a>
+      <span class="header-spacer"></span>
+      <div class="header-actions">
+        <a class="btn" href="index.html">Übersicht</a>
+        <button class="btn btn-icon" data-theme-toggle aria-label="Hell/Dunkel umschalten">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page">
+    <nav class="crumbs"><a href="index.html">Übersicht</a> › Modul 1</nav>
+
+    <div class="module-head">
+      <span class="num">Modul 1</span>
+      <h1>Claude Desktop Basics</h1>
+      <div class="meta">
+        <span>⏱️ ca. 25 Minuten</span>
+        <span>🎯 Baut auf Modul 0 auf</span>
+        <span>💻 Claude Desktop-App</span>
+      </div>
+    </div>
+
+    <div class="goals">
+      <strong>Was du nach diesem Modul kannst:</strong>
+      <ul>
+        <li>dich in der Claude-Desktop-App zurechtfinden (Chats, Verlauf, Eingabefeld)</li>
+        <li>eine Datei hochladen und Claude damit arbeiten lassen</li>
+        <li>die <strong>Datenschutz-Ampel</strong> anwenden — dein wichtigstes Werkzeug bei VIDACTA</li>
+      </ul>
+    </div>
+
+    <div class="prose">
+
+      <h2>Die Oberfläche in 60 Sekunden</h2>
+      <p>Die Claude-App hat nur wenige Bereiche — mehr brauchst du am Anfang nicht:</p>
+      <ul>
+        <li><strong>Eingabefeld (unten):</strong> hier tippst du deine Nachricht. Absenden mit <em>Enter</em>.</li>
+        <li><strong>Gesprächsverlauf (Mitte):</strong> deine Nachrichten und Claudes Antworten, von oben nach unten.</li>
+        <li><strong>Seitenleiste (links):</strong> deine bisherigen Chats. Jedes Thema bekommt einen eigenen Chat.</li>
+        <li><strong>„Neuer Chat":</strong> startet ein frisches Gespräch ohne Vorgeschichte.</li>
+      </ul>
+
+      <div class="shot">
+        <div class="ico">🖼️</div>
+        Screenshot folgt: Claude-Desktop mit markierter Seitenleiste, Verlauf und Eingabefeld.
+      </div>
+
+      <div class="callout info">
+        <p class="callout-title">ℹ️ Ein Chat = ein Thema</p>
+        <p>Fang für eine neue Aufgabe einen <strong>neuen Chat</strong> an. Claude erinnert sich innerhalb
+        eines Chats an alles Vorherige — das ist praktisch, kann aber stören, wenn du das Thema wechselst.
+        Eine E-Mail und eine Tabellen-Auswertung gehören in getrennte Chats.</p>
+      </div>
+
+      <h2>Dateien hochladen</h2>
+      <p>
+        Der große Vorteil gegenüber „einfach fragen": Du kannst Claude <strong>Dokumente geben</strong>,
+        mit denen er dann arbeitet — PDFs, Word-Dateien, Bilder, Tabellen. Klick dazu auf das
+        <strong>Büroklammer- / Plus-Symbol</strong> neben dem Eingabefeld, wähle die Datei und schreib
+        dazu, was Claude damit tun soll.
+      </p>
+
+      <div class="prompt" data-copy="Hier ist ein Protokoll unseres letzten Team-Meetings. Fasse die wichtigsten Entscheidungen und offenen Aufgaben in einer übersichtlichen Liste zusammen. Wer ist für was zuständig?">Hier ist ein Protokoll unseres letzten Team-Meetings. Fasse die wichtigsten Entscheidungen und offenen Aufgaben in einer übersichtlichen Liste zusammen. Wer ist für was zuständig?</div>
+
+      <div class="callout warn">
+        <p class="callout-title">⚠️ Stopp — bevor du eine Datei hochlädst</p>
+        <p>Genau <em>hier</em> wird Datenschutz konkret. Bevor irgendein Dokument in die KI wandert,
+        geht es durch die Ampel unten. Das ist keine Bürokratie — bei VIDACTA verarbeiten wir Daten
+        von Bewerber:innen, teils mit Gesundheitsbezug. Diese eine Gewohnheit schützt dich und das Unternehmen.</p>
+      </div>
+
+      <h2 id="ampel">🚦 Die Datenschutz-Ampel</h2>
+      <p>Frag dich bei <strong>jeder</strong> Eingabe und jedem Upload: Welche Farbe hat das?</p>
+
+      <div class="ampel">
+        <div class="ampel-card g">
+          <h4><span class="dot"></span>Grün — einfach nutzen</h4>
+          <ul>
+            <li>allgemeine Texte ohne Personenbezug</li>
+            <li>öffentlich bekannte Infos (Website-Texte, Broschüren)</li>
+            <li>erfundene Beispiel-Daten</li>
+            <li>eigene Entwürfe &amp; Ideen ohne Kundendaten</li>
+          </ul>
+        </div>
+        <div class="ampel-card a">
+          <h4><span class="dot"></span>Gelb — erst anonymisieren</h4>
+          <ul>
+            <li>interne Dokumente ohne Namen/Kontaktdaten</li>
+            <li>Texte, aus denen du Namen, Adressen, Geburtsdaten <strong>entfernst</strong></li>
+            <li>„Muster Mustermann" statt echter Personen</li>
+          </ul>
+        </div>
+        <div class="ampel-card r">
+          <h4><span class="dot"></span>Rot — niemals hochladen</h4>
+          <ul>
+            <li>echte Bewerber-/Kundendaten (Name + Details)</li>
+            <li>Gesundheits- &amp; Ausweisdaten, Urkunden</li>
+            <li>Passwörter, Zugangsdaten, Verträge mit Personenbezug</li>
+            <li>alles, was du einer fremden Person nicht zeigen würdest</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Im Zweifel: Rot</p>
+        <p>Wenn du unsicher bist, ob etwas rein darf — dann darf es nicht. Frag lieber kurz dein
+        Schulungs-Team oder die/den Datenschutzbeauftragte:n. Ein anonymisierter Text bringt fast
+        immer das gleiche Ergebnis wie das Original.</p>
+      </div>
+
+      <details class="accordion">
+        <summary>Beispiel: aus Rot mach Gelb (anonymisieren)</summary>
+        <div class="acc-body">
+          <p><strong>Rot (so nicht):</strong> „Fatima Al-Rashid, geb. 12.03.1994, Krankenschwester aus Syrien,
+          Anerkennung läuft, E-Mail fatima.a@…"</p>
+          <p><strong>Gelb (so geht's):</strong> „Eine Bewerberin, examinierte Pflegekraft aus dem Ausland,
+          im laufenden Anerkennungsverfahren." — Für die meisten Aufgaben (E-Mail formulieren, Ablauf erklären)
+          reicht das völlig aus.</p>
+        </div>
+      </details>
+
+      <div class="exercise">
+        <div class="head">🛠️ Übung 1 <span class="tag">10 Minuten</span></div>
+        <div class="body">
+          <ol>
+            <li>Starte einen <strong>neuen Chat</strong>.</li>
+            <li>Nimm einen <strong>unbedenklichen (grünen)</strong> Text — z. B. einen öffentlichen Text
+                von der VIDACTA-Website oder ein paar selbst getippte Stichpunkte.</li>
+            <li>Lade ihn hoch (oder füge ihn ein) und bitte Claude:
+              <em>„Formuliere daraus eine freundliche, klare Kurz-Info für Interessenten in maximal 5 Sätzen."</em></li>
+            <li>Lass eine zweite Variante machen: <em>„Jetzt bitte etwas lockerer, für Social Media."</em></li>
+            <li><strong>Ampel-Check:</strong> Überlege bei deinem Text bewusst — war er grün, gelb oder rot?
+                Warum? Das ist die Gewohnheit, die wir aufbauen wollen.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <p class="callout-title">💡 Tipp: Antworten weiterverwenden</p>
+        <p>Über jeder Antwort findest du Symbole zum <strong>Kopieren</strong>. So holst du das Ergebnis
+        mit einem Klick nach Word, Outlook oder ins CMS. Und wenn eine Antwort fast passt: einfach
+        weiterschreiben statt neu anfangen — Claude behält den Zusammenhang.</p>
+      </div>
+
+    </div>
+
+    <div class="complete-bar" data-complete="1">
+      <span>Ampel verstanden und eine Datei ausprobiert?</span>
+      <button class="btn btn-primary" data-complete-btn type="button">Modul als abgeschlossen markieren</button>
+    </div>
+
+    <nav class="module-nav">
+      <a class="prev" href="modul-0.html"><small>Zurück</small><strong>← Modul 0 · Willkommen</strong></a>
+      <a class="next disabled" aria-disabled="true"><small>Weiter</small><strong>Modul 2 · in Arbeit</strong></a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© VIDACTA Bildungsgruppe GmbH — interne Schulung</span>
+      <span>Modul 1 von 9</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
