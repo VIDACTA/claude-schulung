@@ -1,15 +1,16 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-22
-**Version:** 1.0.0 (live)
+**Version:** 1.1.0 (live)
 
 ## Wo wir stehen
 
 - [x] Brainstorming abgeschlossen, Design genehmigt
 - [x] Projekt-Init (Doku-Struktur)
 - [x] Site-Gerüst (index.html, style.css, app.js)
-- [x] Alle 9 Module (0–8) ausformuliert
-- [x] Trainer-Leitfaden (docs/trainer-leitfaden.md)
+- [x] Alle 9 Grundlagen-Module (0–8) ausformuliert
+- [x] Aufbau-Track (5 Module: Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads)
+- [x] Trainer-Leitfaden (docs/trainer-leitfaden.md) inkl. Aufbau
 - [x] Deploy GitHub Pages → https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

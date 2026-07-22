@@ -22,6 +22,16 @@
   ];
   window.CS_MODULES = MODULES;
 
+  /* Aufbau-Module (rollenspezifisch, eigene Fortschrittsanzeige) */
+  const AUFBAU = [
+    { id: 20, file: "aufbau-1.html", title: "Claude im Browser" },
+    { id: 21, file: "aufbau-2.html", title: "Connectors & KI-Werkzeuge" },
+    { id: 22, file: "aufbau-3.html", title: "Bilder & Videos (Higgsfield)" },
+    { id: 23, file: "aufbau-4.html", title: "Ton, Sprache & Musik (ElevenLabs)" },
+    { id: 24, file: "aufbau-5.html", title: "Social Ads: Meta & Google" }
+  ];
+  window.CS_AUFBAU = AUFBAU;
+
   const DONE_KEY = "cs_done_modules";
   const THEME_KEY = "cs_theme";
 
@@ -92,14 +102,18 @@
     updateProgressBar();
   }
   function updateProgressBar() {
-    const fill = document.querySelector("[data-progress-fill]");
-    const label = document.querySelector("[data-progress-label]");
+    updateBar(MODULES, "[data-progress-fill]", "[data-progress-label]", "Modulen");
+    updateBar(AUFBAU, "[data-progress-fill-aufbau]", "[data-progress-label-aufbau]", "Aufbau-Modulen");
+  }
+  function updateBar(list, fillSel, labelSel, noun) {
+    const fill = document.querySelector(fillSel);
+    const label = document.querySelector(labelSel);
     if (!fill && !label) return;
-    const total = MODULES.length;
-    const done = getDone().filter(id => MODULES.some(m => m.id === id)).length;
+    const total = list.length;
+    const done = getDone().filter(id => list.some(m => m.id === id)).length;
     const pct = Math.round((done / total) * 100);
     if (fill) fill.style.width = pct + "%";
-    if (label) label.textContent = done + " von " + total + " Modulen (" + pct + "%)";
+    if (label) label.textContent = done + " von " + total + " " + noun + " (" + pct + "%)";
   }
 
   /* ---------- Modul-Seite: Abschluss-Schalter ---------- */

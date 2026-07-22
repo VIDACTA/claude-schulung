@@ -13,8 +13,9 @@ Interne Schulung für **VIDACTA-Mitarbeiter mit wenig bis keiner Vorerfahrung** 
 
 ## Aufbau
 
-- `index.html` — Startseite mit Modul-Übersicht
-- `modul-*.html` — eine Seite je Modul (9 Module)
+- `index.html` — Startseite mit Modul-Übersicht (Grundlagen + Aufbau)
+- `modul-*.html` — Grundlagen, eine Seite je Modul (9 Module: 0–8)
+- `aufbau-*.html` — Aufbau-Track Kreativ/Marketing (5 Module: Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads)
 - `style.css` — gemeinsames Design (VIDACTA-Markenfarben, Raleway)
 - `app.js` — Fortschritt, Copy-Buttons, aufklappbare Boxen, Theme
 - `docs/trainer-leitfaden.md` — Leitfaden für den Live-Workshop

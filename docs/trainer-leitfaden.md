@@ -73,6 +73,26 @@ Am Ende: Fortschrittsbalken auf 100 %, kurzes Erfolgserlebnis feiern.
 
 ---
 
+## Aufbau-Track (Kreativ & Marketing) — separater Termin
+
+Die fünf Aufbau-Module (Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads) sind
+**rollenspezifisch** — nur für Marketing/Content, nicht für alle. Empfehlung: **eigener Halbtag** nach
+der Grundschulung, nur mit dem betreffenden Team.
+
+- **Voraussetzung:** Grundlagen (v. a. Datenschutz-Ampel) sitzen.
+- **Roter Faden hier:** Regeln vor Werkzeug. Die Compliance-Punkte sind kein Beiwerk, sondern der Kern:
+  **KI-Kennzeichnungspflicht** (Art. 50), **keine Geld-/„jeden Monat"-Versprechen**, **Azubi-Leads nur
+  über Website/v-forms**, **Meta-EMPLOYMENT-Targeting** (Alter 18–65, kein Detail-Targeting), **eine
+  Stimme pro Reel**, **GEMA-Falle** (keine Instagram-Musik).
+- **Kosten betonen:** Higgsfield/ElevenLabs verbrauchen Credits, Ads geben echtes Budget aus →
+  Schalten/Budget nur durch Berechtigte, Read-only-Default.
+- **Interne Details vorbereiten:** KI-Icon-Dateien, richtige GA4-Property-ID, Zugänge — diese stehen
+  bewusst NICHT auf der öffentlichen Seite, bring sie zum Termin mit.
+- **Praxis nur mit Freigabe:** live generieren/schalten nur, wenn Zugänge geklärt sind; sonst als
+  Briefing-/Denkübungen fahren (die Übungen A1–A5 sind so angelegt, dass sie ohne Credits funktionieren).
+
+---
+
 ## Häufige Fragen der Teilnehmer (Spickzettel)
 
 - **„Sieht mein Chef meine Chats?"** → Firmen-Version, Arbeitsinhalte nachvollziehbar; Privates nicht in den Arbeits-Account.

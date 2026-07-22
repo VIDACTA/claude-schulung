@@ -12,3 +12,14 @@
 - Release **v1.0.0**, live auf GitHub Pages: https://vidacta.github.io/claude-schulung/
 - Commits: 0fde04a (Grundgerüst+Modul 0/1), 70d2c87 (Module 2–8+Leitfaden, v1.0.0), 4232ada (SVG-Diagramme).
 - Offen: echte Screenshots, Modul-7-Ansprechpartner, optional Zertifikat/Druckansicht.
+
+## 2026-07-22 (später) — v1.1.0: Aufbau-Track Kreativ & Marketing
+
+- Fix: Weiter-Link Modul 1 → Modul 2 (war „in Arbeit").
+- Neuer Bereich „Aufbau" auf der Startseite + zweiter Fortschrittsbalken (app.js: AUFBAU-Liste, ids 20–24).
+- 5 Aufbau-Module: Claude im Browser (Chrome-Ext.), Connectors & KI-Werkzeuge, Higgsfield (Bild/Video),
+  ElevenLabs (Ton/Sprache/Musik), Social Ads Meta & Google.
+- Verbindliche Regeln eingebaut: KI-Kennzeichnung (Art. 50), keine Versprechen, Azubi-Leads nur
+  Website/v-forms, Meta-EMPLOYMENT-Targeting, eine Stimme/Reel, BGM −15 dB, GEMA-Falle, Read-only-Default.
+- Interne IDs/Keys/Namen bewusst NICHT auf der Public-Site („beim Team erfragen").
+- Trainer-Leitfaden + Doku (PROJECT_META/CHANGELOG/README/state) aktualisiert.
