@@ -58,10 +58,43 @@
         <li><strong>„Neuer Chat":</strong> startet ein frisches Gespräch ohne Vorgeschichte.</li>
       </ul>
 
-      <div class="shot">
-        <div class="ico">🖼️</div>
-        Screenshot folgt: Claude-Desktop mit markierter Seitenleiste, Verlauf und Eingabefeld.
-      </div>
+      <figure class="dia-fig">
+        <svg class="dia" viewBox="0 0 700 400" role="img" aria-label="Aufbau der Claude-Desktop-App: Seitenleiste, Verlauf und Eingabefeld">
+          <rect class="win line" x="10" y="10" width="680" height="380" rx="12"/>
+          <line class="line" x1="10" y1="46" x2="690" y2="46"/>
+          <circle class="muted" cx="34" cy="28" r="5"/><circle class="muted" cx="52" cy="28" r="5"/><circle class="muted" cx="70" cy="28" r="5"/>
+
+          <!-- Seitenleiste -->
+          <rect class="panel" x="10" y="46" width="180" height="344"/>
+          <rect class="accent" x="26" y="62" width="148" height="30" rx="15"/>
+          <text x="100" y="82" text-anchor="middle" font-size="13" font-weight="700" style="fill:#fff">＋ Neuer Chat</text>
+          <rect class="bar" x="26" y="112" width="148" height="14" rx="4"/>
+          <rect class="bar" x="26" y="138" width="120" height="14" rx="4"/>
+          <rect class="bar" x="26" y="164" width="136" height="14" rx="4"/>
+          <rect class="bar" x="26" y="190" width="104" height="14" rx="4"/>
+
+          <!-- Verlauf -->
+          <rect class="panel line" x="214" y="70" width="300" height="50" rx="12"/>
+          <text class="cap" x="230" y="100">Claude: Hier ist deine Zusammenfassung …</text>
+          <rect class="accsoft" x="330" y="138" width="330" height="44" rx="12"/>
+          <text class="cap" x="346" y="165">Du: Fasse dieses Protokoll zusammen</text>
+          <rect class="panel line" x="214" y="200" width="340" height="56" rx="12"/>
+          <text class="cap" x="230" y="232">Claude: Die wichtigsten Punkte sind …</text>
+
+          <!-- Eingabefeld -->
+          <rect class="panel line" x="214" y="320" width="446" height="46" rx="23"/>
+          <text class="cap" x="236" y="348">Nachricht an Claude …</text>
+          <circle class="accent" cx="636" cy="343" r="16"/>
+
+          <!-- Callouts -->
+          <circle class="accent" cx="100" cy="240" r="11"/><text x="100" y="244" text-anchor="middle" font-size="13" font-weight="700" style="fill:#fff">1</text>
+          <text class="tag" x="26" y="272">Seitenleiste:</text><text class="cap" x="26" y="290">deine bisherigen Chats</text>
+          <circle class="accent" cx="360" cy="284" r="11"/><text x="360" y="288" text-anchor="middle" font-size="13" font-weight="700" style="fill:#fff">2</text>
+          <text class="tag" x="380" y="288">Verlauf: Nachrichten &amp; Antworten</text>
+          <circle class="accent" cx="232" cy="343" r="11"/><text x="232" y="347" text-anchor="middle" font-size="13" font-weight="700" style="fill:#fff">3</text>
+        </svg>
+        <figcaption>Schematischer Aufbau — Seitenleiste (1), Verlauf (2), Eingabefeld (3).</figcaption>
+      </figure>
 
       <div class="callout info">
         <p class="callout-title">ℹ️ Ein Chat = ein Thema</p>

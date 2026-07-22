@@ -412,6 +412,29 @@ details.accordion .acc-body { padding: 0 18px 16px; color: var(--text); }
 }
 .shot .ico { font-size: 26px; opacity: .6; margin-bottom: 6px; }
 
+/* ---------- Oberflächen-Diagramme (illustrativ, kein echter Screenshot) ---------- */
+figure.dia-fig { margin: 24px 0; }
+figure.dia-fig figcaption {
+  margin-top: 8px; font-size: 13px; color: var(--text-muted); text-align: center;
+}
+svg.dia {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius); border: 1px solid var(--border);
+  background: var(--surface);
+}
+svg.dia .win      { fill: var(--surface); }
+svg.dia .panel    { fill: var(--surface-2); }
+svg.dia .line     { fill: none; stroke: var(--border); stroke-width: 1.5; }
+svg.dia .bar      { fill: var(--border); }
+svg.dia .brandfill{ fill: var(--navy); }
+svg.dia .accent   { fill: var(--blue); }
+svg.dia .accsoft  { fill: var(--accent-soft); }
+svg.dia .muted    { fill: var(--text-muted); }
+svg.dia .txt      { fill: var(--text); font-family: var(--font); font-weight: 600; }
+svg.dia .cap      { fill: var(--text-muted); font-family: var(--font); font-weight: 600; font-size: 13px; }
+svg.dia .tag      { fill: var(--accent); font-family: var(--font); font-weight: 700; font-size: 12px; }
+:root[data-theme="dark"] svg.dia .brandfill { fill: var(--blue); }
+
 /* ---------- Modul-Fußnavigation ---------- */
 .module-nav {
   display: flex; justify-content: space-between; gap: 12px;
