@@ -99,15 +99,14 @@ body {
   letter-spacing: -.01em;
 }
 .brand .mark {
-  width: 34px; height: 34px;
-  border-radius: 9px;
-  background: var(--navy);
-  color: #fff;
-  display: grid; place-items: center;
-  font-weight: 800;
-  font-size: 18px;
+  width: 48px; height: 48px;  /* = Höhe des zweizeiligen Texts daneben */
   flex: none;
+  /* Kein Hintergrund: nur das Zeichen, Farbe folgt dem Text (theme-abhängig) */
+  background-color: currentColor;
+  -webkit-mask: url(vidacta-mark.svg) center / contain no-repeat;
+  mask: url(vidacta-mark.svg) center / contain no-repeat;
 }
+.brand .mark img { display: none; }
 .brand small {
   display: block;
   font-weight: 600;
@@ -506,6 +505,17 @@ main.page ~ .site-footer { margin-top: 40px; }
 .pitch-hero .pitch-eyebrow { color: var(--sky); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 14px; }
 .pitch-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 16px; text-wrap: balance; }
 .pitch-hero p.lead { color: #d3ddef; font-size: 1.2rem; max-width: 640px; margin: 0; }
+
+/* Animierter Hero (Three.js-Wireframe im Hintergrund) */
+.pitch-hero--anim { position: relative; overflow: hidden; min-height: 460px; display: flex; align-items: center; }
+.pitch-hero--anim .hero-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.pitch-hero--anim .hero-canvas canvas { display: block; width: 100%; height: 100%; }
+/* Verlauf sichert Textkontrast über der Animation */
+.pitch-hero--anim::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(12,28,72,.92) 0%, rgba(12,28,72,.75) 45%, rgba(12,28,72,.15) 100%);
+}
+.pitch-hero--anim .hero-content { position: relative; z-index: 2; }
 
 .pitch-quote {
   font-size: 1.5rem; line-height: 1.4; color: var(--heading);
