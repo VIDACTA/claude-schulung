@@ -293,6 +293,21 @@ body {
 .prose a { color: var(--link); }
 .prose strong { color: var(--heading); }
 
+/* ---------- Tabellen (Spickzettel) ---------- */
+.table-scroll { overflow-x: auto; margin: 22px 0; -webkit-overflow-scrolling: touch; }
+.prose table {
+  width: 100%; border-collapse: collapse; font-size: .95rem;
+  min-width: 480px;
+}
+.prose table th, .prose table td {
+  text-align: left; padding: 11px 13px; vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.prose table thead th { color: var(--heading); font-weight: 700; border-bottom: 2px solid var(--border); }
+.prose table tbody tr:last-child td { border-bottom: none; }
+.prose table td strong { color: var(--heading); }
+.prose table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+
 /* ---------- Boxen (Tipp / Achtung / Info) ---------- */
 .callout {
   border-radius: var(--radius);
@@ -433,6 +448,33 @@ svg.dia .txt      { fill: var(--text); font-family: var(--font); font-weight: 60
 svg.dia .cap      { fill: var(--text-muted); font-family: var(--font); font-weight: 600; font-size: 13px; }
 svg.dia .tag      { fill: var(--accent); font-family: var(--font); font-weight: 700; font-size: 12px; }
 :root[data-theme="dark"] svg.dia .brandfill { fill: var(--blue); }
+
+/* ---------- Erklär-Chart (Context Rot / Fehlerquote) ---------- */
+svg.dia .grid    { stroke: var(--border); stroke-width: 1; stroke-dasharray: 3 4; opacity: .55; }
+svg.dia .axis    { stroke: var(--text-muted); stroke-width: 1.5; }
+svg.dia .divider { stroke: var(--text-muted); stroke-width: 1; stroke-dasharray: 4 4; opacity: .5; }
+svg.dia .zoneG   { fill: var(--green); opacity: .10; }
+svg.dia .zoneA   { fill: var(--amber); opacity: .13; }
+svg.dia .zoneR   { fill: var(--red);   opacity: .13; }
+svg.dia .curve   { fill: none; stroke: var(--blue); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+/* Kurve ist immer sichtbar (auch ohne JS); .in fügt nur eine kosmetische Zeichen-Animation hinzu */
+svg.dia .curve.anim.in { animation: cs-draw 1.7s cubic-bezier(.65,0,.35,1); }
+svg.dia .dot     { fill: var(--blue); stroke: var(--surface); stroke-width: 2.5; }
+:root[data-theme="dark"] svg.dia .curve { stroke: var(--sky); }
+:root[data-theme="dark"] svg.dia .dot   { fill: var(--sky); }
+svg.dia .axlabel { fill: var(--text-muted); font-family: var(--font); font-weight: 700; font-size: 12px; }
+svg.dia .tick    { fill: var(--text-muted); font-family: var(--font); font-weight: 600; font-size: 12px; }
+svg.dia .zlabel  { font-family: var(--font); font-weight: 800; font-size: 12.5px; letter-spacing: .01em; }
+svg.dia .zlabel.g { fill: var(--green); }
+svg.dia .zlabel.a { fill: var(--amber); }
+svg.dia .zlabel.r { fill: var(--red); }
+@keyframes cs-draw {
+  from { stroke-dasharray: 700; stroke-dashoffset: 700; }
+  to   { stroke-dasharray: 700; stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  svg.dia .curve.anim.in { animation: none; }
+}
 
 /* ---------- Modul-Fußnavigation ---------- */
 .module-nav {

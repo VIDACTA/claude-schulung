@@ -16,6 +16,7 @@ Interne Schulung für **VIDACTA-Mitarbeiter mit wenig bis keiner Vorerfahrung** 
 - `index.html` — Startseite mit Modul-Übersicht (Grundlagen + Aufbau)
 - `modul-*.html` — Grundlagen, eine Seite je Modul (9 Module: 0–8)
 - `aufbau-*.html` — Aufbau-Track Kreativ/Marketing (5 Module: Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads)
+- `vertiefung-*.html` — Vertiefungs-Track (2 Module: „Wie Claude wirklich funktioniert" — KI-Grundwissen, Kontext, Context Rot/„Dumb Zone" mit Chart, Halluzinationen · „Claude Desktop voll ausnutzen" — Projekte, Artefakte, Routinen, Anpassen, Geplant)
 - `style.css` — gemeinsames Design (VIDACTA-Markenfarben, Raleway)
 - `app.js` — Fortschritt, Copy-Buttons, aufklappbare Boxen, Theme
 - `docs/trainer-leitfaden.md` — Leitfaden für den Live-Workshop
@@ -37,4 +38,5 @@ GitHub Pages aus dem `main`-Branch (Repo `VIDACTA/claude-schulung`). Kein Build.
 
 ## Status
 
-Etappe 1 (Gerüst + Modul 0/1) im Aufbau — siehe `state/current_state.md`.
+Live und vollständig: Grundlagen (0–8), Aufbau-Track (5) und Vertiefungs-Track (2). Details siehe
+`CHANGELOG.md` und `state/current_state.md`. Offen: echte Screenshots statt Platzhalter.

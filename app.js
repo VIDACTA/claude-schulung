@@ -32,6 +32,13 @@
   ];
   window.CS_AUFBAU = AUFBAU;
 
+  /* Vertiefungs-Module (Claude verstehen & voll ausnutzen, eigene Fortschrittsanzeige) */
+  const VERTIEFUNG = [
+    { id: 10, file: "vertiefung-1.html", title: "Wie Claude wirklich funktioniert" },
+    { id: 11, file: "vertiefung-2.html", title: "Claude Desktop voll ausnutzen" }
+  ];
+  window.CS_VERTIEFUNG = VERTIEFUNG;
+
   const DONE_KEY = "cs_done_modules";
   const THEME_KEY = "cs_theme";
 
@@ -92,18 +99,18 @@
 
   /* ---------- Startseite: Modul-Grid + Fortschrittsbalken ---------- */
   function initHome() {
-    const grid = document.querySelector("[data-module-grid]");
-    if (grid) {
+    document.querySelectorAll("[data-module-grid]").forEach(function (grid) {
       grid.querySelectorAll(".module-card").forEach(function (card) {
         const id = parseInt(card.getAttribute("data-module"), 10);
         if (isDone(id)) card.classList.add("done");
       });
-    }
+    });
     updateProgressBar();
   }
   function updateProgressBar() {
     updateBar(MODULES, "[data-progress-fill]", "[data-progress-label]", "Modulen");
     updateBar(AUFBAU, "[data-progress-fill-aufbau]", "[data-progress-label-aufbau]", "Aufbau-Modulen");
+    updateBar(VERTIEFUNG, "[data-progress-fill-vertiefung]", "[data-progress-label-vertiefung]", "Vertiefungs-Modulen");
   }
   function updateBar(list, fillSel, labelSel, noun) {
     const fill = document.querySelector(fillSel);
@@ -141,10 +148,27 @@
     render();
   }
 
+  /* ---------- Chart-Reveal (Kurve zeichnet sich beim Sichtbarwerden) ---------- */
+  function initReveal() {
+    const els = document.querySelectorAll(".curve.anim");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (e) { e.classList.add("in"); });
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.35 });
+    els.forEach(function (e) { io.observe(e); });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initTheme();
     initCopy();
     initHome();
     initModulePage();
+    initReveal();
   });
 })();

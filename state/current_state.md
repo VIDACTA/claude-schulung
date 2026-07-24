@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
-**Stand:** 2026-07-22
-**Version:** 1.1.0 (live)
+**Stand:** 2026-07-24
+**Version:** 1.3.0 (lokal verifiziert; Deploy ausstehend)
 
 ## Wo wir stehen
 
@@ -10,8 +10,10 @@
 - [x] Site-Gerüst (index.html, style.css, app.js)
 - [x] Alle 9 Grundlagen-Module (0–8) ausformuliert
 - [x] Aufbau-Track (5 Module: Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads)
+- [x] **Vertiefungs-Track (2 Module): KI-Grundwissen/Kontext/Context-Rot (mit Chart)/Halluzinationen + Desktop-Funktionen (Projekte, Artefakte, Routinen, Anpassen, Geplant)** — v1.3.0
+- [x] Fix: „Erledigt"-Haken auf Startseite jetzt in allen Grids (Grundlagen/Vertiefung/Aufbau)
 - [x] Trainer-Leitfaden (docs/trainer-leitfaden.md) inkl. Aufbau
-- [x] Deploy GitHub Pages → https://vidacta.github.io/claude-schulung/
+- [x] Deploy GitHub Pages → https://vidacta.github.io/claude-schulung/ (Grundlagen+Aufbau; Vertiefung noch nicht deployed)
 
 ## Offen / nächste Schritte
 

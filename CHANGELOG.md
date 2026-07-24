@@ -3,6 +3,33 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.3.0] – 2026-07-24
+
+### Added
+- **Vertiefungs-Track „Claude verstehen & voll ausnutzen"** (eigener Bereich auf der Startseite,
+  eigener Fortschrittsbalken; bestehende Module 0–8 unverändert):
+  - **Vertiefung 1 – Wie Claude wirklich funktioniert:** KI-Grundwissen (Sprachmodell = Wort-Vorhersage,
+    „Sprach-Genie, kein Fakten-Tresor"), zusätzliche gute/schlechte Prompt-Beispiele (K-A-F-T),
+    „Was ist Kontext?" (Kontextfenster/Schreibtisch-Analogie, Tokens), **Kontextmüdigkeit / Context Rot /
+    „Dumb Zone"** mit **erklärendem Inline-SVG-Chart** (Fehlerquote ↑ je länger der Chat; grün/gelb/rot,
+    bewusst ohne Messwerte) + Gegenmittel, und **Halluzinationen** (3 Ursachen inkl. „Raten wird belohnt",
+    5 Gegenmittel mit „Nicht-wissen erlauben" zuerst, ehrliche Einordnung neuerer Modelle wie Opus 4.8:
+    gemildert, nicht gelöst). Faktenbasis via verifizierter Recherche (Chroma „Context Rot" 2025,
+    „Lost in the Middle" Liu et al. 2023) — keine erfundenen Zahlen, kein Fest-Nageln an Versionen.
+  - **Vertiefung 2 – Claude Desktop voll ausnutzen:** Projekte (Wiederholung), Artefakte (Galerie +
+    Teilen per Link), Routinen, Anpassen (inkl. Stile) und Geplant (Cloud-Lauf) — jeweils mit
+    VIDACTA-Beispiel, Sidebar-Übersichts-Diagramm, „Spickzettel"-Tabelle und ehrlichem Hinweis, dass
+    Routinen/Geplant sich je nach Version/Produkt überschneiden.
+- Startseite: dritter Bereich („Vertiefung") + dritter Fortschrittsbalken; Hero-Text ergänzt.
+  Querverweise aus Modul 2 → Vertiefung 1 und Modul 3 → Vertiefung 2 (in den Durchklick-Fluss eingehängt).
+- `app.js`: Vertiefungs-Liste (IDs 10–11), dritter Fortschrittsbalken, dezente Chart-Reveal-Animation
+  (IntersectionObserver, `prefers-reduced-motion`-sicher; Kurve ist ohne JS/Animation trotzdem sichtbar).
+- `style.css`: theme-fähige Chart-Stile (`svg.dia .curve/.zone*/.axis` …) und leichte Tabellen-Stile.
+
+### Fixed
+- Startseiten-„Erledigt"-Haken wurde nur im ersten Modul-Grid gesetzt (`querySelector` →
+  `querySelectorAll`); jetzt korrekt in allen Bereichen (Grundlagen, Vertiefung, Aufbau).
+
 ## [1.2.0] – 2026-07-22
 
 ### Added
