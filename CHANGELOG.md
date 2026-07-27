@@ -3,6 +3,47 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.7.0] – 2026-07-27
+
+### Added
+Content-Audit über alle 19 Seiten (6 parallele Fach-Reviewer + adversariale Gegenprobe gegen
+die VIDACTA-Regeln), **49 geprüfte Ergänzungen eingebaut**. Die dünnsten Seiten waren
+Präsentation, Modul 8, Aufbau 1 und Aufbau 4 (Bewertung 2 von 5).
+
+- **Eröffnungs-Deck: 11 → 15 Folien.** Vier inhaltliche Lücken geschlossen, die eine
+  Workshop-Eröffnung nicht haben darf: „Das machen Kolleg:innen heute schon" (konkrete
+  Anwendungsfälle statt abstraktem Nutzen), **„Claude kann sich überzeugend irren"** als Regel Nr. 2
+  direkt nach dem ersten Live-Prompt, „Was Claude ist – und was nicht" (keine Rechts-/
+  medizinische/amtliche Auskunft) und ein Cowork-Vorgeschmack. Dazu das vierte Tages-Versprechen
+  (Ergebnisse prüfen) und ein konkreter Ausblick auf Vertiefung und Aufbau-Track.
+- **Modul 8** (dünnste Grundlagen-Seite): Spick-Hilfe „So sieht ein guter Durchlauf aus" mit
+  Beispiel-Prompt, „Ich hänge fest – wo schaue ich nach?", fünf typische Stolperfallen und eine
+  Ergebnis-Check-Tabelle (Prüf-Frage / gut gelaufen / Warnsignal).
+- **Modul 7:** Anonymisieren-Vorher/Nachher inkl. Warnung vor identifizierenden Kombinationen,
+  Übung 7b mit den kniffligen Grauzonen-Fällen.
+- **Modul 4:** Tabelle mit fünf Büroalltags-Aufträgen, zweiter kopierbarer Beispiel-Auftrag
+  (Info-Nachmittag), „Was tun, wenn das Ergebnis nicht passt?".
+- **Modul 5:** Vorher-nachher-Tabelle zum Connector-Nutzen, Abgrenzung Wissens-Datei/Connector/Skill,
+  Muster-Anfrage an die IT.
+- **Modul 3:** Tabelle „Gute Projektanweisungen schreiben", drei Projekt-Ideen, zwei FAQ-Blöcke
+  (Chat-Upload vs. Wissens-Datei, veraltete Inhalte).
+- **Modul 0/1/2/6:** Vorher/Nachher-Beispiel (Stichpunkte → E-Mail), „Claude ist keine Suchmaschine",
+  Warnung „Anonymisieren heißt vorher – nicht durch Claude", Ampel-Quiz mit Auflösung,
+  Vage/Klar-Tabelle für drei Alltagsaufgaben, Prompt-FAQ, „Was macht diesen Auftrag sicher?".
+- **Aufbau 1:** vier Marketing-Anwendungsfälle mit Standard-Prompt, konkretes
+  Prompt-Injection-Beispiel, Browser-Ampel (welche Seiten darf Claude mitlesen), zweite Übung.
+- **Aufbau 4:** Längentabelle Reel → Skript, gutes vs. schlechtes VO-Skript im Direktvergleich,
+  Prüf-Prompt für verbotene Claims, Korrektur-Übung „Skript-Klinik", Musik-Briefing-Prompt.
+- **Aufbau 2/3/5:** Zuordnungstabelle Aufgabe → Werkzeug, Abgrenzung Connector vs. Werkzeug,
+  Muster-Lösung zur Denkaufgabe, Briefing-Vorlage als Prompt, gutes vs. schwaches Briefing,
+  Prüf-Prompt für Anzeigen-Ideen, Tabelle „Typische Fehler – und was stattdessen".
+- **Vertiefung 1/2:** Vertrauens-Check (wie viel Prüfung braucht welches Ergebnis – klar abgegrenzt
+  von der Eingabe-Ampel), drei Alltagsfragen zum Kontext, Selbst-Test mit fünf Situationen,
+  Einstiegs-Empfehlung „Womit fange ich an?".
+
+Alle Ergänzungen nutzen ausschließlich bestehende Bausteine und Fakten aus der Schulung –
+keine neuen Produktnamen, Zahlen oder UI-Beschreibungen.
+
 ## [1.6.3] – 2026-07-27
 
 ### Fixed

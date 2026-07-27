@@ -53,3 +53,20 @@
   20 interne Linkziele HTTP 200, Konsole sauber; Live-Check nach Push bestanden.
 - Commits: 287cbf8 (v1.4.0), 145300d (v1.5.0).
 - Neuer Auftrag am Session-Ende: **animierte Präsentation zur Schulungsseite** (Scoping offen).
+
+## 2026-07-27 (Nachmittag) — v1.6.0–1.7.0: Deck, Mobil-Audit, Content-Ausbau
+
+- **v1.6.0/1.6.1/1.6.2:** Workshop-Eröffnungs-Deck `praesentation.html` (Folien-Engine ohne
+  Build-Step, 3 Live-Momente am eigenen Team-Seat), auf der Startseite als Trainer-Karte verlinkt.
+- **v1.6.3 Mobil-Audit** (320/375/414/768/1280 px, alle 19 Seiten): SVG-Diagramme waren mit ~7 px
+  Beschriftung unlesbar → Mindestbreite + seitliches Scrollen mit sticky Caption; Copy-Buttons
+  25 → 38 px; Deck-Ampelfolie wurde abgeschnitten → Folien scrollen; lange deutsche Komposita
+  sprengten das Layout → `overflow-wrap: break-word` + `hyphens: auto`; Kopfzeile ≤380 px kompakter.
+- **v1.7.0 Content-Audit:** 6 parallele Fach-Reviewer + adversariale Gegenprobe → Bewertung je Seite
+  (Präsentation, Modul 8, Aufbau 1 und 4 lagen bei 2/5). **49 Ergänzungen** eingebaut: Deck 11 → 15
+  Folien (Anwendungsfälle, „Claude kann sich überzeugend irren", Was Claude nicht ist,
+  Cowork-Vorgeschmack), Modul 8 mit Spick-Hilfe/Stolperfallen/Ergebnis-Check, Modul 7 mit
+  Anonymisierungs-Beispiel und Grauzonen-Übung, Beispiel-Tabellen und Prüf-Prompts in Modul 3–5
+  und im gesamten Aufbau-Track, Selbst-Tests in beiden Vertiefungen.
+- Verifikation: Tag-Balance aller Seiten, Typografie-Scan (Geviertstrich/Homoglyphen/
+  Anführungszeichen), 49 Inhalts-Marker, Mobil-Durchlauf mit geöffneten Accordions, Konsole sauber.

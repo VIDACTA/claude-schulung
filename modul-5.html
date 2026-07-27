@@ -104,6 +104,24 @@
         <figcaption>Schematisch: Ein Connector verbindet Claude mit einer Quelle – die Freigabe läuft über IT/Datenschutz.</figcaption>
       </figure>
 
+      <h2>Was das im Alltag bringt</h2>
+      <p>
+        Am deutlichsten wird der Unterschied im Vorher-nachher – jeweils vorausgesetzt, die IT hat die
+        Verbindung freigegeben:
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Ohne Connector</th><th>Mit Connector</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Du suchst die richtige Vorlage und lädst sie in den Chat hoch – bei jeder Aufgabe neu.</td><td>Claude nutzt den freigegebenen Vorlagen-Ordner direkt und arbeitet immer mit der aktuellen Fassung.</td></tr>
+            <tr><td>Für eine Übersicht kopierst du Inhalte aus mehreren Dokumenten von Hand zusammen.</td><td>Claude durchsucht den freigegebenen Ablage-Ordner und stellt die Übersicht selbst zusammen.</td></tr>
+            <tr><td>Du tippst deine Termine ab, damit Claude beim Planen helfen kann.</td><td>Claude bezieht den freigegebenen Kalender direkt ein – z. B. für eine Wochenübersicht.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <h2>Bevor etwas verbunden wird: drei Fragen</h2>
       <div class="ampel" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
         <div class="ampel-card g">
@@ -127,6 +145,23 @@
         durch IT/Datenschutz Pflicht. Im Zweifel: nicht verbinden, sondern nachfragen.</p>
       </div>
 
+      <details class="accordion">
+        <summary>Wissens-Datei, Connector oder Skill – was brauche ich wann?</summary>
+        <div class="acc-body">
+          <ul>
+            <li><strong>Wissens-Datei im Projekt (Modul 3):</strong> Du lädst einzelne Dokumente selbst
+            hoch. Gut für überschaubares, stabiles Wissen – z. B. eine FAQ oder Textbausteine.</li>
+            <li><strong>Connector:</strong> Claude wird mit einer ganzen Quelle verbunden (z. B. einem
+            Ablage-Ordner) und nutzt immer den aktuellen Stand. Gut, wenn sich Inhalte oft ändern oder
+            es viele Dateien sind – Freigabe über die IT.</li>
+            <li><strong>Skill:</strong> keine Datenquelle, sondern eine fertige Arbeitsanleitung für eine
+            bestimmte Aufgabe – z. B. aus Daten eine saubere Tabelle bauen.</li>
+          </ul>
+          <p>Faustregel: Wissen mitgeben → Wissens-Datei. Quelle dauerhaft anbinden → Connector.
+          Können erweitern → Skill.</p>
+        </div>
+      </details>
+
       <div class="exercise">
         <div class="head">🛠️ Übung 5 <span class="tag">10 Minuten · Denkaufgabe</span></div>
         <div class="body">
@@ -139,6 +174,18 @@
           </ol>
         </div>
       </div>
+
+      <details class="accordion">
+        <summary>So kann deine Anfrage an die IT aussehen</summary>
+        <div class="acc-body">
+          <p>Eine gute Anfrage beantwortet die drei Fragen von oben gleich mit. Zum Beispiel:</p>
+          <p>„Ich wünsche mir eine Verbindung zu unserem Vorlagen-Ordner – nur Lesezugriff. Darin liegen
+          ausschließlich Vorlagen und öffentliche Infotexte, keine personenbezogenen Daten. Nutzen: Ich
+          muss die Dateien nicht mehr einzeln hochladen und arbeite immer mit der aktuellen Fassung."</p>
+          <p>Je klarer du sagst, <strong>was</strong> in der Quelle liegt und <strong>wofür</strong> du die
+          Verbindung brauchst, desto schneller kann die IT entscheiden.</p>
+        </div>
+      </details>
 
       <div class="callout tip">
         <p class="callout-title">💡 Tipp</p>

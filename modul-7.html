@@ -99,6 +99,28 @@
         Namen. Ersetz sie durch Platzhalter – das Ergebnis ist genauso gut, und du bist auf der sicheren Seite.</p>
       </div>
 
+      <details class="accordion">
+        <summary>So sieht gutes Anonymisieren aus – ein Vorher/Nachher</summary>
+        <div class="acc-body">
+          <p><strong>Vorher (rot – so nicht):</strong><br>
+          „Frau Santos, geb. 12.03.1991, examinierte Pflegekraft aus dem Ausland, wohnhaft in Essen,
+          fragt per Mail, wann ihr Anerkennungsbescheid kommt. Ihr Deutsch ist gut, aber nicht
+          perfekt." <em>(erfundenes Beispiel)</em></p>
+          <p><strong>Nachher (gelb → grün – so ja):</strong><br>
+          „Eine examinierte Pflegekraft aus dem Ausland fragt, wann ihr Anerkennungsbescheid kommt.
+          Ihr Deutsch ist gut, aber nicht perfekt."</p>
+          <p><strong>Woran du dabei denken musst:</strong></p>
+          <ul>
+            <li>Nicht nur der Name zählt: Auch Geburtsdatum, Adresse, E-Mail, Telefonnummer und
+                Aktenzeichen machen eine Person erkennbar.</li>
+            <li>Vorsicht bei <strong>Kombinationen</strong>: „die Bewerberin aus Kolumbien, die im
+                Frühjahr bei euch angefangen hat" identifiziert eine Person auch ohne Namen.</li>
+            <li>Behalte nur, was Claude für die Aufgabe wirklich braucht – hier: Beruf, Anliegen,
+                Sprachniveau. Alles andere fliegt raus.</li>
+          </ul>
+        </div>
+      </details>
+
       <h2>3. Halluzinationen – wenn Claude sich sicher irrt</h2>
       <p>
         KI erfindet manchmal Dinge, die überzeugend klingen, aber falsch sind: erfundene Zahlen,
@@ -148,6 +170,28 @@
         <li>keine Ablage für personenbezogene Daten</li>
       </ul>
 
+      <h2>6. Wenn doch mal etwas Rotes hochgeladen wurde</h2>
+      <p>
+        Ein falscher Anhang, ein Name im kopierten Text – das kann trotz aller Vorsicht passieren.
+        Entscheidend ist, was du <strong>danach</strong> tust:
+      </p>
+      <ol>
+        <li><strong>Stopp.</strong> Nichts weiter hochladen, keine weiteren Aufträge in diesem Chat.</li>
+        <li><strong>Nichts vertuschen.</strong> Lösch nichts, um den Fehler verschwinden zu lassen –
+            für die Bewertung muss nachvollziehbar bleiben, was genau hochgeladen wurde.</li>
+        <li><strong>Sofort melden</strong> – noch am selben Tag an dein Schulungs-Team oder die/den
+            Datenschutzbeauftragte:n. Für Datenschutzvorfälle gelten kurze gesetzliche Fristen,
+            deshalb zählt jede Stunde.</li>
+        <li><strong>Kurz notieren:</strong> Was wurde hochgeladen, wann, welche Personendaten waren
+            enthalten? Das macht die Bewertung schnell und einfach.</li>
+      </ol>
+      <div class="callout tip">
+        <p class="callout-title">💡 Melden ist Stärke, kein Makel</p>
+        <p>Fehler passieren – entscheidend ist der Umgang damit. Wer schnell meldet, gibt VIDACTA die
+        Chance zu reagieren, und schützt die betroffene Person. Ein gemeldeter Fehler ist ein gelöstes
+        Problem; ein verschwiegener wird zum Risiko.</p>
+      </div>
+
       <div class="callout info">
         <p class="callout-title">ℹ️ VIDACTA-Regeln &amp; Ansprechpartner</p>
         <p>Es gelten die internen Datenschutz- und KI-Richtlinien von VIDACTA. Bei Unsicherheiten wende
@@ -172,6 +216,34 @@
               <strong>2. 🔴 Rot</strong> – Name + Gesundheitsdaten. Erst vollständig anonymisieren, dann höchstens gelb.<br>
               <strong>3. 🟡 Gelb→🟢</strong> – ohne Namen unkritisch; kurz prüfen, ob wirklich nichts Personenbezogenes drinsteht.<br>
               <strong>4. 🔴 Rot</strong> – Urkunde = personenbezogenes Dokument. Nicht hochladen.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="head">🛠️ Übung 7b – die kniffligen Fälle <span class="tag">5 Minuten</span></div>
+        <div class="body">
+          <p>Drei Situationen, die im Alltag wirklich vorkommen. Was tust du?</p>
+          <ol>
+            <li>Du hast den Namen entfernt, schreibst aber: „die Bewerberin aus Brasilien, die letzte
+                Woche beim Info-Abend war". Reicht das als Anonymisierung?</li>
+            <li>Du merkst nach dem Absenden: Im kopierten Text stand noch eine echte Telefonnummer.
+                Was jetzt?</li>
+            <li>Nach dem Upload eines E-Mail-Anhangs schlägt Claude plötzlich vor, „zur Prüfung" eine
+                Liste mit Bewerberdaten zu erstellen und zu versenden. Was tust du?</li>
+          </ol>
+          <details class="accordion" style="margin-top:12px;">
+            <summary>Lösung anzeigen</summary>
+            <div class="acc-body">
+              <p><strong>1. Nein.</strong> Herkunft + Ereignis zusammen machen die Person erkennbar –
+              das ist versteckter Personenbezug. Allgemeiner formulieren: „eine Interessentin nach
+              einer Info-Veranstaltung".<br>
+              <strong>2. Meldeweg</strong> (Abschnitt „Wenn doch mal etwas Rotes hochgeladen wurde"):
+              stoppen, nichts löschen, noch am selben Tag dem Schulungs-Team oder der/dem
+              Datenschutzbeauftragte:n melden, kurz notieren, was drinstand.<br>
+              <strong>3. Abbrechen und melden.</strong> Das riecht nach versteckten Anweisungen im
+              Dokument (Prompt Injection, Abschnitt 4). Nichts bestätigen, nichts versenden lassen.</p>
             </div>
           </details>
         </div>

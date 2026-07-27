@@ -75,6 +75,17 @@
         <figcaption>Schematisch: Claude bedient im Hintergrund Spezial-Werkzeuge – du sagst nur, was das Ergebnis sein soll.</figcaption>
       </figure>
 
+      <details class="accordion">
+        <summary>Connector oder Werkzeug – was war nochmal was?</summary>
+        <div class="acc-body">
+          <p><strong>Connector</strong> (aus Modul 5): verbindet Claude mit einer <em>Datenquelle</em> –
+          Claude kann dort <strong>nachschauen</strong>. Ein <strong>Werkzeug</strong> lässt Claude etwas
+          <strong>tun</strong>: ein Bild erzeugen, eine Stimme produzieren, ein Werbekonto bedienen.
+          Merksatz: Connector = Nachschlagewerk, Werkzeug = Maschine. Für Maschinen gelten strengere
+          Regeln, weil sie Credits bzw. Budget verbrauchen und ihre Ergebnisse nach außen gehen können.</p>
+        </div>
+      </details>
+
       <h2>Die VIDACTA-Werkzeuge im Überblick</h2>
       <ul>
         <li><strong>Higgsfield</strong> – erzeugt KI-<strong>Bilder und Videos</strong> (Aufbau 3)</li>
@@ -82,6 +93,44 @@
         <li><strong>Werbekonten Meta &amp; Google Ads</strong> – Kampagnen &amp; Auswertung (Aufbau 5)</li>
         <li><strong>Dashboards</strong> wie der Ads-Monitor – zeigen Zahlen &amp; Ergebnisse</li>
       </ul>
+
+      <h2>Welches Werkzeug für welche Aufgabe?</h2>
+      <p>Die Zuordnung im Überblick – die Detailregeln lernst du in den folgenden Modulen:</p>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Du willst …</th><th>Werkzeug(e)</th><th>Wichtigste Regel dabei</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ein Bild-Motiv für eine Anzeige</td>
+              <td>Higgsfield (Aufbau 3)</td>
+              <td>KI-Icon, keine Geld-Versprechen, Alltagskleidung</td>
+            </tr>
+            <tr>
+              <td>ein kurzes Video/Reel</td>
+              <td>Higgsfield + ElevenLabs (Aufbau 3 + 4)</td>
+              <td>eine Stimme, Musik dezent, KI-Icon</td>
+            </tr>
+            <tr>
+              <td>eine deutsche Sprecherstimme</td>
+              <td>ElevenLabs (Aufbau 4)</td>
+              <td>Skript erst fertig feilen – jede Vertonung kostet Credits</td>
+            </tr>
+            <tr>
+              <td>Hintergrundmusik ohne Rechte-Risiko</td>
+              <td>ElevenLabs (Aufbau 4)</td>
+              <td>keine Musik aus Instagram/TikTok (GEMA-Falle)</td>
+            </tr>
+            <tr>
+              <td>wissen, wie die Anzeigen laufen</td>
+              <td>Werbekonten / Ads-Monitor (Aufbau 5)</td>
+              <td>nur lesen/auswerten – Änderungen nur durch Berechtigte</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="callout warn">
         <p class="callout-title">⚠️ Diese Werkzeuge kosten Geld</p>
@@ -117,6 +166,20 @@
           </ol>
         </div>
       </div>
+
+      <details class="accordion">
+        <summary>Muster-Lösung: „Reel für Instagram zum Beruf Pflegefachkraft"</summary>
+        <div class="acc-body">
+          <p>So könnte deine Zerlegung aussehen:</p>
+          <ul>
+            <li><strong>Skript/Text</strong> (Claude): nur beschreibend – keine Geld-Aussagen, kein „Start jeden Monat"</li>
+            <li><strong>Voiceover</strong> (ElevenLabs): eine Stimme fürs ganze Reel</li>
+            <li><strong>Musik</strong> (ElevenLabs): dezent unter der Stimme, keine Instagram-/TikTok-Musik</li>
+            <li><strong>Video-Szenen</strong> (Higgsfield): Hochformat 9:16, Alltagskleidung, Safe Zones, KI-Icon einplanen</li>
+            <li><strong>Schalten</strong> (Werbekonto): macht das berechtigte Team – Azubi-Bewerbungen laufen nur über Website/v-forms</li>
+          </ul>
+        </div>
+      </details>
 
     </div>
 
