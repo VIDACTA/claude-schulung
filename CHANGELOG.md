@@ -3,6 +3,12 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.6.1] – 2026-07-27
+
+### Changed
+- Startseite: dezenter Trainer-Hinweis mit Link auf das Eröffnungs-Deck (`praesentation.html`)
+  unter dem Workbrain-Banner – das Deck ist jetzt von der Site aus erreichbar.
+
 ## [1.6.0] – 2026-07-27
 
 ### Added
