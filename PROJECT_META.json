@@ -3,7 +3,7 @@
   "type": "standalone-webapp",
   "version": "1.5.0",
   "description": "Interne Schulung für VIDACTA-Mitarbeiter zu Claude Desktop, Cowork & Code (Zielgruppe: Nicht-Techniker) plus Aufbau-Track (Kreativ/Marketing: Chrome-Extension, Higgsfield, ElevenLabs, Meta/Google Ads) und Vertiefungs-Track (KI-Grundwissen, Kontext/Context-Rot, Halluzinationen, Desktop-Funktionen). Statische GitHub-Pages-Site.",
-  "active_task": "",
+  "active_task": "Animierte Präsentation zur Schulungsseite erstellen (Format/Zielgruppe mit Dominik klären: HTML-Deck vs. Video vs. PPT; Workshop-Eröffnung vs. Ankündigung vs. Leitungs-Pitch)",
   "stack": ["HTML", "CSS", "Vanilla JS"],
   "build_step": false,
   "hosting": "GitHub Pages (VIDACTA/claude-schulung)",

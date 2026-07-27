@@ -31,3 +31,25 @@
 - Neue Pitch-Stile in style.css (Navy-Hero, Promo-Banner, Ring-Legende, Benefit-Cards).
 - Promo-Banner auf der Startseite verlinkt den Pitch.
 - Ringe nur konzeptuell benannt; keine Admin-Details/Team-/Repo-Interna auf der Public-Site.
+
+## 2026-07-24 — v1.3.0: Vertiefungs-Track (Nachtrag)
+
+- Vertiefung 1 (Wie Claude wirklich funktioniert: Kontext, Context Rot, Halluzinationen) +
+  Vertiefung 2 (Desktop voll ausnutzen: Projekte, Artefakte, Routinen, Anpassen, Geplant).
+- Details im CHANGELOG [1.3.0]; Session dokumentiert im Brain (2026-07-24).
+- Commits: b399b18 (v1.2.0), f10b816 (Three.js-Hero), 73afa00 (v1.3.0).
+
+## 2026-07-27 — v1.4.0 + v1.5.0: Komplett-Überarbeitung
+
+- **v1.4.0 (Technik/Typografie):** Raleway selbst gehostet (`fonts/`, @fontsource, OFL) — Google
+  Fonts von allen 18 Seiten entfernt (DSGVO); ~250 Geviertstriche → Halbgeviertstriche
+  (vidacta-textqualitaet-Audit); Favicon; Lernpfad Modul 8 → Vertiefung/Aufbau verlinkt;
+  Vertiefung 1 versionsfest formuliert; Text-Fixes (Modul-0-Satz, „promptet").
+- **v1.5.0 (Inhalt, 9 Punkte):** Prompt-Injection-Abschnitt Modul 7 (+ Querverweis Vertiefung 1);
+  Challenge-Variante C Bewerber-Kommunikation (Modul 8); Alltagskleidung-Regel Aufbau 3
+  (Gestaltung/QA/Kurzcheck); Rückfragen-Kniff Modul 2; Websuche-Hinweis + Fortschritts-FAQ
+  Modul 0; Vertiefungs-Track im Trainer-Leitfaden ergänzt; Homoglyphen-Fix („Klарmachen").
+- Verifikation je Release: lokaler PHP-Preview-Server, Netzwerk-Check (keine externen Requests),
+  20 interne Linkziele HTTP 200, Konsole sauber; Live-Check nach Push bestanden.
+- Commits: 287cbf8 (v1.4.0), 145300d (v1.5.0).
+- Neuer Auftrag am Session-Ende: **animierte Präsentation zur Schulungsseite** (Scoping offen).

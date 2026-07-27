@@ -18,6 +18,9 @@
 
 ## Offen / nächste Schritte
 
+- **Animierte Präsentation zur Schulungsseite** (neuer Auftrag 27.07., aktiver Task) —
+  Format/Zielgruppe noch zu klären: HTML-Deck vs. Video vs. PPT; Workshop-Eröffnung vs.
+  Mitarbeiter-Ankündigung vs. Leitungs-Pitch.
 - Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell beschriftete SVG-Schemata —
   bewusst gewählt, funktioniert; echte Screenshots wären „nice to have").
 - Interne Ansprechpartner + Richtlinien-Links in Modul 7 eintragen (nur für interne Version —
