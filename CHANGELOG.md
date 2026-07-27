@@ -3,10 +3,19 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.6.2] – 2026-07-27
+
+### Changed
+- Startseite: Der Deck-Hinweis war ein loser Absatz unter dem Workbrain-Banner und wirkte
+  unplatziert. Ersetzt durch eine **Trainer-Karte** (`.trainer-card`) im Raster des
+  Promo-Banners: gleiche Breite, heller Untergrund mit Sky-Akzentkante links, Eyebrow
+  „Für Trainer", Titel und eigener Button. Kontrast in Hell und Dunkel über WCAG AA,
+  bricht auf Mobil sauber um.
+
 ## [1.6.1] – 2026-07-27
 
 ### Changed
-- Startseite: dezenter Trainer-Hinweis mit Link auf das Eröffnungs-Deck (`praesentation.html`)
+- Startseite: Trainer-Hinweis mit Link auf das Eröffnungs-Deck (`praesentation.html`)
   unter dem Workbrain-Banner – das Deck ist jetzt von der Site aus erreichbar.
 
 ## [1.6.0] – 2026-07-27
