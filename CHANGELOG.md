@@ -3,6 +3,29 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.4.0] – 2026-07-27
+
+### Changed
+- **Raleway selbst gehostet** (`fonts/`, Quelle @fontsource, SIL Open Font License; 5 Gewichte,
+  Subsets latin + latin-ext): Google-Fonts-Einbindung von allen 18 Seiten entfernt – keine
+  IP-Übertragung an Google-Server mehr. Die Schulung lehrt die Datenschutz-Ampel; jetzt hält
+  sich die Site selbst daran.
+- **Deutsche Typografie:** Geviertstriche (—) site-weit durch Halbgeviertstriche (–) ersetzt
+  (alle HTML-Seiten, app.js, README, Trainer-Leitfaden).
+- Vertiefung 1: Modell-Aussagen versionsfest formuliert („jede neue Modell-Generation" statt
+  konkreter Versionsnamen wie „Opus 4.8") – der Text veraltet nicht mehr mit jedem Modellwechsel.
+- Modul 8: „Wie es weitergeht" verlinkt jetzt Vertiefungs- und Aufbau-Track; die
+  „Weiter"-Navigation führt zu Vertiefung 1 statt zurück zur Übersicht (durchgehender Lernpfad).
+- Startseite: Hero-Text nennt die Tracks in Seiten-Reihenfolge (Grundlagen → Vertiefung → Aufbau);
+  Fortschrittslabel präzisiert („Grundlagen-Modulen", auch in app.js).
+
+### Added
+- Favicon (VIDACTA-Zeichen `vidacta-mark.svg`) auf allen 18 Seiten.
+
+### Fixed
+- Modul 0: verunglückter Satz („nichts installieren-verstehen") korrigiert.
+- Vertiefung 1: Tippfehler „prompted" → „promptet".
+
 ## [1.3.0] – 2026-07-24
 
 ### Added

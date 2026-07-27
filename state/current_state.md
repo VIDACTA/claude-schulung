@@ -1,39 +1,29 @@
 # Current State — Claude-Schulung
 
-**Stand:** 2026-07-24
-**Version:** 1.3.0 (lokal verifiziert; Deploy ausstehend)
+**Stand:** 2026-07-27
+**Version:** 1.4.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 
 ## Wo wir stehen
 
-- [x] Brainstorming abgeschlossen, Design genehmigt
-- [x] Projekt-Init (Doku-Struktur)
-- [x] Site-Gerüst (index.html, style.css, app.js)
-- [x] Alle 9 Grundlagen-Module (0–8) ausformuliert
-- [x] Aufbau-Track (5 Module: Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads)
-- [x] **Vertiefungs-Track (2 Module): KI-Grundwissen/Kontext/Context-Rot (mit Chart)/Halluzinationen + Desktop-Funktionen (Projekte, Artefakte, Routinen, Anpassen, Geplant)** — v1.3.0
-- [x] Fix: „Erledigt"-Haken auf Startseite jetzt in allen Grids (Grundlagen/Vertiefung/Aufbau)
-- [x] Trainer-Leitfaden (docs/trainer-leitfaden.md) inkl. Aufbau
-- [x] Deploy GitHub Pages → https://vidacta.github.io/claude-schulung/ (Grundlagen+Aufbau; Vertiefung noch nicht deployed)
+- [x] Alle drei Tracks live: Grundlagen (Modul 0–8), Vertiefung (1–2), Aufbau (1–5) + Workbrain-Pitch
+- [x] Trainer-Leitfaden (docs/trainer-leitfaden.md)
+- [x] **v1.4.0 Überarbeitung:** Raleway selbst gehostet (Google Fonts raus, DSGVO), Favicon,
+      deutsche Typografie (Geviertstrich → Halbgeviertstrich), Lernpfad Modul 8 → Vertiefung/Aufbau
+      verlinkt, Vertiefung 1 versionsfest formuliert, Text-Fixes (Modul 0, „promptet")
+- [x] Live: https://vidacta.github.io/claude-schulung/ (v1.3.0 verifiziert deployed; v1.4.0 nach Push)
 
 ## Offen / nächste Schritte
 
-- Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell Platzhalter).
-- Interne Ansprechpartner + Richtlinien-Links in Modul 7 eintragen.
-- Optional: Feedback der ersten Schulung einarbeiten; Aufbaukurs Claude Code.
+- Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell beschriftete SVG-Schemata —
+  bewusst gewählt, funktioniert; echte Screenshots wären „nice to have").
+- Interne Ansprechpartner + Richtlinien-Links in Modul 7 eintragen (nur für interne Version —
+  auf der Public-Site bewusst keine Personennamen).
+- Feedback der ersten Schulung einarbeiten; ggf. Aufbaukurs Claude Code.
 
 ## Geklärte Entscheidungen
 
-- Zielgruppe: reine Nicht-Techniker
-- Claude-Plan im Haus: Team/Enterprise (volles Programm inkl. Cowork)
-- Navigation: Seite pro Modul
-- Sprache: Deutsch
-- Stack: statisches HTML/CSS/JS, kein Build-Step
-
-## Offen
-
-- Screenshots: aktuell Platzhalter, echte Bilder folgen
-- Live-Workshop-Dauer: Annahme Ganztag
-
-## Nächster Schritt
-
-Site-Gerüst + Modul 0/1 fertigstellen, dann Feedback einholen.
+- Zielgruppe: reine Nicht-Techniker · Sprache: Deutsch · Plan im Haus: Team/Enterprise
+- Navigation: Seite pro Modul · Stack: statisches HTML/CSS/JS, kein Build-Step
+- Repo public (Org-Plan kann keine privaten Pages) → keine Personennamen/Interna auf der Site
+- Fonts: selbst gehostet aus @fontsource (SIL OFL), Subsets latin + latin-ext, Gewichte 400–800
+- Modell-Aussagen in Inhalten versionsfest halten (kein Fest-Nageln an Modellnamen)

@@ -1,7 +1,7 @@
-# Trainer-Leitfaden — Claude-Schulung (Ganztag)
+# Trainer-Leitfaden – Claude-Schulung (Ganztag)
 
 Leitfaden für die Person, die die Schulung **live** durchführt. Die Selbstlern-Site
-(<https://vidacta.github.io/claude-schulung/>) ist gleichzeitig deine „Folie" — teile den Bildschirm
+(<https://vidacta.github.io/claude-schulung/>) ist gleichzeitig deine „Folie" – teile den Bildschirm
 und klick sie mit der Gruppe durch.
 
 > **Grundprinzip:** Nicht vorlesen. Vormachen → gemeinsam nachmachen → selbst ausprobieren.
@@ -45,38 +45,38 @@ und klick sie mit der Gruppe durch.
 
 ## Didaktische Hinweise je Modul
 
-**Modul 0 — Willkommen.** Wichtigstes Ziel: Angst nehmen. Lass alle in den ersten 5 Minuten einen
+**Modul 0 – Willkommen.** Wichtigstes Ziel: Angst nehmen. Lass alle in den ersten 5 Minuten einen
 eigenen Chat abschicken. Betone: „Man kann nichts kaputt machen."
 
-**Modul 1 — Desktop + Ampel.** Die 🚦 Ampel ist das Herzstück des ganzen Tages. Lieber hier 10 Minuten
+**Modul 1 – Desktop + Ampel.** Die 🚦 Ampel ist das Herzstück des ganzen Tages. Lieber hier 10 Minuten
 mehr investieren. Lass jeden laut einen eigenen Fall einer Farbe zuordnen.
 
-**Modul 2 — Prompten.** Der größte Aha-Effekt. Zeig live denselben Auftrag einmal vage, einmal mit
-K-A-F-T — der Unterschied überzeugt mehr als jede Erklärung. Viel Übungszeit geben.
+**Modul 2 – Prompten.** Der größte Aha-Effekt. Zeig live denselben Auftrag einmal vage, einmal mit
+K-A-F-T – der Unterschied überzeugt mehr als jede Erklärung. Viel Übungszeit geben.
 
-**Modul 3 — Projekte.** Gemeinsam ein „Textbausteine"-Projekt bauen. Betone: nur grüne/anonyme Inhalte.
+**Modul 3 – Projekte.** Gemeinsam ein „Textbausteine"-Projekt bauen. Betone: nur grüne/anonyme Inhalte.
 
-**Modul 4 — Cowork (Kern).** Genug Zeit einplanen. Lass die Gruppe den Einrichtungsassistenten
+**Modul 4 – Cowork (Kern).** Genug Zeit einplanen. Lass die Gruppe den Einrichtungsassistenten
 durchlaufen. Zeig eine echte mehrstufige Aufgabe und wie man das Ergebnis prüft.
 
-**Modul 5 — Connectors.** Reine Verständnis-Einheit. Klарmachen: Verbinden macht die IT, nicht jeder
+**Modul 5 – Connectors.** Reine Verständnis-Einheit. Klарmachen: Verbinden macht die IT, nicht jeder
 selbst. Denkaufgabe statt Klick-Übung.
 
-**Modul 6 — Claude Code.** Bewusst kurz & entspannt. „Gut zu wissen, kein Muss." Niemanden unter Druck
+**Modul 6 – Claude Code.** Bewusst kurz & entspannt. „Gut zu wissen, kein Muss." Niemanden unter Druck
 setzen. Nur mit IT-Freigabe praktisch zeigen.
 
-**Modul 7 — Sicherheit (Pflicht).** Ernst, aber nicht angstmachend. Die Ampel-Zuordnungsübung gemeinsam
+**Modul 7 – Sicherheit (Pflicht).** Ernst, aber nicht angstmachend. Die Ampel-Zuordnungsübung gemeinsam
 lösen. Interne Ansprechpartner konkret benennen.
 
-**Modul 8 — Challenge.** Jeder wählt eine Variante und arbeitet selbstständig; du gehst herum und hilfst.
+**Modul 8 – Challenge.** Jeder wählt eine Variante und arbeitet selbstständig; du gehst herum und hilfst.
 Am Ende: Fortschrittsbalken auf 100 %, kurzes Erfolgserlebnis feiern.
 
 ---
 
-## Aufbau-Track (Kreativ & Marketing) — separater Termin
+## Aufbau-Track (Kreativ & Marketing) – separater Termin
 
 Die fünf Aufbau-Module (Chrome-Extension, Connectors, Higgsfield, ElevenLabs, Meta/Google Ads) sind
-**rollenspezifisch** — nur für Marketing/Content, nicht für alle. Empfehlung: **eigener Halbtag** nach
+**rollenspezifisch** – nur für Marketing/Content, nicht für alle. Empfehlung: **eigener Halbtag** nach
 der Grundschulung, nur mit dem betreffenden Team.
 
 - **Voraussetzung:** Grundlagen (v. a. Datenschutz-Ampel) sitzen.
@@ -86,7 +86,7 @@ der Grundschulung, nur mit dem betreffenden Team.
   Stimme pro Reel**, **GEMA-Falle** (keine Instagram-Musik).
 - **Kosten betonen:** Higgsfield/ElevenLabs verbrauchen Credits, Ads geben echtes Budget aus →
   Schalten/Budget nur durch Berechtigte, Read-only-Default.
-- **Interne Details vorbereiten:** KI-Icon-Dateien, richtige GA4-Property-ID, Zugänge — diese stehen
+- **Interne Details vorbereiten:** KI-Icon-Dateien, richtige GA4-Property-ID, Zugänge – diese stehen
   bewusst NICHT auf der öffentlichen Seite, bring sie zum Termin mit.
 - **Praxis nur mit Freigabe:** live generieren/schalten nur, wenn Zugänge geklärt sind; sonst als
   Briefing-/Denkübungen fahren (die Übungen A1–A5 sind so angelegt, dass sie ohne Credits funktionieren).

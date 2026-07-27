@@ -1,5 +1,5 @@
 /* =========================================================
-   Claude-Schulung — gemeinsame Logik (Vanilla JS)
+   Claude-Schulung – gemeinsame Logik (Vanilla JS)
    - Theme (hell/dunkel) mit Speicherung
    - Fortschritt je Modul via localStorage
    - Copy-Buttons für Beispiel-Prompts
@@ -8,15 +8,15 @@
 (function () {
   "use strict";
 
-  /* Alle Module in Reihenfolge — Single Source of Truth für Fortschritt & Navigation */
+  /* Alle Module in Reihenfolge – Single Source of Truth für Fortschritt & Navigation */
   const MODULES = [
     { id: 0, file: "modul-0.html", title: "Willkommen & Grundlagen" },
     { id: 1, file: "modul-1.html", title: "Claude Desktop Basics" },
     { id: 2, file: "modul-2.html", title: "Gut prompten" },
     { id: 3, file: "modul-3.html", title: "Projekte & Wissen" },
-    { id: 4, file: "modul-4.html", title: "Cowork — der Agenten-Modus" },
+    { id: 4, file: "modul-4.html", title: "Cowork – der Agenten-Modus" },
     { id: 5, file: "modul-5.html", title: "Skills & Connectors" },
-    { id: 6, file: "modul-6.html", title: "Claude Code — Ausblick" },
+    { id: 6, file: "modul-6.html", title: "Claude Code – Ausblick" },
     { id: 7, file: "modul-7.html", title: "Sicherheit & DSGVO" },
     { id: 8, file: "modul-8.html", title: "Abschluss-Challenge" }
   ];
@@ -108,7 +108,7 @@
     updateProgressBar();
   }
   function updateProgressBar() {
-    updateBar(MODULES, "[data-progress-fill]", "[data-progress-label]", "Modulen");
+    updateBar(MODULES, "[data-progress-fill]", "[data-progress-label]", "Grundlagen-Modulen");
     updateBar(AUFBAU, "[data-progress-fill-aufbau]", "[data-progress-label-aufbau]", "Aufbau-Modulen");
     updateBar(VERTIEFUNG, "[data-progress-fill-vertiefung]", "[data-progress-label-vertiefung]", "Vertiefungs-Modulen");
   }
@@ -134,7 +134,7 @@
     function render() {
       const done = isDone(id);
       bar.classList.toggle("done", done);
-      btn.textContent = done ? "✓ Abgeschlossen — rückgängig" : "Modul als abgeschlossen markieren";
+      btn.textContent = done ? "✓ Abgeschlossen – rückgängig" : "Modul als abgeschlossen markieren";
       btn.classList.toggle("btn-primary", !done);
     }
     btn.addEventListener("click", function () {
