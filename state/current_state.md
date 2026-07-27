@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-27
-**Version:** 1.5.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.6.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 
 ## Wo wir stehen
 
@@ -18,9 +18,9 @@
 
 ## Offen / nächste Schritte
 
-- **Animierte Präsentation zur Schulungsseite** (neuer Auftrag 27.07., aktiver Task) —
-  Format/Zielgruppe noch zu klären: HTML-Deck vs. Video vs. PPT; Workshop-Eröffnung vs.
-  Mitarbeiter-Ankündigung vs. Leitungs-Pitch.
+- ~~Animierte Präsentation zur Schulungsseite~~ → **erledigt in v1.6.0**: `praesentation.html`
+  (Workshop-Eröffnungs-Deck mit 3 Live-Momenten am eigenen Team-Seat). Dominiks Feedback nach
+  dem ersten echten Einsatz einarbeiten.
 - Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell beschriftete SVG-Schemata —
   bewusst gewählt, funktioniert; echte Screenshots wären „nice to have").
 - Interne Ansprechpartner + Richtlinien-Links in Modul 7 eintragen (nur für interne Version —

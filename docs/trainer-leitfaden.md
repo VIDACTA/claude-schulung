@@ -14,6 +14,8 @@ und klick sie mit der Gruppe durch.
 - [ ] Alle Teilnehmer haben einen funktionierenden Claude-Zugang (Team/Enterprise) und sind eingeloggt.
 - [ ] Claude Desktop-App auf den Rechnern installiert (oder Browser-Zugang geklärt).
 - [ ] Beamer/Screenshare getestet, Site geöffnet.
+- [ ] **Eröffnungs-Deck** geöffnet: `praesentation.html` (Pfeiltasten/Klick zum Weiterschalten;
+      die drei „Live-Moment"-Folien = alle Teilnehmer machen an ihrem eigenen Claude mit).
 - [ ] **Grüne Beispiel-Materialien** vorbereitet: ein öffentlicher Info-Text, ein anonymisiertes
       „Protokoll", ein paar Stichpunkte. Nichts Personenbezogenes!
 - [ ] Interne Ansprechpartner für Datenschutz/IT bereithalten (für Modul 5–7).
@@ -45,8 +47,14 @@ und klick sie mit der Gruppe durch.
 
 ## Didaktische Hinweise je Modul
 
+**Intro (Deck).** Starte mit dem Eröffnungs-Deck `praesentation.html` (~10–15 Min inkl.
+Live-Momente): erster Prompt am eigenen Team-Seat, Ampel-Zuruf, Prompt verbessern. Die drei
+Live-Momente leiten nahtlos in Modul 0–2 über – danach ist jeder schon eingeloggt und hat
+seinen ersten Chat geführt.
+
 **Modul 0 – Willkommen.** Wichtigstes Ziel: Angst nehmen. Lass alle in den ersten 5 Minuten einen
-eigenen Chat abschicken. Betone: „Man kann nichts kaputt machen."
+eigenen Chat abschicken (im Deck-Intro meist schon passiert – dann hier nur vertiefen).
+Betone: „Man kann nichts kaputt machen."
 
 **Modul 1 – Desktop + Ampel.** Die 🚦 Ampel ist das Herzstück des ganzen Tages. Lieber hier 10 Minuten
 mehr investieren. Lass jeden laut einen eigenen Fall einer Farbe zuordnen.

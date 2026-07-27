@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Workshop-Eröffnung: animierte Präsentation zur VIDACTA-Claude-Schulung (für den Trainer, mit Live-Momenten).">
+  <title>Workshop-Eröffnung · Claude-Schulung – VIDACTA</title>
+  <link rel="icon" href="vidacta-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- Deck-Grundgerüst (überschreibt Seiten-Layout) ---------- */
+    html, body { height: 100%; }
+    body.deck {
+      margin: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(1100px 600px at 82% -10%, rgba(116,191,228,.16), transparent 60%),
+        radial-gradient(900px 700px at -10% 110%, rgba(21,78,132,.35), transparent 55%),
+        var(--navy);
+      color: #eaf1fb;
+    }
+    .deck a { color: var(--sky); }
+
+    .slides { position: fixed; inset: 0; }
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6vh 8vw;
+      opacity: 0; visibility: hidden; transform: translateX(24px);
+      transition: opacity .45s ease, transform .45s ease, visibility 0s linear .45s;
+    }
+    .slide.active {
+      opacity: 1; visibility: visible; transform: none;
+      transition: opacity .45s ease, transform .45s ease;
+    }
+
+    /* Einblend-Animation je Element (gestaffelt via --d) */
+    .slide [data-anim] { opacity: 0; transform: translateY(16px); }
+    .slide.active [data-anim] {
+      opacity: 1; transform: none;
+      transition: opacity .5s ease, transform .5s ease;
+      transition-delay: calc(var(--d, 0) * 110ms);
+    }
+
+    /* Fragments: erst auf Klick/Taste sichtbar */
+    .frag { opacity: 0; transform: translateY(10px); transition: opacity .35s ease, transform .35s ease; }
+    .frag.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide, .slide [data-anim], .frag { transition: none !important; transform: none !important; }
+    }
+
+    /* ---------- Typo ---------- */
+    .slide .eyebrow {
+      font-size: clamp(13px, 1.4vw, 17px); font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--sky); margin: 0 0 18px;
+    }
+    .slide h1 { font-size: clamp(34px, 5.4vw, 74px); line-height: 1.08; margin: 0 0 22px; color: #fff; font-weight: 800; }
+    .slide h2 { font-size: clamp(26px, 3.6vw, 48px); line-height: 1.12; margin: 0 0 26px; color: #fff; font-weight: 800; }
+    .slide .lead { font-size: clamp(16px, 1.8vw, 24px); line-height: 1.55; color: #c9d8ee; max-width: 30em; margin: 0; }
+    .slide .big-list { list-style: none; margin: 8px 0 0; padding: 0; }
+    .slide .big-list li {
+      font-size: clamp(17px, 2vw, 27px); line-height: 1.4; margin: 0 0 20px;
+      padding-left: 40px; position: relative; color: #dfe9f7;
+    }
+    .slide .big-list li::before { content: "→"; position: absolute; left: 0; color: var(--sky); font-weight: 800; }
+    .slide strong { color: #fff; }
+    .muted { color: #9db0cd; }
+
+    /* ---------- Bausteine ---------- */
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(192,57,43,.18); border: 1px solid rgba(231,111,97,.55); color: #ffb4a8;
+      border-radius: 999px; padding: 7px 16px; font-weight: 700; font-size: clamp(13px, 1.3vw, 16px);
+      letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .live-badge .pulse {
+      width: 10px; height: 10px; border-radius: 50%; background: #e76f61;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(231,111,97,.55);} 50% { box-shadow: 0 0 0 9px rgba(231,111,97,0);} }
+    @media (prefers-reduced-motion: reduce) { .live-badge .pulse { animation: none; } }
+
+    .deck .prompt { font-size: clamp(14px, 1.5vw, 19px); max-width: 46em; }
+
+    .module-chips { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 26px; max-width: 60em; }
+    .chip {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(157,176,205,.35);
+      border-radius: 999px; padding: 9px 16px; font-size: clamp(13px, 1.3vw, 17px); color: #dfe9f7;
+    }
+    .chip b { color: var(--sky); margin-right: 7px; }
+
+    .deck .ampel { max-width: 62em; }
+    .deck .ampel-card { background: rgba(255,255,255,.05); border-color: rgba(157,176,205,.3); }
+    .deck .ampel-card h4 { color: #fff; font-size: clamp(16px, 1.7vw, 22px); }
+    .deck .ampel-card ul { color: #c9d8ee; font-size: clamp(13px, 1.4vw, 17px); }
+
+    .quiz-row {
+      display: flex; align-items: center; gap: 18px; max-width: 54em;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(157,176,205,.3);
+      border-radius: var(--radius); padding: 16px 20px; margin: 0 0 14px;
+      font-size: clamp(15px, 1.7vw, 21px);
+    }
+    .quiz-row .answer {
+      margin-left: auto; flex-shrink: 0; font-weight: 800; border-radius: 999px;
+      padding: 6px 14px; font-size: clamp(13px, 1.4vw, 17px);
+    }
+    .answer.g { background: rgba(31,157,85,.2); color: #7fd8a4; border: 1px solid rgba(31,157,85,.5); }
+    .answer.a { background: rgba(199,125,0,.18); color: #f0b558; border: 1px solid rgba(199,125,0,.5); }
+    .answer.r { background: rgba(192,57,43,.18); color: #ffb4a8; border: 1px solid rgba(192,57,43,.5); }
+
+    .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 62em; margin-top: 6px; }
+    .versus .box {
+      border-radius: var(--radius); padding: 20px 22px; font-size: clamp(14px, 1.6vw, 20px); line-height: 1.5;
+      border: 1px solid rgba(157,176,205,.3); background: rgba(255,255,255,.05); color: #dfe9f7;
+    }
+    .versus .box .tag { display: block; font-size: .75em; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+    .versus .box.bad { border-color: rgba(231,111,97,.5); } .versus .box.bad .tag { color: #ffb4a8; }
+    .versus .box.good { border-color: rgba(31,157,85,.5); } .versus .box.good .tag { color: #7fd8a4; }
+    @media (max-width: 760px) { .versus { grid-template-columns: 1fr; } }
+
+    .url-plate {
+      display: inline-block; margin-top: 10px; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(116,191,228,.5); border-radius: var(--radius);
+      padding: 18px 26px; font-family: var(--mono); font-size: clamp(16px, 2.4vw, 30px); color: #fff;
+    }
+
+    .mark-big { width: clamp(64px, 8vw, 110px); margin-bottom: 28px; }
+
+    /* ---------- Steuerung ---------- */
+    .deck-ui {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+      display: flex; align-items: center; gap: 14px; padding: 14px 22px;
+      color: #9db0cd; font-size: 13px;
+    }
+    .deck-ui .nav-btn {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(157,176,205,.35); color: #dfe9f7;
+      border-radius: 999px; width: 40px; height: 40px; font-size: 17px; cursor: pointer;
+    }
+    .deck-ui .nav-btn:hover { background: rgba(255,255,255,.15); }
+    .deck-ui .counter { min-width: 52px; text-align: center; }
+    .deck-ui .hint { margin-left: auto; }
+    .deck-ui .hint a { color: #9db0cd; }
+    .progress-rail { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,.1); z-index: 10; }
+    .progress-done { height: 100%; width: 0; background: var(--sky); transition: width .3s ease; }
+    @media print { .deck-ui, .progress-rail { display: none; } }
+  </style>
+</head>
+<body class="deck">
+  <div class="progress-rail"><div class="progress-done" data-bar></div></div>
+
+  <main class="slides" data-slides>
+
+    <!-- 1 · Titel -->
+    <section class="slide">
+      <img class="mark-big" src="vidacta-mark.svg" alt="VIDACTA" data-anim>
+      <p class="eyebrow" data-anim>VIDACTA · Interner Workshop</p>
+      <h1 data-anim>Claude im Arbeitsalltag<br>– sicher &amp; selbstbewusst nutzen</h1>
+      <p class="lead" data-anim>Heute lernst du kein Tool auswendig. Du probierst es aus –
+      an echten Aufgaben, mit deinem eigenen Zugang.</p>
+    </section>
+
+    <!-- 2 · Versprechen -->
+    <section class="slide">
+      <p class="eyebrow" data-anim>Was dieser Tag dir bringt</p>
+      <h2 data-anim>Heute Abend kannst du …</h2>
+      <ul class="big-list">
+        <li data-anim>Claude <strong>klare Aufträge</strong> geben – und brauchbare Ergebnisse zurückbekommen</li>
+        <li data-anim>ganze Aufgaben <strong>delegieren</strong> statt jeden Schritt selbst zu tippen (Cowork)</li>
+        <li data-anim>mit der <strong>Datenschutz-Ampel</strong> jederzeit sicher entscheiden, was rein darf – und was nie</li>
+      </ul>
+      <p class="lead frag" style="margin-top:26px;"><strong>Kein Vorwissen nötig.</strong> Wer WhatsApp bedienen kann, kann das hier.</p>
+    </section>
+
+    <!-- 3 · Der Tag -->
+    <section class="slide">
+      <p class="eyebrow" data-anim>Der Fahrplan</p>
+      <h2 data-anim>Neun Module – nach jedem wird geübt</h2>
+      <div class="module-chips" data-anim>
+        <span class="chip"><b>0</b>Willkommen</span>
+        <span class="chip"><b>1</b>Desktop &amp; Ampel</span>
+        <span class="chip"><b>2</b>Gut prompten</span>
+        <span class="chip"><b>3</b>Projekte &amp; Wissen</span>
+        <span class="chip"><b>4</b>Cowork</span>
+        <span class="chip"><b>5</b>Skills &amp; Connectors</span>
+        <span class="chip"><b>6</b>Claude Code (Ausblick)</span>
+        <span class="chip"><b>7</b>Sicherheit &amp; DSGVO</span>
+        <span class="chip"><b>8</b>Abschluss-Challenge</span>
+      </div>
+      <ul class="big-list">
+        <li data-anim>Die Schulungs-Site ist unsere Folie – <strong>ihr behaltet sie danach</strong> zum Nachschlagen.</li>
+        <li data-anim>Vormittag: Grundlagen &amp; Prompten · Nachmittag: Cowork, Sicherheit, Challenge.</li>
+        <li data-anim>Fragen kommen <strong>sofort</strong> dran, nicht am Ende.</li>
+      </ul>
+    </section>
+
+    <!-- 4 · Regel Nr. 1 + Login-Check -->
+    <section class="slide">
+      <p class="eyebrow" data-anim>Regel Nr. 1</p>
+      <h2 data-anim>Du kannst nichts kaputt machen.</h2>
+      <p class="lead" data-anim>Es gibt keine falschen Fragen und keinen Knopf, der etwas zerstört.
+      Ausprobieren ist heute ausdrücklich erwünscht.</p>
+      <p class="lead frag" style="margin-top:30px;">Deshalb jetzt gleich: <strong>Öffne Claude</strong> (App oder claude.ai)
+      und melde dich mit deinem <strong>VIDACTA-Zugang</strong> an.</p>
+      <p class="lead frag" style="margin-top:14px;">✅ Alle drin? Dann geht es direkt los – mit deinem ersten Prompt.</p>
+    </section>
+
+    <!-- 5 · LIVE 1 -->
+    <section class="slide">
+      <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 1 · alle machen mit</span>
+      <h2 data-anim>Dein erster Prompt – jetzt</h2>
+      <p class="lead" data-anim>Kopiere diese Frage in Claude und schick sie ab. Lies die Antwort in Ruhe.</p>
+      <div class="prompt" data-anim data-copy="Ich arbeite bei VIDACTA, einem Bildungsunternehmen für die Anerkennung ausländischer Pflegekräfte. Nenne mir 5 Aufgaben aus meinem Büroalltag, bei denen du mir Zeit sparen könntest.">Ich arbeite bei VIDACTA, einem Bildungsunternehmen für die Anerkennung ausländischer Pflegekräfte. Nenne mir 5 Aufgaben aus meinem Büroalltag, bei denen du mir Zeit sparen könntest.</div>
+      <p class="lead frag">Dann frag nach: <em>„Zeig mir Nummer 3 an einem konkreten Beispiel."</em>
+      – Glückwunsch, du führst gerade dein erstes Arbeitsgespräch mit einer KI. 🎉</p>
+    </section>
+
+    <!-- 6 · Ampel -->
+    <section class="slide">
+      <p class="eyebrow" data-anim>Der rote Faden des Tages</p>
+      <h2 data-anim>🚦 Die Datenschutz-Ampel</h2>
+      <p class="lead" data-anim style="margin-bottom:24px;">Vor <strong>jeder</strong> Eingabe und jedem Upload eine Frage: Welche Farbe hat das?</p>
+      <div class="ampel">
+        <div class="ampel-card g" data-anim>
+          <h4><span class="dot"></span>Grün – nutzen</h4>
+          <ul><li>öffentliche Texte &amp; Broschüren</li><li>eigene Entwürfe ohne Personenbezug</li><li>erfundene Beispieldaten</li></ul>
+        </div>
+        <div class="ampel-card a" data-anim>
+          <h4><span class="dot"></span>Gelb – erst anonymisieren</h4>
+          <ul><li>interne Texte ohne Namen</li><li>Namen/Daten vorher entfernen</li></ul>
+        </div>
+        <div class="ampel-card r" data-anim>
+          <h4><span class="dot"></span>Rot – niemals</h4>
+          <ul><li>echte Bewerber-/Kundendaten</li><li>Gesundheit, Urkunden, Ausweise</li><li>Passwörter &amp; Zugangsdaten</li></ul>
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:22px;"><strong>Im Zweifel: Rot.</strong> Diese eine Gewohnheit schützt dich und VIDACTA.</p>
+    </section>
+
+    <!-- 7 · LIVE 2: Ampel-Zuruf -->
+    <section class="slide">
+      <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 2 · Zuruf</span>
+      <h2 data-anim>Welche Farbe? Ruf es rein!</h2>
+      <div class="quiz-row frag"><span>Eine <strong>öffentliche Info-Broschüre</strong> zur Pflegeausbildung zusammenfassen.</span><span class="answer g frag">🟢 Grün</span></div>
+      <div class="quiz-row frag"><span>Eine E-Mail von <strong>„Frau Müller, geb. 1988, Diagnose …"</strong> korrigieren lassen.</span><span class="answer r frag">🔴 Rot</span></div>
+      <div class="quiz-row frag"><span>Aus <strong>internen Stichpunkten ohne Namen</strong> einen Team-Aushang machen.</span><span class="answer a frag">🟡 Gelb → 🟢</span></div>
+      <p class="lead frag" style="margin-top:18px;">Genau dieses Gefühl trainieren wir heute, bis es automatisch wird.</p>
+    </section>
+
+    <!-- 8 · Vage vs. klar -->
+    <section class="slide">
+      <p class="eyebrow" data-anim>Vorgeschmack auf Modul 2</p>
+      <h2 data-anim>Gleiche KI – anderes Ergebnis</h2>
+      <div class="versus">
+        <div class="box bad" data-anim>
+          <span class="tag">🔴 Vage</span>
+          „Schreib was über unsere Ausbildung."
+        </div>
+        <div class="box good" data-anim>
+          <span class="tag">🟢 Klar</span>
+          „Schreib einen freundlichen Instagram-Post (max. 4 Sätze) für Pflegekräfte aus dem Ausland,
+          die eine Anerkennung in Deutschland suchen. Ton: einladend, kein Werbe-Blabla."
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:26px;">Die Qualität der Antwort hängt fast immer an der Qualität
+      <strong>deiner Anweisung</strong>. Das ist Handwerk – und lernbar.</p>
+    </section>
+
+    <!-- 9 · LIVE 3 -->
+    <section class="slide">
+      <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 3 · 2 Minuten</span>
+      <h2 data-anim>Mach du den Prompt besser</h2>
+      <p class="lead" data-anim>Kopiere den vagen Auftrag – und verbessere ihn selbst:
+      Wer bist du? Für wen ist der Text? Wie lang, welcher Ton?</p>
+      <div class="prompt" data-anim data-copy="Schreib was über unsere Ausbildung.">Schreib was über unsere Ausbildung.</div>
+      <p class="lead frag">Vergleicht die Antworten mit dem Sitznachbarn: Wessen Version hat mehr Kontext bekommen –
+      und was hat das verändert?</p>
+    </section>
+
+    <!-- 10 · So arbeiten wir heute -->
+    <section class="slide">
+      <p class="eyebrow" data-anim>Praktisches</p>
+      <h2 data-anim>So läuft der Tag</h2>
+      <ul class="big-list">
+        <li data-anim>Alles, was wir zeigen, steht auf der <strong>Selbstlern-Site</strong> – mitschreiben unnötig.</li>
+        <li data-anim>Nach jedem Modul: <strong>Übung an eurem eigenen Claude</strong>, dann Haken setzen.</li>
+        <li data-anim>Nach den Grundlagen warten <strong>Vertiefung</strong> (für alle) und der <strong>Aufbau-Track</strong> (Marketing).</li>
+      </ul>
+      <div data-anim><span class="url-plate">vidacta.github.io/claude-schulung</span></div>
+    </section>
+
+    <!-- 11 · Los geht's -->
+    <section class="slide">
+      <img class="mark-big" src="vidacta-mark.svg" alt="" aria-hidden="true" data-anim>
+      <h1 data-anim>Los geht&#8217;s.</h1>
+      <p class="lead" data-anim>Claude ist offen, die Ampel ist im Kopf – mehr brauchst du nicht.</p>
+      <p data-anim style="margin-top:30px;"><a class="btn btn-primary" style="font-size:17px; padding:12px 22px;" href="modul-0.html">Modul 0 · Willkommen starten →</a></p>
+    </section>
+
+  </main>
+
+  <div class="deck-ui">
+    <button class="nav-btn" data-prev aria-label="Vorherige Folie">←</button>
+    <span class="counter" data-counter>1 / 11</span>
+    <button class="nav-btn" data-next aria-label="Weiter">→</button>
+    <span class="hint">Pfeiltasten oder Klick · <a href="index.html">zur Schulungs-Site</a></span>
+  </div>
+
+  <script>
+  /* Folien-Engine: Navigation, Fragments, Fortschritt, Copy — kein Build-Step */
+  (function () {
+    "use strict";
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var bar = document.querySelector("[data-bar]");
+    var counter = document.querySelector("[data-counter]");
+    var current = 0;
+
+    slides.forEach(function (slide) {
+      Array.prototype.forEach.call(slide.querySelectorAll("[data-anim]"), function (el, i) {
+        el.style.setProperty("--d", i);
+      });
+    });
+
+    function render() {
+      slides.forEach(function (s, i) { s.classList.toggle("active", i === current); });
+      if (bar) bar.style.width = ((current + 1) / slides.length * 100) + "%";
+      if (counter) counter.textContent = (current + 1) + " / " + slides.length;
+      if (history.replaceState) history.replaceState(null, "", "#" + (current + 1));
+    }
+    function nextFrag() {
+      var f = slides[current].querySelector(".frag:not(.in)");
+      if (f) { f.classList.add("in"); return true; }
+      return false;
+    }
+    function next() { if (!nextFrag() && current < slides.length - 1) { current++; render(); } }
+    function prev() { if (current > 0) { current--; render(); } }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown" || e.key === "Enter") { e.preventDefault(); next(); }
+      else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+      else if (e.key === "Home") { current = 0; render(); }
+      else if (e.key === "End") { current = slides.length - 1; render(); }
+    });
+    document.querySelector("[data-next]").addEventListener("click", next);
+    document.querySelector("[data-prev]").addEventListener("click", prev);
+    /* Klick auf freie Fläche = weiter (nicht auf Links/Buttons/Prompts) */
+    document.querySelector("[data-slides]").addEventListener("click", function (e) {
+      if (e.target.closest("a, button, .prompt")) return;
+      next();
+    });
+
+    /* Copy-Buttons wie auf der Schulungs-Site */
+    document.querySelectorAll(".prompt").forEach(function (box) {
+      var btn = document.createElement("button");
+      btn.className = "copy-btn"; btn.type = "button"; btn.textContent = "Kopieren";
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(box.getAttribute("data-copy") || "").then(function () {
+          btn.textContent = "Kopiert ✓"; btn.classList.add("copied");
+          setTimeout(function () { btn.textContent = "Kopieren"; btn.classList.remove("copied"); }, 1600);
+        });
+      });
+      box.appendChild(btn);
+    });
+
+    var fromHash = parseInt((location.hash || "").replace("#", ""), 10);
+    if (fromHash >= 1 && fromHash <= slides.length) current = fromHash - 1;
+    render();
+  })();
+  </script>
+</body>
+</html>

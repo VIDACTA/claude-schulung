@@ -3,6 +3,18 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.6.0] – 2026-07-27
+
+### Added
+- **Workshop-Eröffnungs-Deck `praesentation.html`** (animierte Browser-Präsentation für den
+  Trainer, 11 Folien): eigene Folien-Engine ohne Build-Step (Pfeiltasten/Klick, Fragments,
+  Fortschrittsbalken, Hash-Deep-Links, `prefers-reduced-motion`-sicher), Dark-Navy-Look auf Basis
+  der vorhandenen Design-Tokens (`data-theme="dark"` + style.css). **Drei markierte
+  „Live-Momente"**, bei denen alle Teilnehmer an ihrem eigenen Claude-Team-Seat mitmachen:
+  erster Prompt (Copy-Button wie auf der Site), Ampel-Zuruf-Quiz mit aufdeckbaren Antworten,
+  „Mach du den Prompt besser". Inhalte 1:1 aus den Modulen (kein neuer Faktenstand).
+- Trainer-Leitfaden: Intro-Block zum Deck + Checklisten-Punkt „Vor dem Workshop".
+
 ## [1.5.0] – 2026-07-27
 
 ### Added
