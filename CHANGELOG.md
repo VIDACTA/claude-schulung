@@ -3,6 +3,31 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.5.0] – 2026-07-27
+
+### Added
+- **Modul 7: neuer Abschnitt „Versteckte Anweisungen in Dokumenten & Webseiten"** (Prompt
+  Injection für Nicht-Techniker: Material ≠ Auftrag, Vorsicht bei fremden Dateien, Abbrechen &
+  Melden) – das Risiko stand bisher nur im Browser-Modul (Aufbau 1); Folgeabschnitt umnummeriert.
+- **Modul 8: Challenge-Variante C „Bewerber-Kommunikation"** (Beratung/Bewerbermanagement) mit
+  bewusstem Anonymisierungs-Schritt – die Rolle mit dem höchsten Datenschutz-Risiko hatte keine
+  eigene Abschlussaufgabe.
+- **Aufbau 3: Alltagskleidung-Regel** (VIDACTA-Kontext = Alltagskleidung, keine Kasacks/Scrubs;
+  Schule ≠ Klinik; positiv briefen) als Gestaltungsregel, QA-Punkt und Compliance-Kurzcheck-Eintrag.
+- **Modul 2: zweiter Profi-Kniff „Claude zuerst fragen lassen"** (Rückfragen-Trick).
+- **Trainer-Leitfaden: Abschnitt Vertiefungs-Track** (Selbstlernen als Standard oder
+  60–90-Minuten-Kurzblock) + Checklisten-Punkt „Nach dem Workshop" – der Track aus v1.3.0 fehlte
+  im Leitfaden komplett.
+- Modul 0: Websuche als Abhilfe bei aktuellen Themen erwähnt (Ampel-Karte „Mit Vorsicht") und
+  FAQ-Eintrag, dass der Lern-Fortschritt nur lokal im Browser gespeichert wird.
+- Modul 7: Querverweis auf Vertiefung 1 (Halluzinationen im Detail) – analog zu den bestehenden
+  Querverweisen aus Modul 2 und 3.
+
+### Fixed
+- Aufbau 3: QA-Punkt „realistische Pflege-/Arbeitssituation" lenkte Richtung Klinik-Optik –
+  ersetzt durch „Schul-/Lern-Kontext, Alltagskleidung statt Kasack".
+- Trainer-Leitfaden: „Klарmachen" enthielt zwei kyrillische Homoglyphen (а/р) → „Klarmachen".
+
 ## [1.4.0] – 2026-07-27
 
 ### Changed

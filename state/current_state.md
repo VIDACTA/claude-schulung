@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-27
-**Version:** 1.4.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.5.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 
 ## Wo wir stehen
 
@@ -10,6 +10,10 @@
 - [x] **v1.4.0 Überarbeitung:** Raleway selbst gehostet (Google Fonts raus, DSGVO), Favicon,
       deutsche Typografie (Geviertstrich → Halbgeviertstrich), Lernpfad Modul 8 → Vertiefung/Aufbau
       verlinkt, Vertiefung 1 versionsfest formuliert, Text-Fixes (Modul 0, „promptet")
+- [x] **v1.5.0 Inhalts-Ausbau:** Prompt-Injection-Abschnitt (Modul 7), Challenge-Variante C
+      Bewerber-Kommunikation (Modul 8), Alltagskleidung-Regel (Aufbau 3), Rückfragen-Kniff
+      (Modul 2), Websuche-Hinweis + Fortschritts-FAQ (Modul 0), Vertiefungs-Track im
+      Trainer-Leitfaden, Querverweis Modul 7 → Vertiefung 1, Homoglyphen-Fix
 - [x] Live: https://vidacta.github.io/claude-schulung/ (v1.3.0 verifiziert deployed; v1.4.0 nach Push)
 
 ## Offen / nächste Schritte
