@@ -1,7 +1,8 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-27
-**Version:** 1.6.2 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.6.3 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (Stand 1.6.3)
 
 ## Wo wir stehen
 

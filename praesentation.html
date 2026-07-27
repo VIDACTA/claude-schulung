@@ -144,6 +144,23 @@
     .progress-rail { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,.1); z-index: 10; }
     .progress-done { height: 100%; width: 0; background: var(--sky); transition: width .3s ease; }
     @media print { .deck-ui, .progress-rail { display: none; } }
+
+    /* Kleine Displays: Folien scrollen statt abzuschneiden (die Ampel-Folie ist zu hoch),
+       Inhalt oben ausrichten, damit bei Überlänge nichts unerreichbar wird. */
+    @media (max-width: 760px), (max-height: 620px) {
+      .slide {
+        justify-content: flex-start;
+        overflow-y: auto; -webkit-overflow-scrolling: touch;
+        padding: 4vh 6vw 84px;
+      }
+      .deck .ampel { gap: 10px; }
+      .deck .ampel-card { padding: 13px 15px; }
+      .quiz-row { gap: 10px; padding: 13px 15px; flex-wrap: wrap; }
+      .quiz-row .answer { margin-left: 0; }
+      .slide .big-list li { margin-bottom: 14px; }
+      .deck-ui { padding: 10px 14px; gap: 10px; background: rgba(11,18,32,.9); backdrop-filter: blur(6px); }
+      .deck-ui .hint { display: none; }
+    }
   </style>
 </head>
 <body class="deck">

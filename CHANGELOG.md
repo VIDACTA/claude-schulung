@@ -3,6 +3,26 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.6.3] – 2026-07-27
+
+### Fixed
+Mobil-Audit über alle 19 Seiten bei 320/375/414 px – vier Befunde behoben:
+
+- **Diagramme waren auf dem Handy unlesbar:** Die SVG-Beschriftungen wurden auf ~7 px
+  heruntergerechnet. Unter 640 px bekommen sie jetzt eine Mindestbreite von 640 px und die Figur
+  scrollt seitlich (gleiches Muster wie `.table-scroll`) – Text effektiv ~11,6 px. Die
+  Bildunterschrift bleibt per `position: sticky` stehen und ergänzt den Hinweis
+  „seitlich wischen, um alles zu sehen".
+- **Copy-Buttons zu klein:** 25 px hoch (unter jeder Touch-Empfehlung). Auf Mobil jetzt 38 px
+  und unter den Prompt-Text gesetzt, statt oben rechts über dem Text zu schweben.
+- **Deck-Folie 6 (Ampel) wurde abgeschnitten:** Auf schmalen/niedrigen Displays scrollen die
+  Folien jetzt (oben ausgerichtet, kompaktere Karten, ausgeblendeter Tastatur-Hinweis).
+- **Lange deutsche Komposita sprengten das Layout** („Stellen-/Ausbildungsanzeigen" ergab
+  32 px Überlauf auf aufbau-5, Prompt-Tokens 5 px auf aufbau-4): global
+  `overflow-wrap: break-word`, in Prompts `anywhere`.
+- Zusätzlich: Kopfzeile bei ≤380 px kompakter (stand 7 px über), Silbentrennung
+  (`hyphens: auto`) für Fließtext auf Mobil – deutlich ruhigerer Flattersatz.
+
 ## [1.6.2] – 2026-07-27
 
 ### Changed
