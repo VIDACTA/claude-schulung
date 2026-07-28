@@ -3,6 +3,15 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.7.1] – 2026-07-27
+
+### Fixed
+- **Präsentation: „Live-Moment"-Pillen liefen über die volle Folienbreite** (1072 px statt
+  263–361 px, auf allen drei Live-Folien). Ursache: `.live-badge` ist `inline-flex`, wird als
+  Flex-Item von `.slide` aber **blockifiziert** (`inline-flex` → `flex`) und dann von
+  `align-items: stretch` auf Containerbreite gezogen. Fix: `align-self: flex-start`.
+  Geprüft bei 1280×800, 1920×1080 und 375×812 – Pillen sitzen exakt auf Inhaltsbreite.
+
 ## [1.7.0] – 2026-07-27
 
 ### Added
