@@ -70,3 +70,15 @@
   und im gesamten Aufbau-Track, Selbst-Tests in beiden Vertiefungen.
 - Verifikation: Tag-Balance aller Seiten, Typografie-Scan (Geviertstrich/Homoglyphen/
   Anführungszeichen), 49 Inhalts-Marker, Mobil-Durchlauf mit geöffneten Accordions, Konsole sauber.
+- Commits: 287cbf8 (1.4.0), 145300d (1.5.0), 9913d2b (docs), 81d931c (1.6.0), 99c0617 (1.6.1),
+  c648c91 (1.6.2), bd48f06 (1.6.3), 6ea2d87 (1.7.0).
+
+## 2026-07-28 — v1.7.1: Layout-Fix im Eröffnungs-Deck
+
+- **„Live-Moment"-Pillen liefen über die volle Folienbreite** (1072 px statt 263–361 px, alle drei
+  Live-Folien). Ursache: `.live-badge` ist `inline-flex`, wird als Flex-Item von `.slide` aber
+  **blockifiziert** (`inline-flex` → `flex`) und von `align-items: stretch` gestreckt.
+  Fix: `align-self: flex-start` mit erklärendem CSS-Kommentar.
+- Verifiziert bei 1280×800 (Beamer), 1920×1080 und 375×812 — Pillen exakt auf Inhaltsbreite,
+  kein Seitenüberlauf; übrige direkte Folien-Kinder gegengeprüft.
+- Commits: ff9233b.
