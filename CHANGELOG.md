@@ -3,6 +3,36 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.10.0] – 2026-07-29
+
+### Changed
+- **Anonymisierungs-Beispiel in Modul 1 ist jetzt erkennbar fiktiv.** Der Rot-Fall zeigte
+  „Fatima Al-Rashid, geb. 12.03.1994, Krankenschwester aus Syrien, E-Mail fatima.a@…" – einen
+  realistisch klingenden Personendatensatz, auf einer **öffentlich erreichbaren** Seite (das Repo
+  ist public, weil der Org-Plan keine privaten Pages kann), und im Widerspruch zur eigenen
+  Empfehlung „Muster Mustermann statt echter Personen" zwei Absätze darüber. Jetzt „Maria
+  Musterfrau" mit ausdrücklichem Hinweis „frei erfundenes Beispiel"; Herkunftsland entfernt (für
+  die Illustration unnötig, transportiert ein Stereotyp, und Herkunft ist selbst eine sensible
+  Angabe). Struktur bleibt erhalten – Name + Geburtsdatum + Kontakt sind ja genau das, was den
+  Fall rot macht – und ein Schlusssatz benennt das Prinzip: rot wird es durch die *Kombination*.
+- **Ampel-Begründung nachgeschärft** (Modul 1 + FAQ in Modul 0). Bisher hieß es „Inhalte werden
+  nicht zum Training verwendet – *trotzdem* gilt die Ampel", ohne das „trotzdem" zu erklären. Wer
+  die Einstellung kennt, hält die Regel dann für Übervorsicht. Neuer Ausklapper „Warum ist das so
+  streng?" mit vier Gründen in einfacher Sprache: Daten verlassen das Haus · Gesundheitsdaten sind
+  besonders geschützt · für die Aufgabe braucht Claude den Namen nie · wir müssen Auskunft geben
+  können. Ohne Paragraphen-Nummern.
+- **Sperrige Gender-Konstruktion geglättet:** 4× „die/den bzw. der/dem Datenschutzbeauftragte:n"
+  → „die Datenschutzbeauftragten". Es sind tatsächlich zwei Personen, damit ist der Plural auch
+  sachlich richtiger. Die übrigen 11 Doppelpunkt-Formen (Kolleg:innen, Bewerber:innen,
+  Interessent:innen) bleiben – die Brand Guideline verwendet sie selbst, das ist gesetzte CI.
+- Modul 1: „Die Oberfläche in 60 Sekunden" → „im Überblick" (letzte Zeitangabe der Site).
+
+### Added
+- **Modul 1: Meldeweg für den Fall, dass doch etwas Rotes hochgeht.** Modul 7 hat den
+  vollständigen Weg, aber Modul 1 ist das Modul, in dem zum ersten Mal wirklich hochgeladen und
+  geübt wird – und der erste Reflex bei einem Fehler ist genau der falsche. Deshalb hier kurz:
+  **nicht löschen**, stoppen, am selben Tag melden, notieren was drinstand, Verweis auf Modul 7.
+
 ## [1.9.0] – 2026-07-29
 
 ### Changed

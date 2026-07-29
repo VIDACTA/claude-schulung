@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.9.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.10.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -30,6 +30,11 @@
       Erlaubnis, Verbot und Pflicht – Qualitätsvergleiche laufen über ✗/✓ (`.callout.nein/.ja`);
       Ampelstreifen der Deck-Folie zurückgeholt; Modul 2 um einen K-A-F-T-Prompt aus dem
       Schulbetrieb und den Abschnitt „eigenen Text verbessern lassen" erweitert
+- [x] **v1.10.0 Modul 0/1/7:** Anonymisierungs-Beispiel erkennbar fiktiv (kein realistischer
+      Personendatensatz auf der öffentlichen Seite); Ampel-Begründung nachgeschärft („Warum ist das
+      so streng?" – Daten verlassen das Haus, Gesundheitsdaten, Name nie nötig, Auskunftspflicht);
+      Meldeweg „nicht löschen, melden" schon in Modul 1; Gender-Konstruktion bei den
+      Datenschutzbeauftragten geglättet
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
