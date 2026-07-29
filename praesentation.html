@@ -67,6 +67,14 @@
     .slide strong { color: #fff; }
     .muted { color: #9db0cd; }
 
+    /* ---------- Kapitel-Trennfolie ---------- */
+    .slide.chapter-slide { justify-content: center; }
+    .chapter-num {
+      font-size: clamp(13px, 1.4vw, 17px); font-weight: 800; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--sky); margin: 0 0 14px;
+    }
+    .chapter-slide h2 { font-size: clamp(30px, 4.6vw, 62px); margin-bottom: 18px; }
+
     /* ---------- Bausteine ---------- */
     .live-badge {
       /* align-self: als Flex-Item wird inline-flex zu flex blockifiziert und von
@@ -91,6 +99,7 @@
       border-radius: 999px; padding: 9px 16px; font-size: clamp(13px, 1.3vw, 17px); color: #dfe9f7;
     }
     .chip b { color: var(--sky); margin-right: 7px; }
+    .chip.track { background: rgba(116,191,228,.14); border-color: rgba(116,191,228,.45); }
 
     .deck .ampel { max-width: 62em; }
     .deck .ampel-card { background: rgba(255,255,255,.05); border-color: rgba(157,176,205,.3); }
@@ -122,10 +131,43 @@
       border-radius: var(--radius); padding: 20px 22px; font-size: clamp(14px, 1.6vw, 20px); line-height: 1.5;
       border: 1px solid rgba(157,176,205,.3); background: rgba(255,255,255,.05); color: #dfe9f7;
     }
-    .versus .box .tag { display: block; font-size: .75em; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+    /* Label-Groessen bewusst als eigener clamp statt em-Anteil der Box: bei 320-414px faellt
+       die Box auf ihr clamp-Minimum, und ein em-Anteil landete dann bei 9,6-10,5px – auf dem
+       Handy nicht mehr lesbar (dieselbe Klasse Fehler wie die 6,9px-SVG-Schrift in v1.7.0). */
+    .versus .box .tag { display: block; font-size: clamp(12px, 1.1vw, 15px); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
     .versus .box.bad { border-color: rgba(231,111,97,.5); } .versus .box.bad .tag { color: #ffb4a8; }
     .versus .box.good { border-color: rgba(31,157,85,.5); } .versus .box.good .tag { color: #7fd8a4; }
     @media (max-width: 760px) { .versus { grid-template-columns: 1fr; } }
+
+    /* Drei-Spalten-Raster für Modellwahl und Ablage-Orte */
+    .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 66em; margin-top: 6px; }
+    .trio .box {
+      border-radius: var(--radius); padding: 18px 20px; line-height: 1.45;
+      border: 1px solid rgba(157,176,205,.3); background: rgba(255,255,255,.05); color: #dfe9f7;
+      font-size: clamp(13px, 1.45vw, 18px);
+    }
+    .trio .box h4 {
+      margin: 0 0 10px; color: #fff; font-size: clamp(16px, 1.8vw, 23px); font-weight: 800;
+      display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+    }
+    .trio .box h4 .when { font-size: clamp(12px, 1vw, 14px); font-weight: 700; color: var(--sky); letter-spacing: .06em; text-transform: uppercase; }
+    .trio .box p { margin: 0 0 9px; }
+    .trio .box p:last-child { margin-bottom: 0; }
+    .trio .box .cost { color: #9db0cd; font-size: .88em; }
+    @media (max-width: 980px) { .trio { grid-template-columns: 1fr; } }
+
+    /* Zwei-Spalten-Gegenüberstellung Modell ↔ Programm */
+    .layercard {
+      max-width: 64em; margin-top: 4px; border-radius: var(--radius);
+      border: 1px solid rgba(157,176,205,.3); background: rgba(255,255,255,.05); overflow: hidden;
+    }
+    .layercard .row { display: flex; gap: 20px; padding: 17px 22px; font-size: clamp(14px, 1.55vw, 19px); line-height: 1.45; }
+    .layercard .row + .row { border-top: 1px solid rgba(157,176,205,.22); }
+    .layercard .row .who { flex: 0 0 clamp(105px, 13vw, 190px); font-weight: 800; color: #fff; }
+    .layercard .row .what { color: #dfe9f7; }
+    .layercard .row.model .who { color: #f0b558; }
+    .layercard .row.harness .who { color: var(--sky); }
+    @media (max-width: 700px) { .layercard .row { flex-direction: column; gap: 6px; } }
 
     .url-plate {
       display: inline-block; margin-top: 10px; background: rgba(255,255,255,.08);
@@ -134,6 +176,11 @@
     }
 
     .mark-big { width: clamp(64px, 8vw, 110px); margin-bottom: 28px; }
+
+    .stand {
+      display: inline-block; margin-top: 20px; color: #9db0cd;
+      font-size: clamp(12px, 1.2vw, 15px);
+    }
 
     /* ---------- Steuerung ---------- */
     .deck-ui {
@@ -146,11 +193,14 @@
       border-radius: 999px; width: 40px; height: 40px; font-size: 17px; cursor: pointer;
     }
     .deck-ui .nav-btn:hover { background: rgba(255,255,255,.15); }
-    .deck-ui .counter { min-width: 52px; text-align: center; }
+    .deck-ui .counter { min-width: 58px; text-align: center; }
+    .deck-ui .chapter-now { color: #dfe9f7; font-weight: 700; }
     .deck-ui .hint { margin-left: auto; }
     .deck-ui .hint a { color: #9db0cd; }
     .progress-rail { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,.1); z-index: 10; }
     .progress-done { height: 100%; width: 0; background: var(--sky); transition: width .3s ease; }
+    /* Kapitelgrenzen als Kerben in der Fortschrittsleiste – zeigt, wie weit ein Kapitel noch trägt */
+    .rail-tick { position: absolute; top: 0; width: 2px; height: 100%; background: rgba(11,18,32,.85); }
     @media print { .deck-ui, .progress-rail { display: none; } }
 
     /* Kleine Displays: Folien scrollen statt abzuschneiden (die Ampel-Folie ist zu hoch),
@@ -161,13 +211,15 @@
         overflow-y: auto; -webkit-overflow-scrolling: touch;
         padding: 4vh 6vw 84px;
       }
+      .slide.chapter-slide { justify-content: center; }
       .deck .ampel { gap: 10px; }
       .deck .ampel-card { padding: 13px 15px; }
       .quiz-row { gap: 10px; padding: 13px 15px; flex-wrap: wrap; }
       .quiz-row .answer { margin-left: 0; }
       .slide .big-list li { margin-bottom: 14px; }
+      .trio .box, .layercard .row { padding: 13px 15px; }
       .deck-ui { padding: 10px 14px; gap: 10px; background: rgba(11,18,32,.9); backdrop-filter: blur(6px); }
-      .deck-ui .hint { display: none; }
+      .deck-ui .hint, .deck-ui .chapter-now { display: none; }
     }
   </style>
 </head>
@@ -176,8 +228,9 @@
 
   <main class="slides" data-slides>
 
-    <!-- 1 · Titel -->
-    <section class="slide">
+    <!-- ═══ Kapitel 1 · Ankommen ═══ -->
+
+    <section class="slide" data-chapter="Ankommen">
       <img class="mark-big" src="vidacta-mark.svg" alt="VIDACTA" data-anim>
       <p class="eyebrow" data-anim>VIDACTA · Interner Workshop</p>
       <h1 data-anim>Claude im Arbeitsalltag<br>– sicher &amp; selbstbewusst nutzen</h1>
@@ -185,10 +238,9 @@
       an echten Aufgaben, mit deinem eigenen Zugang.</p>
     </section>
 
-    <!-- 2 · Versprechen -->
-    <section class="slide">
-      <p class="eyebrow" data-anim>Was dieser Tag dir bringt</p>
-      <h2 data-anim>Heute Abend kannst du …</h2>
+    <section class="slide" data-chapter="Ankommen">
+      <p class="eyebrow" data-anim>Was dieser Workshop dir bringt</p>
+      <h2 data-anim>Danach kannst du …</h2>
       <ul class="big-list">
         <li data-anim>Claude <strong>klare Aufträge</strong> geben – und brauchbare Ergebnisse zurückbekommen</li>
         <li data-anim>ganze Aufgaben <strong>delegieren</strong> statt jeden Schritt selbst zu tippen (Cowork)</li>
@@ -198,30 +250,23 @@
       <p class="lead frag" style="margin-top:26px;"><strong>Kein Vorwissen nötig.</strong> Wer WhatsApp bedienen kann, kann das hier.</p>
     </section>
 
-    <!-- 3 · Der Tag -->
-    <section class="slide">
+    <section class="slide" data-chapter="Ankommen">
       <p class="eyebrow" data-anim>Der Fahrplan</p>
-      <h2 data-anim>Neun Module – nach jedem wird geübt</h2>
+      <h2 data-anim>Drei Wege – und alles bleibt zum Nachschlagen</h2>
       <div class="module-chips" data-anim>
-        <span class="chip"><b>0</b>Willkommen</span>
-        <span class="chip"><b>1</b>Desktop &amp; Ampel</span>
-        <span class="chip"><b>2</b>Gut prompten</span>
-        <span class="chip"><b>3</b>Projekte &amp; Wissen</span>
-        <span class="chip"><b>4</b>Cowork</span>
-        <span class="chip"><b>5</b>Skills &amp; Connectors</span>
-        <span class="chip"><b>6</b>Claude Code (Ausblick)</span>
-        <span class="chip"><b>7</b>Sicherheit &amp; DSGVO</span>
-        <span class="chip"><b>8</b>Abschluss-Challenge</span>
+        <span class="chip track"><b>Grundlagen</b>9 Module · für alle</span>
+        <span class="chip track"><b>Vertiefung</b>3 Module · wie Claude wirklich arbeitet</span>
+        <span class="chip track"><b>Aufbau</b>5 Module · Marketing &amp; Kreativ</span>
       </div>
       <ul class="big-list">
-        <li data-anim>Die Schulungs-Site ist unsere Folie – <strong>ihr behaltet sie danach</strong> zum Nachschlagen.</li>
-        <li data-anim>Vormittag: Grundlagen &amp; Prompten · Nachmittag: Cowork, Sicherheit, Challenge.</li>
+        <li data-anim>Wir gehen heute die <strong>Grundlagen</strong> durch – nach jedem Modul wird sofort geübt.</li>
+        <li data-anim>Die Schulungs-Site ist unsere Folie: <strong>ihr behaltet sie danach</strong>, mitschreiben ist unnötig.</li>
         <li data-anim>Fragen kommen <strong>sofort</strong> dran, nicht am Ende.</li>
       </ul>
+      <div data-anim><span class="url-plate">vidacta.github.io/claude-schulung</span></div>
     </section>
 
-    <!-- 4 · Regel Nr. 1 + Login-Check -->
-    <section class="slide">
+    <section class="slide" data-chapter="Ankommen">
       <p class="eyebrow" data-anim>Regel Nr. 1</p>
       <h2 data-anim>Du kannst nichts kaputt machen.</h2>
       <p class="lead" data-anim>Es gibt keine falschen Fragen und keinen Knopf, der etwas zerstört.
@@ -231,8 +276,9 @@
       <p class="lead frag" style="margin-top:14px;">✅ Alle drin? Dann geht es direkt los – mit deinem ersten Prompt.</p>
     </section>
 
-    <!-- 5 · LIVE 1 -->
-    <section class="slide">
+    <!-- ═══ Kapitel 2 · Der erste Kontakt ═══ -->
+
+    <section class="slide" data-chapter="Der erste Kontakt">
       <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 1 · alle machen mit</span>
       <h2 data-anim>Dein erster Prompt – jetzt</h2>
       <p class="lead" data-anim>Kopiere diese Frage in Claude und schick sie ab. Lies die Antwort in Ruhe.</p>
@@ -241,8 +287,7 @@
       – Glückwunsch, du führst gerade dein erstes Arbeitsgespräch mit einer KI. 🎉</p>
     </section>
 
-    <!-- NEU · Anwendungsfälle: heute schon im Einsatz -->
-    <section class="slide">
+    <section class="slide" data-chapter="Der erste Kontakt">
       <p class="eyebrow" data-anim>Keine Zukunftsmusik</p>
       <h2 data-anim>Das machen Kolleg:innen bei VIDACTA heute schon</h2>
       <ul class="big-list">
@@ -255,19 +300,7 @@
       <p class="lead frag" style="margin-top:26px;">Vergleich mit deiner Antwort von eben: Wie viele davon hat Claude dir gerade <strong>selbst</strong> vorgeschlagen?</p>
     </section>
 
-    <!-- NEU · Regel Nr. 2: der wichtigste Merksatz -->
-    <section class="slide">
-      <p class="eyebrow" data-anim>Regel Nr. 2 · Der wichtigste Merksatz</p>
-      <h2 data-anim>Claude kann sich überzeugend irren.</h2>
-      <p class="lead" data-anim>Die Antwort, die du gerade gelesen hast, klang sicher. Claude klingt
-      <strong>immer</strong> sicher – auch wenn er falsch liegt. Das nennt man „halluzinieren“.</p>
-      <p class="lead frag" style="margin-top:30px;">Deshalb gilt ab heute: <strong>Du bleibst verantwortlich.</strong>
-      Zahlen, Namen und Fakten prüfst du, bevor etwas rausgeht – Claude liefert den Entwurf, du entscheidest.</p>
-      <p class="lead frag" style="margin-top:14px;">Wie du Fehler zuverlässig findest, üben wir in <strong>Modul 7</strong>. Der Satz gilt ab sofort.</p>
-    </section>
-
-    <!-- NEU · Was Claude ist – und was nicht -->
-    <section class="slide">
+    <section class="slide" data-chapter="Der erste Kontakt">
       <p class="eyebrow" data-anim>Realistische Erwartungen</p>
       <h2 data-anim>Was Claude ist – und was nicht</h2>
       <div class="versus">
@@ -286,8 +319,100 @@
       <strong>Anerkennung</strong> gibt immer die zuständige Stelle – Claude hilft dir, den Weg dorthin vorzubereiten.</p>
     </section>
 
-    <!-- 6 · Ampel -->
-    <section class="slide">
+    <section class="slide" data-chapter="Der erste Kontakt">
+      <p class="eyebrow" data-anim>Regel Nr. 2 · Der wichtigste Merksatz</p>
+      <h2 data-anim>Claude kann sich überzeugend irren.</h2>
+      <p class="lead" data-anim>Die Antwort, die du gerade gelesen hast, klang sicher. Claude klingt
+      <strong>immer</strong> sicher – auch wenn er falsch liegt. Das nennt man „halluzinieren“.</p>
+      <p class="lead frag" style="margin-top:30px;">Deshalb gilt ab heute: <strong>Du bleibst verantwortlich.</strong>
+      Zahlen, Namen und Fakten prüfst du, bevor etwas rausgeht – Claude liefert den Entwurf, du entscheidest.</p>
+      <p class="lead frag" style="margin-top:14px;">Warum das <em>technisch</em> so ist, kommt auf der nächsten Folie.
+      Wie du Fehler zuverlässig findest, üben wir in <strong>Modul 7</strong>.</p>
+    </section>
+
+    <!-- ═══ Kapitel 3 · Wie das Ding funktioniert ═══ -->
+
+    <section class="slide chapter-slide" data-chapter="Wie das Ding funktioniert">
+      <p class="chapter-num" data-anim>Kapitel 3</p>
+      <h2 data-anim>Kurz unter die Haube</h2>
+      <p class="lead" data-anim>Drei Folien, kein Fachchinesisch. Danach verstehst du, <em>warum</em> Claude
+      sich irren kann, warum er in Cowork plötzlich mehr kann – und welches Modell du wann nimmst.</p>
+    </section>
+
+    <section class="slide" data-chapter="Wie das Ding funktioniert">
+      <p class="eyebrow" data-anim>Frage 1 · Was ist KI eigentlich?</p>
+      <h2 data-anim>Claude rät das nächste Wort. Sehr, sehr gut.</h2>
+      <p class="lead" data-anim>Er hat riesige Mengen Text gelesen und daraus gelernt, welche Wörter
+      typischerweise aufeinander folgen. Bei jeder Antwort setzt er Stück für Stück das an, was am besten passt.</p>
+      <div class="versus" style="margin-top:26px;">
+        <div class="box bad" data-anim>
+          <span class="tag">✗ Kein Nachschlagewerk</span>
+          Claude schlägt nichts in einer Datenbank nach und ist keine Suchmaschine.
+          Er <em>erinnert</em> sich – ungefähr, wie ein Mensch aus dem Gedächtnis erzählt.
+        </div>
+        <div class="box good" data-anim>
+          <span class="tag">✓ Deshalb so stark bei Sprache</span>
+          Formulieren, umschreiben, übersetzen, ordnen: Genau dafür ist ein Sprachmodell gemacht –
+          und darin ist es außergewöhnlich gut.
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:24px;">Und genau daraus folgt Regel Nr. 2: Wer aus dem Gedächtnis
+      erzählt, klingt auch dann flüssig, wenn ein Detail <strong>daneben</strong> ist.</p>
+    </section>
+
+    <section class="slide" data-chapter="Wie das Ding funktioniert">
+      <p class="eyebrow" data-anim>Frage 2 · Warum kann Claude in Cowork mehr?</p>
+      <h2 data-anim>Das Modell ist nur der Kopf. Der Rest ist das Programm.</h2>
+      <div class="layercard" data-anim>
+        <div class="row model">
+          <span class="who">Das Modell</span>
+          <span class="what">kann <strong>nur eines</strong>: aus Text neuen Text machen. Es hat keine Hände,
+          keinen Zugriff auf deine Dateien und kein Gedächtnis über den Chat hinaus.</span>
+        </div>
+        <div class="row harness">
+          <span class="who">Das Programm<br>drumherum</span>
+          <span class="what">gibt ihm Werkzeuge: Dateien lesen, im Web suchen, sich Notizen merken,
+          Schritte planen, Ergebnisse speichern. Fachleute nennen das <strong>Harness</strong> – ein Gestell,
+          in das das Modell eingespannt wird.</span>
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:24px;">Deshalb ist <strong>Desktop, Cowork und Claude Code
+      dasselbe Modell</strong> – nur in unterschiedlichen Gestellen. Claude wird nicht klüger, er bekommt
+      mehr in die Hand.</p>
+      <p class="lead frag" style="margin-top:14px;">Praktische Folge: <strong>Mehr Werkzeuge = mehr Wirkung, und mehr
+      Verantwortung.</strong> Ein Modell, das nur redet, kann sich irren. Ein Modell, das <em>handelt</em>,
+      kann etwas anstellen – darum kommt in Modul 4 die Kontrollfrage „wo landet das Ergebnis?“.</p>
+    </section>
+
+    <section class="slide" data-chapter="Wie das Ding funktioniert">
+      <p class="eyebrow" data-anim>Frage 3 · Welches Modell nehme ich wofür?</p>
+      <h2 data-anim>Drei Größen, eine Faustregel</h2>
+      <div class="trio">
+        <div class="box" data-anim>
+          <h4>Opus <span class="when">wenn’s schwierig wird</span></h4>
+          <p>Knifflige Analysen, viel Material auf einmal, langes Arbeiten an einer Aufgabe.</p>
+          <p class="cost">Denkt am gründlichsten – braucht dafür länger und mehr von deinem Nutzungslimit.</p>
+        </div>
+        <div class="box" data-anim>
+          <h4>Sonnet <span class="when">der Alltag</span></h4>
+          <p>Schreiben, zusammenfassen, übersetzen, Ideen sammeln – der Standard für fast alles im Büro.</p>
+          <p class="cost">Schnell und stark. Wenn du nicht überlegen willst: nimm das.</p>
+        </div>
+        <div class="box" data-anim>
+          <h4>Haiku <span class="when">wenn’s flott gehen soll</span></h4>
+          <p>Kurze, einfache Sachen: Stichpunkte sortieren, eine Zeile umformulieren, schnell einordnen.</p>
+          <p class="cost">Am schnellsten und sparsamsten, dafür nicht für Kniffliges gedacht.</p>
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:24px;"><strong>Faustregel:</strong> Die Voreinstellung passt fast immer.
+      Wechsle erst, wenn dich etwas <em>stört</em> – zu oberflächlich? Eine Stufe hoch. Zu langsam? Eine Stufe runter.</p>
+      <span class="stand frag">Modellnamen und Stufen können sich ändern – Stand Juli 2026. Was in deinem Zugang
+      auswählbar ist, siehst du im Auswahlmenü über dem Eingabefeld.</span>
+    </section>
+
+    <!-- ═══ Kapitel 4 · Die Ampel ═══ -->
+
+    <section class="slide" data-chapter="Die Ampel">
       <p class="eyebrow" data-anim>Der rote Faden des Tages</p>
       <h2 data-anim>🚦 Die Datenschutz-Ampel</h2>
       <p class="lead" data-anim style="margin-bottom:24px;">Vor <strong>jeder</strong> Eingabe und jedem Upload eine Frage: Welche Farbe hat das?</p>
@@ -308,8 +433,7 @@
       <p class="lead frag" style="margin-top:22px;"><strong>Im Zweifel: Rot.</strong> Diese eine Gewohnheit schützt dich und VIDACTA.</p>
     </section>
 
-    <!-- 7 · LIVE 2: Ampel-Zuruf -->
-    <section class="slide">
+    <section class="slide" data-chapter="Die Ampel">
       <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 2 · Zuruf</span>
       <h2 data-anim>Welche Farbe? Ruf es rein!</h2>
       <div class="quiz-row frag"><span>Eine <strong>öffentliche Info-Broschüre</strong> zur Pflegeausbildung zusammenfassen.</span><span class="answer g frag">🟢 Grün</span></div>
@@ -318,8 +442,39 @@
       <p class="lead frag" style="margin-top:18px;">Genau dieses Gefühl trainieren wir heute, bis es automatisch wird.</p>
     </section>
 
-    <!-- 8 · Vage vs. klar -->
-    <section class="slide">
+    <section class="slide" data-chapter="Die Ampel">
+      <p class="eyebrow" data-anim>Zweite Pflicht neben dem Datenschutz</p>
+      <h2 data-anim>KI-Inhalte müssen erkennbar sein</h2>
+      <p class="lead" data-anim>Die EU-KI-Verordnung verlangt, dass Menschen erkennen können, wenn ein Inhalt
+      von einer KI erzeugt wurde (Artikel 50). Die Pflichten dazu greifen ab dem <strong>2. August 2026</strong>.</p>
+      <div class="versus" style="margin-top:24px;">
+        <div class="box good" data-anim>
+          <span class="tag">✓ Betrifft dich nicht</span>
+          Ein Text, den du mit Claude entwirfst, selbst überarbeitest und dann verschickst.
+          Du bist der Absender – wie bei jedem Werkzeug.
+        </div>
+        <div class="box bad" data-anim>
+          <span class="tag">✗ Hier gilt die Hausregel</span>
+          <strong>Jedes KI-Bild und jedes KI-Video</strong>, das nach außen geht, trägt ein fest
+          eingebranntes Kennzeichnungs-Icon. Ohne Icon geht kein Creative raus.
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:24px;">Details dazu stehen im <strong>Aufbau-Track</strong> (Modul 3).
+      Wer keine Bilder oder Videos produziert, muss nur das Prinzip kennen.</p>
+      <span class="stand frag">Das ist unsere interne Hausregel als Vorsichtsmaßnahme, keine Rechtsberatung –
+      im Zweifel fragst du das Marketing-Team.</span>
+    </section>
+
+    <!-- ═══ Kapitel 5 · Handwerk &amp; Werkzeuge ═══ -->
+
+    <section class="slide chapter-slide" data-chapter="Handwerk &amp; Werkzeuge">
+      <p class="chapter-num" data-anim>Kapitel 5</p>
+      <h2 data-anim>Jetzt das Handwerk</h2>
+      <p class="lead" data-anim>Du weißt, was Claude ist und was rein darf. Bleibt die Frage, wie du
+      <em>gute</em> Ergebnisse bekommst – und wo eigentlich alles landet.</p>
+    </section>
+
+    <section class="slide" data-chapter="Handwerk &amp; Werkzeuge">
       <p class="eyebrow" data-anim>Vorgeschmack auf Modul 2</p>
       <h2 data-anim>Gleiche KI – anderes Ergebnis</h2>
       <div class="versus">
@@ -337,9 +492,8 @@
       <strong>deiner Anweisung</strong>. Das ist Handwerk – und lernbar.</p>
     </section>
 
-    <!-- 9 · LIVE 3 -->
-    <section class="slide">
-      <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 3 · 2 Minuten</span>
+    <section class="slide" data-chapter="Handwerk &amp; Werkzeuge">
+      <span class="live-badge" data-anim><span class="pulse"></span>Live-Moment 3 · alle machen mit</span>
       <h2 data-anim>Mach du den Prompt besser</h2>
       <p class="lead" data-anim>Kopiere den vagen Auftrag – und verbessere ihn selbst:
       Wer bist du? Für wen ist der Text? Wie lang, welcher Ton?</p>
@@ -348,10 +502,9 @@
       und was hat das verändert?</p>
     </section>
 
-    <!-- NEU · Vorgeschmack auf Modul 4: Cowork -->
-    <section class="slide">
+    <section class="slide" data-chapter="Handwerk &amp; Werkzeuge">
       <p class="eyebrow" data-anim>Vorgeschmack auf Modul 4</p>
-      <h2 data-anim>Heute Nachmittag: delegieren statt chatten</h2>
+      <h2 data-anim>Später: delegieren statt chatten</h2>
       <div class="versus">
         <div class="box" data-anim>
           <span class="tag">💬 Chat – bisher</span>
@@ -368,23 +521,57 @@
       Nur eines bleibt gleich: <strong>Geprüft wird vor der Verwendung.</strong> Der Agent arbeitet <em>für</em> dich, nicht <em>statt</em> dir.</p>
     </section>
 
-    <!-- 10 · So arbeiten wir heute -->
-    <section class="slide">
-      <p class="eyebrow" data-anim>Praktisches</p>
-      <h2 data-anim>So läuft der Tag</h2>
-      <ul class="big-list">
-        <li data-anim>Alles, was wir zeigen, steht auf der <strong>Selbstlern-Site</strong> – mitschreiben unnötig.</li>
-        <li data-anim>Nach jedem Modul: <strong>Übung an eurem eigenen Claude</strong>, dann Haken setzen.</li>
-        <li data-anim>Danach geht es weiter: <strong>Vertiefung</strong> für alle (wie Claude wirklich „denkt“ – Kontext &amp; Halluzinationen) und der <strong>Aufbau-Track</strong> für Marketing (KI-Bilder, Videos, Stimmen, Social Ads).</li>
-      </ul>
-      <div data-anim><span class="url-plate">vidacta.github.io/claude-schulung</span></div>
+    <section class="slide" data-chapter="Handwerk &amp; Werkzeuge">
+      <p class="eyebrow" data-anim>Häufige Frage</p>
+      <h2 data-anim>Wo liegen eigentlich meine Dateien?</h2>
+      <p class="lead" data-anim>Das hängt am Werkzeug – und genau das verwirrt am Anfang.
+      Drei Fälle, dann ist es klar:</p>
+      <div class="trio">
+        <div class="box" data-anim>
+          <h4>Chat <span class="when">hochladen</span></h4>
+          <p>Es gibt <strong>kein Verzeichnis</strong>. Du lädst eine Datei in den Chat, Claude liest sie,
+          das Ergebnis kopierst du wieder heraus.</p>
+        </div>
+        <div class="box" data-anim>
+          <h4>Cowork <span class="when">eigener Bereich</span></h4>
+          <p>Claude arbeitet in einem <strong>eigenen Arbeitsbereich</strong> und legt dort Dateien ab.
+          Von dort lädst du sie herunter.</p>
+        </div>
+        <div class="box" data-anim>
+          <h4>Claude Code <span class="when">dein Ordner</span></h4>
+          <p>Hier arbeitet Claude in einem <strong>echten Ordner auf dem Rechner</strong> – in dem, den du
+          ihm nennst. Nur mit IT-Freigabe.</p>
+        </div>
+      </div>
+      <p class="lead frag" style="margin-top:24px;"><strong>Die eine Regel, die überall gilt:</strong>
+      Das fertige Ergebnis gehört dorthin, wo dein Team es findet – nicht in den Download-Ordner
+      und nicht nur in den Chatverlauf.</p>
     </section>
 
-    <!-- 11 · Los geht's -->
-    <section class="slide">
+    <section class="slide" data-chapter="Handwerk &amp; Werkzeuge">
+      <p class="eyebrow" data-anim>Was VIDACTA mitliefert</p>
+      <h2 data-anim>Du fängst nicht bei null an</h2>
+      <p class="lead" data-anim>Eine <strong>Arbeitsanleitung, die Claude schon kennt</strong>, heißt Skill:
+      Aufbau, Ton und Pflichthinweise stehen darin – du musst sie nicht jedes Mal erklären.</p>
+      <ul class="big-list" style="margin-top:20px;">
+        <li data-anim>Wir haben eigene <strong>VIDACTA-Skills</strong> gebaut – für Texte, unser Fachwissen und Marketing.</li>
+        <li data-anim>Sie werden <strong>zentral an die Team-Zugänge verteilt</strong>: nichts installieren, nichts einrichten.</li>
+        <li data-anim>Du merkst es daran, dass Claude unsere Regeln <strong>von sich aus</strong> berücksichtigt.</li>
+      </ul>
+      <p class="lead frag" style="margin-top:24px;">Die Verteilung ist gerade <strong>im Aufbau</strong> –
+      welche Skills es gibt und wann sie bei dir ankommen, sagt dir das Schulungs-Team.
+      Wie Skills funktionieren, kommt in <strong>Modul 5</strong>.</p>
+    </section>
+
+    <!-- ═══ Kapitel 6 · Los ═══ -->
+
+    <section class="slide" data-chapter="Los geht’s">
       <img class="mark-big" src="vidacta-mark.svg" alt="" aria-hidden="true" data-anim>
       <h1 data-anim>Los geht&#8217;s.</h1>
       <p class="lead" data-anim>Claude ist offen, die Ampel ist im Kopf – mehr brauchst du nicht.</p>
+      <p class="lead frag" style="margin-top:20px;">Nach den Grundlagen geht es weiter: <strong>Vertiefung</strong>
+      für alle, die verstehen wollen, wie Claude arbeitet – und der <strong>Aufbau-Track</strong> für
+      Marketing (KI-Bilder, Videos, Stimmen, Social Ads).</p>
       <p data-anim style="margin-top:30px;"><a class="btn btn-primary" style="font-size:17px; padding:12px 22px;" href="modul-0.html">Modul 0 · Willkommen starten →</a></p>
     </section>
 
@@ -392,18 +579,21 @@
 
   <div class="deck-ui">
     <button class="nav-btn" data-prev aria-label="Vorherige Folie">←</button>
-    <span class="counter" data-counter>1 / 11</span>
+    <span class="counter" data-counter>1 / 22</span>
     <button class="nav-btn" data-next aria-label="Weiter">→</button>
+    <span class="chapter-now" data-chapter-now></span>
     <span class="hint">Pfeiltasten oder Klick · <a href="index.html">zur Schulungs-Site</a></span>
   </div>
 
   <script>
-  /* Folien-Engine: Navigation, Fragments, Fortschritt, Copy – kein Build-Step */
+  /* Folien-Engine: Navigation, Fragments, Kapitel, Fortschritt, Copy – kein Build-Step */
   (function () {
     "use strict";
     var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
     var bar = document.querySelector("[data-bar]");
+    var rail = document.querySelector(".progress-rail");
     var counter = document.querySelector("[data-counter]");
+    var chapterNow = document.querySelector("[data-chapter-now]");
     var current = 0;
 
     slides.forEach(function (slide) {
@@ -412,10 +602,25 @@
       });
     });
 
+    /* Kapitelgrenzen einmal aus data-chapter ableiten und als Kerben in die Leiste setzen.
+       Die Folie, bei der der Kapitelname wechselt, ist der Beginn des naechsten Kapitels. */
+    if (rail) {
+      slides.forEach(function (slide, i) {
+        if (i === 0) return;
+        var prev = slides[i - 1].getAttribute("data-chapter");
+        if (slide.getAttribute("data-chapter") === prev) return;
+        var tick = document.createElement("span");
+        tick.className = "rail-tick";
+        tick.style.left = (i / slides.length * 100) + "%";
+        rail.appendChild(tick);
+      });
+    }
+
     function render() {
       slides.forEach(function (s, i) { s.classList.toggle("active", i === current); });
       if (bar) bar.style.width = ((current + 1) / slides.length * 100) + "%";
       if (counter) counter.textContent = (current + 1) + " / " + slides.length;
+      if (chapterNow) chapterNow.textContent = slides[current].getAttribute("data-chapter") || "";
       if (history.replaceState) history.replaceState(null, "", "#" + (current + 1));
     }
     function nextFrag() {

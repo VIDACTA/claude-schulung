@@ -3,6 +3,72 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.25.0] – 2026-07-29
+
+### Changed
+- **Das Deck war zwei Decks in einem.** Die Folien-Kommentare verrieten die Entstehung:
+  `1 · 2 · 3 · 4 · 5 · NEU · NEU · NEU · 6 · 7 · 8 · 9 · NEU · 10 · 11`. Die vier
+  v1.7.0-Ergänzungen waren eingeschoben, nicht eingeordnet – daraus folgten drei Brüche, die
+  den Eindruck „planlos" erzeugten: **„Regel Nr. 1" und „Regel Nr. 2" standen nicht zusammen**
+  (dazwischen Live-Prompt und Anwendungsfälle – eine Nummerierung, die man aufreißt, wirkt
+  zufällig); **„Was Claude ist – und was nicht" kam nach dem Halluzinations-Merksatz**, also
+  Warnung vor Einordnung; und es gab **zwei Fahrplan-Folien** (Anfang und Ende) mit
+  überlappendem Inhalt. Das Deck hat jetzt **sechs benannte Kapitel** mit zwei
+  Trennfolien, die Erwartungs-Einordnung steht vor der Warnung, und die beiden Fahrplan-Folien
+  sind zu einer verschmolzen. Kapitelname und Kapitelgrenzen sind sichtbar (Anzeige in der
+  Fußzeile, Kerben in der Fortschrittsleiste).
+- **Vier Zeitangaben widersprachen einer getroffenen Entscheidung.** „Keine Zeitangaben"
+  (Festlegung 29.07.) war in v1.9.0 site-weit an 34 Stellen umgesetzt – im Deck aber nicht:
+  „Heute Abend kannst du …", „Vormittag … Nachmittag …", „Live-Moment 3 · **2 Minuten**",
+  „Heute **Nachmittag**: delegieren". Alle vier entfernt.
+- **Der Fahrplan war unvollständig:** „Neun Module" und neun Chips, obwohl die Schulung
+  **16 Seiten** in drei Tracks hat. Vertiefung und Aufbau tauchten erst auf der vorletzten
+  Folie im Nebensatz auf. Jetzt zeigt die Folie alle drei Tracks.
+
+### Added
+- **Neues Kapitel „Wie das Ding funktioniert"** – drei Folien, die drei Fragen beantworten,
+  die auf der ganzen Site fehlten:
+  - **Was ist KI?** Claude sagt das nächste Wort-Häppchen voraus, gelernt aus sehr viel Text –
+    kein Nachschlagewerk, keine Datenbank, keine Suchmaschine. Damit ist Regel Nr. 2 nicht mehr
+    nur eine Warnung, sondern eine **Folge**: wer aus dem Gedächtnis erzählt, klingt auch dann
+    flüssig, wenn ein Detail daneben ist.
+  - **Modell ≠ Programm (Harness).** Das Modell kann nur Text erzeugen – keine Hände, kein
+    Dateizugriff, kein Gedächtnis über den Chat hinaus. Werkzeuge, Notizen und Schrittplanung
+    kommen vom Programm drumherum. Deshalb sind Desktop, Cowork und Claude Code **dasselbe
+    Modell in unterschiedlichen Gestellen**; Claude wird nicht klüger, er bekommt mehr in die
+    Hand. Daran hängt die Verantwortungs-Eskalation: ein Modell, das nur redet, kann sich
+    irren – eines, das *handelt*, kann etwas anstellen.
+  - **Welches Modell wofür.** Opus (wenn's schwierig wird) · Sonnet (der Alltag) · Haiku
+    (wenn's flott gehen soll), mit der Faustregel „die Voreinstellung passt fast immer, wechsle
+    erst, wenn dich etwas *stört*". Bewusst **mit Stand-Datum** versehen (Juli 2026) und mit dem
+    Hinweis, dass im eigenen Zugang das Auswahlmenü gilt – damit die Seite bei einem
+    Modellwechsel nicht still falsch wird. Das war auf der **gesamten Site** bisher nirgends
+    erklärt (0 Treffer für Opus/Sonnet/Haiku).
+- **Art.-50-Folie im Grundlagen-Track.** KI-Kennzeichnung stand bisher **nur im Aufbau-Track** –
+  wer kein Marketing macht, hörte davon nichts. Die Folie trennt, was die meisten brauchen:
+  ein selbst überarbeiteter Text ist unkritisch, **jedes KI-Bild und -Video** trägt das
+  eingebrannte Icon. Ausdrücklich als interne Hausregel und Vorsichtsmaßnahme gekennzeichnet,
+  nicht als Rechtsauslegung.
+- **Folie „Wo liegen eigentlich meine Dateien?"** – die Antwort hängt am Werkzeug, und genau das
+  verwirrt: Chat = kein Verzeichnis, du lädst hoch · Cowork = eigener Arbeitsbereich · Claude
+  Code = ein echter Ordner auf dem Rechner. Dazu die eine Regel, die überall gilt: das fertige
+  Ergebnis gehört dorthin, wo das Team es findet – nicht in den Download-Ordner.
+- **Folie zu den VIDACTA-Skills.** Erklärt, was ein Skill ist (eine Arbeitsanleitung, die Claude
+  schon kennt) und dass eigene VIDACTA-Skills zentral an die Team-Zugänge verteilt werden.
+  **Bewusst im Aufbau-Zustand formuliert** – die Verteilung ist noch nicht ausgerollt, und die
+  Seite verspricht nichts, was noch nicht ankommt (dieselbe Vorsicht wie beim gestrichenen
+  Aufbaukurs-Versprechen in v1.15.0). Ohne interne Namen, weil das Repo public ist.
+
+### Fixed
+- **Zwei Labelgrößen fielen auf dem Handy unter die Lesbarkeitsgrenze.** Gemessen bei
+  320/375/414 px: `.versus .box .tag` auf **10,5 px** (Altbefund, seit v1.6.0 im Deck) und das
+  neue `.trio .box h4 .when` auf **9,6 px**. Ursache in beiden Fällen: die Labelgröße hing als
+  `em`-Anteil an der Box, und bei kleinen Viewports fällt die Box auf ihr `clamp`-Minimum – die
+  Labels schrumpfen also mit. Beide haben jetzt einen eigenen `clamp` mit harter Untergrenze
+  (12 px). Dieselbe Fehlerklasse wie die auf 6,9 px heruntergerechnete SVG-Schrift in v1.7.0.
+- Statischer Folien-Zähler im HTML stand auf „1 / 11" (wird vom JS überschrieben, war also nur
+  vor dem Skriptlauf sichtbar) – jetzt korrekt „1 / 22".
+
 ## [1.24.0] – 2026-07-29
 
 ### Added
