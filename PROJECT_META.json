@@ -3,7 +3,7 @@
   "type": "standalone-webapp",
   "version": "1.24.0",
   "description": "Interne Schulung für VIDACTA-Mitarbeiter zu Claude Desktop, Cowork & Code (Zielgruppe: Nicht-Techniker) plus Aufbau-Track (Kreativ/Marketing: Chrome-Extension, Higgsfield, ElevenLabs, Meta/Google Ads) und Vertiefungs-Track (KI-Grundwissen, Kontext/Context-Rot, Halluzinationen, Desktop-Funktionen). Statische GitHub-Pages-Site.",
-  "active_task": "Modul-für-Modul-Durchgang mit Dominik (Grundlagen 0–8, dann Vertiefung/Aufbau, danach Präsentation)",
+  "active_task": "Eröffnungs-Deck (praesentation.html) durchgehen — alle 16 Modulseiten sind erledigt",
   "stack": ["HTML", "CSS", "Vanilla JS"],
   "build_step": false,
   "hosting": "GitHub Pages (VIDACTA/claude-schulung)",
@@ -20,7 +20,8 @@
   },
   "last_audit": {
     "status": "STABLE",
-    "date": "2026-07-28"
+    "date": "2026-07-29",
+    "note": "Alle 16 Modulseiten einzeln durchgegangen und gegen legal/ abgeglichen. Prüfbar mit konsistenz-check.ps1 (11 Regelgruppen, 0 Befunde) und fix-quotes.ps1. Deck noch offen."
   },
   "known_issues": {}
 }

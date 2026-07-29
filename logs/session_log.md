@@ -82,3 +82,47 @@
 - Verifiziert bei 1280×800 (Beamer), 1920×1080 und 375×812 — Pillen exakt auf Inhaltsbreite,
   kein Seitenüberlauf; übrige direkte Folien-Kinder gegengeprüft.
 - Commits: ff9233b.
+
+## 2026-07-29 — v1.8.0 → v1.24.0: alle 16 Modulseiten einzeln durchgegangen
+
+Auftrag Dominik: „wir gehen heute jedes modul einzeln durch. und dann sprechen wir noch über die
+präsentation." Modus auf Rückfrage festgelegt: Ich fasse jede Seite zusammen und nenne meine
+Auffälligkeiten, Dominik entscheidet. Jede Änderung sofort verifiziert, committet, gepusht und live
+gegen das Repo gediffed. **Die Präsentation ist noch offen.**
+
+**Die vier gravierendsten Funde:**
+
+1. **Die Schulung verbot etwas, das freigegeben ist.** `legal/themen/werbe-claims.md` erlaubt
+   „schulgeldfrei" im Anzeigen-**TEXT** (nur im Bild/Overlay verboten, Festlegung 14.07.2026). Die
+   Unterscheidung fehlte site-weit, und Aufbau 5 führte es in der Fehler-Tabelle als *typischen
+   Fehler* auf. Dazu fehlten drei Verbote — darunter das einzige rot markierte: **Förder-Zusagen**
+   („mit Bildungsgutschein förderfähig", weil Trägerzulassung ≠ Maßnahmenzulassung; „AZAV" kam auf
+   der Site nicht einmal vor) — **und die komplette Positivliste** der freigegebenen Angaben.
+2. **6 von 23 Copy-Buttons lieferten nur ein Bruchstück.** Ein gerades `"` im `data-copy`-Attribut
+   beendet den Wert vorzeitig (Modul 2 brach bei „Kommunikation mit Patienten" ab). Im Browser
+   unsichtbar; die frühere Prüfung hatte Buttons *gezählt*, nicht ihren Inhalt verglichen.
+3. **KI-Icon-Position widersprach dem Register** (oben rechts ↔ Briefing plante unten), und der
+   Safe-Zone-Begriff war im kopierbaren Prompt umgekehrt („frei lassen" statt „dort gehört der
+   Inhalt hin") — der erklärende Text war richtig, der Prompt sagte das Gegenteil.
+4. **Ampel-Definition lief zwischen Modul 1, Modul 7 und Deck auseinander** — Folgefehler der eigenen
+   v1.11.0-Änderung, gefunden erst durch den neuen Konsistenz-Check.
+
+**Vier Muster über alle Seiten:** Regel ohne Begründung (Ampel, GEMA-Falle, Lead-Wege) · Verbot ohne
+die positive Seite · Verlässlichkeit suggeriert, wo Prüfen nötig bleibt · Abweichung vom Register.
+
+**Entscheidungen Dominik:** Projekte innerhalb der Abteilung teilen erlaubt · keine Zeitangaben mehr
+(34 Stellen entfernt) · Ampelfarben nur für Erlaubnis/Verbot/Pflicht · Register-Stand bei
+„schulgeldfrei" · Claim-Lücken alle in Aufbau 5 · Studienzahlen weicher fassen · keine feste
+Marken-Stimme.
+
+**Zwei neue Werkzeuge:** `konsistenz-check.ps1` im Repo (11 Regelgruppen, 0 Befunde) und
+`.claude/scripts/fix-quotes.ps1` (272 doppelte + 7 einfache Anführungszeichen korrigiert).
+
+**Eigene Fehler:** drei Folgefehler aus v1.10.0/v1.11.0 (nur Modul 1 angepasst, Modul 7 und Deck
+vergessen) · ein selbst erzeugtes kaputtes `data-copy` · Prüf-Prompts nach v1.21.0 nicht nachgezogen
+(hätten Erlaubtes als Verstoß gemeldet) · Zahlwort-Fehler, von der eigenen Verifikation gefangen.
+
+- Commits: 2f02f0b (1.8.0), 6b3e0b3 (1.9.0), 39d3700 (1.10.0), df087bd (1.11.0), 2be69b5 (1.12.0),
+  dbf0133 (1.12.1), c23c5a8 (1.13.0), 60f2ca0 (1.14.0), 435e3d4 (1.15.0), 045cf6d (1.16.0),
+  51776d5 (Check-Script), 6f354da (1.17.0), 6472ff2 (1.18.0), c8826e6 (1.19.0), b965688 (1.20.0),
+  2168d96 (1.21.0), 1d78e1c (1.22.0), 1c601ad (1.23.0), 3b6ed8b (1.24.0).

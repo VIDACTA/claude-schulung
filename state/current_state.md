@@ -93,11 +93,37 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
-- Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell beschriftete SVG-Schemata —
-  bewusst gewählt, funktioniert; echte Screenshots wären „nice to have").
+
+**🔴 Als nächstes: Eröffnungs-Deck (`praesentation.html`) durchgehen** — der zweite Teil des Auftrags
+vom 29.07. 15 Folien, drei Live-Momente; bisher nur an drei Stellen angefasst (Ampel-Definition
+synchronisiert, Vergleichs-Tags auf ✗/✓, Farbstreifen der Ampelfolie zurückgeholt). Inhaltlich
+ungeprüft.
+
+**🟡 Vor dem Workshop zu klären (steht im Trainer-Leitfaden als Vorbereitungspunkt):**
+- Verfügbare Desktop-Funktionen im eigenen Plan durchklicken und in Vertiefung 2 konkret benennen —
+  die Seite relativiert die Verfügbarkeit an vier Stellen, weil das von außen nicht feststellbar ist.
+- **Plätze vs. Teilnehmerkreis:** Jede Übung setzt einen eigenen Zugang voraus, die Schulung richtet
+  sich laut README an Marketing, Vertrieb, Verwaltung und GF. Der Leitfaden nennt „zu zweit
+  arbeiten" als Behelf — ob Zugänge dazukommen, ist eine Planungsentscheidung.
+- Klärender Satz im Leitfaden zur **Skills-Verwechslung**: Die Skills im Brain sind Claude-Code-Skills,
+  Modul 5 spricht von Desktop-Skills (angeboten, noch nicht beauftragt).
+
+**⚪ Weiterhin offen:**
+- Echte Screenshots aus der Team-Umgebung einsetzen (aktuell beschriftete SVG-Schemata — bewusst
+  gewählt, funktioniert; echte Screenshots wären „nice to have").
 - Interne Ansprechpartner + Richtlinien-Links in Modul 7 eintragen (nur für interne Version —
   auf der Public-Site bewusst keine Personennamen).
-- Feedback der ersten Schulung einarbeiten; ggf. Aufbaukurs Claude Code.
+- Feedback der ersten Schulung einarbeiten; ggf. Aufbaukurs Claude Code (die Seite verspricht ihn
+  seit v1.15.0 nicht mehr, sondern sammelt Interesse).
+
+## Prüfen vor jedem Commit
+
+```bash
+powershell -ExecutionPolicy Bypass -File .\konsistenz-check.ps1
+```
+
+11 Regelgruppen über alle Seiten, Ziel „0 Befunde". Ergänzend die Typografie im Trockenlauf:
+`C:\Dev\.claude\scripts\fix-quotes.ps1 -Path . -Include '*.html'`
 
 ## Geklärte Entscheidungen
 
@@ -106,6 +132,12 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
 - **Keine Zeitangaben** auf der Site und im Leitfaden (29.07.): kein Tagesablauf, keine
   Modul-/Übungsminuten — das Tempo hängt an der Gruppe
 - **Ampelfarben** nur für Erlaubnis, Verbot und Pflicht; Qualitätsvergleiche über ✗/✓
+- **Claim-Regeln folgen dem Rechts-Register** (`legal/themen/werbe-claims.md`), nicht einer eigenen,
+  strengeren Lesart: „schulgeldfrei" ist im Anzeigen**text** erlaubt, im Bild/Overlay verboten.
+  Register-Änderungen ziehen die Schulung nach — dort steht ein Rückverweis, Check-Regel 11 überwacht es
+- **Keine feste Marken-Stimme** (Dominik, 29.07.) — eine Stimme *pro Reel*, Auswahl je Thema
+- **Interne Zahlen bleiben draußen** (Repo ist public): keine Seat-Zahlen, keine GA4-Property-IDs,
+  keine Icon-Dateipfade — dafür der Verweis „beim Team erfragen"
 
 - Zielgruppe: reine Nicht-Techniker · Sprache: Deutsch · Plan im Haus: Team/Enterprise
 - Navigation: Seite pro Modul · Stack: statisches HTML/CSS/JS, kein Build-Step
