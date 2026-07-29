@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.21.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.22.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.);
@@ -77,6 +77,10 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
       im Anzeigentext freigegeben (war site-weit pauschal verboten, in Aufbau 5 sogar als Fehler-Beispiel);
       drei fehlende Verbote ergänzt (Förder-Zusagen als rot markiertes, Vergütung, Wirkversprechen);
       Positivliste der freigegebenen Angaben eingefügt; Check-Regel 11 sichert die Vollständigkeit
+- [x] **v1.22.0 Aufbau 3 gegen `legal/themen/ai-act.md` abgeglichen:** KI-Icon gehört **oben rechts**
+      (Briefing plante es unten ein), Safe-Zone-Begriff im Prompt war umgekehrt, zwei Icon-Sprachfassungen
+      ergänzt, lizenzierte Stock-Bibliothek als erste Option (kein KI-Icon nötig), Personen-Hinweis vom
+      Ampel-Verweis gelöst, Kurzcheck mit leeren Kästchen
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

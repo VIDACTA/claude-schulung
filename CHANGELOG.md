@@ -3,6 +3,40 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.22.0] – 2026-07-29
+
+### Fixed
+- **🔴 Die Icon-Position widersprach dem dokumentierten Stand.** `legal/themen/ai-act.md` legt fest:
+  **oben rechts**, innerhalb der Safe Zone. Die Schulung plante es im Briefing-Beispiel **unten** ein
+  („Unten Platz für Logo und KI-Icon lassen") – wer das Briefing verwendet, hätte die Kennzeichnung an
+  der falschen Stelle vorgesehen. An allen vier Stellen korrigiert (Prompt, Format-Liste, Briefing-
+  Beispiel, Übung): KI-Icon oben rechts, Logo unten, mit Begründung – so bleibt die Kennzeichnung
+  sichtbar, auch wenn die Plattform unten etwas überlagert.
+- **Der Safe-Zone-Begriff war im kopierbaren Prompt umgekehrt.** Der erklärende Text war richtig, der
+  Prompt sagte „Safe Zones oben/unten frei lassen" – die Safe Zone ist aber der *sichere* Bereich, in
+  den der Inhalt gehört; frei bleiben die Ränder mit Plattform-UI. Wer nur den Prompt kopierte, gab der
+  KI eine widersprüchliche Anweisung. Jetzt beides konsistent, mit dem Denkfehler ausdrücklich benannt.
+- **„(Ampel!)" war beim Personen-Hinweis der falsche Verweis.** Die Ampel regelt, was man *eingibt* –
+  bei der Frage, wer im fertigen Bild *zu sehen* ist, geht es um Persönlichkeitsrecht. Jetzt als eigene
+  Frage erklärt, samt dem Punkt, warum KI-Menschen nicht nach echten Vorlagen entstehen sollen.
+
+### Added
+- **Die lizenzierte Bildbibliothek als erste Option.** Die Seite legte nahe, dass KI-Erzeugung der Weg
+  ist – dabei liegen mehrere hundert lizenzierte Adobe-Stock-Motive bereit, die **kein KI-Icon
+  brauchen**, weil sie nicht KI-generiert sind. Neuer Kasten mit der Entscheidungshilfe: Stock ist der
+  rechtlich einfachere Weg, KI der flexiblere (Szenen, die es nicht gibt · viele Varianten in einem Stil
+  · exakt auf die Marke zugeschnitten).
+- **Die zwei Sprachfassungen des KI-Icons.** Das Register führt eine deutsche und eine englische Fassung
+  für internationale Kampagnen – bei VIDACTA International kein Randfall. Die Schulung kannte nur „die
+  Icons". Dateipfade bleiben draußen (public Repo), die Unterscheidung steht drin. Dazu die Klarstellung,
+  was „eingebrannt" heißt: fest im Bild, nicht nur ein Häkchen im Anzeigenmanager.
+
+### Changed
+- **Compliance-Kurzcheck hakt sich nicht mehr selbst ab.** Acht Prüfpunkte trugen je ein ✅ – dieselbe
+  Logik wie die Fälle in Modul 4 und Aufbau 1. Jetzt leere Kästchen und je ein Punkt pro Zeile statt
+  einer Fließtext-Kette; zwei Punkte sind dabei präziser geworden (Icon-Sprachfassung und Position,
+  Förder-Zusagen).
+
 ## [1.21.0] – 2026-07-29
 
 ### Fixed
