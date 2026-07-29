@@ -21,6 +21,28 @@ Interne Schulung für **VIDACTA-Mitarbeiter mit wenig bis keiner Vorerfahrung** 
 - `app.js` – Fortschritt, Copy-Buttons, aufklappbare Boxen, Theme
 - `docs/trainer-leitfaden.md` – Leitfaden für den Live-Workshop
 - `implementation_plan.md` – Design-/Planungsdokument
+- `konsistenz-check.ps1` – Prüfscript, siehe unten
+
+## Nach jeder inhaltlichen Änderung prüfen
+
+Die Seiten verweisen aufeinander und wiederholen dieselben Definitionen – vor allem die
+🚦 Datenschutz-Ampel, die in Modul 1, Modul 7 **und** im Eröffnungs-Deck steht. Wer eine Seite
+ändert, macht damit leicht eine andere inkonsistent. Deshalb:
+
+```bash
+powershell -ExecutionPolicy Bypass -File .\konsistenz-check.ps1
+```
+
+Prüft 9 Regelgruppen über alle Seiten: keine Zeitangaben · deutsche Anführungszeichen und deren
+Paarigkeit · keine realistischen Personendatensätze (**das Repo ist public**) · zurückgenommene
+Aussagen · Gender-Formen · versionsfeste Modell-Aussagen · tote Links und Anker · Ampelfarben nur
+für Erlaubnis/Risiko · deckungsgleiche Ampel-Definitionen. Ziel ist „0 Befunde".
+
+Für die Typografie zusätzlich (Trockenlauf, schreibt nichts):
+
+```bash
+powershell -ExecutionPolicy Bypass -File C:\Dev\.claude\scripts\fix-quotes.ps1 -Path . -Include '*.html'
+```
 
 ## Lokal ansehen
 
