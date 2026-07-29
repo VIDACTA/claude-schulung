@@ -3,6 +3,72 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.26.0] – 2026-07-29
+
+### Added
+- **Neues Modul „Vertiefung 3 · Modelle & Werkzeuge"** – beantwortet die drei Fragen, die im
+  Workshop kommen und auf der Site nirgends standen:
+  - **Das Modell ist nur der Kopf.** Das Sprachmodell kann genau eines: aus Text neuen Text
+    machen. Keine Hände, kein Dateizugriff, kein Gedächtnis über das Gespräch hinaus. Alles
+    andere – Datei öffnen, Web durchsuchen, sich etwas notieren, Schritte planen – kommt vom
+    **Programm drumherum**, dem *Harness*. Damit ist erklärt, was vorher wie Magie wirkte:
+    Desktop, Cowork und Claude Code sind **dasselbe Modell in unterschiedlichen Gestellen**.
+    Claude wird in Cowork nicht klüger, er bekommt mehr in die Hand – und es bringt deshalb
+    nichts, im Chat „mehr Mühe" zu verlangen, wenn eigentlich ein Werkzeug fehlt.
+    Daran hängt die Verantwortungs-Eskalation: ein Modell, das nur redet, kann sich *irren*;
+    eines, das *handelt*, kann etwas *anstellen*. Das ist der Grund, warum Prompt Injection
+    erst ab Cowork ein echtes Thema ist.
+  - **Welches Claude-Modell wofür.** Opus (knifflig, viel Material, lange Aufträge) · Sonnet
+    (der Bürostandard) · Haiku (kurz und schnell), mit der Faustregel „Voreinstellung stehen
+    lassen, wechseln nur wenn dich etwas *stört*" und dem wichtigeren Satz: ein klarer Prompt
+    an das kleinste Modell schlägt einen vagen Prompt an das größte.
+  - **Und die anderen Anbieter?** ChatGPT, Gemini, Copilot eingeordnet – alle nach demselben
+    Grundprinzip. **Bewusst ohne Rangliste**, weil die in Monaten falsch wäre. Die Regel, auf
+    die es ankommt: bei VIDACTA arbeiten wir mit Claude, ein anderes Werkzeug ist nicht
+    automatisch erlaubt – nicht wegen der Qualität, sondern weil für jedes Werkzeug geklärt sein
+    muss, wer die Daten bekommt. Mit dem konstruktiven Ausweg: gute Werkzeug-Idee einbringen
+    statt still nutzen.
+- Zwei Ausklapper zu Fragen, die sonst offen bleiben: warum Modellnamen ständig wechseln (merk
+  dir die drei Rollen, nicht die Nummern – die verlässliche Liste ist das Auswahlmenü im eigenen
+  Zugang) und was „länger nachdenken" bringt (beim Denken viel, beim Wissen wenig).
+- Übung zur Modellwahl an eigenen Aufgaben plus Spickzettel mit sechs Fragen und Kurzantworten.
+- Vertiefungs-Track auf der Startseite von zwei auf **drei Module** erweitert (Karte,
+  Fortschrittsanzeige, Beschreibung); `app.js` kennt das Modul als `id: 12`; Vertiefung 2 führt
+  jetzt dorthin weiter statt zurück zur Übersicht; Vertiefung 1 verweist an der Stelle, wo sie
+  „das stärkste verfügbare Modell" empfiehlt, auf die konkrete Antwort in Vertiefung 3.
+- **Modul 6 hat jetzt einen ersten Teil, der alle betrifft: „Wo arbeitet Claude eigentlich?"**
+  Die Frage „wo ist meine Datei jetzt?" war site-weit nirgends beantwortet – nur beiläufig in
+  einem Beispiel-Prompt („in diesem Ordner"). Die Antwort hängt am Werkzeug, und genau das ist
+  die Verwirrung: **Chat = kein Verzeichnis** (Upload, auf dem Rechner ändert sich nichts) ·
+  **Cowork = eigener Arbeitsbereich** (herunterladen, nicht liegen lassen) · **Claude Code =
+  echter Ordner** (hier wird wirklich verändert). Dazu die Regel, die überall gilt: das fertige
+  Ergebnis gehört in die Team-Ablage, weil ein Chatverlauf *deiner* ist – die Kollegin nächste
+  Woche kann darin nicht suchen, und im Urlaub ist das Ergebnis praktisch weg.
+  Modul 6 heißt deshalb jetzt **„Dateien, Ordner & Claude Code"**; Claude Code bleibt als
+  zweiter Teil ausdrücklich Ausblick. Titel in `index.html`, `app.js` und den Nachbar-Modulen
+  nachgezogen.
+- **Art.-50-Abschnitt in Modul 7.** KI-Kennzeichnung stand bisher **nur im Aufbau-Track** – wer
+  kein Marketing macht, erfuhr davon nichts, obwohl die Pflicht ab dem 2. August 2026 greift.
+  Der neue Abschnitt trennt sauber: ein selbst überarbeiteter Text ist kein Thema, **jedes
+  KI-Bild und -Video nach außen** trägt das eingebrannte Icon. Ausdrücklich als interne
+  Vorsichtsmaßnahme gekennzeichnet, nicht als Rechtsauslegung, mit dem Hinweis „im Zweifel
+  Marketing fragen, nicht selbst entscheiden". Dazu die inhaltliche Begründung: Wir werben um
+  Menschen, die eine Lebensentscheidung treffen – wer erst nach dem Erstkontakt merkt, dass die
+  Person im Video nie existiert hat, verliert Vertrauen in uns, nicht nur in die Anzeige.
+- **Modul 5: „Woher kommen unsere Skills?"** Modul 5 erklärte, *was* ein Skill ist, aber nicht,
+  dass es **VIDACTA-eigene** gibt. Neu: die Unterscheidung mitgeliefert (allgemeine Fähigkeiten)
+  ↔ von VIDACTA gebaut (unser Ton, unser Fachwissen, unsere Anzeigenregeln), der Hinweis, dass
+  sie zentral an die Team-Zugänge verteilt werden, und woran man sie merkt (Claude berücksichtigt
+  unsere Regeln von sich aus). **Bewusst als „Stand: im Aufbau" gekennzeichnet** – die Verteilung
+  ist noch nicht ausgerollt, und die Seite verspricht nichts, was noch nicht ankommt. Dazu zwei
+  Einschränkungen, die sonst missverstanden werden: ein Skill macht das Ergebnis verlässlicher,
+  nicht fehlerfrei – und er ändert nichts an der Ampel.
+
+### Fixed
+- **Modul 6: Erklärtext nannte eine andere Dateiendung als der Prompt.** Der kopierbare Auftrag
+  erzeugt `uebersicht.docx`, der Erklär-Ausklapper darunter sprach von `uebersicht.md`. Wer dem
+  Text folgt, sucht die falsche Datei.
+
 ## [1.25.0] – 2026-07-29
 
 ### Changed

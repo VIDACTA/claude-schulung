@@ -16,7 +16,7 @@
     { id: 3, file: "modul-3.html", title: "Projekte & Wissen" },
     { id: 4, file: "modul-4.html", title: "Cowork – der Agenten-Modus" },
     { id: 5, file: "modul-5.html", title: "Skills & Connectors" },
-    { id: 6, file: "modul-6.html", title: "Claude Code – Ausblick" },
+    { id: 6, file: "modul-6.html", title: "Dateien, Ordner & Claude Code" },
     { id: 7, file: "modul-7.html", title: "Sicherheit & DSGVO" },
     { id: 8, file: "modul-8.html", title: "Abschluss-Challenge" }
   ];
@@ -35,7 +35,8 @@
   /* Vertiefungs-Module (Claude verstehen & voll ausnutzen, eigene Fortschrittsanzeige) */
   const VERTIEFUNG = [
     { id: 10, file: "vertiefung-1.html", title: "Wie Claude wirklich funktioniert" },
-    { id: 11, file: "vertiefung-2.html", title: "Claude Desktop voll ausnutzen" }
+    { id: 11, file: "vertiefung-2.html", title: "Claude Desktop voll ausnutzen" },
+    { id: 12, file: "vertiefung-3.html", title: "Modelle & Werkzeuge" }
   ];
   window.CS_VERTIEFUNG = VERTIEFUNG;
 

@@ -1,9 +1,9 @@
 {
   "project_name": "Claude-Schulung",
   "type": "standalone-webapp",
-  "version": "1.25.0",
-  "description": "Interne Schulung für VIDACTA-Mitarbeiter zu Claude Desktop, Cowork & Code (Zielgruppe: Nicht-Techniker) plus Aufbau-Track (Kreativ/Marketing: Chrome-Extension, Higgsfield, ElevenLabs, Meta/Google Ads) und Vertiefungs-Track (KI-Grundwissen, Kontext/Context-Rot, Halluzinationen, Desktop-Funktionen). Statische GitHub-Pages-Site.",
-  "active_task": "Eröffnungs-Deck (praesentation.html) durchgehen — alle 16 Modulseiten sind erledigt",
+  "version": "1.26.0",
+  "description": "Interne Schulung für VIDACTA-Mitarbeiter zu Claude Desktop, Cowork & Code (Zielgruppe: Nicht-Techniker) plus Aufbau-Track (Kreativ/Marketing: Chrome-Extension, Higgsfield, ElevenLabs, Meta/Google Ads) und Vertiefungs-Track (KI-Grundwissen, Kontext/Context-Rot, Halluzinationen, Desktop-Funktionen, Modelle & Harness). Statische GitHub-Pages-Site.",
+  "active_task": null,
   "stack": ["HTML", "CSS", "Vanilla JS"],
   "build_step": false,
   "hosting": "GitHub Pages (VIDACTA/claude-schulung)",
@@ -12,7 +12,7 @@
     "site_geruest": "implemented",
     "module_0_bis_8_grundlagen": "implemented",
     "aufbau_1_bis_5_kreativ_marketing": "implemented",
-    "vertiefung_1_2_kontext_features": "implemented",
+    "vertiefung_1_3_kontext_features_modelle": "implemented",
     "workbrain_pitch": "implemented",
     "workshop_praesentation": "implemented",
     "trainer_leitfaden": "implemented",
@@ -21,7 +21,7 @@
   "last_audit": {
     "status": "STABLE",
     "date": "2026-07-29",
-    "note": "Alle 16 Modulseiten einzeln durchgegangen und gegen legal/ abgeglichen. Prüfbar mit konsistenz-check.ps1 (11 Regelgruppen, 0 Befunde) und fix-quotes.ps1. Deck noch offen."
+    "note": "Alle 17 Modulseiten + Deck durchgegangen und gegen legal/ abgeglichen. Prüfbar mit konsistenz-check.ps1 (11 Regelgruppen, 20 Seiten, 0 Befunde) und fix-quotes.ps1 — beide Scripts brauchen UTF-8 MIT BOM, sonst sterben sie unter Windows PowerShell 5.1. Layout gemessen: Deck und Seiten bei 320/375/414/768/1280/1366/1920 px ohne Überlauf, keine Schrift unter 11 px."
   },
   "known_issues": {}
 }

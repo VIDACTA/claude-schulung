@@ -1,14 +1,21 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.24.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
-**Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
+**Version:** 1.26.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Typografie:** deutsche Anführungszeichen vollständig (0 gerade Schließer, 0 ohne Öffner) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
-**Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.);
+**Konsistenz:** `konsistenz-check.ps1` — 11 Regelgruppen über alle 20 Seiten, 0 Befunde (29.07.);
 Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
-**Copy-Buttons:** alle 23 Prompts geprüft, Attribut und sichtbarer Text zeichengleich
-**Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
+**Copy-Buttons:** alle Prompts geprüft, Attribut und sichtbarer Text zeichengleich
+**Layout gemessen (29.07.):** Deck bei 320/375/414/1280/1366/1920 px, Seiten bei
+320/375/414/768/1280 px — kein Überlauf, keine Schrift unter 11 px
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
+
+> ⚠️ **Beide Prüf-Scripts brauchen UTF-8 MIT BOM.** Sie enthalten deutsche Anführungszeichen im
+> Code; ohne BOM liest Windows PowerShell 5.1 die Datei als ANSI und stirbt mit einem
+> Parser-Fehler — genau auf dem Aufrufweg, der hier dokumentiert ist. Beide waren am 29.07.
+> davon betroffen und sind gefixt. Nach jeder Script-Änderung in **beiden** Shells gegenprüfen
+> (`powershell -File …` und `pwsh -File …`).
 
 ## Wo wir stehen
 
@@ -89,15 +96,19 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
       Dateien an — Bewerbung kommt gar nicht an), Google beim Verbot mitgenannt, Ausnahme VI/VB begründet,
       Prüf-Prompt hätte einen zulässigen International-Lead beanstandet, EMPLOYMENT als Plattform-Vorgabe
       präzisiert
-- [x] **Alle 16 Modulseiten durchgegangen** (Grundlagen 0–8, Vertiefung 1–2, Aufbau 1–5) — offen: Deck
+- [x] **Alle 16 Modulseiten durchgegangen** (Grundlagen 0–8, Vertiefung 1–2, Aufbau 1–5)
+- [x] **v1.25.0 Deck neu strukturiert:** aus zwei zusammengewachsenen Decks sechs benannte Kapitel
+      (Kapitelanzeige + Kerben in der Fortschrittsleiste); „Regel Nr. 1/2" stehen zusammen,
+      Erwartungs-Einordnung vor der Halluzinations-Warnung, ein Fahrplan statt zwei; vier
+      Zeitangaben entfernt, die der Festlegung „keine Zeitangaben" widersprachen; sechs neue
+      Folien (KI-Grundprinzip, Harness, Modellwahl, Art. 50, Ablage, VIDACTA-Skills)
+- [x] **v1.26.0 Inhalte:** neues Modul **Vertiefung 3 · Modelle & Werkzeuge** (Harness,
+      Modellwahl, Anbieter-Einordnung); **Modul 6** um Teil 1 „Wo arbeitet Claude?" erweitert und
+      zu „Dateien, Ordner & Claude Code" umbenannt; **Art. 50** jetzt auch im Grundlagen-Track
+      (Modul 7); **Modul 5** um „Woher kommen unsere Skills?" ergänzt
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
-
-**🔴 Als nächstes: Eröffnungs-Deck (`praesentation.html`) durchgehen** — der zweite Teil des Auftrags
-vom 29.07. 15 Folien, drei Live-Momente; bisher nur an drei Stellen angefasst (Ampel-Definition
-synchronisiert, Vergleichs-Tags auf ✗/✓, Farbstreifen der Ampelfolie zurückgeholt). Inhaltlich
-ungeprüft.
 
 **🟡 Vor dem Workshop zu klären (steht im Trainer-Leitfaden als Vorbereitungspunkt):**
 - Verfügbare Desktop-Funktionen im eigenen Plan durchklicken und in Vertiefung 2 konkret benennen —
@@ -138,6 +149,18 @@ powershell -ExecutionPolicy Bypass -File .\konsistenz-check.ps1
 - **Keine feste Marken-Stimme** (Dominik, 29.07.) — eine Stimme *pro Reel*, Auswahl je Thema
 - **Interne Zahlen bleiben draußen** (Repo ist public): keine Seat-Zahlen, keine GA4-Property-IDs,
   keine Icon-Dateipfade — dafür der Verweis „beim Team erfragen"
+- **Modellnamen: Rollen ja, Versionsnummern nein** (Dominik, 29.07.): Die Familien
+  **Opus / Sonnet / Haiku** dürfen genannt werden — mit sichtbarem Stand-Datum und dem Hinweis,
+  dass das Auswahlmenü im eigenen Zugang die verlässliche Liste ist. **Konkrete Versionsnummern
+  („Sonnet 4.5") bleiben draußen**, weil sie die Seite bei jedem Release still falsch machen;
+  Check-Regel 6 überwacht das und hat beim Bau von Vertiefung 3 genau das gefangen
+- **Ablageort hängt am Werkzeug** (Dominik, 29.07.): Chat = kein Verzeichnis (Upload) · Cowork =
+  eigener Arbeitsbereich · Claude Code = echter Ordner. Dazu die eine übergreifende Regel: das
+  fertige Ergebnis gehört in die Team-Ablage, nicht in Downloads und nicht nur in den Chatverlauf
+- **VIDACTA-Skills werden als „im Aufbau" beschrieben**, nicht als vorhanden: Die zentrale
+  Verteilung über den Plugin-Marketplace ([ADR-014](../../.claude/brain/decisions/014-skill-verteilung-plugin-marketplace.md))
+  ist noch nicht ausgerollt. Die Site darf nichts versprechen, was in den Zugängen noch nicht
+  ankommt — dieselbe Vorsicht wie beim gestrichenen Aufbaukurs-Versprechen in v1.15.0
 
 - Zielgruppe: reine Nicht-Techniker · Sprache: Deutsch · Plan im Haus: Team/Enterprise
 - Navigation: Seite pro Modul · Stack: statisches HTML/CSS/JS, kein Build-Step
