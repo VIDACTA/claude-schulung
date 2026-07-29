@@ -3,6 +3,38 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.9.0] – 2026-07-29
+
+### Changed
+- **Alle Zeitangaben entfernt** (34 Stellen): die „⏱️ ca. X Minuten" in allen 16 Modul-Köpfen und die
+  Minuten in den 18 Übungs-Tags. Das Tempo hängt an der Gruppe, und die Angaben widersprachen sich
+  gegenseitig. Zusätze in den Übungs-Tags bleiben erhalten („Denkaufgabe", „Korrektur",
+  „Compliance-Check") – nur die Minuten sind weg.
+- **Ampel-Zeichen bei Qualitätsvergleichen ersetzt.** 🔴/🟢 markierten an mehreren Stellen nicht
+  Erlaubnis oder Risiko, sondern *Textqualität* – ausgerechnet in Modul 2, direkt nach der
+  Ampel-Einführung in Modul 1. Umgestellt auf ✗/✓ mit neutralen Rahmen:
+  - Modul 2: „Vage ↔ Klar" als Callout-Paar und im Tabellenkopf
+  - Vertiefung 1: „Schwach ↔ Stark", zwei Paare
+  - Deck: „Vage ↔ Klar" und „Was Claude ist ↔ ist nicht"
+  - Aufbau 4: gutes ↔ schlechtes Skript, jetzt über `.infocard`
+  - Vertiefung 1 „🟢 Deine fünf Gegenmittel" → 💡, Vertiefung 2 „🟢 VIDACTA-Beispiel" → 📌 (5×)
+  Die Callout-Klassen `danger`/`tip` waren dort auch sachlich falsch: ein vager Prompt ist keine
+  *Gefahr*. Farbig bleiben ausschließlich Verbote, Pflichten und die Ampel-Einordnung selbst.
+- **Deck: farbiger Streifen der Ampelfolie zurückgeholt.** `.deck .ampel-card { border-color: … }`
+  hat dieselbe Spezifität wie `.ampel-card.g/.a/.r` in `style.css` und gewinnt als späteres
+  Stylesheet – die wichtigste Folie des Decks trug ihre Ampelfarben deshalb nur in den Punkten,
+  nicht im Rand. Jetzt explizit im Deck-CSS gesetzt, mit Kommentar zur Ursache.
+
+### Added
+- **Modul 2: zweiter K-A-F-T-Prompt aus dem Schulbetrieb** (Doppelstunde vorbereiten) neben dem
+  Beispiel aus dem Bewerbermanagement – damit sich beide Arbeitsbereiche wiederfinden.
+- **Modul 2: neuer Abschnitt „Der häufigste Fall im Alltag: deinen eigenen Text verbessern lassen".**
+  Alle bisherigen Beispiele ließen Claude etwas Neues schreiben; im Alltag ist der Ausgangspunkt
+  meist ein eigener Entwurf. Mit kopierbarem Prompt (erst Schwächen benennen, dann verbessern,
+  keine Fakten ändern, bei fehlender Information nachfragen) und der Datenschutz-Warnung, die
+  genau hier hingehört: der eigene Entwurf enthält oft echte Personendaten.
+- CSS-Muster `.callout.nein` / `.callout.ja` für Qualitätsvergleiche ohne Ampelfarben.
+
 ## [1.8.0] – 2026-07-29
 
 ### Changed

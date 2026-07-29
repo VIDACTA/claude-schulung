@@ -94,6 +94,12 @@
 
     .deck .ampel { max-width: 62em; }
     .deck .ampel-card { background: rgba(255,255,255,.05); border-color: rgba(157,176,205,.3); }
+    /* border-color oben hat gleiche Spezifitaet wie .ampel-card.g/.a/.r in style.css und
+       gewinnt als spaeteres Stylesheet – der farbige Streifen der Ampel muss deshalb hier
+       ausdruecklich zurueckgeholt werden, sonst traegt die Ampelfolie nur die Punkte. */
+    .deck .ampel-card.g { border-top-color: var(--green); }
+    .deck .ampel-card.a { border-top-color: var(--amber); }
+    .deck .ampel-card.r { border-top-color: var(--red); }
     .deck .ampel-card h4 { color: #fff; font-size: clamp(16px, 1.7vw, 22px); }
     .deck .ampel-card ul { color: #c9d8ee; font-size: clamp(13px, 1.4vw, 17px); }
 
@@ -266,12 +272,12 @@
       <h2 data-anim>Was Claude ist – und was nicht</h2>
       <div class="versus">
         <div class="box good" data-anim>
-          <span class="tag">🟢 Das ist er</span>
+          <span class="tag">✓ Das ist er</span>
           Eine geduldige Kollegin, die dir zuarbeitet: schreiben, zusammenfassen, übersetzen,
           Struktur in Chaos bringen – Entwürfe, so viele du willst.
         </div>
         <div class="box bad" data-anim>
-          <span class="tag">🔴 Das ist er nicht</span>
+          <span class="tag">✗ Das ist er nicht</span>
           Keine Rechtsberatung, keine medizinische Beratung, keine amtliche Auskunft –
           und niemand, der Entscheidungen für dich trifft.
         </div>
@@ -318,11 +324,11 @@
       <h2 data-anim>Gleiche KI – anderes Ergebnis</h2>
       <div class="versus">
         <div class="box bad" data-anim>
-          <span class="tag">🔴 Vage</span>
+          <span class="tag">✗ Vage</span>
           „Schreib was über unsere Ausbildung."
         </div>
         <div class="box good" data-anim>
-          <span class="tag">🟢 Klar</span>
+          <span class="tag">✓ Klar</span>
           „Schreib einen freundlichen Instagram-Post (max. 4 Sätze) für Pflegekräfte aus dem Ausland,
           die eine Anerkennung in Deutschland suchen. Ton: einladend, kein Werbe-Blabla."
         </div>

@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.8.0 (lokal verifiziert; **noch nicht gepusht** = noch nicht live)
+**Version:** 1.9.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -26,7 +26,11 @@
       oder Prüffragen zeigten, laufen jetzt über das neutrale Muster `.infogrid`/`.infocard`
       (Modul 0, 3, 5, 6, Vertiefung 1). Dazu: Beispiel-Prompt in Modul 0 deckt Schulen und
       Anerkennungsbegleitung ab; fester Tagesablauf aus dem Trainer-Leitfaden entfernt
-- [x] Live: https://vidacta.github.io/claude-schulung/ (Stand v1.7.1)
+- [x] **v1.9.0 Farbsprache + Modul 2:** keine Zeitangaben mehr (34 Stellen); 🔴/🟢 nur noch für
+      Erlaubnis, Verbot und Pflicht – Qualitätsvergleiche laufen über ✗/✓ (`.callout.nein/.ja`);
+      Ampelstreifen der Deck-Folie zurückgeholt; Modul 2 um einen K-A-F-T-Prompt aus dem
+      Schulbetrieb und den Abschnitt „eigenen Text verbessern lassen" erweitert
+- [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
 - Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell beschriftete SVG-Schemata —

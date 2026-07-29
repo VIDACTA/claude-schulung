@@ -30,7 +30,6 @@
       <span class="num">Modul 2</span>
       <h1>Gut prompten</h1>
       <div class="meta">
-        <span>⏱️ ca. 25 Minuten</span>
         <span>🎯 Baut auf Modul 1 auf</span>
         <span>✍️ Das wichtigste Handwerk</span>
       </div>
@@ -56,12 +55,12 @@
       <h2>Vage Frage vs. klarer Auftrag</h2>
       <p>Schau dir den Unterschied an:</p>
 
-      <div class="callout danger">
-        <p class="callout-title">🔴 Vage</p>
+      <div class="callout nein">
+        <p class="callout-title"><span class="mark">✗</span>Vage</p>
         <p>„Schreib was über unsere Ausbildung."</p>
       </div>
-      <div class="callout tip">
-        <p class="callout-title">🟢 Klar</p>
+      <div class="callout ja">
+        <p class="callout-title"><span class="mark">✓</span>Klar</p>
         <p>„Schreib einen freundlichen Instagram-Post (max. 4 Sätze) für Pflegekräfte aus dem Ausland,
         die eine Anerkennung in Deutschland suchen. Ton: einladend, kein Werbe-Blabla. Mit einem Aufruf,
         sich zu melden."</p>
@@ -85,6 +84,16 @@ Aufgabe: Schreib eine Antwort-E-Mail, die den Ablauf in einfachen Schritten erkl
 Format: kurze Begrüßung, nummerierte Schritte, freundlicher Abschluss.
 Ton: herzlich, geduldig, leicht verständlich (die Person spricht Deutsch als Fremdsprache).</div>
 
+      <p>Dasselbe Muster, anderer Arbeitsbereich – aus dem Schulbetrieb:</p>
+
+      <div class="prompt" data-copy="Kontext: Ich unterrichte an einer unserer Berufsfachschulen und plane eine Doppelstunde für das erste Ausbildungsjahr.
+Aufgabe: Mach mir einen Vorschlag, wie ich das Thema „Kommunikation mit Patienten" aufbaue.
+Format: Tabelle mit Abschnitt, Inhalt und Methode.
+Ton: praxisnah, für eine Klasse mit gemischten Vorkenntnissen.">Kontext: Ich unterrichte an einer unserer Berufsfachschulen und plane eine Doppelstunde für das erste Ausbildungsjahr.
+Aufgabe: Mach mir einen Vorschlag, wie ich das Thema „Kommunikation mit Patienten" aufbaue.
+Format: Tabelle mit Abschnitt, Inhalt und Methode.
+Ton: praxisnah, für eine Klasse mit gemischten Vorkenntnissen.</div>
+
       <div class="callout info">
         <p class="callout-title">ℹ️ Du musst das nicht auswendig können</p>
         <p>K-A-F-T ist eine Eselsbrücke, kein Formular. Oft reicht: „Schreib mir X für Y, als Liste, freundlich."
@@ -96,7 +105,7 @@ Ton: herzlich, geduldig, leicht verständlich (die Person spricht Deutsch als Fr
       <div class="table-scroll">
         <table>
           <thead>
-            <tr><th>Aufgabe</th><th>🔴 Vage</th><th>🟢 Klar</th></tr>
+            <tr><th>Aufgabe</th><th>✗ Vage</th><th>✓ Klar</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -130,6 +139,43 @@ Ton: herzlich, geduldig, leicht verständlich (die Person spricht Deutsch als Fr
         <li>„Der zweite Absatz gefällt mir – bau den ersten ähnlich um."</li>
         <li>„Gib mir drei Varianten zur Auswahl."</li>
       </ul>
+
+      <h2>Der häufigste Fall im Alltag: deinen eigenen Text verbessern lassen</h2>
+      <p>
+        Bisher hat Claude etwas <em>Neues</em> geschrieben. Meistens ist es umgekehrt: Du hast schon
+        einen Entwurf und willst ihn besser machen. Dann gehört <strong>dein Text mit in den Auftrag</strong> –
+        und du sagst dazu, was du von Claude willst. Sonst schreibt er einfach etwas Eigenes,
+        statt deinen Entwurf zu schärfen.
+      </p>
+
+      <div class="prompt" data-copy="Hier ist mein Entwurf für eine E-Mail an eine Interessentin. Bitte mach zwei Dinge:
+1. Nenn mir in drei Stichpunkten, was daran noch schwach ist.
+2. Schreib eine verbesserte Fassung – etwa gleiche Länge, freundlicher Ton, einfache Sätze.
+
+Ändere keine Fakten. Wenn dir eine Information fehlt, frag nach, statt etwas zu erfinden.
+
+Mein Entwurf:
+[hier deinen Text einfügen]">Hier ist mein Entwurf für eine E-Mail an eine Interessentin. Bitte mach zwei Dinge:
+1. Nenn mir in drei Stichpunkten, was daran noch schwach ist.
+2. Schreib eine verbesserte Fassung – etwa gleiche Länge, freundlicher Ton, einfache Sätze.
+
+Ändere keine Fakten. Wenn dir eine Information fehlt, frag nach, statt etwas zu erfinden.
+
+Mein Entwurf:
+[hier deinen Text einfügen]</div>
+
+      <p class="hint">
+        Die beiden letzten Sätze sind der Trick: Ohne sie schreibt Claude gern Fakten dazu,
+        die gut klingen, aber nicht stimmen.
+      </p>
+
+      <div class="callout danger">
+        <p class="callout-title">🔴 Achtung genau hier</p>
+        <p>Beim eigenen Entwurf ist die Versuchung am größten, den Text einfach so hineinzukopieren –
+        mit Namen, Geburtsdatum, Diagnose. Das ist der häufigste Datenschutz-Fehler im Alltag.
+        <strong>Erst anonymisieren, dann einfügen</strong> (🚦 Ampel aus Modul 1). Claude braucht für
+        besseres Deutsch keine echten Personendaten.</p>
+      </div>
 
       <div class="callout warn">
         <p class="callout-title">⚠️ Häufige Anfänger-Fehler</p>
@@ -177,7 +223,7 @@ Ton: herzlich, geduldig, leicht verständlich (die Person spricht Deutsch als Fr
       </details>
 
       <div class="exercise">
-        <div class="head">🛠️ Übung 2 <span class="tag">12 Minuten</span></div>
+        <div class="head">🛠️ Übung 2</div>
         <div class="body">
           <ol>
             <li>Denk dir eine echte kleine Aufgabe aus deinem Alltag aus (z. B. eine Absage freundlich formulieren, Stichpunkte zu einem Text machen).</li>

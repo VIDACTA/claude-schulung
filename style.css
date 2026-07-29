@@ -379,6 +379,15 @@ body {
 .callout.danger { border-left-color: var(--red);   background: var(--red-soft); }
 .callout.info   { border-left-color: var(--blue);  background: var(--accent-soft); }
 
+/* Qualitätsvergleich „so nicht ↔ so ja" – bewusst OHNE Ampelfarben, damit Grün und
+   Rot allein Erlaubnis und Risiko markieren (Datenschutz-Ampel, Verbote, Pflichten).
+   Unterschieden wird über die Zeichen ✗/✓ und über gedämpft ↔ Akzent. */
+.callout.nein { border-left-color: var(--text-muted); background: var(--surface-2); }
+.callout.ja   { border-left-color: var(--accent);     background: var(--accent-soft); }
+.callout .mark { flex: none; font-weight: 700; }
+.callout.nein .mark { color: var(--text-muted); }
+.callout.ja   .mark { color: var(--accent); }
+
 /* ---------- Ampel-Regel ---------- */
 .ampel { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 24px 0; }
 .ampel-card { border-radius: var(--radius); padding: 18px; border: 1px solid var(--border); background: var(--surface); }
