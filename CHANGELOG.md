@@ -3,6 +3,31 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.15.0] – 2026-07-29
+
+### Fixed
+- **Deutsche Anführungszeichen site-weit vervollständigt: 272 Schließer korrigiert.** Geöffnet wurde
+  überall typografisch korrekt mit `„`, geschlossen aber mit dem geraden Zoll-Zeichen `"` statt mit
+  `“` — im Fließtext sichtbar schief, weil das öffnende Zeichen gebogen und das schließende senkrecht
+  ist. Aufschlussreich war, *wo* es schon stimmte: in den `data-copy`-Attributen der Prompt-Blöcke.
+  Dort **musste** der Autor typografische Zeichen nehmen, weil ein gerades `"` das Attribut beendet
+  hätte; im Fließtext fehlte dieser Zwang. Beim Geviertstrich-Durchgang am 27.07. war das übersehen
+  worden, obwohl der Textqualitäts-Skill die Regel führt.
+  Korrigiert per Zustandsautomat, der HTML-Tags sowie `<script>`- und `<style>`-Blöcke ausspart und
+  nur ersetzt, wenn davor ein `„` offen ist. Ergebnis: 274 Öffner und 274 Schließer über alle 19
+  Seiten, **0 gerade Zeichen** im sichtbaren Text, HTML-Attribute unangetastet (4661 gerade Zeichen
+  in Tags unverändert), 0 Fälle ohne zugehörigen Öffner.
+
+### Changed
+- **Modul 6: kein Versprechen mehr auf einen Kurs, den es noch nicht gibt.** Statt „für Interessierte
+  gibt es einen eigenen, tieferen Aufbaukurs" jetzt „kommen genug Interessierte zusammen, richten wir
+  einen ein" — `state/current_state.md` führt ihn ausdrücklich nur als Absicht („ggf.").
+- **Modul 6: Beispiel-Datei ist kein Markdown mehr.** `uebersicht.md` ließ sich für die
+  ausdrücklich nicht-technische Zielgruppe nicht einmal sinnvoll öffnen; jetzt eine Word-Datei.
+- **Modul 6 verweist auf Modul 4.** Die „drei Details" (klarer Ort · neue statt veränderte Datei ·
+  Schutzsatz) sind dasselbe Prinzip wie „Wo landet das Ergebnis?" aus v1.13.0 — hier nur konkreter.
+  Der Querverweis verbindet beide Stellen statt sie unabhängig nebeneinander zu stellen.
+
 ## [1.14.0] – 2026-07-29
 
 ### Changed

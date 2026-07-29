@@ -1,7 +1,8 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.14.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.15.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -49,6 +50,9 @@
 - [x] **v1.14.0 Modul 5:** keine Unbedenklichkeits-Erklärung mehr („datenschutzrechtlich unkritisch"
       → IT/Datenschutz entscheiden), Skills mit Ohne-/Mit-Vergleich erklärt statt nur genannt,
       Abgrenzung Projekt-Teilen ↔ IT-Verbindung, Maßstab für die drei Prüffragen
+- [x] **v1.15.0 Modul 6 + Typografie:** kein Versprechen mehr auf einen noch nicht existierenden
+      Aufbaukurs, Beispieldatei als Word statt Markdown, Querverweis auf Modul 4 — dazu site-weit
+      272 Anführungszeichen-Schließer korrigiert (`"` → `“`)
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
