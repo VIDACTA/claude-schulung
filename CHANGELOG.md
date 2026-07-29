@@ -3,6 +3,19 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.12.1] – 2026-07-29
+
+### Changed
+- **Projekte teilen ist jetzt eine Regel statt einer offenen Frage** (Festlegung Dominik, 29.07.):
+  innerhalb der eigenen Abteilung erlaubt, darüber hinaus vorher abstimmen. Der Hinweis in Modul 3
+  formulierte bisher nur die Frage („gehört vielleicht trotzdem nicht in ein Projekt mit zwanzig
+  Personen") – für Teilnehmer, die eine klare Ansage brauchen, war das zu weich. Der
+  Datenschutz-Teil bleibt: geteilte Projekte teilen auch die Wissens-Dateien mit.
+- **Trainer-Leitfaden:** Teilen-Regel bei Modul 3 hinterlegt, dazu der Prüf-Punkt („Wissens-Datei
+  macht zuverlässiger, nicht fehlerfrei"). Bei Modul 1 die Rückfrage vermerkt, die verlässlich
+  kommt – *„die Firmen-Version trainiert doch nicht mit unseren Daten"* – samt Ein-Satz-Antwort.
+  Letzte Zeitangabe entfernt („lieber 10 Minuten mehr investieren" → „mehr Zeit als woanders").
+
 ## [1.12.0] – 2026-07-29
 
 ### Added

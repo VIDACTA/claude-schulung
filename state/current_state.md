@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.12.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.12.1 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -52,6 +52,12 @@
 - Feedback der ersten Schulung einarbeiten; ggf. Aufbaukurs Claude Code.
 
 ## Geklärte Entscheidungen
+
+- **Projekte teilen** (Dominik, 29.07.): innerhalb der eigenen Abteilung erlaubt, darüber hinaus
+  vorher abstimmen — Datenschutz gilt unverändert, weil geteilte Projekte die Wissens-Dateien mitteilen
+- **Keine Zeitangaben** auf der Site und im Leitfaden (29.07.): kein Tagesablauf, keine
+  Modul-/Übungsminuten — das Tempo hängt an der Gruppe
+- **Ampelfarben** nur für Erlaubnis, Verbot und Pflicht; Qualitätsvergleiche über ✗/✓
 
 - Zielgruppe: reine Nicht-Techniker · Sprache: Deutsch · Plan im Haus: Team/Enterprise
 - Navigation: Seite pro Modul · Stack: statisches HTML/CSS/JS, kein Build-Step

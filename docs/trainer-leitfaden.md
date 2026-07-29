@@ -55,13 +55,21 @@ seinen ersten Chat geführt.
 eigenen Chat abschicken (im Deck-Intro meist schon passiert – dann hier nur vertiefen).
 Betone: „Man kann nichts kaputt machen."
 
-**Modul 1 – Desktop + Ampel.** Die 🚦 Ampel ist das Herzstück des ganzen Tages. Lieber hier 10 Minuten
-mehr investieren. Lass jeden laut einen eigenen Fall einer Farbe zuordnen.
+**Modul 1 – Desktop + Ampel.** Die 🚦 Ampel ist das Herzstück des ganzen Tages. Lieber hier mehr Zeit
+investieren als woanders. Lass jeden laut einen eigenen Fall einer Farbe zuordnen. Der Ausklapper
+„Warum ist das so streng?" fängt die Rückfrage ab, die verlässlich kommt: *„Die Firmen-Version
+trainiert doch nicht mit unseren Daten – warum dann so streng?"* Antwort in einem Satz: weil jeder
+Upload Daten aus dem Haus gibt, unabhängig vom Training.
 
 **Modul 2 – Prompten.** Der größte Aha-Effekt. Zeig live denselben Auftrag einmal vage, einmal mit
 K-A-F-T – der Unterschied überzeugt mehr als jede Erklärung. Viel Übungszeit geben.
 
 **Modul 3 – Projekte.** Gemeinsam ein „Textbausteine"-Projekt bauen. Betone: nur grüne/anonyme Inhalte.
+**Teilen ist geregelt** (Festlegung Dominik, 29.07.): innerhalb der eigenen Abteilung erlaubt, darüber
+hinaus vorher abstimmen — der Datenschutz gilt unverändert, weil geteilte Projekte auch die
+Wissens-Dateien mitteilen. Zweiter Punkt, der leicht untergeht: eine hinterlegte Wissens-Datei macht
+Antworten zuverlässiger, aber nicht fehlerfrei — Stichprobe bleibt Pflicht, gerade weil die Antwort
+dann nach dem eigenen Haus klingt.
 
 **Modul 4 – Cowork (Kern).** Genug Zeit einplanen. Lass die Gruppe den Einrichtungsassistenten
 durchlaufen. Zeig eine echte mehrstufige Aufgabe und wie man das Ergebnis prüft.
