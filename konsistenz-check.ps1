@@ -68,7 +68,7 @@ foreach ($d in $dateien) {
 
     # 4b Ampel-Checks dürfen ihre Antwort nicht vorwegnehmen: eine Frage, hinter der ein ✅ steht,
     #    beantwortet sich selbst. Als exakter Satz geprüft (v1.13.0) wanderte das Muster weiter nach
-    #    Aufbau 1 — deshalb jetzt als Muster: Fragezeichen direkt vor einem Haken.
+    #    Aufbau 1 — deshalb als Muster: Fragezeichen direkt vor einem Haken.
     foreach ($m in [regex]::Matches($sichtbar, '[^.!?]{0,60}\?\s*✅')) {
         Melde '4b Antwort vorweggenommen' $n ($m.Value.Trim() -replace '\s+', ' ')
     }
@@ -118,6 +118,21 @@ foreach ($n in $defs.Keys) {
     if ($defs[$n].GelbInterneOhneNamen) { Melde '9 Ampel-Definition' $n 'Gelb enthaelt noch "interne … ohne Namen"' }
     if (-not $defs[$n].GelbPersonenbezug) { Melde '9 Ampel-Definition' $n 'Gelb nennt nicht "mit Personenbezug"' }
     if (-not $defs[$n].Indirekt)          { Melde '9 Ampel-Definition' $n 'Hinweis auf indirekte Erkennbarkeit fehlt' }
+}
+
+# 4c Erledigt-Haken (✅) haben in Übungsblöcken nichts zu suchen — dort steht, was noch zu TUN ist.
+#    Regel 4b greift nur bei „Frage? ✅"; in Aufbau 4 stand der Haken hinter einer Aufforderung
+#    („Notiere: … ✅") und blieb deshalb unentdeckt. Erlaubt bleibt ✅ außerhalb von .exercise,
+#    etwa im Selbst-Check von Modul 8, wo es vor Aussagen zum Bejahen steht.
+foreach ($d in $dateien) {
+    $t = [System.IO.File]::ReadAllText($d.FullName)
+    foreach ($m in [regex]::Matches($t, '(?s)<div class="exercise">.*?</div>\s*</div>')) {
+        $inhalt = [regex]::Replace($m.Value, '<[^>]*>', ' ')
+        if ($inhalt -match '✅') {
+            $stelle = [regex]::Match($inhalt, '.{0,55}✅').Value
+            Melde '4c Haken in Uebung' $d.Name ($stelle.Trim() -replace '\s+', ' ')
+        }
+    }
 }
 
 # 11 Claim-Regeln müssen vollständig bleiben. Aufbau 5 ist das Claim-Modul; die Regeln stehen im

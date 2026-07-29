@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.22.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.23.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.);
@@ -81,6 +81,10 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
       (Briefing plante es unten ein), Safe-Zone-Begriff im Prompt war umgekehrt, zwei Icon-Sprachfassungen
       ergänzt, lizenzierte Stock-Bibliothek als erste Option (kein KI-Icon nötig), Personen-Hinweis vom
       Ampel-Verweis gelöst, Kurzcheck mit leeren Kästchen
+- [x] **v1.23.0 Aufbau 4/5:** Prüf-Prompts kannten die neuen Verbote nicht (Folgefehler v1.21.0) und
+      hätten „schulgeldfrei" im Anzeigentext als Verstoß gemeldet; GEMA-Falle erklärt statt nur benannt
+      (organische Posts ≠ bezahlte Anzeigen); keine feste Marken-Stimme — steht jetzt auf der Seite;
+      Check-Regel 4c gegen Erledigt-Haken in Übungsblöcken
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

@@ -3,6 +3,35 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.23.0] – 2026-07-29
+
+### Fixed
+- **Die Prüf-Prompts kannten die neuen Verbote nicht** – Folgefehler von v1.21.0: Dort wurde die
+  Verbotsliste erweitert, aber die zwei Prompts, mit denen man Skripte und Anzeigen-Ideen
+  gegenchecken lässt, blieben auf dem alten Stand. Ein Skript mit „mit Bildungsgutschein förderfähig"
+  hätte die Prüfung glatt passiert. Beide Prompts fragen jetzt einzeln nach Geld, **Förder-Zusagen**
+  und **Wirkversprechen** und verlangen wörtliche Fundstellen.
+- **Der Anzeigen-Prüf-Prompt hätte Erlaubtes als Verstoß gemeldet.** Er listete „schulgeldfrei" unter
+  den verbotenen Geld-Aussagen – im Anzeigentext ist die Angabe aber freigegeben. Jetzt als eigener
+  Prüfpunkt formuliert: *im Anzeigentext erlaubt, im Bild oder Video-Overlay verboten – sag mir, wo es
+  steht.* Damit prüft der Prompt genau die Unterscheidung, die zählt.
+- **Aufbau 4: Erledigt-Haken aus der Übung entfernt** („Notiere: … ✅"). **Check-Regel 4c ergänzt:**
+  In Übungsblöcken hat ein ✅ generell nichts zu suchen, weil dort steht, was noch zu *tun* ist.
+  Regel 4b griff nur bei „Frage? ✅" und hat diesen Fall übersehen. Die Regel prüft gezielt
+  `.exercise`-Blöcke — der Selbst-Check in Modul 8 bleibt damit korrekt unbehelligt, weil seine Haken
+  vor Aussagen zum Bejahen stehen und außerhalb einer Übung.
+
+### Added
+- **Aufbau 4: die GEMA-Falle wird jetzt erklärt, nicht nur benannt.** Bisher stand dort „keine Musik
+  aus Instagram/TikTok (GEMA-Falle)" ohne Grund. Der Denkfehler ist aber naheliegend – *„die Musik ist
+  doch in der App eingebaut"* – und genau der löst sich erst mit der Erklärung: Die
+  Plattform-Bibliotheken sind für **organische Beiträge** lizenziert, nicht für **bezahlte Anzeigen**.
+  Technisch geht es, rechtlich nicht. Ein Verbot ohne Begründung wird beim ersten Zeitdruck umgangen.
+- **Aufbau 4: Antwort auf die Frage nach der Marken-Stimme.** „Eine Stimme pro Reel" sichert
+  Konsistenz *innerhalb* eines Videos – ob es darüber hinaus eine festgelegte Stimme gibt, blieb offen.
+  Es gibt keine (Auskunft Dominik, 29.07.); das steht jetzt ausdrücklich da, mit dem praktischen Tipp,
+  gut funktionierende Stimmen zu notieren.
+
 ## [1.22.0] – 2026-07-29
 
 ### Fixed
