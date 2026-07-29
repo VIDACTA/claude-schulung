@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.11.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.12.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -39,6 +39,9 @@
       klarer auf „enthält Personenbezug, den du entfernst" zugeschnitten (inkl. indirekter
       Erkennbarkeit); neuer Hinweis, dass Personenbezug und Vertraulichkeit zwei verschiedene
       Prüfungen sind
+- [x] **v1.12.0 Modul 3:** Prüf-Hinweis („Wissens-Datei ist keine Garantie", Stichprobe),
+      Teilen-Hinweis („wer sieht es danach?"), Ausklapper zur Projekt-Größe („ein Projekt = ein
+      Zweck") mit Querverweis auf Vertiefung 1, zwei Projekt-Ideen aus Schulbetrieb und Verwaltung
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

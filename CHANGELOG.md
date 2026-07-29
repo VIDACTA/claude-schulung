@@ -3,6 +3,29 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.12.0] – 2026-07-29
+
+### Added
+- **Modul 3: Prüf-Hinweis ergänzt** – die Seite erzeugte die stärkste Verlässlichkeits-Illusion der
+  Schulung und war das einzige Inhaltsmodul ohne „du bleibst verantwortlich". Zwei Stellen wirkten
+  zusammen: die Beispiel-Anweisung „sag offen, wenn etwas nicht in den Dateien steht" und der Satz
+  „genauer und konsistenter" direkt darunter. Beides stimmt einzeln, gelesen wird daraus aber
+  „hinterlegte Quelle = verlässlich". Jetzt ausdrücklich: die Anweisung senkt die Fehlerquote, sie
+  garantiert nichts – und ein Fehler fällt hier **schwerer** auf, weil die Antwort nach dem eigenen
+  Wissen klingt. Mit konkreter Handlung: Stichprobe gegen die Wissens-Datei, vor allem bei Zahlen,
+  Fristen und Zuständigkeiten.
+- **Modul 3: Hinweis zu geteilten Projekten.** Der Tipp empfiehlt Projekte zum Teilen im Team –
+  damit sehen alle Projektmitglieder auch die Wissens-Dateien. Die Ampel beantwortet „darf das
+  hinein?", beim Teilen kommt „und wer sieht es danach?" hinzu. Ein anonymisiertes internes Dokument
+  ist für die KI unbedenklich, gehört aber nicht zwangsläufig in ein Projekt mit zwanzig Personen.
+- **Modul 3: Ausklapper „Wie viel gehört in ein Projekt – und wann ist es zu viel?"** Bisher fehlte
+  jeder Hinweis darauf, dass Wissens-Dateien Kontext kosten; Anfänger neigen dazu, alles
+  hineinzuwerfen. Jetzt: zwei bis fünf gepflegte Dateien zu einem Thema schlagen zwanzig, Faustregel
+  „ein Projekt = ein Zweck", plus dem bislang fehlenden Querverweis auf Vertiefung 1.
+- **Modul 3: zwei weitere Projekt-Ideen** aus Schulbetrieb („Unterrichtsvorbereitung") und
+  Verwaltung („Verwaltung & Schriftverkehr") – die drei bisherigen kamen alle aus dem
+  Anerkennungsbereich. Ausklapper-Titel entsprechend von „Drei" auf „Fünf" korrigiert.
+
 ## [1.11.0] – 2026-07-29
 
 ### Changed
