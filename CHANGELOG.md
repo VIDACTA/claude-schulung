@@ -3,6 +3,30 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.18.0] – 2026-07-29
+
+### Changed
+- **Vertiefung 1: Studienangaben weicher gefasst.** Die Seite lehrt ausdrücklich, „Quellenangaben,
+  Links, DOIs und Studien immer zu prüfen" – und berichtet im roten Kasten, dass bei der Recherche für
+  dieses Modul eine KI eine Studie samt DOI erfunden hat. Gleichzeitig nannte sie selbst zwei
+  konkrete, aber unbelegte Angaben: „rund 20 Prozentpunkte" Trefferquoten-Verlust und „Chroma
+  Research, an 18 KI-Modellen". Beides ist jetzt ohne Zahl und ohne Institutsnamen formuliert – der
+  Effekt und sein Fachname („Lost in the Middle") bleiben, ebenso die Faustregel. Dazu ein Satz, der
+  die Auslassung begründet: eine einzelne Prozentzahl würde je nach Modell und Aufgabe ohnehin anders
+  ausfallen. Auch „1 Million Tokens" ist raus – eine Zahl, die veraltet.
+- **Vertiefung 1: „Dauerwissen ins Projekt" ist kein Freibrief mehr.** Die Seite erklärt das
+  Kontextfenster, riet aber dreimal „ins Projekt damit", ohne zu erwähnen, dass Projektanweisungen und
+  Wissens-Dateien bei *jeder* Anfrage mit auf dem Schreibtisch liegen. Damit klang das Projekt wie ein
+  unbegrenzter Speicher – im Widerspruch zu Modul 3, das seit v1.12.0 „ein Projekt = ein Zweck" sagt.
+
+### Added
+- **Vertiefung 1: neuer Abschnitt „Das längere ‚Nachdenken' – wann es wirklich hilft".** Bislang war
+  es nur ein Halbsatz. Jetzt mit dem Satz, den man dafür schreibt, und einer Gegenüberstellung, wofür
+  es sich lohnt (mehrstufige Aufgaben, Rechnen und Logik, langen Text gegen Vorgaben prüfen,
+  Widersprüche finden) und wofür nicht (Faktenfragen, Umformulieren, Tagesaktuelles). Kern ist der
+  Merksatz: **Nachdenken hilft beim Denken, nicht beim Wissen** – eine erfundene Zahl bleibt erfunden,
+  sie klingt danach nur besser begründet. Genau deshalb ersetzt es das Gegenprüfen nicht.
+
 ## [1.17.0] – 2026-07-29
 
 ### Fixed
