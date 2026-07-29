@@ -1,4 +1,4 @@
-# Konsistenz-Check für die Claude-Schulung
+﻿# Konsistenz-Check für die Claude-Schulung
 #
 # Prüft alle Seiten gegen die Regeln, die im Durchgang vom 29.07.2026 gesetzt wurden.
 # Hintergrund: Die Seiten verweisen aufeinander und wiederholen dieselben Definitionen
@@ -11,6 +11,16 @@
 #
 # Nach JEDER inhaltlichen Änderung laufen lassen. Ausgabe „0 Befunde" ist das Ziel.
 # Ergänzend für die Typografie: .claude/scripts/fix-quotes.ps1 (Trockenlauf)
+#
+# ⚠️ DIESE DATEI MUSS ALS UTF-8 MIT BOM GESPEICHERT BLEIBEN.
+# Die Prüfmuster unten enthalten zwingend deutsche Anführungszeichen („ “ ‚ ‘). Windows
+# PowerShell 5.1 — die Shell, die der Aufruf oben startet — liest eine Datei ohne BOM als
+# ANSI (Windows-1252). Die UTF-8-Bytes dieser Zeichen werden dabei falsch dekodiert; das
+# Byte 0x94 landet als typografisches Schlusszeichen im Code, und weil PowerShell solche
+# Zeichen als String-Begrenzer akzeptiert, bricht der String auf: das Script stirbt mit
+# „Unerwartetes Token }" — obwohl es unter pwsh 7 einwandfrei läuft. Ein Editor, der die
+# Datei BOM-los zurückschreibt, macht den Check also lautlos unbenutzbar.
+# Gegenprobe nach jeder Änderung: einmal mit 5.1 (Zeile oben) UND einmal mit pwsh starten.
 
 $repo = $PSScriptRoot
 if (-not $repo) { $repo = "C:\Dev\claude-schulung" }
@@ -163,7 +173,14 @@ foreach ($d in $dateien) {
     foreach ($m in [regex]::Matches($t, 'data-copy="')) {
         $ende = $t.IndexOf([char]0x0022, $m.Index + $m.Length)
         if ($ende -lt 0) { continue }
-        $danach = if ($ende + 1 -lt $t.Length) { $t.Substring($ende + 1, [Math]::Min(12, $t.Length - $ende - 1)) } else { '' }
+        # Bewusst zweizeilig statt "$danach = if (...) {...} else {...}": eine if-Zuweisung
+        # ist erst ab PowerShell 7 erlaubt. Unter Windows PowerShell 5.1 - der Shell, die der
+        # dokumentierte Aufruf "powershell -ExecutionPolicy Bypass -File ..." startet - waere
+        # das ein Parser-Fehler. (Der zweite 5.1-Stolperstein war das fehlende BOM, s. Kopf.)
+        $danach = ''
+        if ($ende + 1 -lt $t.Length) {
+            $danach = $t.Substring($ende + 1, [Math]::Min(12, $t.Length - $ende - 1))
+        }
         if ($danach -notmatch '^\s*(>|/>|[a-zA-Z\-]+=)') {
             $vor = $t.Substring([Math]::Max(0, $ende - 28), [Math]::Min(28, $ende))
             Melde '10 data-copy' $d.Name ("Attribut endet vorzeitig nach: …" + ($vor -replace '\s+', ' '))
