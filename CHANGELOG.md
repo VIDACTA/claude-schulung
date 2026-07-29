@@ -3,6 +3,33 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.24.0] – 2026-07-29
+
+### Added
+- **Aufbau 5, Regel 1: der überzeugendere Grund stand nicht drin.** Das Register nennt zwei Gründe für
+  die Lead-Regel und markiert ausdrücklich einen als „den harten": **Lead-Formulare können keine Dateien
+  annehmen** – zu einer Bewerbung gehören aber Zeugnisse und Nachweise, sie kann dort also gar nicht
+  vollständig ankommen. Die Schulung nannte nur den zweiten Grund („DSGVO-konforme Erfassung"). Damit
+  fehlte das Argument, das sofort einleuchtet und nicht abgewogen wird: „DSGVO" klingt nach Bürokratie,
+  „die Bewerbung kommt nicht an" ist unwiderlegbar. Beide Gründe stehen jetzt da, in dieser Reihenfolge –
+  die Überschrift heißt entsprechend nicht mehr „(DSGVO)".
+- **Die Ausnahme ist jetzt begründet.** Warum VI- und Arbeitgeber-Leads über Lead-Formulare laufen dürfen,
+  stand nirgends: Dort fallen **keine Bewerbungsunterlagen** an, es geht um eine erste Kontaktanfrage.
+  Ohne diesen Satz wirkte die Ausnahme willkürlich.
+
+### Fixed
+- **Google fehlte beim Verbot.** Das Register sagt „niemals über Meta- **oder Google**-Instant-/
+  Lead-Formulare" – die Schulung nannte an allen drei Stellen nur Meta. Ausgerechnet die Lücke, die
+  niemand auf dem Schirm hat. Jetzt in Regel 1, im Prüf-Prompt und in der Fehler-Tabelle ergänzt.
+- **Der Prüf-Prompt hätte wieder Erlaubtes als Verstoß gemeldet** – derselbe Fehlertyp wie bei
+  „schulgeldfrei" in v1.23.0, nur eine Zeile weiter: Punkt 3 fragte pauschal, ob Bewerbungen über die
+  Website laufen, und hätte damit einen zulässigen International-Lead über ein Lead-Formular
+  beanstandet. Jetzt mit der Ausnahme und der Rückfrage, welcher Fall vorliegt.
+- **EMPLOYMENT-Begründung präzisiert.** „gesetzlich/plattformseitig vorgeschrieben" → **Vorgabe der
+  Plattform** zur Diskriminierungsvermeidung. Ein Gesetz, das dem Werbetreibenden das Alter
+  vorschreibt, gibt es nicht; Meta erzwingt die Regel. Dazu der Satz, dass der Gedanke ohnehin passt –
+  eine Ausbildung steht nicht nur 20- bis 35-Jährigen offen.
+
 ## [1.23.0] – 2026-07-29
 
 ### Fixed

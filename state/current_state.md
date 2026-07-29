@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.23.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.24.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.);
@@ -85,6 +85,11 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
       hätten „schulgeldfrei" im Anzeigentext als Verstoß gemeldet; GEMA-Falle erklärt statt nur benannt
       (organische Posts ≠ bezahlte Anzeigen); keine feste Marken-Stimme — steht jetzt auf der Seite;
       Check-Regel 4c gegen Erledigt-Haken in Übungsblöcken
+- [x] **v1.24.0 Aufbau 5:** der „harte" Grund für die Lead-Regel ergänzt (Lead-Formulare nehmen keine
+      Dateien an — Bewerbung kommt gar nicht an), Google beim Verbot mitgenannt, Ausnahme VI/VB begründet,
+      Prüf-Prompt hätte einen zulässigen International-Lead beanstandet, EMPLOYMENT als Plattform-Vorgabe
+      präzisiert
+- [x] **Alle 16 Modulseiten durchgegangen** (Grundlagen 0–8, Vertiefung 1–2, Aufbau 1–5) — offen: Deck
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
