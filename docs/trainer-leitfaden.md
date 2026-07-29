@@ -23,31 +23,30 @@ und klick sie mit der Gruppe durch.
 
 ---
 
-## Tagesablauf (Vorschlag)
+## Reihenfolge & Gewichtung
 
-| Zeit | Block | Module |
+Die Module bauen aufeinander auf. Reihenfolge:
+
+**Intro (Deck) → 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8**, dann Fragen/Feedback/Ausblick.
+
+Bewusst **kein** fester Zeitplan – das Tempo hängt an der Gruppe. Woran du dich stattdessen
+orientierst, wenn es knapp wird:
+
+| Gewicht | Module | Warum |
 |---|---|---|
-| 09:00–09:20 | Ankommen, Ziel des Tages, Ängste abbauen | Intro + Modul 0 |
-| 09:20–10:15 | Desktop-Grundlagen + Ampel | Modul 1 |
-| 10:15–11:00 | Gut prompten (viel üben!) | Modul 2 |
-| 11:00–11:15 | ☕ Pause | |
-| 11:15–12:00 | Projekte & Wissen | Modul 3 |
-| 12:00–13:00 | 🍽️ Mittag | |
-| 13:00–14:00 | Cowork (Kern-Block) | Modul 4 |
-| 14:00–14:30 | Skills & Connectors | Modul 5 |
-| 14:30–14:45 | ☕ Pause | |
-| 14:45–15:10 | Claude Code (Ausblick) | Modul 6 |
-| 15:10–15:55 | Sicherheit & DSGVO (Pflicht, Zeit lassen) | Modul 7 |
-| 15:55–16:40 | Abschluss-Challenge | Modul 8 |
-| 16:40–17:00 | Fragen, Feedback, Ausblick, Abschluss | |
+| **Nie streichen** | 1 (Ampel) · 7 (Sicherheit & DSGVO) | Rechtliche Grundlage und roter Faden des Tages |
+| **Kern – viel Übungszeit** | 2 (Prompten) · 4 (Cowork) | Hier entsteht der Aha-Effekt; lieber hier länger bleiben |
+| **Kann ins Selbstlernen** | 5 · 6 · 8 | Verständnis- bzw. Übungseinheiten, auch allein machbar |
 
-> Halbtags-Variante: Module 0–4 + 7 (Sicherheit nie streichen!), Rest als Selbstlernen.
+> Kurz-Variante: Deck + Module 0–4 + 7. Den Rest als Selbstlernen mitgeben.
+>
+> Puffer einplanen: Pausen nach Bedarf, und Modul 7 nie unter Zeitdruck durchziehen.
 
 ---
 
 ## Didaktische Hinweise je Modul
 
-**Intro (Deck).** Starte mit dem Eröffnungs-Deck `praesentation.html` (~10–15 Min inkl.
+**Intro (Deck).** Starte mit dem Eröffnungs-Deck `praesentation.html` (inkl. der drei
 Live-Momente): erster Prompt am eigenen Team-Seat, Ampel-Zuruf, Prompt verbessern. Die drei
 Live-Momente leiten nahtlos in Modul 0–2 über – danach ist jeder schon eingeloggt und hat
 seinen ersten Chat geführt.
@@ -88,7 +87,7 @@ ausnutzen") sind für **alle** gedacht, passen aber nicht mehr in den Ganztag. Z
 
 - **Selbstlernen (Standard):** Am Tagesende als „Hausaufgabe der Woche" mitgeben – V1 zuerst.
   Beide Module sind eigenständig verständlich und haben eigene Übungen.
-- **Kurzblock (optional):** 60–90 Minuten als Follow-up-Termin, wenn erste Alltagserfahrung da
+- **Kurzblock (optional):** eigener Follow-up-Termin, wenn erste Alltagserfahrung da
   ist – dann zünden Kontext/„Dumb Zone" und die Desktop-Funktionen am besten.
 
 Inhaltlicher Anker fürs Anmoderieren: V1 erklärt, *warum* die Regeln aus Modul 2 und 7

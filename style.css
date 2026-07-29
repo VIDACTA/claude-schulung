@@ -392,6 +392,29 @@ body {
 .ampel-card.r { border-top: 3px solid var(--red); }
 .ampel-card.r .dot { background: var(--red); }
 
+/* ---------- Neutrale Info-Karten ---------- */
+/* Bewusst OHNE Ampelfarben. Grün/Gelb/Rot sind allein der 🚦 Datenschutz-Ampel
+   vorbehalten (Modul 1 + 7) – sie ist der rote Faden des ganzen Tages. Karten, die
+   Fähigkeiten, gleichwertige Alternativen oder Prüffragen zeigen, bekommen deshalb
+   einen einheitlichen Akzent: sonst lernt der Teilnehmer das Farbschema zuerst mit
+   der falschen Bedeutung. */
+.infogrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 24px 0; }
+.infocard {
+  border-radius: var(--radius); padding: 18px; background: var(--surface);
+  border: 1px solid var(--border); border-top: 3px solid var(--accent);
+}
+.infocard h4 {
+  margin: 0 0 8px; font-size: 1.05rem; color: var(--heading);
+  display: flex; align-items: center; gap: 8px;
+}
+.infocard ul { margin: 6px 0 0; padding-left: 20px; font-size: .92rem; color: var(--text-muted); }
+.infocard .idx {
+  flex: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: .8rem; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
 /* ---------- Prompt-Beispiel mit Copy ---------- */
 .prompt {
   position: relative;
@@ -419,6 +442,14 @@ body {
 }
 .prompt .copy-btn:hover { color: var(--text); background: var(--surface-2); }
 .prompt .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+/* Kurzer Hinweis direkt unter einem Prompt – zieht den Abstand zum Block hoch,
+   damit Prompt und Erläuterung als Einheit gelesen werden. */
+.prose .hint {
+  margin: -12px 0 20px;
+  font-size: .9rem;
+  color: var(--text-muted);
+}
 
 /* ---------- Übungskarte ---------- */
 .exercise {
@@ -672,7 +703,7 @@ main.page ~ .site-footer { margin-top: 40px; }
   .prompt .copy-btn { top: auto; bottom: 10px; right: 10px; padding: 10px 16px; font-size: 14px; }
 
   /* Silbentrennung: macht deutschen Fließtext in schmalen Spalten deutlich ruhiger */
-  .prose p, .prose li, .goals li, .ampel-card li { hyphens: auto; }
+  .prose p, .prose li, .goals li, .ampel-card li, .infocard li { hyphens: auto; }
 }
 
 /* Sehr schmale Geräte (iPhone SE & Co.): Kopfzeile darf nicht überstehen */

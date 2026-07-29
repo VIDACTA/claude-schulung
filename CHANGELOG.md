@@ -3,6 +3,37 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.8.0] – 2026-07-29
+
+### Changed
+- **Ampelfarben sind jetzt allein der Datenschutz-Ampel vorbehalten.** Die grün/gelb/rot-Karten
+  standen an 13 Stellen – aber nur an 8 davon bewertet die Farbe wirklich eine Erlaubnis oder ein
+  Risiko. In Modul 0 lernte der Teilnehmer das Schema deshalb zuerst mit der *falschen* Bedeutung
+  (dort stufte es Fähigkeiten ein), obwohl die 🚦 Ampel laut Trainer-Leitfaden der rote Faden des
+  ganzen Tages ist. Fünf Blöcke auf ein neutrales Kartenmuster umgestellt:
+  - Modul 0 „Stark / Mit Vorsicht / Nicht dafür da" – Fähigkeiten, keine Datenfreigabe
+  - Modul 3 „Projekt lohnt sich / Normaler Chat reicht" – zwei gleichwertige Wege, Gelb war keine Warnung
+  - Modul 5 „Bevor etwas verbunden wird: drei Fragen" – Farbe war reine Dekoration, jetzt nummeriert 1/2/3
+  - Modul 6 „Könnte sich lohnen / Eher nicht nötig" – Entscheidungshilfe
+  - Vertiefung 1 „Gute Gewohnheiten / Der ‚Neustart'-Trick" – zwei Tipps
+  Unverändert farbig bleiben die acht Blöcke mit echter Erlaubnis- oder Risiko-Aussage:
+  Datenschutz-Ampel in Modul 1, Modul 7 und im Deck, Browser-Ampel (Aufbau 1), Ton-Regeln und
+  Skript-Vergleich (Aufbau 4), DSGVO-Lead-Wege (Aufbau 5), Vertrauens-Check (Vertiefung 1).
+- **Modul 0: zweiter Beispiel-Prompt neutral formuliert.** Er beschrieb VIDACTA nur als
+  „Bildungsunternehmen für die Anerkennung ausländischer Pflegekräfte" – wer an einer unserer
+  Berufsfachschulen arbeitet, fand sich darin nicht wieder und bekam entsprechend unpassende
+  Vorschläge. Jetzt Schulen *und* Anerkennungsbegleitung, dazu der Hinweis, den ersten Satz an
+  den eigenen Bereich anzupassen.
+- **Trainer-Leitfaden: fester Tagesablauf entfernt.** Die Uhrzeiten-Tabelle widersprach den
+  Modul-Angaben (20-Minuten-Slot für Deck-Intro *und* ein 15-Minuten-Modul) und gab ein Tempo vor,
+  das an der Gruppe hängt. Ersetzt durch Reihenfolge + Gewichtung (nie streichen / Kern mit viel
+  Übungszeit / kann ins Selbstlernen) samt Kurz-Variante – ohne Zeitangaben.
+
+### Added
+- CSS-Muster `.infogrid` / `.infocard` für neutrale Karten, mit optionalem Nummern-Badge `.idx`.
+  Ein Kommentar im Stylesheet hält fest, warum dort keine Ampelfarben verwendet werden.
+- CSS-Muster `.hint` für einen kurzen Hinweis direkt unter einem Prompt-Block.
+
 ## [1.7.1] – 2026-07-27
 
 ### Fixed

@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
-**Stand:** 2026-07-28
-**Version:** 1.7.1 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Stand:** 2026-07-29
+**Version:** 1.8.0 (lokal verifiziert; **noch nicht gepusht** = noch nicht live)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -21,7 +21,12 @@
 - [x] **v1.7.0 Content-Ausbau:** 49 geprüfte Ergänzungen aus dem Seiten-Audit – Deck 11 → 15 Folien,
       Modul 8 von Challenge-Liste zu vollem Abschlussmodul, Aufbau 1/4 mit Anwendungsfällen und
       Beispielen, überall Tabellen/FAQ/Übungen statt reiner Aufzählungen
-- [x] Live: https://vidacta.github.io/claude-schulung/
+- [x] **v1.8.0 Ampel-Bereinigung:** Grün/Gelb/Rot gilt nur noch dort, wo die Farbe eine Erlaubnis
+      oder ein Risiko bewertet (8 Blöcke). Fünf Blöcke, die Fähigkeiten, gleichwertige Alternativen
+      oder Prüffragen zeigten, laufen jetzt über das neutrale Muster `.infogrid`/`.infocard`
+      (Modul 0, 3, 5, 6, Vertiefung 1). Dazu: Beispiel-Prompt in Modul 0 deckt Schulen und
+      Anerkennungsbegleitung ab; fester Tagesablauf aus dem Trainer-Leitfaden entfernt
+- [x] Live: https://vidacta.github.io/claude-schulung/ (Stand v1.7.1)
 
 ## Offen / nächste Schritte
 - Echte Screenshots aus der Team/Enterprise-Umgebung einsetzen (aktuell beschriftete SVG-Schemata —
