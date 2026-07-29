@@ -3,6 +3,21 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.11.0] – 2026-07-29
+
+### Changed
+- **Ampel präzisiert: Gelb war an einer Stelle zu streng.** „Interne Dokumente ohne
+  Namen/Kontaktdaten" stand unter Gelb – ohne Personenbezug greift der Datenschutz dort aber gar
+  nicht. Solche Dokumente (Abläufe, Vorlagen, Checklisten) sind jetzt **grün**, mit der Bedingung
+  „solange keine Person darin vorkommt". Gelb ist dafür klarer auf seinen eigentlichen Fall
+  zugeschnitten: *enthält* Personenbezug, den du vorher entfernst. Neu dabei der Hinweis auf
+  **indirekte** Erkennbarkeit (Standort + Datum + Beruf) – die Lücke, an der die Anonymisierung im
+  Alltag scheitert und die Modul 7 im Quiz schon abfragt.
+- **Neuer Hinweis „Zwei Fragen, die oft verwechselt werden".** Die Verschiebung nach Grün würde
+  sonst eine neue Lücke öffnen: Kalkulationen, Verträge und Strategiepapiere enthalten häufig keine
+  Personendaten, sind also grün im Sinne der Ampel – gehören aber trotzdem nicht in jedes Werkzeug.
+  Personenbezug und Vertraulichkeit sind zwei verschiedene Prüfungen; das steht jetzt ausdrücklich da.
+
 ## [1.10.0] – 2026-07-29
 
 ### Changed

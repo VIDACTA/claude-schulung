@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.10.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.11.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -35,6 +35,10 @@
       so streng?" – Daten verlassen das Haus, Gesundheitsdaten, Name nie nötig, Auskunftspflicht);
       Meldeweg „nicht löschen, melden" schon in Modul 1; Gender-Konstruktion bei den
       Datenschutzbeauftragten geglättet
+- [x] **v1.11.0 Ampel präzisiert:** interne Dokumente ohne Personenbezug von Gelb nach Grün, Gelb
+      klarer auf „enthält Personenbezug, den du entfernst" zugeschnitten (inkl. indirekter
+      Erkennbarkeit); neuer Hinweis, dass Personenbezug und Vertraulichkeit zwei verschiedene
+      Prüfungen sind
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
