@@ -59,6 +59,32 @@ Live-Momente): erster Prompt am eigenen Team-Seat, Ampel-Zuruf, Prompt verbesser
 Live-Momente leiten nahtlos in Modul 0–2 über – danach ist jeder schon eingeloggt und hat
 seinen ersten Chat geführt.
 
+Das Deck läuft in **sechs Kapiteln** (Kapitelname steht unten links, die Kerben in der
+Fortschrittsleiste zeigen, wie weit ein Kapitel noch trägt):
+
+| Kapitel | Folien | Was du hier erreichen willst |
+|---|---|---|
+| 1 · Ankommen | 1–4 | Angst nehmen, Fahrplan zeigen, **alle einloggen** |
+| 2 · Der erste Kontakt | 5–8 | Erster eigener Prompt, dann die zwei Merksätze: Claude ist eine Zuarbeit, und er kann sich überzeugend irren |
+| 3 · Wie das Ding funktioniert | 9–12 | Die drei „unter der Haube"-Fragen: Wortvorhersage, Harness, Modellwahl |
+| 4 · Die Ampel | 13–15 | Das Herzstück – Ampel, Zuruf-Quiz, KI-Kennzeichnung |
+| 5 · Handwerk & Werkzeuge | 16–21 | Prompt-Qualität, Cowork-Vorgeschmack, Ablage, VIDACTA-Skills |
+| 6 · Los geht's | 22 | Übergang in Modul 0 |
+
+**Kapitel 3 ist neu und optional kürzbar.** Wenn die Gruppe ungeduldig ist: Folie 10
+(Wortvorhersage) und 11 (Harness) sind die beiden, die sich am meisten lohnen – die Modellwahl
+(Folie 12) können Teilnehmer auch in Vertiefung 3 nachlesen. Umgekehrt: Wenn früh die Frage
+„welches Modell nehme ich?" kommt, hast du sie hier schon im Deck.
+
+**Zwei Fragen, auf die du im Deck vorbereitet sein solltest:**
+
+- *„Warum darf ich ChatGPT nicht nutzen?"* – kommt fast immer, meist bei Folie 12.
+  Kurzantwort: nicht wegen der Qualität, sondern weil für jedes Werkzeug geklärt sein muss, wer
+  die Daten bekommt. Ausführlich steht das in Vertiefung 3; vertief es im Workshop nur, wenn
+  gefragt wird, sonst bremst es.
+- *„Welches Modell habe ich denn?"* – lass die Teilnehmer selbst ins Auswahlmenü über dem
+  Eingabefeld schauen, statt es zu behaupten. Das hängt am Plan und ändert sich.
+
 **Modul 0 – Willkommen.** Wichtigstes Ziel: Angst nehmen. Lass alle in den ersten 5 Minuten einen
 eigenen Chat abschicken (im Deck-Intro meist schon passiert – dann hier nur vertiefen).
 Betone: „Man kann nichts kaputt machen."
@@ -89,8 +115,14 @@ Sache mitnimmt, dann: Passt die Nachfrage nicht zur Aufgabe, wird abgebrochen, n
 **Modul 5 – Connectors.** Reine Verständnis-Einheit. Klarmachen: Verbinden macht die IT, nicht jeder
 selbst. Denkaufgabe statt Klick-Übung.
 
-**Modul 6 – Claude Code.** Bewusst kurz & entspannt. „Gut zu wissen, kein Muss." Niemanden unter Druck
-setzen. Nur mit IT-Freigabe praktisch zeigen.
+**Modul 6 – Dateien & Ordner.** Das Modul hat jetzt **zwei Teile mit unterschiedlichem Gewicht.**
+*Teil 1 (für alle)* beantwortet „wo ist meine Datei jetzt?" – die Frage, die im Workshop
+garantiert kommt. Geh die drei Fälle kurz durch (Chat = kein Verzeichnis, Cowork = eigener
+Arbeitsbereich, Code = echter Ordner) und lande auf der einen Regel: **das Ergebnis gehört in die
+Team-Ablage, nicht in den Chatverlauf.** Aufgabe 6a lässt sich in wenigen Minuten am eigenen
+Rechner machen und lohnt sich – viele finden dabei ein Ergebnis von letzter Woche, das nirgends
+abgelegt ist. *Teil 2 (Claude Code)* bleibt bewusst kurz & entspannt: „Gut zu wissen, kein Muss."
+Niemanden unter Druck setzen, nur mit IT-Freigabe praktisch zeigen.
 
 **Modul 7 – Sicherheit (Pflicht).** Ernst, aber nicht angstmachend. Die Ampel-Zuordnungsübung gemeinsam
 lösen. Interne Ansprechpartner konkret benennen.
@@ -102,17 +134,24 @@ Am Ende: Fortschrittsbalken auf 100 %, kurzes Erfolgserlebnis feiern.
 
 ## Vertiefungs-Track (Claude verstehen) – Selbstlernen oder Kurzblock
 
-Die zwei Vertiefungs-Module (V1 „Wie Claude wirklich funktioniert", V2 „Claude Desktop voll
-ausnutzen") sind für **alle** gedacht, passen aber nicht mehr in den Ganztag. Zwei bewährte Wege:
+Die drei Vertiefungs-Module (V1 „Wie Claude wirklich funktioniert", V2 „Claude Desktop voll
+ausnutzen", V3 „Modelle & Werkzeuge") sind für **alle** gedacht, passen aber nicht mehr in den
+Ganztag. Zwei bewährte Wege:
 
 - **Selbstlernen (Standard):** Am Tagesende als „Hausaufgabe der Woche" mitgeben – V1 zuerst.
-  Beide Module sind eigenständig verständlich und haben eigene Übungen.
+  Alle drei Module sind eigenständig verständlich und haben eigene Übungen.
 - **Kurzblock (optional):** eigener Follow-up-Termin, wenn erste Alltagserfahrung da
   ist – dann zünden Kontext/„Dumb Zone" und die Desktop-Funktionen am besten.
 
 Inhaltlicher Anker fürs Anmoderieren: V1 erklärt, *warum* die Regeln aus Modul 2 und 7
 funktionieren (Kontext, Halluzinationen); V2 macht aus Modul 3 fünf Zeitspar-Werkzeuge
-(Projekte, Artefakte, Routinen, Anpassen, Geplant).
+(Projekte, Artefakte, Routinen, Anpassen, Geplant); **V3 beantwortet die zwei Fragen, die im
+Workshop immer kommen** – warum Cowork mehr kann als der Chat (das Modell ist nur der Kopf, das
+Programm drumherum gibt die Werkzeuge) und welches Modell man wofür nimmt.
+
+**V3 ist der Anlaufpunkt für die Anbieter-Frage.** Wenn im Workshop „aber ChatGPT kann doch …"
+kommt und du nicht ausufern willst: dort steht die vollständige Antwort inklusive des
+konstruktiven Wegs (Werkzeug-Idee einbringen statt still nutzen). Verweisen statt diskutieren.
 
 ---
 
@@ -148,7 +187,7 @@ der Grundschulung, nur mit dem betreffenden Team.
 ## Nach dem Workshop
 
 - [ ] Link zur Selbstlern-Site verteilen (zum Nachschlagen).
-- [ ] Vertiefungs-Module (V1/V2) als Selbstlern-Empfehlung mitgeben (siehe oben).
+- [ ] Vertiefungs-Module (V1/V2/V3) als Selbstlern-Empfehlung mitgeben (siehe oben).
 - [ ] Abschluss-Vermerk/Zertifikat für Teilnehmer ausstellen (optional).
 - [ ] Feedback einsammeln → in die Schulung einarbeiten.
 - [ ] Interessenten für Aufbaukurs (Claude Code / Connectors) notieren.
