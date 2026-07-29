@@ -3,6 +3,29 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.20.0] – 2026-07-29
+
+### Fixed
+- **Aufbau 1: zwei Ampel-Checks nahmen ihre Antwort vorweg** – dasselbe Muster („Alles grün? ✅"), das
+  in v1.13.0 aus Modul 4 entfernt wurde. Jetzt echte Fragen: welche Farbe hatte die Seite und woran
+  hast du das erkannt · waren beide Seiten wirklich öffentlich zugänglich. **Konsistenz-Check
+  nachgeschärft:** Regel 4 hatte nur den exakten Modul-4-Satz hinterlegt, deshalb wanderte das Muster
+  unbemerkt weiter. Neue Regel 4b prüft das **Muster** (Fragezeichen direkt vor einem Haken) und ist mit
+  Positiv- und Negativprobe getestet. Regel 9 meldet fehlende Dateien jetzt sauber statt zu abbrechen.
+
+### Added
+- **Aufbau 1: der Handgriff, ohne den die Tabu-Regel nicht einhaltbar ist.** Die Seite sagt richtig, dass
+  die Erweiterung sieht, was im Tab steht – auch hinter einem Login – und erklärt Postfach und
+  Personalunterlagen zum Tabu. Nur *wie* man das verhindert, stand nirgends: Wer zwischen Tabs wechselt
+  (Fachartikel → kurz ins Postfach → zurück), denkt im entscheidenden Moment nicht daran. Jetzt als
+  Gewohnheit formuliert: Erweiterung nur öffnen, wenn du sie brauchst – und schließen, *bevor* du in
+  Postfach, internes Portal oder Personalakte wechselst. Das konkrete Wie zeigt die IT bei der
+  Einrichtung; bewusst ohne Beschreibung einer Oberfläche, die abweichen kann.
+- **Aufbau 1: Prompt Injection ist eingeordnet statt neu eingeführt.** Es war das dritte Beispiel auf der
+  Site (nach Modul 4 und 7) – ohne jeden Querverweis, obwohl der Modulkopf „Grundlagen vorausgesetzt"
+  sagt. Jetzt mit Bezug auf beide Module und der Begründung, warum es im Browser besonders zählt:
+  fremde Seiten sind dort der Normalfall.
+
 ## [1.19.0] – 2026-07-29
 
 ### Added

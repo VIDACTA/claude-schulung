@@ -1,10 +1,11 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.19.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.20.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
-**Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.)
+**Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.);
+Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
 **Copy-Buttons:** alle 23 Prompts geprüft, Attribut und sichtbarer Text zeichengleich
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
@@ -69,6 +70,9 @@ prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Inclu
 - [x] **v1.19.0 Vertiefung 2:** Teilen per Link als eigene Kategorie („verlässt das Haus", anders als
       Projekt-Teilen in der Abteilung), geplante Aufgaben mit Prompt Injection verknüpft (fremde Inhalte
       ohne Aufsicht), zwei Vorbereitungspunkte im Trainer-Leitfaden
+- [x] **v1.20.0 Aufbau 1:** zwei Ampel-Checks nahmen die Antwort vorweg (Muster aus Modul 4 gewandert —
+      Check prüft jetzt das Muster, nicht den Satz); Handgriff-Regel „Erweiterung schließen, bevor du ins
+      Postfach wechselst"; Prompt Injection mit Modul 4/7 verknüpft statt neu eingeführt
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

@@ -60,10 +60,16 @@ foreach ($d in $dateien) {
         'saubere Tabelle bauen',                    # irreführendes Skill-Beispiel (v1.14.0)
         'gibt es einen eigenen, tieferen Aufbaukurs',# Kurs existiert noch nicht (v1.15.0)
         'interne Dokumente ohne Namen',             # in Modul 1 nach Grün verschoben (v1.11.0)
-        'interne Texte ohne Namen',                 # dito, Modul 7 + Deck (v1.16.0)
-        'Waren alle verwendeten Inhalte grün'       # Ampel-Check ohne vorweggenommene Antwort (v1.13.0)
+        'interne Texte ohne Namen'                  # dito, Modul 7 + Deck (v1.16.0)
     )
     foreach ($b in $alt) { if ($sichtbar -match [regex]::Escape($b)) { Melde '4 Veralteter Begriff' $n $b } }
+
+    # 4b Ampel-Checks dürfen ihre Antwort nicht vorwegnehmen: eine Frage, hinter der ein ✅ steht,
+    #    beantwortet sich selbst. Als exakter Satz geprüft (v1.13.0) wanderte das Muster weiter nach
+    #    Aufbau 1 — deshalb jetzt als Muster: Fragezeichen direkt vor einem Haken.
+    foreach ($m in [regex]::Matches($sichtbar, '[^.!?]{0,60}\?\s*✅')) {
+        Melde '4b Antwort vorweggenommen' $n ($m.Value.Trim() -replace '\s+', ' ')
+    }
 
     # 5 Gender: Doppelpunkt-Form ist CI (Brand Guideline), aber keine Schrägstrich-Konstruktionen
     foreach ($m in [regex]::Matches($sichtbar, '(die/den|der/dem|die/der)\s+\w+')) { Melde '5 Gender-Form' $n $m.Value }
@@ -96,7 +102,9 @@ foreach ($d in $dateien) {
 #   hier entstand der Folgefehler aus v1.11.0.
 $defs = @{}
 foreach ($n in @('modul-1.html','modul-7.html','praesentation.html')) {
-    $t = [System.IO.File]::ReadAllText((Join-Path $repo $n))
+    $pfad = Join-Path $repo $n
+    if (-not (Test-Path $pfad)) { Melde '9 Ampel-Definition' $n 'Datei fehlt — Ampel-Abgleich nicht moeglich'; continue }
+    $t = [System.IO.File]::ReadAllText($pfad)
     $roh = (([regex]::Matches($t, '(?s)<div class="ampel-card [gar]"[^>]*>.*?</ul>') | ForEach-Object { $_.Value }) -join ' ')
     $defs[$n] = @{
         GelbPersonenbezug    = ($roh -match 'mit Personenbezug')
@@ -107,7 +115,7 @@ foreach ($n in @('modul-1.html','modul-7.html','praesentation.html')) {
 foreach ($n in $defs.Keys) {
     if ($defs[$n].GelbInterneOhneNamen) { Melde '9 Ampel-Definition' $n 'Gelb enthaelt noch "interne … ohne Namen"' }
     if (-not $defs[$n].GelbPersonenbezug) { Melde '9 Ampel-Definition' $n 'Gelb nennt nicht "mit Personenbezug"' }
-    if (-not $defs[$n].Indirekt) { Melde '9 Ampel-Definition' $n 'Hinweis auf indirekte Erkennbarkeit fehlt' }
+    if (-not $defs[$n].Indirekt)          { Melde '9 Ampel-Definition' $n 'Hinweis auf indirekte Erkennbarkeit fehlt' }
 }
 
 # 10 data-copy-Integrität: Ein gerades " im Attributwert beendet das Attribut vorzeitig — der
