@@ -12,6 +12,14 @@ und klick sie mit der Gruppe durch.
 ## Vor dem Workshop (Checkliste)
 
 - [ ] Alle Teilnehmer haben einen funktionierenden Claude-Zugang (Team/Enterprise) und sind eingeloggt.
+- [ ] **Plätze zählen.** Reichen die vorhandenen Zugänge für alle Teilnehmer? Wenn nicht: zu zweit an
+      einem Platz arbeiten lassen — das funktioniert für **alle** Übungen. Vorher festlegen, wer tippt,
+      und nach der Hälfte tauschen.
+- [ ] **Verfügbare Funktionen im eigenen Plan durchklicken** und notieren, was es gibt: Projekte,
+      Artefakte, Anpassen, Routinen, Geplant. Vertiefung 2 ist bewusst mit Vorbehalt formuliert
+      („kann je nach Version abweichen"), weil das von außen nicht feststellbar ist — im Workshop
+      kannst du dagegen konkret sagen, was bei uns vorhanden ist. Das ersetzt vier Relativierungen
+      im Text durch eine klare Ansage.
 - [ ] Claude Desktop-App auf den Rechnern installiert (oder Browser-Zugang geklärt).
 - [ ] Beamer/Screenshare getestet, Site geöffnet.
 - [ ] **Eröffnungs-Deck** geöffnet: `praesentation.html` (Pfeiltasten/Klick zum Weiterschalten;

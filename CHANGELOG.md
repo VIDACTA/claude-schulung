@@ -3,6 +3,27 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.19.0] – 2026-07-29
+
+### Added
+- **Vertiefung 2: Teilen per Link ist als eigene Kategorie kenntlich gemacht.** Bisher stand als Regel
+  nur „vorher prüfen und anonymisieren (Ampel!)" – das ist die Regel für *Eingaben*. Ein geteilter
+  Artefakt-Link geht aber nach **außen**: Wer ihn hat, sieht den Inhalt, und ein Link lässt sich
+  weitergeben, ohne dass man davon erfährt. Damit ist es etwas anderes als das Projekt-Teilen, das seit
+  v1.12.1 innerhalb der Abteilung erlaubt ist – dort weiß man, wer Zugriff hat. Neuer roter Kasten mit
+  der Konsequenz: vor dem Teilen nach außen den Inhalt **komplett** durchlesen, und zwar nicht nur auf
+  Personendaten, sondern auch auf interne Zahlen, Preise und unabgestimmte Formulierungen. Der
+  Selbst-Test-Fall dazu wurde mitgezogen.
+- **Vertiefung 2: geplante Aufgaben mit Prompt Injection verknüpft.** Das Modul warnte „automatisch
+  heißt nicht ungeprüft", ließ aber die eigentliche Zuspitzung aus: Sucht eine geplante Aufgabe im Web
+  oder liest sie Dateien, verarbeitet sie fremde Inhalte **ohne dass jemand zusieht** – genau das
+  Risiko aus Modul 4, nur ohne Nutzer davor. Mit Konsequenzen: eng zuschneiden, keine Aktionen nach
+  außen automatisieren, Ergebnisse regelmäßig durchsehen.
+- **Trainer-Leitfaden: zwei Vorbereitungspunkte.** Verfügbare Funktionen im eigenen Plan vorab
+  durchklicken (Vertiefung 2 relativiert die Verfügbarkeit an vier Stellen, weil sie von außen nicht
+  feststellbar ist – im Workshop lässt sich das durch eine klare Ansage ersetzen). Dazu: Plätze zählen
+  und bei knappen Zugängen zu zweit arbeiten lassen, was für alle Übungen funktioniert.
+
 ## [1.18.0] – 2026-07-29
 
 ### Changed
