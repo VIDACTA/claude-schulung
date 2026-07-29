@@ -84,10 +84,18 @@ laufen lassen, während der Beamer nur die Folien zeigt.
 2. Auf dem Laptop-Display ein zweites Fenster mit **`praesentation.html?presenter`** öffnen.
 3. Fertig. Du blätterst im Presenter-Fenster, das Beamer-Fenster folgt automatisch.
 
-**Was du im Presenter-Fenster siehst:** die aktuelle Folie, daneben die **nächste**, darunter die
-**Notizen zu genau dieser Folie**, und unten Folienzähler, Aufdeck-Stand („2 / 3“ = zwei von drei
-Klick-Elementen sichtbar), Timer und eine Anzeige, ob das Beamer-Fenster wirklich mithört
-(grüner Punkt = folgt).
+**Was du im Presenter-Fenster siehst:** links oben die aktuelle Folie (klein — du siehst sie ja am
+Beamer), darunter groß den **Sprechertext**; rechts die **nächste Folie** und die
+**Stichpunkt-Hinweise** zu genau dieser Folie. Unten Folienzähler, Aufdeck-Stand („2 / 3“ = zwei
+von drei Klick-Elementen sichtbar), Timer und eine Anzeige, ob das Beamer-Fenster wirklich
+mithört (grüner Punkt = folgt).
+
+**Zum Sprechertext:** Er ist zum **frei Nachsprechen** gedacht, nicht zum Vorlesen — vorgelesener
+Text hört sich vorgelesen an, und die Gruppe merkt das sofort. Nimm ihn als Sicherheitsnetz: Du
+weißt, dass der Faden da ist, und kannst frei erzählen. Wenn du eine Folie gut kennst, ignoriere
+ihn. Wenn du hängst, findest du in zwei Sekunden die Zeile wieder. Die **Stichpunkte rechts** sind
+das Gegenstück: Sie sagen, was du *tun* sollst (herumgehen, warten, aufdecken) und wo die typische
+Falle liegt.
 
 **Gut zu wissen:**
 

@@ -283,12 +283,28 @@
       position: absolute; top: 0; left: 0; border: 0;
       transform-origin: top left;
     }
-    /* Die Vorschau der naechsten Folie braucht einen Hoehenbezug: als Flex-Item mit
-       flex:1 1 auto in einem Panel, das selbst nur so hoch wie sein Inhalt ist,
-       kollabiert sie sonst auf 0 – der Rahmen bliebe schlicht leer. Das Seitenverhaeltnis
-       entspricht der Buehne (1280x800). */
+    /* Beide Vorschauen brauchen einen Hoehenbezug: als Flex-Item mit flex:1 1 auto in
+       einem Panel, das selbst nur so hoch wie sein Inhalt ist, kollabiert die Buehne auf 0 –
+       der Rahmen bliebe schlicht leer. Seitenverhaeltnis wie die Buehne (1280x800).
+       Die Folie darf hier bewusst klein bleiben: der Trainer sieht sie am Beamer, im
+       Presenter-Fenster ist der Sprechertext das Wichtigere. */
+    .pres-main > .pres-panel:first-child { flex: 0 0 auto; }
+    .pres-main .stage { aspect-ratio: 16 / 10; flex: 0 0 auto; min-height: 150px; max-height: 46vh; }
     .pres-side > .pres-panel:first-child { flex: 0 0 auto; }
     .pres-side .stage { aspect-ratio: 16 / 10; flex: 0 0 auto; min-height: 90px; }
+
+    /* Sprechertext: das Feld, auf das der Trainer beim Reden schaut. Deutlich groesser
+       gesetzt als die Stichpunkte und mit ruhiger Zeilenhoehe, damit man die Zeile beim
+       Aufblicken wiederfindet. */
+    .pres-script {
+      flex: 1 1 auto; overflow-y: auto; padding: 16px 20px;
+      color: #eaf1fb; font-size: clamp(15px, 1.15vw, 19px); line-height: 1.62;
+    }
+    .pres-script p { margin: 0 0 12px; }
+    .pres-script p:last-child { margin-bottom: 0; }
+    .pres-script em { color: #ffd9a8; font-style: normal; font-weight: 600; }
+    .pres-script strong { color: #fff; }
+    .pres-script .none { color: #7d8ea8; font-style: italic; }
 
     .pres-notes { flex: 1 1 auto; overflow-y: auto; padding: 14px 16px; color: #dfe9f7; font-size: 15px; line-height: 1.5; }
     .pres-notes ul { margin: 0; padding-left: 19px; }
@@ -330,14 +346,30 @@
     .pres-bar .peer.on .dot { background: #7fd8a4; }
     .pres-bar .peer.on { color: #7fd8a4; }
 
-    /* Schmale Fenster: Vorschau oben, Notizen darunter – der Trainer braucht die
-       Notizen auch dann lesbar, wenn er das Fenster halb so breit zieht. */
-    @media (max-width: 1080px) {
-      .pres { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) auto; }
+    /* Schmale oder niedrige Fenster: einspaltig, und der Platz gehoert dem Text.
+       Die Vorschau der aktuellen Folie wird klein, die Vorschau der naechsten Folie
+       verschwindet ganz – wer das Fenster halb zieht, braucht Sprechertext und Hinweise
+       lesbar, nicht zwei Miniaturbilder. */
+    @media (max-width: 1080px), (max-height: 720px) {
+      .pres {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 1fr) auto auto;
+        padding: 10px; gap: 10px;
+      }
       .pres-main { grid-row: 1; grid-column: 1; }
       .pres-side { grid-row: 2; grid-column: 1; }
-      .pres-main .stage { height: 34vh; flex: 0 0 auto; }
-      .pres-side .stage { height: 17vh; flex: 0 0 auto; }
+      .pres-bar  { grid-row: 3; grid-column: 1; }
+      /* Hoehe vorgeben und die Breite daraus rechnen (Buehne ist 16:10), sonst spannt sich
+         die Buehne ueber die volle Spaltenbreite und die klein skalierte Folie sitzt in
+         einem breiten toten Rahmen. */
+      .pres-main .stage {
+        aspect-ratio: auto; height: 26vh; min-height: 120px; max-height: none;
+        width: calc(26vh * 1.6); max-width: 100%; margin: 0 auto;
+      }
+      .pres-main > .pres-panel:last-child { min-height: 150px; }
+      .pres-side > .pres-panel:first-child { display: none; }
+      .pres-side > .pres-panel:last-child { flex: 0 0 auto; max-height: 34vh; min-height: 96px; }
+      .pres-panel > h3 .badge { display: none; }
     }
   </style>
 </head>
@@ -700,9 +732,13 @@
        zwei zusaetzliche Kopien der Praesentation laden. -->
   <div class="pres" hidden>
     <div class="pres-main">
-      <div class="pres-panel" style="flex:1 1 auto;">
+      <div class="pres-panel">
         <h3>Jetzt auf dem Beamer <span class="badge" data-pres-chapter></span></h3>
         <div class="stage" data-stage="current"><iframe title="Aktuelle Folie"></iframe></div>
+      </div>
+      <div class="pres-panel" style="flex:1 1 auto;">
+        <h3>Sprechertext <span class="badge">frei nachsprechen, nicht vorlesen</span></h3>
+        <div class="pres-script" data-pres-script></div>
       </div>
     </div>
 
@@ -739,20 +775,37 @@
        .warn = Falle / was du nicht tun solltest -->
   <template id="deck-notes">
     <div data-slide="1">
-      <span class="say">„Heute lernt niemand ein Programm auswendig. Wir probieren aus – an echten Aufgaben, an deinem eigenen Zugang.“</span>
+      <p class="script">Herzlich willkommen. Schön, dass ihr da seid. Heute geht es um Claude – das
+      KI-Werkzeug, mit dem wir bei VIDACTA arbeiten. Und ich sage gleich vorweg, was heute
+      <em>nicht</em> passiert: Ihr müsst kein Programm auswendig lernen, und es gibt keine
+      Prüfung. Wir probieren aus. An echten Aufgaben aus deinem Alltag, mit deinem eigenen Zugang.
+      Wer am Ende des Tages weiß, wann er Claude einsetzt und wann besser nicht, hat alles
+      mitgenommen, worauf es ankommt.</p>
       <ul>
         <li><strong>Noch nicht einloggen lassen.</strong> Das kommt gezielt auf Folie 4, sonst sind die Hälfte schon abgetaucht.</li>
         <li>Kurz halten – der erste echte Moment ist Folie 5.</li>
       </ul>
     </div>
     <div data-slide="2">
+      <p class="script">Vier Dinge nehmt ihr heute mit. Erstens: Ihr könnt Claude einen klaren
+      Auftrag geben und bekommt etwas Brauchbares zurück. Zweitens: Ihr könnt eine ganze Aufgabe
+      abgeben, statt jeden Schritt selbst zu tippen. Drittens: Ihr habt eine einfache Regel im
+      Kopf, mit der ihr jederzeit entscheiden könnt, was in so ein Werkzeug hinein darf und was
+      niemals. Und viertens – das ist mir das Wichtigste: Ihr prüft, was rauskommt. Denn Claude
+      kann sich irren, und er klingt dabei sehr überzeugend.</p>
       <ul>
         <li>Die vier Punkte sind das Versprechen des Tages. <em>Langsam</em> vorlesen, das ist der Erwartungsrahmen.</li>
-        <li>Der letzte Punkt („prüfen, weil Claude sich überzeugend irren kann“) ist der wichtigste – er kommt auf Folie 8 als eigene Regel zurück.</li>
+        <li>Der letzte Punkt ist der wichtigste – er kommt auf Folie 8 als eigene Regel zurück.</li>
         <li>Klick deckt „Kein Vorwissen nötig“ auf. Bei sichtbarer Nervosität in der Gruppe: hier ansetzen.</li>
       </ul>
     </div>
     <div data-slide="3">
+      <p class="script">Kurz zur Orientierung. Die Schulung hat drei Wege. Die Grundlagen machen
+      wir heute gemeinsam, die sind für alle. Dann gibt es einen Vertiefungs-Teil für die, die
+      verstehen wollen, wie Claude eigentlich arbeitet. Und einen Aufbau-Teil für Marketing, mit
+      KI-Bildern, Videos und Anzeigen. Alles, was ich heute zeige, steht auf dieser Seite. Ihr
+      behaltet sie, ihr müsst also nichts mitschreiben. Und Fragen kommen sofort dran, nicht am
+      Ende – wenn etwas unklar ist, unterbrecht mich einfach.</p>
       <ul>
         <li>Nur <strong>Grundlagen</strong> sind heute dran. Vertiefung und Aufbau sind Selbstlernen bzw. eigener Termin – das laut sagen, sonst rechnet jemand mit 16 Modulen.</li>
         <li><strong>Die URL im Chat oder an die Wand.</strong> Ab hier sollten alle die Site offen haben.</li>
@@ -761,6 +814,12 @@
       <span class="warn">Keine Uhrzeiten nennen. Das Tempo hängt an der Gruppe, und die Site nennt bewusst keine.</span>
     </div>
     <div data-slide="4">
+      <p class="script">Bevor wir anfangen, die wichtigste Regel des Tages: Du kannst hier nichts
+      kaputt machen. Es gibt keinen Knopf, der etwas zerstört, und es gibt keine dummen Fragen.
+      Wenn du etwas ausprobierst und es kommt Unsinn heraus, dann hast du genau das gelernt, was
+      du lernen sollst. Also: Öffnet jetzt bitte Claude, entweder die App oder claude.ai im
+      Browser, und meldet euch mit dem VIDACTA-Zugang an. Ich warte, bis alle drin sind – sagt
+      bitte Bescheid, wenn es bei jemandem klemmt.</p>
       <ul>
         <li><strong>Der Login-Moment.</strong> Erst weiterklicken, wenn wirklich alle drin sind – herumgehen, nicht vom Pult aus fragen.</li>
         <li>Zwei Klicks: erst die Aufforderung, dann der Haken. Dazwischen Zeit lassen.</li>
@@ -768,20 +827,39 @@
       </ul>
     </div>
     <div data-slide="5">
-      <span class="say">„Kopieren, abschicken, in Ruhe lesen. Es gibt hier nichts falsch zu machen.“</span>
+      <p class="script">Jetzt der erste eigene Prompt. Auf der Folie steht eine Frage, und rechts
+      unten im Kasten ist ein Kopieren-Knopf. Kopiert die Frage, fügt sie bei Claude ein und
+      schickt sie ab. Dann lest die Antwort in Ruhe. Ihr werdet sehen: Da stehen Aufgaben aus
+      eurem eigenen Arbeitsalltag drin. Und wenn ihr fertig seid, stellt eine Nachfrage – zum
+      Beispiel: Zeig mir Nummer drei an einem konkreten Beispiel. Das ist der eigentliche Punkt:
+      Man darf nachfragen. Es ist ein Gespräch, kein Suchfeld.</p>
       <ul>
         <li><strong>Kopier-Knopf zeigen</strong> – rechts unten im Prompt-Kasten, viele sehen ihn nicht.</li>
-        <li>Die Nachfrage („Zeig mir Nummer 3 an einem Beispiel“) ist der eigentliche Aha-Moment: <em>man darf nachfragen</em>.</li>
+        <li>Die Nachfrage ist der eigentliche Aha-Moment: <em>man darf nachfragen</em>.</li>
         <li>Zwei bis drei Antworten laut vorlesen lassen – die Unterschiede sind der beste Einstieg in Folie 6.</li>
       </ul>
     </div>
     <div data-slide="6">
+      <p class="script">Das hier ist keine Zukunftsmusik. Diese fünf Dinge machen Kolleginnen und
+      Kollegen bei uns heute schon: eine E-Mail an eine Bewerberin freundlicher formulieren, ein
+      langes PDF in fünf Stichpunkten zusammenfassen, einen Text ins Englische oder in einfache
+      Sprache bringen, Ideen für einen Social-Media-Post sammeln, aus losen Notizen eine saubere
+      Liste machen. Schaut mal auf eure Antwort von vorhin: Wie viele davon hat Claude euch selbst
+      vorgeschlagen? Meistens sind es drei oder vier. Das ist kein Zufall – es sind genau die
+      Aufgaben, für die er gebaut ist.</p>
       <ul>
         <li>Erst die Liste, dann der Klick mit der Vergleichsfrage – <strong>nicht umgekehrt</strong>.</li>
-        <li>Die Frage „wie viele davon hat Claude selbst vorgeschlagen?“ funktioniert fast immer: meist drei bis vier. Das macht die Liste glaubwürdig, ohne dass du sie verkaufen musst.</li>
+        <li>Die Frage funktioniert fast immer. Das macht die Liste glaubwürdig, ohne dass du sie verkaufen musst.</li>
       </ul>
     </div>
     <div data-slide="7">
+      <p class="script">Damit wir realistisch bleiben, zwei Seiten. Was Claude ist: eine geduldige
+      Kollegin, die dir zuarbeitet. Sie schreibt, fasst zusammen, übersetzt, bringt Struktur in
+      Chaos – und liefert dir so viele Entwürfe, wie du willst, ohne genervt zu sein. Was Claude
+      nicht ist: keine Rechtsberatung, keine medizinische Beratung, keine amtliche Auskunft. Und
+      niemand, der Entscheidungen für dich trifft. Für uns heißt das konkret: Die verbindliche
+      Auskunft zu einer Anerkennung gibt immer die zuständige Stelle. Claude hilft dir, den Weg
+      dorthin vorzubereiten.</p>
       <ul>
         <li><strong>Einordnung vor Warnung</strong> – deshalb steht diese Folie vor Regel Nr. 2.</li>
         <li>Rechte Spalte ernst nehmen: keine Rechtsberatung, keine medizinische Beratung, keine amtliche Auskunft.</li>
@@ -789,7 +867,12 @@
       </ul>
     </div>
     <div data-slide="8">
-      <span class="say">„Die Antwort von eben klang sicher. Claude klingt <em>immer</em> sicher – auch wenn er falsch liegt.“</span>
+      <p class="script">Und jetzt der Satz, den ihr mitnehmen sollt, wenn ihr alles andere
+      vergisst: Claude kann sich überzeugend irren. Die Antwort, die ihr vorhin gelesen habt, klang
+      sicher. Er klingt immer sicher. Auch dann, wenn er falsch liegt. Dafür gibt es ein Fachwort,
+      halluzinieren, aber das Wort ist egal. Wichtig ist die Konsequenz: Du bleibst
+      verantwortlich. Zahlen, Namen und Fakten prüfst du, bevor etwas rausgeht. Claude liefert den
+      Entwurf, du entscheidest. Warum das technisch so ist, sehen wir gleich.</p>
       <ul>
         <li><strong>Der wichtigste Merksatz des Tages.</strong> Nicht abkürzen, auch wenn die Zeit drückt.</li>
         <li>Wenn jemand einen eigenen Fehlerfall erzählt: aufgreifen, das ist wertvoller als jedes Beispiel von dir.</li>
@@ -797,70 +880,136 @@
       </ul>
     </div>
     <div data-slide="9">
+      <p class="script">Kurz unter die Haube. Drei Folien, kein Fachchinesisch. Danach versteht
+      ihr, warum Claude sich irren kann, warum er in manchen Programmen plötzlich viel mehr kann,
+      und welches Modell ihr wann nehmt. Wer sich für Technik nicht interessiert: Hört trotzdem
+      kurz zu. Diese drei Dinge sparen euch später echten Ärger.</p>
       <ul>
         <li>Kapitel-Trennfolie, drei Sätze genügen.</li>
         <li><strong>Kürzbar, wenn die Gruppe unruhig ist:</strong> Folie 10 und 11 lohnen am meisten, die Modellwahl (12) steht auch in Vertiefung 3.</li>
       </ul>
     </div>
     <div data-slide="10">
-      <span class="say">„Claude schlägt nichts nach. Er hat sehr viel gelesen und setzt Stück für Stück das an, was am besten passt.“</span>
+      <p class="script">Was ist KI eigentlich? Ganz einfach gesagt: Claude rät das nächste Wort.
+      Sehr, sehr gut. Er hat riesige Mengen Text gelesen und dabei gelernt, welche Wörter
+      typischerweise aufeinander folgen. Bei jeder Antwort setzt er Stück für Stück das an, was am
+      besten passt. Wichtig ist, was er dabei <em>nicht</em> tut: Er schlägt nichts in einer
+      Datenbank nach. Er ist keine Suchmaschine. Stellt ihn euch vor wie eine Kollegin, die
+      unglaublich viel gelesen hat und frei aus dem Kopf erzählt. Und wer aus dem Kopf erzählt,
+      klingt auch dann flüssig, wenn ein Detail daneben ist. Genau das ist die Erklärung für
+      Regel Nummer zwei.</p>
       <ul>
         <li>Das Bild aus Vertiefung 1 hilft: <strong>eine belesene Kollegin, die frei aus dem Kopf erzählt</strong> – nicht eine Suchmaschine.</li>
-        <li>Der Klick schließt den Kreis zu Regel Nr. 2: Wer aus dem Gedächtnis erzählt, klingt auch bei einem falschen Detail flüssig.</li>
+        <li>Der Klick schließt den Kreis zu Regel Nr. 2.</li>
       </ul>
       <span class="warn">Nicht in Technik abrutschen. Keine Tokens, keine Parameter, keine Trainingsdaten – das steht in Vertiefung 1 für die, die es wollen.</span>
     </div>
     <div data-slide="11">
+      <p class="script">Zweite Frage: Warum kann Claude in manchen Programmen plötzlich viel mehr?
+      Die Antwort ist, dass das Modell nur der Kopf ist. Das Modell selbst kann genau eine Sache:
+      aus Text neuen Text machen. Es hat keine Hände. Es kommt nicht an deine Dateien. Es hat kein
+      Gedächtnis über das Gespräch hinaus. Alles andere macht das Programm drumherum – Dateien
+      lesen, im Web suchen, sich Notizen merken, Schritte planen. Fachleute nennen das ein
+      Harness, ein Gestell, in das das Modell eingespannt wird. Das erklärt eine Sache, die viele
+      verwirrt: Der Chat, Cowork und Claude Code sind dasselbe Modell in unterschiedlichen
+      Gestellen. Claude wird nicht klüger. Er bekommt mehr in die Hand. Und daraus folgt etwas
+      Wichtiges: Ein Modell, das nur redet, kann sich irren – da liest du die Antwort und merkst
+      es. Ein Modell, das handeln kann, kann etwas anstellen.</p>
       <ul>
         <li><strong>Die Folie, die den größten Unterschied macht.</strong> Danach ist klar, warum Cowork mehr kann – ohne Magie.</li>
         <li>Erst die zwei Zeilen lesen lassen, dann der Klick mit „dasselbe Modell in unterschiedlichen Gestellen“.</li>
-        <li>Der zweite Klick ist die Verantwortungs-Eskalation: <strong>reden = kann sich irren, handeln = kann etwas anstellen.</strong> Das ist die Brücke zu Modul 4 und 7.</li>
+        <li>Der zweite Klick ist die Verantwortungs-Eskalation. Das ist die Brücke zu Modul 4 und 7.</li>
         <li>„Harness“ nur als Randnotiz nennen – niemand muss das Wort behalten.</li>
       </ul>
     </div>
     <div data-slide="12">
+      <p class="script">Dritte Frage: Welches Modell nehme ich? Es gibt Claude in mehreren
+      Größen. Opus denkt am gründlichsten – den nimmst du, wenn es knifflig wird, viel Material
+      auf einmal, echte Analyse. Sonnet ist der Alltag: schreiben, zusammenfassen, übersetzen,
+      Ideen sammeln. Und Haiku ist der schnelle für kurze, einfache Sachen. Jetzt die Faustregel,
+      und die ist wichtiger als die Tabelle: Lass die Voreinstellung stehen. Sie passt fast immer.
+      Wechsle erst, wenn dich etwas <em>stört</em> – zu oberflächlich, dann eine Stufe hoch, zu
+      langsam für eine simple Aufgabe, dann eine Stufe runter. Und noch etwas: Ein klarer Auftrag
+      an das kleinste Modell ist besser als ein vager Auftrag an das größte.</p>
       <ul>
-        <li><strong>Nicht auswendig lernen lassen.</strong> Die Faustregel nach dem Klick ist die Botschaft: Voreinstellung stehen lassen, erst wechseln, wenn etwas stört.</li>
+        <li><strong>Nicht auswendig lernen lassen.</strong> Die Faustregel nach dem Klick ist die Botschaft.</li>
         <li>Hier kommt fast immer <em>„welches habe ich denn?“</em> → alle ins Auswahlmenü über dem Eingabefeld schauen lassen. Das hängt am Plan, also nicht behaupten.</li>
         <li>Und fast immer <em>„warum nicht ChatGPT?“</em> → Kurzantwort: nicht wegen der Qualität, sondern weil geklärt sein muss, wer die Daten bekommt. Ausführlich steht das in Vertiefung 3 – <strong>hier nicht ausufern</strong>.</li>
       </ul>
     </div>
     <div data-slide="13">
+      <p class="script">Und jetzt der rote Faden für den ganzen Tag: die Datenschutz-Ampel. Vor
+      jeder Eingabe und vor jedem Upload stellst du dir eine einzige Frage: Welche Farbe hat das?
+      Grün heißt: nutzen. Öffentliche Texte, Broschüren, eigene Entwürfe ohne Personenbezug,
+      erfundene Beispieldaten. Gelb heißt: erst anonymisieren. Da steht etwas drin, was auf eine
+      Person zeigt, aber du kannst es entfernen. Achtung, das gilt auch indirekt – Herkunft plus
+      Ereignis reicht manchmal schon, um jemanden erkennbar zu machen. Und Rot heißt: niemals.
+      Echte Bewerber- und Kundendaten, Gesundheitsangaben, Urkunden, Ausweise, Passwörter. Wenn du
+      unsicher bist, gilt Rot. Diese eine Gewohnheit schützt dich und sie schützt VIDACTA.</p>
       <ul>
         <li><strong>Das Herzstück des Tages.</strong> Hier lieber mehr Zeit als bei allem anderen.</li>
-        <li>Jede Karte einzeln durchgehen. Bei Gelb betonen: es geht um Personenbezug, <em>auch indirekt</em> (Herkunft plus Ereignis reicht schon).</li>
+        <li>Jede Karte einzeln durchgehen. Bei Gelb betonen: es geht um Personenbezug, <em>auch indirekt</em>.</li>
         <li>Der Klick bringt „Im Zweifel: Rot“ – die eine Gewohnheit, die alles andere abfängt.</li>
       </ul>
     </div>
     <div data-slide="14">
+      <p class="script">Machen wir das gemeinsam. Ich lese eine Situation vor, ihr ruft die Farbe
+      rein. Erste: Eine öffentliche Info-Broschüre zur Pflegeausbildung zusammenfassen. – Grün,
+      genau. Zweite: Eine E-Mail korrigieren lassen, in der Name, Geburtsdatum und eine Diagnose
+      stehen. – Rot. Und zwar ohne Diskussion, das sind Gesundheitsdaten. Dritte, und die ist die
+      interessanteste: Aus internen Stichpunkten ohne Namen einen Team-Aushang machen. – Gelb, und
+      dann wird daraus Grün, sobald du die letzten Namen rausgenommen hast. Das ist der Fall, den
+      ihr im Alltag am häufigsten habt.</p>
       <ul>
         <li><strong>Zurufen lassen, nicht vorlesen.</strong> Jede Zeile einzeln aufdecken, erst die Situation, dann die Antwort.</li>
-        <li>Fall 3 ist der lehrreichste: Gelb wird zu Grün, <em>wenn</em> man anonymisiert. Das ist der Alltagsfall.</li>
+        <li>Fall 3 ist der lehrreichste: Gelb wird zu Grün, <em>wenn</em> man anonymisiert.</li>
         <li>Bei Unsicherheit in der Gruppe: nachfragen, <em>warum</em> – die Begründung zählt mehr als die Farbe.</li>
       </ul>
     </div>
     <div data-slide="15">
+      <p class="script">Neben dem Datenschutz gibt es eine zweite Pflicht. Die EU verlangt, dass
+      Menschen erkennen können, wenn ein Inhalt von einer KI erzeugt wurde. Das steht in Artikel
+      50 der KI-Verordnung, und die Pflichten dazu greifen ab dem zweiten August 2026. Für die
+      meisten von euch ist das entspannt: Ein Text, den du mit Claude entwirfst, selbst
+      überarbeitest und dann verschickst, ist unkritisch. Du bist der Absender, wie bei jedem
+      Werkzeug. Anders ist es bei Bildern und Videos: Jedes KI-Bild und jedes KI-Video, das nach
+      außen geht, trägt bei uns ein festes Kennzeichnungs-Icon. Ohne Icon geht kein Creative raus.
+      Wer damit arbeitet, findet die Details im Aufbau-Teil.</p>
       <ul>
         <li>Kurz halten für alle, die kein Marketing machen: <strong>Text unkritisch, Bild und Video brauchen das Icon.</strong></li>
-        <li>Datum nennen (2. August 2026) – das macht es konkret.</li>
+        <li>Datum nennen – das macht es konkret.</li>
         <li>Der Klick verweist in den Aufbau-Track. Wer dort nicht hingeht, braucht nur das Prinzip.</li>
       </ul>
       <span class="warn">Das ist unsere Hausregel als Vorsichtsmaßnahme, keine Rechtsauslegung. Nicht in Detailfragen einsteigen – im Zweifel Marketing-Team.</span>
     </div>
     <div data-slide="16">
+      <p class="script">So. Ihr wisst jetzt, was Claude ist, wie er arbeitet und was hinein darf.
+      Fehlt das Handwerk: Wie bekommt man eigentlich <em>gute</em> Ergebnisse? Und die Frage, die
+      im Alltag am häufigsten kommt: Wo landen eigentlich meine Dateien?</p>
       <ul>
-        <li>Kapitel-Trennfolie. Kurz: „Du weißt jetzt, was Claude ist und was rein darf – jetzt das Handwerk.“</li>
+        <li>Kapitel-Trennfolie. Kurz halten.</li>
       </ul>
     </div>
     <div data-slide="17">
+      <p class="script">Hier zwei Aufträge an dieselbe KI. Links: Schreib was über unsere
+      Ausbildung. Rechts: Schreib einen freundlichen Instagram-Post, maximal vier Sätze, für
+      Pflegekräfte aus dem Ausland, die eine Anerkennung in Deutschland suchen, Ton einladend,
+      kein Werbe-Blabla. Gleiche KI, völlig anderes Ergebnis. Der Unterschied ist nicht die
+      Technik, sondern was ihr hineingegeben habt: Wer bist du, für wen ist der Text, wie lang,
+      welcher Ton. Das ist die gute Nachricht des Tages: Die Qualität hängt an deiner Anweisung.
+      Und das ist Handwerk, das kann man lernen.</p>
       <ul>
         <li><strong>Der größte Aha-Effekt des Tages.</strong> Beide Kästen vorlesen, den Unterschied wirken lassen.</li>
-        <li>Wenn möglich live zeigen: denselben Auftrag einmal vage, einmal klar. Zwei Minuten, riesige Wirkung.</li>
+        <li>Wenn möglich live zeigen: denselben Auftrag einmal vage, einmal klar.</li>
         <li>Der Klick bringt den Merksatz: die Qualität der Antwort hängt an der Qualität der Anweisung.</li>
       </ul>
     </div>
     <div data-slide="18">
-      <span class="say">„Nimm den vagen Auftrag und mach ihn besser. Wer bist du, für wen ist der Text, wie lang, welcher Ton?“</span>
+      <p class="script">Jetzt seid ihr dran. Kopiert den vagen Auftrag von der Folie und macht ihn
+      besser. Vier Fragen helfen: Wer bist du? Für wen ist der Text? Wie lang soll er sein?
+      Welcher Ton? Schickt euren verbesserten Auftrag ab und schaut, was zurückkommt. Und dann
+      vergleicht mit dem Sitznachbarn: Wessen Version hat mehr Kontext bekommen, und was hat das
+      verändert? Der Vergleich ist hier wichtiger als das Ergebnis.</p>
       <ul>
         <li><strong>Alle arbeiten selbst.</strong> Herumgehen, über die Schulter schauen, nicht vom Pult moderieren.</li>
         <li>Der Vergleich mit dem Sitznachbarn ist wichtiger als das Ergebnis – dort entsteht die Einsicht.</li>
@@ -868,20 +1017,43 @@
       </ul>
     </div>
     <div data-slide="19">
+      <p class="script">Ein kurzer Blick voraus. Bisher habt ihr gechattet: Du fragst, Claude
+      antwortet, du machst den nächsten Schritt selbst. Wie bei einer Kollegin, der du eine Frage
+      stellst. Es geht aber auch anders. In Cowork gibst du ein Ziel vor – bereite mir eine
+      Übersicht vor – und Claude recherchiert, ordnet und erstellt das Dokument selbstständig. Ein
+      Auftrag, mehrere Schritte, ohne dass du Technik brauchst. Eines bleibt gleich, und darauf
+      komme ich immer wieder zurück: Geprüft wird vor der Verwendung. Der Agent arbeitet für dich,
+      nicht statt dir.</p>
       <ul>
         <li>Nur Vorgeschmack – Cowork kommt als eigenes Modul mit Übung.</li>
-        <li>Der Unterschied in einem Satz: <strong>im Chat machst du den nächsten Schritt, in Cowork gibt du ein Ziel vor.</strong></li>
+        <li>Der Unterschied in einem Satz: <strong>im Chat machst du den nächsten Schritt, in Cowork gibst du ein Ziel vor.</strong></li>
         <li>Der Klick bringt den Satz, der bleiben muss: der Agent arbeitet <em>für</em> dich, nicht <em>statt</em> dir.</li>
       </ul>
     </div>
     <div data-slide="20">
+      <p class="script">Eine Frage, die garantiert kommt: Wo liegt eigentlich meine Datei? Die
+      Antwort hängt am Werkzeug, und genau das verwirrt am Anfang. Im normalen Chat gibt es kein
+      Verzeichnis – du lädst eine Datei hoch, Claude liest sie, und auf deinem Rechner ändert sich
+      nichts. In Cowork arbeitet Claude in einem eigenen Bereich und legt dort Dateien ab, die
+      lädst du dann herunter. Und Claude Code arbeitet in einem echten Ordner auf deinem Rechner,
+      genau in dem, den du ihm nennst. Eine Regel gilt überall: Das fertige Ergebnis gehört
+      dorthin, wo dein Team es findet. Nicht in den Download-Ordner und nicht nur in den
+      Chatverlauf. Denn der Chatverlauf ist deiner – die Kollegin, die nächste Woche dieselbe
+      Aufgabe hat, kann darin nicht suchen.</p>
       <ul>
         <li>Diese Frage kommt garantiert – lieber hier beantworten als dreimal zwischendurch.</li>
-        <li>Drei Fälle kurz, dann der Klick mit der einen Regel: <strong>das Ergebnis gehört dorthin, wo das Team es findet.</strong></li>
+        <li>Drei Fälle kurz, dann der Klick mit der einen Regel.</li>
         <li>Begründung, die zieht: Ein Chatverlauf ist <em>deiner</em>. Die Kollegin nächste Woche kann darin nicht suchen.</li>
       </ul>
     </div>
     <div data-slide="21">
+      <p class="script">Zum Schluss noch etwas, das euch Arbeit spart: Ihr fangt nicht bei null
+      an. Eine Arbeitsanleitung, die Claude schon kennt, nennt man Skill. Darin steht, wie etwas
+      bei uns gemacht wird – Aufbau, Ton, Pflichthinweise. Wir haben eigene VIDACTA-Skills gebaut,
+      für Texte, unser Design, unser Fachwissen und für Marketing. Die werden zentral an die
+      Zugänge verteilt, ihr müsst nichts installieren. Freigegeben wird das Schritt für Schritt,
+      also fragt beim Schulungs-Team nach, was bei euch schon aktiv ist. Merken werdet ihr es
+      daran, dass Claude unsere Regeln von sich aus berücksichtigt.</p>
       <ul>
         <li>Kurz und ohne Versprechen: die Verteilung läuft, <strong>freigegeben wird Schritt für Schritt</strong>.</li>
         <li>Wenn gefragt wird, welche Skills es gibt: aufs Schulungs-Team verweisen, keine Namen nennen.</li>
@@ -890,6 +1062,12 @@
       <span class="warn">Nicht sagen „das ist schon alles da“. Wer danach sucht und nichts findet, verliert Vertrauen in den ganzen Tag.</span>
     </div>
     <div data-slide="22">
+      <p class="script">Das war die Einführung. Ihr habt Claude offen, ihr habt einen ersten Prompt
+      geschrieben, und ihr habt die Ampel im Kopf. Mehr braucht es nicht, um anzufangen. Wir gehen
+      jetzt in Modul 0 und arbeiten uns durch die Grundlagen – nach jedem Modul probiert ihr es
+      selbst aus. Und wer danach weitermachen will: Der Vertiefungs-Teil erklärt, wie Claude
+      arbeitet, und der Aufbau-Teil ist für Marketing mit Bildern, Videos und Anzeigen. Los
+      geht’s.</p>
       <ul>
         <li>Übergang, nicht Abschluss. Der Klick zeigt, wie es nach den Grundlagen weitergeht.</li>
         <li>Dann direkt auf den Knopf zu Modul 0 – ohne Pause, der Schwung ist da.</li>
@@ -1086,7 +1264,7 @@
 
     /* ═══════════════ Presenter-Ansicht ═══════════════ */
 
-    var pres = null, frames = {}, notesBox = null, notesTpl = null,
+    var pres = null, frames = {}, notesBox = null, scriptBox = null, notesTpl = null,
         presCounter = null, presFrag = null, presChapter = null, presNextNum = null,
         peerEl = null, peerText = null, timerEl = null;
     var timerRunning = false, timerBase = 0, timerAcc = 0;
@@ -1106,8 +1284,24 @@
       presChapter.textContent = slides[current].getAttribute("data-chapter") || "";
       presNextNum.textContent = current + 2 <= slides.length ? "Folie " + (current + 2) : "Ende";
 
+      /* Sprechertext und Stichpunkte stehen zusammen in einem Block, damit sie beim
+         Pflegen nicht auseinanderlaufen. Hier werden sie getrennt: .script kommt ins
+         Sprechertext-Feld, alles andere in die Hinweise. Am Klon gearbeitet, sonst wuerde
+         das Entfernen die Vorlage dauerhaft leeren. */
       var note = notesTpl ? notesTpl.content.querySelector('[data-slide="' + (current + 1) + '"]') : null;
-      notesBox.innerHTML = note ? note.innerHTML : '<p class="none">Für diese Folie ist keine Notiz hinterlegt.</p>';
+      var scriptHtml = "", notesHtml = "";
+      if (note) {
+        var clone = note.cloneNode(true);
+        var sc = clone.querySelectorAll(".script");
+        Array.prototype.forEach.call(sc, function (el) {
+          scriptHtml += el.outerHTML;
+          el.parentNode.removeChild(el);
+        });
+        notesHtml = clone.innerHTML.trim();
+      }
+      scriptBox.innerHTML = scriptHtml || '<p class="none">Für diese Folie ist kein Sprechertext hinterlegt.</p>';
+      notesBox.innerHTML = notesHtml || '<p class="none">Keine zusätzlichen Hinweise.</p>';
+      scriptBox.scrollTop = 0;
       notesBox.scrollTop = 0;
 
       /* Vorschau-Rahmen nachziehen: aktuelle Folie mit Fragmentstand, naechste ohne. */
@@ -1163,6 +1357,7 @@
       frames.current = pres.querySelector('[data-stage="current"] iframe');
       frames.next = pres.querySelector('[data-stage="next"] iframe');
       notesBox = pres.querySelector("[data-pres-notes]");
+      scriptBox = pres.querySelector("[data-pres-script]");
       notesTpl = document.getElementById("deck-notes");
       presCounter = pres.querySelector("[data-pres-counter]");
       presFrag = pres.querySelector("[data-pres-frag]");

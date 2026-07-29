@@ -3,6 +3,30 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.28.0] – 2026-07-29
+
+### Added
+- **Sprechertext für alle 22 Folien** im Presenter-Modus. Ausformulierter, gesprochener Text
+  (zusammen rund 1.900 Wörter, grob 17 Minuten) — bewusst als *frei nachsprechen, nicht vorlesen*
+  gekennzeichnet, was auch in der Panel-Kopfzeile steht. Geschrieben nach den Regeln aus
+  `vidacta-textqualitaet`: kurze Sätze und Verständlichkeit vor Stil, keine Signifikanz-Inflation,
+  keine erfundenen Zahlen oder Namen, keine Zeitangaben.
+- Presenter-Layout neu verteilt: **links Vorschau (kompakt) + Sprechertext (groß), rechts nächste
+  Folie + Stichpunkt-Hinweise.** Die aktuelle Folie darf klein bleiben — der Trainer sieht sie am
+  Beamer; im Presenter-Fenster ist der Text das Wichtigere.
+- Sprechertext und Hinweise stehen **im selben Notiz-Block** je Folie (`<p class="script">` plus
+  Stichpunkte) und werden beim Anzeigen getrennt. So laufen sie beim Pflegen nicht auseinander.
+
+### Fixed
+- **Kleine Fenster: die Hinweise fielen auf 28 px zusammen.** Der Media-Query stammte aus der Zeit
+  vor dem Sprechertext und verteilte den Platz noch nach der alten Aufteilung. Jetzt gilt unter
+  1080 px Breite *oder* 720 px Höhe: einspaltig, Vorschau klein, **Vorschau der nächsten Folie
+  ganz aus** — wer das Fenster halb zieht, braucht Sprechertext und Hinweise lesbar, nicht zwei
+  Miniaturbilder.
+- Im kompakten Layout spannte sich die Vorschau-Bühne über die volle Spaltenbreite, während die
+  klein skalierte Folie nur ein Drittel davon füllte — sie saß in einem breiten toten Rahmen.
+  Bühnenbreite wird jetzt aus der Höhe gerechnet (16:10) und zentriert.
+
 ## [1.27.0] – 2026-07-29
 
 ### Added
