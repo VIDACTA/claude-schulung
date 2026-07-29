@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.13.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.14.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -46,6 +46,9 @@
       Kategorie: Claude *irrt* sich vorher, *handelt* ab hier), Hinweis „wo landet das Ergebnis",
       keine festen Funktionsnamen mehr („geführter Einstieg" statt „Einrichtungsassistent"),
       Ampel-Check ohne vorweggenommene Antwort
+- [x] **v1.14.0 Modul 5:** keine Unbedenklichkeits-Erklärung mehr („datenschutzrechtlich unkritisch"
+      → IT/Datenschutz entscheiden), Skills mit Ohne-/Mit-Vergleich erklärt statt nur genannt,
+      Abgrenzung Projekt-Teilen ↔ IT-Verbindung, Maßstab für die drei Prüffragen
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

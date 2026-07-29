@@ -3,6 +3,30 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.14.0] – 2026-07-29
+
+### Changed
+- **Modul 5 gibt keine Unbedenklichkeits-Erklärung mehr ab.** Der Schluss-Tipp nannte einen Connector
+  zu einem Vorlagen-Ordner „datenschutzrechtlich unkritisch" – eine rechtliche Zusage, die eine
+  Schulungsseite nicht geben kann, und im Widerspruch zu dem, was Modul 1 seit v1.10.0 sagt („jeder
+  Upload gibt Daten aus dem Haus"). Ein Connector ist dabei der weitreichendste Fall, weil er eine
+  **ganze Quelle** anbindet statt einer geprüften Datei. Jetzt: „der einfachste Fall, erfahrungsgemäß
+  am schnellsten freigegeben" – die Bewertung machen IT und Datenschutz.
+- **Skills werden erklärt, statt nur genannt.** Sie stehen im Modultitel, bekamen aber vier Sätze,
+  und das Beispiel („aus Daten eine saubere Tabelle bauen") beschrieb etwas, das Claude **ohne** Skill
+  kann – der eigentliche Nutzen blieb damit unsichtbar. Jetzt „Skills – festgelegte Arbeitsweisen"
+  mit dem entscheidenden Satz: Claude *kann* die Aufgabe schon, der Skill legt fest, **wie sie bei uns
+  gemacht wird**. Dazu ein Ohne-/Mit-Vergleich am Beispiel einer Standard-Antwort an Interessenten.
+  Der Abgrenzungs-Ausklapper wurde mitgezogen (Faustregel „Können erweitern" → „immer gleiches
+  Ergebnis sichern"), sonst hätte er dem neuen Abschnitt widersprochen.
+- **Abgrenzung ergänzt, die erst durch v1.12.1 nötig wurde:** Modul 5 sagt „Verbinden macht die IT",
+  Modul 3 sagt „Projekte darfst du in der Abteilung selbst teilen". Für Teilnehmer ist beides
+  „etwas zugänglich machen" – jetzt steht ausdrücklich da, dass es zwei Vorgänge mit
+  unterschiedlichen Regeln sind, samt Begründung (ganze Datenquelle ≠ geprüfte Datei).
+- **Maßstab für die drei Prüffragen:** Die Übung verlangt, sie zu beantworten, ohne zu sagen, was eine
+  gute Antwort ist. Jetzt: konkret statt pauschal (Ordnername + Inhalt), plus die Zweifelsregel – wer
+  bei „Personenbezug?" zögern muss, hat die Antwort schon.
+
 ## [1.13.0] – 2026-07-29
 
 ### Added
