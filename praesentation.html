@@ -221,6 +221,124 @@
       .deck-ui { padding: 10px 14px; gap: 10px; background: rgba(11,18,32,.9); backdrop-filter: blur(6px); }
       .deck-ui .hint, .deck-ui .chapter-now { display: none; }
     }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       Presenter-Ansicht (?presenter) und Vorschau-Rahmen (?embed)
+
+       Drei Betriebsarten derselben Datei:
+       - ohne Parameter  = Beamer/Standalone, folgt dem Presenter
+       - ?presenter      = Trainer-Ansicht mit Notizen, steuert
+       - ?embed          = nackte Folie fuer die Vorschau-Iframes, ohne Bedienelemente
+       Synchronisiert wird ueber BroadcastChannel (same-origin, kein Server).
+       ═══════════════════════════════════════════════════════════════════ */
+
+    /* Im Embed-Modus stoert alles, was nicht die Folie selbst ist. */
+    body.embed .deck-ui, body.embed .progress-rail { display: none; }
+    body.embed .slide { padding: 6vh 8vw; }
+    /* Fragment-Animationen im Vorschaurahmen abschalten – der Trainer will den
+       Zustand sehen, nicht eine zweite Animation nebenher. */
+    body.embed .slide, body.embed .slide [data-anim], body.embed .frag {
+      transition: none !important;
+    }
+
+    /* Presenter: eigenes Layout, die Folien selbst bleiben verborgen. */
+    body.presenter { overflow: hidden; }
+    body.presenter > .slides,
+    body.presenter > .progress-rail,
+    body.presenter > .deck-ui { display: none; }
+
+    /* [hidden] allein reicht nicht: der UA-Style verliert gegen display:grid unten. */
+    .pres[hidden] { display: none !important; }
+    .pres {
+      position: fixed; inset: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 14px; padding: 14px;
+      background: #0a1223;
+    }
+    .pres-main { grid-row: 1; grid-column: 1; display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+    .pres-side { grid-row: 1; grid-column: 2; display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+    .pres-bar  { grid-row: 2; grid-column: 1 / -1; }
+
+    .pres-panel {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(157,176,205,.28);
+      border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; min-height: 0;
+    }
+    .pres-panel > h3 {
+      margin: 0; padding: 9px 14px; font-size: 12px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase; color: #9db0cd;
+      background: rgba(255,255,255,.04); border-bottom: 1px solid rgba(157,176,205,.22);
+      display: flex; align-items: center; gap: 10px; flex: 0 0 auto;
+    }
+    .pres-panel > h3 .badge {
+      margin-left: auto; font-weight: 700; letter-spacing: .04em; text-transform: none;
+      color: var(--sky); font-size: 12px;
+    }
+
+    /* Vorschaurahmen: Iframe rendert in fester Buehnengroesse und wird per JS skaliert,
+       damit die Folie im Panel proportional exakt so aussieht wie auf dem Beamer. */
+    .stage { position: relative; flex: 1 1 auto; min-height: 0; background: var(--navy); }
+    .stage iframe {
+      position: absolute; top: 0; left: 0; border: 0;
+      transform-origin: top left;
+    }
+    /* Die Vorschau der naechsten Folie braucht einen Hoehenbezug: als Flex-Item mit
+       flex:1 1 auto in einem Panel, das selbst nur so hoch wie sein Inhalt ist,
+       kollabiert sie sonst auf 0 – der Rahmen bliebe schlicht leer. Das Seitenverhaeltnis
+       entspricht der Buehne (1280x800). */
+    .pres-side > .pres-panel:first-child { flex: 0 0 auto; }
+    .pres-side .stage { aspect-ratio: 16 / 10; flex: 0 0 auto; min-height: 90px; }
+
+    .pres-notes { flex: 1 1 auto; overflow-y: auto; padding: 14px 16px; color: #dfe9f7; font-size: 15px; line-height: 1.5; }
+    .pres-notes ul { margin: 0; padding-left: 19px; }
+    .pres-notes li { margin-bottom: 9px; }
+    .pres-notes li:last-child { margin-bottom: 0; }
+    .pres-notes strong { color: #fff; }
+    .pres-notes em { color: #ffd9a8; font-style: normal; }
+    .pres-notes .say {
+      display: block; margin: 0 0 11px; padding: 9px 12px;
+      border-left: 3px solid var(--sky); background: rgba(116,191,228,.1);
+      border-radius: 0 6px 6px 0; color: #eaf1fb;
+    }
+    .pres-notes .warn {
+      display: block; margin: 11px 0 0; padding: 9px 12px;
+      border-left: 3px solid #e76f61; background: rgba(231,111,97,.12);
+      border-radius: 0 6px 6px 0; color: #ffd7d1;
+    }
+    .pres-notes .none { color: #7d8ea8; font-style: italic; }
+
+    .pres-bar {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(157,176,205,.28);
+      border-radius: var(--radius); padding: 10px 14px; color: #9db0cd; font-size: 13px;
+    }
+    .pres-bar .nav-btn {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(157,176,205,.35); color: #dfe9f7;
+      border-radius: 999px; width: 38px; height: 38px; font-size: 16px; cursor: pointer;
+    }
+    .pres-bar .nav-btn:hover { background: rgba(255,255,255,.16); }
+    .pres-bar .stat { display: flex; flex-direction: column; line-height: 1.25; }
+    .pres-bar .stat b { color: #fff; font-size: 15px; font-weight: 800; }
+    .pres-bar .stat span { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #7d8ea8; }
+    .pres-bar .timer { font-family: var(--mono); font-size: 19px; color: #fff; }
+    .pres-bar .timer.paused { color: #9db0cd; }
+    .pres-bar .spacer { margin-left: auto; }
+    .pres-bar .link { color: #9db0cd; }
+    .pres-bar .peer { display: inline-flex; align-items: center; gap: 7px; }
+    .pres-bar .peer .dot { width: 9px; height: 9px; border-radius: 50%; background: #7d8ea8; }
+    .pres-bar .peer.on .dot { background: #7fd8a4; }
+    .pres-bar .peer.on { color: #7fd8a4; }
+
+    /* Schmale Fenster: Vorschau oben, Notizen darunter – der Trainer braucht die
+       Notizen auch dann lesbar, wenn er das Fenster halb so breit zieht. */
+    @media (max-width: 1080px) {
+      .pres { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) auto; }
+      .pres-main { grid-row: 1; grid-column: 1; }
+      .pres-side { grid-row: 2; grid-column: 1; }
+      .pres-main .stage { height: 34vh; flex: 0 0 auto; }
+      .pres-side .stage { height: 17vh; flex: 0 0 auto; }
+    }
   </style>
 </head>
 <body class="deck">
@@ -577,6 +695,208 @@
 
   </main>
 
+  <!-- ═══ Presenter-Ansicht · nur bei ?presenter, Aufbau durch das Skript unten ═══
+       Die Iframes bekommen ihr src erst dort – sonst wuerde jedes Beamer-Fenster
+       zwei zusaetzliche Kopien der Praesentation laden. -->
+  <div class="pres" hidden>
+    <div class="pres-main">
+      <div class="pres-panel" style="flex:1 1 auto;">
+        <h3>Jetzt auf dem Beamer <span class="badge" data-pres-chapter></span></h3>
+        <div class="stage" data-stage="current"><iframe title="Aktuelle Folie"></iframe></div>
+      </div>
+    </div>
+
+    <div class="pres-side">
+      <div class="pres-panel">
+        <h3>Als Nächstes <span class="badge" data-pres-nextnum></span></h3>
+        <div class="stage" data-stage="next"><iframe title="Nächste Folie"></iframe></div>
+      </div>
+      <div class="pres-panel" style="flex:1 1 auto;">
+        <h3>Notizen</h3>
+        <div class="pres-notes" data-pres-notes></div>
+      </div>
+    </div>
+
+    <div class="pres-bar">
+      <button class="nav-btn" data-pres-prev aria-label="Zurück">←</button>
+      <button class="nav-btn" data-pres-next aria-label="Weiter">→</button>
+      <span class="stat"><b data-pres-counter>1 / 22</b><span>Folie</span></span>
+      <span class="stat"><b data-pres-frag>–</b><span>Aufdecken</span></span>
+      <span class="peer" data-pres-peer><span class="dot"></span><span data-pres-peer-text>kein Beamer-Fenster</span></span>
+      <span class="spacer"></span>
+      <button class="nav-btn" data-pres-timer-toggle aria-label="Timer starten oder anhalten">⏯</button>
+      <span class="timer paused" data-pres-timer>00:00</span>
+      <button class="nav-btn" data-pres-timer-reset aria-label="Timer zurücksetzen">⟲</button>
+      <a class="link" href="praesentation.html" target="_blank" rel="noopener">Beamer-Fenster öffnen ↗</a>
+    </div>
+  </div>
+
+  <!-- ═══ Trainer-Notizen je Folie ═══
+       Bewusst in einem <template>: der Inhalt wird nie gerendert und stoert damit
+       weder das Beamer-Fenster noch die Vorschau-Iframes. Zuordnung ueber
+       data-slide (1-basiert, wie der Zaehler unten links).
+       .say  = so kannst du es sagen
+       .warn = Falle / was du nicht tun solltest -->
+  <template id="deck-notes">
+    <div data-slide="1">
+      <span class="say">„Heute lernt niemand ein Programm auswendig. Wir probieren aus – an echten Aufgaben, an deinem eigenen Zugang.“</span>
+      <ul>
+        <li><strong>Noch nicht einloggen lassen.</strong> Das kommt gezielt auf Folie 4, sonst sind die Hälfte schon abgetaucht.</li>
+        <li>Kurz halten – der erste echte Moment ist Folie 5.</li>
+      </ul>
+    </div>
+    <div data-slide="2">
+      <ul>
+        <li>Die vier Punkte sind das Versprechen des Tages. <em>Langsam</em> vorlesen, das ist der Erwartungsrahmen.</li>
+        <li>Der letzte Punkt („prüfen, weil Claude sich überzeugend irren kann“) ist der wichtigste – er kommt auf Folie 8 als eigene Regel zurück.</li>
+        <li>Klick deckt „Kein Vorwissen nötig“ auf. Bei sichtbarer Nervosität in der Gruppe: hier ansetzen.</li>
+      </ul>
+    </div>
+    <div data-slide="3">
+      <ul>
+        <li>Nur <strong>Grundlagen</strong> sind heute dran. Vertiefung und Aufbau sind Selbstlernen bzw. eigener Termin – das laut sagen, sonst rechnet jemand mit 16 Modulen.</li>
+        <li><strong>Die URL im Chat oder an die Wand.</strong> Ab hier sollten alle die Site offen haben.</li>
+        <li>„Mitschreiben ist unnötig“ nimmt Druck – und ist der Grund, warum wir keine Handouts brauchen.</li>
+      </ul>
+      <span class="warn">Keine Uhrzeiten nennen. Das Tempo hängt an der Gruppe, und die Site nennt bewusst keine.</span>
+    </div>
+    <div data-slide="4">
+      <ul>
+        <li><strong>Der Login-Moment.</strong> Erst weiterklicken, wenn wirklich alle drin sind – herumgehen, nicht vom Pult aus fragen.</li>
+        <li>Zwei Klicks: erst die Aufforderung, dann der Haken. Dazwischen Zeit lassen.</li>
+        <li>Wer keinen Zugang hat: zu zweit an einen Rechner setzen, nicht warten lassen.</li>
+      </ul>
+    </div>
+    <div data-slide="5">
+      <span class="say">„Kopieren, abschicken, in Ruhe lesen. Es gibt hier nichts falsch zu machen.“</span>
+      <ul>
+        <li><strong>Kopier-Knopf zeigen</strong> – rechts unten im Prompt-Kasten, viele sehen ihn nicht.</li>
+        <li>Die Nachfrage („Zeig mir Nummer 3 an einem Beispiel“) ist der eigentliche Aha-Moment: <em>man darf nachfragen</em>.</li>
+        <li>Zwei bis drei Antworten laut vorlesen lassen – die Unterschiede sind der beste Einstieg in Folie 6.</li>
+      </ul>
+    </div>
+    <div data-slide="6">
+      <ul>
+        <li>Erst die Liste, dann der Klick mit der Vergleichsfrage – <strong>nicht umgekehrt</strong>.</li>
+        <li>Die Frage „wie viele davon hat Claude selbst vorgeschlagen?“ funktioniert fast immer: meist drei bis vier. Das macht die Liste glaubwürdig, ohne dass du sie verkaufen musst.</li>
+      </ul>
+    </div>
+    <div data-slide="7">
+      <ul>
+        <li><strong>Einordnung vor Warnung</strong> – deshalb steht diese Folie vor Regel Nr. 2.</li>
+        <li>Rechte Spalte ernst nehmen: keine Rechtsberatung, keine medizinische Beratung, keine amtliche Auskunft.</li>
+        <li>Der Klick bringt den Anerkennungs-Bezug. Für unsere Zielgruppe der wichtigste Satz der Folie.</li>
+      </ul>
+    </div>
+    <div data-slide="8">
+      <span class="say">„Die Antwort von eben klang sicher. Claude klingt <em>immer</em> sicher – auch wenn er falsch liegt.“</span>
+      <ul>
+        <li><strong>Der wichtigste Merksatz des Tages.</strong> Nicht abkürzen, auch wenn die Zeit drückt.</li>
+        <li>Wenn jemand einen eigenen Fehlerfall erzählt: aufgreifen, das ist wertvoller als jedes Beispiel von dir.</li>
+        <li>Danach kommt Kapitel 3 mit der <em>technischen</em> Begründung. Wer keine Zeit hat, kann dort kürzen – dieser Satz muss aber stehen.</li>
+      </ul>
+    </div>
+    <div data-slide="9">
+      <ul>
+        <li>Kapitel-Trennfolie, drei Sätze genügen.</li>
+        <li><strong>Kürzbar, wenn die Gruppe unruhig ist:</strong> Folie 10 und 11 lohnen am meisten, die Modellwahl (12) steht auch in Vertiefung 3.</li>
+      </ul>
+    </div>
+    <div data-slide="10">
+      <span class="say">„Claude schlägt nichts nach. Er hat sehr viel gelesen und setzt Stück für Stück das an, was am besten passt.“</span>
+      <ul>
+        <li>Das Bild aus Vertiefung 1 hilft: <strong>eine belesene Kollegin, die frei aus dem Kopf erzählt</strong> – nicht eine Suchmaschine.</li>
+        <li>Der Klick schließt den Kreis zu Regel Nr. 2: Wer aus dem Gedächtnis erzählt, klingt auch bei einem falschen Detail flüssig.</li>
+      </ul>
+      <span class="warn">Nicht in Technik abrutschen. Keine Tokens, keine Parameter, keine Trainingsdaten – das steht in Vertiefung 1 für die, die es wollen.</span>
+    </div>
+    <div data-slide="11">
+      <ul>
+        <li><strong>Die Folie, die den größten Unterschied macht.</strong> Danach ist klar, warum Cowork mehr kann – ohne Magie.</li>
+        <li>Erst die zwei Zeilen lesen lassen, dann der Klick mit „dasselbe Modell in unterschiedlichen Gestellen“.</li>
+        <li>Der zweite Klick ist die Verantwortungs-Eskalation: <strong>reden = kann sich irren, handeln = kann etwas anstellen.</strong> Das ist die Brücke zu Modul 4 und 7.</li>
+        <li>„Harness“ nur als Randnotiz nennen – niemand muss das Wort behalten.</li>
+      </ul>
+    </div>
+    <div data-slide="12">
+      <ul>
+        <li><strong>Nicht auswendig lernen lassen.</strong> Die Faustregel nach dem Klick ist die Botschaft: Voreinstellung stehen lassen, erst wechseln, wenn etwas stört.</li>
+        <li>Hier kommt fast immer <em>„welches habe ich denn?“</em> → alle ins Auswahlmenü über dem Eingabefeld schauen lassen. Das hängt am Plan, also nicht behaupten.</li>
+        <li>Und fast immer <em>„warum nicht ChatGPT?“</em> → Kurzantwort: nicht wegen der Qualität, sondern weil geklärt sein muss, wer die Daten bekommt. Ausführlich steht das in Vertiefung 3 – <strong>hier nicht ausufern</strong>.</li>
+      </ul>
+    </div>
+    <div data-slide="13">
+      <ul>
+        <li><strong>Das Herzstück des Tages.</strong> Hier lieber mehr Zeit als bei allem anderen.</li>
+        <li>Jede Karte einzeln durchgehen. Bei Gelb betonen: es geht um Personenbezug, <em>auch indirekt</em> (Herkunft plus Ereignis reicht schon).</li>
+        <li>Der Klick bringt „Im Zweifel: Rot“ – die eine Gewohnheit, die alles andere abfängt.</li>
+      </ul>
+    </div>
+    <div data-slide="14">
+      <ul>
+        <li><strong>Zurufen lassen, nicht vorlesen.</strong> Jede Zeile einzeln aufdecken, erst die Situation, dann die Antwort.</li>
+        <li>Fall 3 ist der lehrreichste: Gelb wird zu Grün, <em>wenn</em> man anonymisiert. Das ist der Alltagsfall.</li>
+        <li>Bei Unsicherheit in der Gruppe: nachfragen, <em>warum</em> – die Begründung zählt mehr als die Farbe.</li>
+      </ul>
+    </div>
+    <div data-slide="15">
+      <ul>
+        <li>Kurz halten für alle, die kein Marketing machen: <strong>Text unkritisch, Bild und Video brauchen das Icon.</strong></li>
+        <li>Datum nennen (2. August 2026) – das macht es konkret.</li>
+        <li>Der Klick verweist in den Aufbau-Track. Wer dort nicht hingeht, braucht nur das Prinzip.</li>
+      </ul>
+      <span class="warn">Das ist unsere Hausregel als Vorsichtsmaßnahme, keine Rechtsauslegung. Nicht in Detailfragen einsteigen – im Zweifel Marketing-Team.</span>
+    </div>
+    <div data-slide="16">
+      <ul>
+        <li>Kapitel-Trennfolie. Kurz: „Du weißt jetzt, was Claude ist und was rein darf – jetzt das Handwerk.“</li>
+      </ul>
+    </div>
+    <div data-slide="17">
+      <ul>
+        <li><strong>Der größte Aha-Effekt des Tages.</strong> Beide Kästen vorlesen, den Unterschied wirken lassen.</li>
+        <li>Wenn möglich live zeigen: denselben Auftrag einmal vage, einmal klar. Zwei Minuten, riesige Wirkung.</li>
+        <li>Der Klick bringt den Merksatz: die Qualität der Antwort hängt an der Qualität der Anweisung.</li>
+      </ul>
+    </div>
+    <div data-slide="18">
+      <span class="say">„Nimm den vagen Auftrag und mach ihn besser. Wer bist du, für wen ist der Text, wie lang, welcher Ton?“</span>
+      <ul>
+        <li><strong>Alle arbeiten selbst.</strong> Herumgehen, über die Schulter schauen, nicht vom Pult moderieren.</li>
+        <li>Der Vergleich mit dem Sitznachbarn ist wichtiger als das Ergebnis – dort entsteht die Einsicht.</li>
+        <li>Zum Abschluss zwei Versionen vorlesen lassen: die vage und eine gute.</li>
+      </ul>
+    </div>
+    <div data-slide="19">
+      <ul>
+        <li>Nur Vorgeschmack – Cowork kommt als eigenes Modul mit Übung.</li>
+        <li>Der Unterschied in einem Satz: <strong>im Chat machst du den nächsten Schritt, in Cowork gibt du ein Ziel vor.</strong></li>
+        <li>Der Klick bringt den Satz, der bleiben muss: der Agent arbeitet <em>für</em> dich, nicht <em>statt</em> dir.</li>
+      </ul>
+    </div>
+    <div data-slide="20">
+      <ul>
+        <li>Diese Frage kommt garantiert – lieber hier beantworten als dreimal zwischendurch.</li>
+        <li>Drei Fälle kurz, dann der Klick mit der einen Regel: <strong>das Ergebnis gehört dorthin, wo das Team es findet.</strong></li>
+        <li>Begründung, die zieht: Ein Chatverlauf ist <em>deiner</em>. Die Kollegin nächste Woche kann darin nicht suchen.</li>
+      </ul>
+    </div>
+    <div data-slide="21">
+      <ul>
+        <li>Kurz und ohne Versprechen: die Verteilung läuft, <strong>freigegeben wird Schritt für Schritt</strong>.</li>
+        <li>Wenn gefragt wird, welche Skills es gibt: aufs Schulungs-Team verweisen, keine Namen nennen.</li>
+        <li>Details zu Skills kommen in Modul 5.</li>
+      </ul>
+      <span class="warn">Nicht sagen „das ist schon alles da“. Wer danach sucht und nichts findet, verliert Vertrauen in den ganzen Tag.</span>
+    </div>
+    <div data-slide="22">
+      <ul>
+        <li>Übergang, nicht Abschluss. Der Klick zeigt, wie es nach den Grundlagen weitergeht.</li>
+        <li>Dann direkt auf den Knopf zu Modul 0 – ohne Pause, der Schwung ist da.</li>
+      </ul>
+    </div>
+  </template>
+
   <div class="deck-ui">
     <button class="nav-btn" data-prev aria-label="Vorherige Folie">←</button>
     <span class="counter" data-counter>1 / 22</span>
@@ -586,15 +906,45 @@
   </div>
 
   <script>
-  /* Folien-Engine: Navigation, Fragments, Kapitel, Fortschritt, Copy – kein Build-Step */
+  /* ═══════════════════════════════════════════════════════════════════════════
+     Folien-Engine: Navigation, Fragmente, Kapitel, Fortschritt, Copy,
+     Presenter-Ansicht und Fenster-Synchronisation – alles ohne Build-Step.
+
+     Drei Betriebsarten derselben Datei (ueber die Query erkannt):
+       (ohne)      Beamer/Standalone – bedienbar, folgt anderen Fenstern
+       ?presenter  Trainer-Ansicht: Vorschau + Notizen + Timer, steuert
+       ?embed      nackte Folie fuer die Vorschau-Iframes, folgt nur ihrem Hash
+
+     Synchronisiert wird per BroadcastChannel: same-origin, ohne Server, also
+     auch auf GitHub Pages. Reichweite ist damit bewusst *ein Browser* (mehrere
+     Fenster/Tabs, z. B. Laptop-Display + Beamer) – nicht mehrere Geraete.
+     ═══════════════════════════════════════════════════════════════════════════ */
   (function () {
     "use strict";
+
+    var STAGE_W = 1280, STAGE_H = 800;   /* Bezugsgroesse der Vorschau-Buehne */
+    var CHANNEL = "vidacta-deck";
+    var PEER_TIMEOUT = 6000;
+
+    var q = new URLSearchParams(location.search);
+    var MODE = q.has("presenter") ? "presenter" : (q.has("embed") ? "embed" : "deck");
+    document.body.classList.add(MODE);
+
     var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
     var bar = document.querySelector("[data-bar]");
     var rail = document.querySelector(".progress-rail");
     var counter = document.querySelector("[data-counter]");
     var chapterNow = document.querySelector("[data-chapter-now]");
+
     var current = 0;
+    /* Aufgedeckte Fragmente je Folie. Bleibt beim Blaettern erhalten, damit eine
+       zurueckbesuchte Folie wieder so aussieht wie beim Verlassen – und ist als
+       Zahl uebertragbar, was fuer die Synchronisation der Punkt ist. */
+    var fragState = slides.map(function () { return 0; });
+    var applying = false;                /* Echo-Schutz: fremden Zustand nicht zurueckfunken */
+
+    function fragsOf(i) { return slides[i].querySelectorAll(".frag").length; }
+    function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
     slides.forEach(function (slide) {
       Array.prototype.forEach.call(slide.querySelectorAll("[data-anim]"), function (el, i) {
@@ -616,51 +966,241 @@
       });
     }
 
+    /* ---------- Zustand anwenden ---------- */
+
     function render() {
-      slides.forEach(function (s, i) { s.classList.toggle("active", i === current); });
+      slides.forEach(function (s, i) {
+        s.classList.toggle("active", i === current);
+        var shown = fragState[i];
+        Array.prototype.forEach.call(s.querySelectorAll(".frag"), function (f, k) {
+          f.classList.toggle("in", k < shown);
+        });
+      });
       if (bar) bar.style.width = ((current + 1) / slides.length * 100) + "%";
       if (counter) counter.textContent = (current + 1) + " / " + slides.length;
       if (chapterNow) chapterNow.textContent = slides[current].getAttribute("data-chapter") || "";
-      if (history.replaceState) history.replaceState(null, "", "#" + (current + 1));
+      /* Der Embed-Rahmen wird von aussen ueber den Hash gesteuert und schreibt
+         ihn deshalb nicht selbst zurueck. */
+      if (MODE !== "embed" && history.replaceState) {
+        history.replaceState(null, "", "#" + hashFor(current, fragState[current]));
+      }
+      if (MODE === "presenter") updatePresenter();
+      publish();
     }
-    function nextFrag() {
-      var f = slides[current].querySelector(".frag:not(.in)");
-      if (f) { f.classList.add("in"); return true; }
-      return false;
+
+    function goto(idx, frags) {
+      current = clamp(idx, 0, slides.length - 1);
+      fragState[current] = clamp(typeof frags === "number" ? frags : fragState[current], 0, fragsOf(current));
+      render();
     }
-    function next() { if (!nextFrag() && current < slides.length - 1) { current++; render(); } }
-    function prev() { if (current > 0) { current--; render(); } }
 
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown" || e.key === "Enter") { e.preventDefault(); next(); }
-      else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
-      else if (e.key === "Home") { current = 0; render(); }
-      else if (e.key === "End") { current = slides.length - 1; render(); }
-    });
-    document.querySelector("[data-next]").addEventListener("click", next);
-    document.querySelector("[data-prev]").addEventListener("click", prev);
-    /* Klick auf freie Fläche = weiter (nicht auf Links/Buttons/Prompts) */
-    document.querySelector("[data-slides]").addEventListener("click", function (e) {
-      if (e.target.closest("a, button, .prompt")) return;
-      next();
+    function next() {
+      if (fragState[current] < fragsOf(current)) { fragState[current]++; render(); return; }
+      if (current < slides.length - 1) goto(current + 1);
+    }
+    function prev() { if (current > 0) goto(current - 1); }
+
+    /* ---------- Hash: "#11" oder "#11.2" (Folie . aufgedeckte Fragmente) ---------- */
+
+    function hashFor(i, f) { return (i + 1) + (f > 0 ? "." + f : ""); }
+    function parseHash(h) {
+      var m = /^#?(\d+)(?:\.(\d+))?$/.exec(h || "");
+      if (!m) return null;
+      return { s: parseInt(m[1], 10) - 1, f: m[2] ? parseInt(m[2], 10) : 0 };
+    }
+    window.addEventListener("hashchange", function () {
+      var p = parseHash(location.hash);
+      if (!p || p.s < 0 || p.s >= slides.length) return;
+      if (p.s === current && p.f === fragState[current]) return;
+      goto(p.s, p.f);
     });
 
-    /* Copy-Buttons wie auf der Schulungs-Site */
-    document.querySelectorAll(".prompt").forEach(function (box) {
-      var btn = document.createElement("button");
-      btn.className = "copy-btn"; btn.type = "button"; btn.textContent = "Kopieren";
-      btn.addEventListener("click", function () {
-        navigator.clipboard.writeText(box.getAttribute("data-copy") || "").then(function () {
-          btn.textContent = "Kopiert ✓"; btn.classList.add("copied");
-          setTimeout(function () { btn.textContent = "Kopieren"; btn.classList.remove("copied"); }, 1600);
-        });
+    /* ---------- Fenster-Synchronisation ---------- */
+
+    var ch = null;
+    if (MODE !== "embed" && "BroadcastChannel" in window) {
+      try { ch = new BroadcastChannel(CHANNEL); } catch (e) { ch = null; }
+    }
+    var peerSeen = 0;
+
+    function publish() {
+      if (!ch || applying) return;
+      ch.postMessage({ t: "state", s: current, f: fragState[current] });
+    }
+    if (ch) {
+      ch.onmessage = function (ev) {
+        var m = ev.data || {};
+        if (m.t === "state") {
+          applying = true;
+          fragState[m.s] = m.f;
+          goto(m.s, m.f);
+          applying = false;
+          if (MODE === "deck") ch.postMessage({ t: "alive" });
+        } else if (m.t === "hello") {
+          /* Ein spaeter geoeffnetes Fenster fragt nach dem Stand. */
+          if (MODE === "presenter") ch.postMessage({ t: "state", s: current, f: fragState[current] });
+        } else if (m.t === "alive") {
+          peerSeen = Date.now();
+          if (MODE === "presenter") updatePeer();
+        }
+      };
+      /* Beim Start einmal nach dem aktuellen Stand fragen. */
+      if (MODE === "deck") ch.postMessage({ t: "hello" });
+    }
+
+    /* ---------- Bedienung (nicht im Vorschaurahmen) ---------- */
+
+    if (MODE !== "embed") {
+      document.addEventListener("keydown", function (e) {
+        if (e.target.closest && e.target.closest("input, textarea")) return;
+        if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown" || e.key === "Enter") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); goto(0, 0); }
+        else if (e.key === "End") { e.preventDefault(); goto(slides.length - 1); }
       });
-      box.appendChild(btn);
-    });
+    }
+    if (MODE === "deck") {
+      document.querySelector("[data-next]").addEventListener("click", next);
+      document.querySelector("[data-prev]").addEventListener("click", prev);
+      /* Klick auf freie Fläche = weiter (nicht auf Links/Buttons/Prompts) */
+      document.querySelector("[data-slides]").addEventListener("click", function (e) {
+        if (e.target.closest("a, button, .prompt")) return;
+        next();
+      });
+    }
 
-    var fromHash = parseInt((location.hash || "").replace("#", ""), 10);
-    if (fromHash >= 1 && fromHash <= slides.length) current = fromHash - 1;
+    /* Copy-Buttons wie auf der Schulungs-Site – im Vorschaurahmen unnoetig. */
+    if (MODE !== "embed") {
+      document.querySelectorAll(".prompt").forEach(function (box) {
+        var btn = document.createElement("button");
+        btn.className = "copy-btn"; btn.type = "button"; btn.textContent = "Kopieren";
+        btn.addEventListener("click", function () {
+          navigator.clipboard.writeText(box.getAttribute("data-copy") || "").then(function () {
+            btn.textContent = "Kopiert ✓"; btn.classList.add("copied");
+            setTimeout(function () { btn.textContent = "Kopieren"; btn.classList.remove("copied"); }, 1600);
+          });
+        });
+        box.appendChild(btn);
+      });
+    }
+
+    /* ═══════════════ Presenter-Ansicht ═══════════════ */
+
+    var pres = null, frames = {}, notesBox = null, notesTpl = null,
+        presCounter = null, presFrag = null, presChapter = null, presNextNum = null,
+        peerEl = null, peerText = null, timerEl = null;
+    var timerRunning = false, timerBase = 0, timerAcc = 0;
+
+    function updatePeer() {
+      if (!peerEl) return;
+      var on = Date.now() - peerSeen < PEER_TIMEOUT;
+      peerEl.classList.toggle("on", on);
+      peerText.textContent = on ? "Beamer-Fenster folgt" : "kein Beamer-Fenster";
+    }
+
+    function updatePresenter() {
+      if (!pres) return;
+      var total = fragsOf(current);
+      presCounter.textContent = (current + 1) + " / " + slides.length;
+      presFrag.textContent = total ? fragState[current] + " / " + total : "–";
+      presChapter.textContent = slides[current].getAttribute("data-chapter") || "";
+      presNextNum.textContent = current + 2 <= slides.length ? "Folie " + (current + 2) : "Ende";
+
+      var note = notesTpl ? notesTpl.content.querySelector('[data-slide="' + (current + 1) + '"]') : null;
+      notesBox.innerHTML = note ? note.innerHTML : '<p class="none">Für diese Folie ist keine Notiz hinterlegt.</p>';
+      notesBox.scrollTop = 0;
+
+      /* Vorschau-Rahmen nachziehen: aktuelle Folie mit Fragmentstand, naechste ohne. */
+      setFrameHash(frames.current, hashFor(current, fragState[current]));
+      if (current + 1 < slides.length) {
+        frames.next.parentNode.style.visibility = "visible";
+        setFrameHash(frames.next, hashFor(current + 1, 0));
+      } else {
+        frames.next.parentNode.style.visibility = "hidden";
+      }
+    }
+
+    function setFrameHash(frame, hash) {
+      if (!frame) return;
+      if (!frame.src) { frame.src = "praesentation.html?embed#" + hash; return; }
+      try {
+        /* Hash direkt setzen statt src neu zu laden – sonst flackert die Vorschau
+           bei jedem Klick. Der Rahmen hoert auf hashchange. */
+        if (frame.contentWindow.location.hash !== "#" + hash) {
+          frame.contentWindow.location.hash = hash;
+        }
+      } catch (e) {
+        frame.src = "praesentation.html?embed#" + hash;
+      }
+    }
+
+    function scaleStages() {
+      if (!pres) return;
+      pres.querySelectorAll(".stage").forEach(function (st) {
+        var f = st.querySelector("iframe");
+        if (!f) return;
+        f.style.width = STAGE_W + "px";
+        f.style.height = STAGE_H + "px";
+        var k = Math.min(st.clientWidth / STAGE_W, st.clientHeight / STAGE_H);
+        f.style.transform = "scale(" + k + ")";
+        f.style.left = Math.max(0, (st.clientWidth - STAGE_W * k) / 2) + "px";
+        f.style.top = Math.max(0, (st.clientHeight - STAGE_H * k) / 2) + "px";
+      });
+    }
+
+    function fmt(ms) {
+      var s = Math.floor(ms / 1000), m = Math.floor(s / 60);
+      return (m < 10 ? "0" : "") + m + ":" + ((s % 60) < 10 ? "0" : "") + (s % 60);
+    }
+    function timerValue() { return timerAcc + (timerRunning ? Date.now() - timerBase : 0); }
+
+    function initPresenter() {
+      pres = document.querySelector(".pres");
+      if (!pres) return;
+      pres.removeAttribute("hidden");
+      document.title = "Presenter · " + document.title;
+
+      frames.current = pres.querySelector('[data-stage="current"] iframe');
+      frames.next = pres.querySelector('[data-stage="next"] iframe');
+      notesBox = pres.querySelector("[data-pres-notes]");
+      notesTpl = document.getElementById("deck-notes");
+      presCounter = pres.querySelector("[data-pres-counter]");
+      presFrag = pres.querySelector("[data-pres-frag]");
+      presChapter = pres.querySelector("[data-pres-chapter]");
+      presNextNum = pres.querySelector("[data-pres-nextnum]");
+      peerEl = pres.querySelector("[data-pres-peer]");
+      peerText = pres.querySelector("[data-pres-peer-text]");
+      timerEl = pres.querySelector("[data-pres-timer]");
+
+      pres.querySelector("[data-pres-next]").addEventListener("click", next);
+      pres.querySelector("[data-pres-prev]").addEventListener("click", prev);
+      pres.querySelector("[data-pres-timer-toggle]").addEventListener("click", function () {
+        if (timerRunning) { timerAcc = timerValue(); timerRunning = false; }
+        else { timerBase = Date.now(); timerRunning = true; }
+        timerEl.classList.toggle("paused", !timerRunning);
+      });
+      pres.querySelector("[data-pres-timer-reset]").addEventListener("click", function () {
+        timerAcc = 0; timerBase = Date.now(); timerEl.textContent = "00:00";
+      });
+
+      window.addEventListener("resize", scaleStages);
+      setInterval(function () { timerEl.textContent = fmt(timerValue()); updatePeer(); }, 500);
+      /* Nach dem Laden der Rahmen die Skalierung nachziehen – clientWidth steht
+         erst nach dem ersten Layout fest. */
+      requestAnimationFrame(function () { requestAnimationFrame(scaleStages); });
+    }
+
+    /* ---------- Start ---------- */
+
+    if (MODE === "presenter") initPresenter();
+
+    var start = parseHash(location.hash);
+    if (start && start.s >= 0 && start.s < slides.length) {
+      fragState[start.s] = clamp(start.f, 0, fragsOf(start.s));
+      current = start.s;
+    }
     render();
+    if (MODE === "presenter") { scaleStages(); updatePeer(); }
   })();
   </script>
 </body>

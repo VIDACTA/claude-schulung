@@ -24,6 +24,8 @@ und klick sie mit der Gruppe durch.
 - [ ] Beamer/Screenshare getestet, Site geöffnet.
 - [ ] **Eröffnungs-Deck** geöffnet: `praesentation.html` (Pfeiltasten/Klick zum Weiterschalten;
       die drei „Live-Moment"-Folien = alle Teilnehmer machen an ihrem eigenen Claude mit).
+- [ ] **Presenter-Modus einrichten**, wenn du zwei Bildschirme hast — siehe unten. Einmal
+      durchklicken, damit du im Workshop nicht mit Fenstern hantierst.
 - [ ] **Grüne Beispiel-Materialien** vorbereitet: ein öffentlicher Info-Text, ein anonymisiertes
       „Protokoll", ein paar Stichpunkte. Nichts Personenbezogenes!
 - [ ] Interne Ansprechpartner für Datenschutz/IT bereithalten (für Modul 5–7).
@@ -70,6 +72,38 @@ Fortschrittsleiste zeigen, wie weit ein Kapitel noch trägt):
 | 4 · Die Ampel | 13–15 | Das Herzstück – Ampel, Zuruf-Quiz, KI-Kennzeichnung |
 | 5 · Handwerk & Werkzeuge | 16–21 | Prompt-Qualität, Cowork-Vorgeschmack, Ablage, VIDACTA-Skills |
 | 6 · Los geht's | 22 | Übergang in Modul 0 |
+
+### Presenter-Modus (zwei Bildschirme)
+
+Wenn dein Laptop am Beamer hängt, kannst du auf dem Laptop-Display eine Trainer-Ansicht
+laufen lassen, während der Beamer nur die Folien zeigt.
+
+**Einrichten (zwei Fenster, eine Minute):**
+
+1. Beamer-Fenster: `praesentation.html` öffnen und auf den Beamer schieben, dann `F11` für Vollbild.
+2. Auf dem Laptop-Display ein zweites Fenster mit **`praesentation.html?presenter`** öffnen.
+3. Fertig. Du blätterst im Presenter-Fenster, das Beamer-Fenster folgt automatisch.
+
+**Was du im Presenter-Fenster siehst:** die aktuelle Folie, daneben die **nächste**, darunter die
+**Notizen zu genau dieser Folie**, und unten Folienzähler, Aufdeck-Stand („2 / 3“ = zwei von drei
+Klick-Elementen sichtbar), Timer und eine Anzeige, ob das Beamer-Fenster wirklich mithört
+(grüner Punkt = folgt).
+
+**Gut zu wissen:**
+
+- Es reicht in **eine** Richtung: Du kannst auch im Beamer-Fenster blättern, der Presenter folgt.
+- Die Verbindung läuft nur **innerhalb desselben Browsers** (mehrere Fenster oder Tabs). Sie ist
+  ausdrücklich *nicht* für die Geräte der Teilnehmer gedacht — dafür gibt es Beamer und
+  Screenshare.
+- Zeigt die Anzeige „kein Beamer-Fenster“, hast du das zweite Fenster in einem anderen Browser
+  (oder im privaten Modus) offen. Beide Fenster im gleichen Browser öffnen.
+- Der Timer ist ein reiner Anhaltspunkt für dich. Er läuft nicht automatisch mit — Start und
+  Zurücksetzen liegen bei dir, und **es gibt keine Sollzeiten** (bewusst, das Tempo hängt an
+  der Gruppe).
+- Wenn du **ohne** zweiten Bildschirm arbeitest: einfach `praesentation.html` nehmen, alles
+  funktioniert wie vorher.
+- Direkt zu einer Folie springen geht über die Adresse: `praesentation.html#13` — auch mit
+  Aufdeck-Stand, z. B. `#13.1`. Praktisch, wenn du nach einer Pause wieder einsteigst.
 
 **Kapitel 3 ist neu und optional kürzbar.** Wenn die Gruppe ungeduldig ist: Folie 10
 (Wortvorhersage) und 11 (Harness) sind die beiden, die sich am meisten lohnen – die Modellwahl

@@ -3,6 +3,51 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.27.0] – 2026-07-29
+
+### Added
+- **Presenter-Modus für das Deck** (`praesentation.html?presenter`). Trainer-Ansicht auf dem
+  Laptop-Display, während der Beamer nur die Folien zeigt: aktuelle Folie, **nächste Folie**,
+  **Notizen zu genau dieser Folie**, Folienzähler, Aufdeck-Stand („2 / 3“), Timer und eine
+  Anzeige, ob das Beamer-Fenster wirklich mithört. Steuerung per Pfeiltasten oder Knöpfe;
+  das Beamer-Fenster folgt automatisch, und umgekehrt genauso.
+- **Trainer-Notizen für alle 22 Folien** — der eigentliche inhaltliche Teil. Je Folie zwei bis
+  vier Punkte: was zu sagen ist, worauf zu achten, wo die typische Falle liegt. Mit zwei
+  hervorgehobenen Formen: *so kannst du es sagen* (blau) und *Falle* (rot), z. B. „keine
+  Uhrzeiten nennen“ auf der Fahrplan-Folie oder „nicht sagen, das ist schon alles da“ bei den
+  VIDACTA-Skills. Liegen in einem `<template>`, werden also im Beamer-Fenster nie gerendert.
+- **Fragment-Stand ist jetzt Teil der Adresse:** `#13` springt auf Folie 13, `#13.1` zusätzlich
+  mit einem aufgedeckten Element. Damit ist der Wiedereinstieg nach einer Pause exakt möglich —
+  und die Vorschau im Presenter kann denselben Stand zeigen wie der Beamer.
+
+### Changed
+- **Aufgedeckte Elemente bleiben je Folie erhalten.** Bisher setzte das Zurückblättern den
+  Aufdeck-Stand nicht zurück, aber es gab auch keinen Zustand, den man wiederherstellen konnte —
+  eine besuchte Folie kam mit allem Aufgedeckten zurück, unabhängig davon, wie weit man gekommen
+  war. Jetzt merkt sich das Deck den Stand pro Folie: zurück und wieder vor zeigt genau das, was
+  vorher zu sehen war, und der Stand ist als Zahl übertragbar — was die Synchronisation der
+  Fenster überhaupt erst ermöglicht.
+- Die Folien-Engine kennt drei Betriebsarten derselben Datei: ohne Parameter (Beamer/Standalone),
+  `?presenter` (Trainer-Ansicht) und `?embed` (nackte Folie für die Vorschau-Rahmen, ohne
+  Bedienelemente und ohne Mitreden im Sync).
+
+### Technisches
+- Synchronisiert wird über **`BroadcastChannel`** — same-origin, kein Server, läuft also auf
+  GitHub Pages. Reichweite ist damit bewusst **ein Browser** (mehrere Fenster/Tabs), nicht mehrere
+  Geräte: Für Teilnehmergeräte bräuchte es einen Realtime-Dienst, damit einen API-Key im
+  öffentlichen Repo und einen weiteren Auftragsverarbeiter — für ein Komfort-Feature das falsche
+  Tauschgeschäft. Beamer und Screenshare lösen das Problem ohnehin.
+- Echo-Schutz beim Anwenden fremder Zustände (`applying`-Flag), damit zwei Fenster sich nicht
+  gegenseitig aufschaukeln; ein spät geöffnetes Fenster fragt per `hello` den aktuellen Stand ab.
+- Vorschau-Rahmen rendern in fester Bühnengröße (1280 × 800) und werden per `transform: scale()`
+  eingepasst, damit die Vorschau proportional dem Beamerbild entspricht.
+
+### Fixed
+- **Die Vorschau der nächsten Folie war unsichtbar.** Als Flex-Item mit `flex: 1 1 auto` in einem
+  Panel, das selbst nur so hoch wie sein Inhalt ist, kollabierte die Bühne auf Höhe 0 — der
+  Rahmen war schlicht leer, ohne dass etwas „kaputt“ aussah. Behoben über ein festes
+  Seitenverhältnis (16 / 10) plus `flex: 0 0 auto`.
+
 ## [1.26.0] – 2026-07-29
 
 ### Added

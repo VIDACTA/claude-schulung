@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.26.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.27.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (0 gerade Schließer, 0 ohne Öffner) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 11 Regelgruppen über alle 20 Seiten, 0 Befunde (29.07.);
@@ -106,6 +106,12 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
       Modellwahl, Anbieter-Einordnung); **Modul 6** um Teil 1 „Wo arbeitet Claude?" erweitert und
       zu „Dateien, Ordner & Claude Code" umbenannt; **Art. 50** jetzt auch im Grundlagen-Track
       (Modul 7); **Modul 5** um „Woher kommen unsere Skills?" ergänzt
+- [x] **v1.27.0 Presenter-Modus:** `praesentation.html?presenter` zeigt aktuelle + nächste Folie,
+      **Notizen zu allen 22 Folien**, Aufdeck-Stand, Timer und ob das Beamer-Fenster mithört.
+      Synchronisation per `BroadcastChannel` (kein Server, läuft auf Pages) — bewusst nur
+      **innerhalb eines Browsers**, nicht auf Teilnehmergeräte. Aufdeck-Stand ist jetzt Teil der
+      Adresse (`#13.1`), damit der Wiedereinstieg exakt möglich ist. Bedienung im
+      Trainer-Leitfaden
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
