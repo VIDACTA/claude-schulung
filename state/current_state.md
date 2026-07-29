@@ -157,10 +157,14 @@ powershell -ExecutionPolicy Bypass -File .\konsistenz-check.ps1
 - **Ablageort hängt am Werkzeug** (Dominik, 29.07.): Chat = kein Verzeichnis (Upload) · Cowork =
   eigener Arbeitsbereich · Claude Code = echter Ordner. Dazu die eine übergreifende Regel: das
   fertige Ergebnis gehört in die Team-Ablage, nicht in Downloads und nicht nur in den Chatverlauf
-- **VIDACTA-Skills werden als „im Aufbau" beschrieben**, nicht als vorhanden: Die zentrale
-  Verteilung über den Plugin-Marketplace ([ADR-014](../../.claude/brain/decisions/014-skill-verteilung-plugin-marketplace.md))
-  ist noch nicht ausgerollt. Die Site darf nichts versprechen, was in den Zugängen noch nicht
-  ankommt — dieselbe Vorsicht wie beim gestrichenen Aufbaukurs-Versprechen in v1.15.0
+- **VIDACTA-Skills: „wird ausgerollt", nicht „ist da"** (Stand 29.07. abends): Der Verteilweg über
+  den Plugin-Marketplace ([ADR-014](../../.claude/brain/decisions/014-skill-verteilung-plugin-marketplace.md))
+  **steht** — GitHub App und Marketplace-Verbindung auf `claude-workspace` sind eingerichtet. Offen
+  ist die **Freigabestufe je Plugin** (nur `methodik` + `fachwissen` sollen standardmäßig aktiv sein)
+  und die App auf `vidacta-knowledge-base`. Deshalb sagt die Site „Schritt für Schritt freigegeben,
+  frag das Team, was bei dir aktiv ist" statt „ist da" — dieselbe Vorsicht wie beim gestrichenen
+  Aufbaukurs-Versprechen in v1.15.0. **Nachziehen, sobald die Zugriffsstufen gesetzt sind:**
+  eine Stelle in `modul-5.html` (Callout „Stand") und eine im Deck (Folie 21)
 
 - Zielgruppe: reine Nicht-Techniker · Sprache: Deutsch · Plan im Haus: Team/Enterprise
 - Navigation: Seite pro Modul · Stack: statisches HTML/CSS/JS, kein Build-Step
