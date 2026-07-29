@@ -1,7 +1,7 @@
 {
   "project_name": "Claude-Schulung",
   "type": "standalone-webapp",
-  "version": "1.29.0",
+  "version": "1.29.1",
   "description": "Interne Schulung für VIDACTA-Mitarbeiter zu Claude Desktop, Cowork & Code (Zielgruppe: Nicht-Techniker) plus Aufbau-Track (Kreativ/Marketing: Chrome-Extension, Higgsfield, ElevenLabs, Meta/Google Ads) und Vertiefungs-Track (KI-Grundwissen, Kontext/Context-Rot, Halluzinationen, Desktop-Funktionen, Modelle & Harness). Statische GitHub-Pages-Site.",
   "active_task": null,
   "stack": ["HTML", "CSS", "Vanilla JS"],

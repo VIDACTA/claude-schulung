@@ -3,6 +3,18 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.29.1] – 2026-07-29
+
+### Changed
+- **Proportionen der Textspalte im Presenter angepasst** (Dominik am eigenen Fenster): Die Vorschau
+  der nächsten Folie ist jetzt **an der Spaltenbreite ausgerichtet** (bis 520 px statt fixer
+  ~340 px) — damit sind Chips, Aufzählung und URL der nächsten Folie tatsächlich lesbar, nicht nur
+  als Muster erkennbar. Sprechertext und Notizen teilen den Rest im Verhältnis **2 : 1** statt „Text
+  nimmt alles, Notizen den Rest": Der Sprechertext ist dadurch rund ein Drittel kürzer, was reicht —
+  bei kurzen Folien stand darunter vorher die halbe Spalte leer, während die Vorschau zu klein war.
+- Die Vorschauhöhe bleibt durch `max-height: 32vh` gedeckelt, damit sie auf hohen Fenstern nicht den
+  Platz frisst, den der Text braucht.
+
 ## [1.29.0] – 2026-07-29
 
 ### Changed

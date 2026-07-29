@@ -287,18 +287,20 @@
     .pres-main > .pres-panel { flex: 1 1 auto; }
     .pres-main .stage { flex: 1 1 auto; min-height: 0; }
 
-    /* Rechts drei Panels untereinander. Die Vorschau der naechsten Folie bekommt eine feste
-       Hoehe und ihre Breite daraus (Buehne ist 16:10) – mit aspect-ratio ueber die volle
-       Spaltenbreite waere sie auf einem breiten Monitor mehrere hundert Pixel hoch und
-       wuerde den Platz fressen, den Sprechertext und Notizen brauchen. Zentriert, damit die
-       klein skalierte Folie nicht versetzt in einem toten Rahmen sitzt. */
+    /* Rechts drei Panels untereinander. Sprechertext und Notizen teilen den Rest im
+       Verhaeltnis 2:1 – der Sprechertext braucht mehr, aber nicht allen Platz: bei kurzen
+       Folien stand darunter sonst die halbe Spalte leer, waehrend die Vorschau zu klein war. */
     .pres-side > [data-panel="next"]   { flex: 0 0 auto; }
-    .pres-side > [data-panel="script"] { flex: 1 1 auto; min-height: 0; }
-    .pres-side > [data-panel="notes"]  { flex: 0 1 auto; min-height: 0; max-height: 38%; }
+    .pres-side > [data-panel="script"] { flex: 2 1 0; min-height: 150px; }
+    .pres-side > [data-panel="notes"]  { flex: 1 1 0; min-height: 96px; }
+    /* Vorschau an der Spaltenbreite ausgerichtet (bis 520px), Hoehe aus dem
+       Seitenverhaeltnis – gekappt durch max-height, damit sie auf hohen Fenstern nicht den
+       Platz frisst, den der Text braucht. Zentriert, sonst sitzt die skalierte Folie
+       versetzt in einem toten Rahmen. */
     .pres-side .stage {
-      flex: 0 0 auto; aspect-ratio: auto;
-      height: 21vh; min-height: 90px;
-      width: calc(21vh * 1.6); max-width: 100%; margin: 0 auto;
+      flex: 0 0 auto; aspect-ratio: 16 / 10;
+      width: min(100%, 520px); max-height: 32vh; min-height: 90px;
+      margin: 0 auto;
     }
 
     /* Sprechertext: das Feld, auf das der Trainer beim Reden schaut. Deutlich groesser

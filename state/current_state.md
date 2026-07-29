@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.29.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.29.1 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (0 gerade Schließer, 0 ohne Öffner) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 11 Regelgruppen über alle 20 Seiten, 0 Befunde (29.07.);
