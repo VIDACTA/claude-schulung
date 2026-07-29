@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.12.1 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.13.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -42,6 +42,10 @@
 - [x] **v1.12.0 Modul 3:** Prüf-Hinweis („Wissens-Datei ist keine Garantie", Stichprobe),
       Teilen-Hinweis („wer sieht es danach?"), Ausklapper zur Projekt-Größe („ein Projekt = ein
       Zweck") mit Querverweis auf Vertiefung 1, zwei Projekt-Ideen aus Schulbetrieb und Verwaltung
+- [x] **v1.13.0 Modul 4:** Prompt Injection schon im Cowork-Modul (dort wechselt das Risiko die
+      Kategorie: Claude *irrt* sich vorher, *handelt* ab hier), Hinweis „wo landet das Ergebnis",
+      keine festen Funktionsnamen mehr („geführter Einstieg" statt „Einrichtungsassistent"),
+      Ampel-Check ohne vorweggenommene Antwort
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

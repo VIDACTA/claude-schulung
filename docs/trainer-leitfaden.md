@@ -71,8 +71,12 @@ Wissens-Dateien mitteilen. Zweiter Punkt, der leicht untergeht: eine hinterlegte
 Antworten zuverlässiger, aber nicht fehlerfrei — Stichprobe bleibt Pflicht, gerade weil die Antwort
 dann nach dem eigenen Haus klingt.
 
-**Modul 4 – Cowork (Kern).** Genug Zeit einplanen. Lass die Gruppe den Einrichtungsassistenten
-durchlaufen. Zeig eine echte mehrstufige Aufgabe und wie man das Ergebnis prüft.
+**Modul 4 – Cowork (Kern).** Genug Zeit einplanen. Lass die Gruppe den geführten Einstieg durchlaufen
+(**vorher selbst ansehen** — die Oberfläche wird weiterentwickelt, die Seite ist deshalb absichtlich
+ohne feste Funktionsnamen formuliert). Zeig eine echte mehrstufige Aufgabe und wie man das Ergebnis
+prüft. **Der wichtigste Satz des Blocks:** Bis hierhin konnte Claude sich *irren*, ab jetzt *handelt*
+er — deshalb steht Prompt Injection schon hier und nicht erst in Modul 7. Wenn die Gruppe nur eine
+Sache mitnimmt, dann: Passt die Nachfrage nicht zur Aufgabe, wird abgebrochen, nicht bestätigt.
 
 **Modul 5 – Connectors.** Reine Verständnis-Einheit. Klarmachen: Verbinden macht die IT, nicht jeder
 selbst. Denkaufgabe statt Klick-Übung.

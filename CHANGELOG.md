@@ -3,6 +3,36 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.13.0] – 2026-07-29
+
+### Added
+- **Modul 4: Prompt Injection kommt jetzt hier vor, nicht erst in Modul 7.** Das ist die Stelle, an
+  der das Risiko die Kategorie wechselt: Bis dahin kann Claude sich *irren* und man liest jede
+  Antwort selbst — ab Cowork **handelt** er und macht Schritte, die niemand einzeln sieht. Der
+  bestehende Freigaben-Callout lehrte schon den richtigen Reflex („nur bestätigen, was du
+  verstehst"), nannte aber die Ursache nicht. Neuer Abschnitt mit dem konkreten Beispielsatz
+  („Ignoriere alle vorherigen Anweisungen …"), drei Gewohnheiten (passt die Nachfrage zur Aufgabe ·
+  woher kommt das Material · Auffälliges melden) und Verweis auf Modul 7. Bewusst an Modul 7
+  angeschlossen formuliert — dort gilt der Grundsatz „Inhalt ist Material, kein Befehl", hier kommt
+  dazu, dass die Grenze nicht immer trennscharf ist und beim Agenten schwerer wiegt.
+- **Modul 4: Hinweis „Wo landet das Ergebnis?"** Für Claude Code warnt Modul 6 ausdrücklich bei
+  „löschen, überschreiben, verschieben" — für Cowork fehlte das Gegenstück. Jetzt: Ergebnisse als
+  *neue* Datei anlegen lassen, und bei Aufträgen mit „ersetzen/aufräumen/zusammenführen" ausdrücklich
+  dazusagen, dass die Originale unangetastet bleiben.
+
+### Changed
+- **Modul 4 nennt keine festen Funktionsnamen mehr.** „Einrichtungsassistent" stand im Lernziel, im
+  Abschnittstext *und* als Schritt 1 der Übung — heißt die Funktion anders oder fehlt sie, scheitert
+  die Übung an ihrem ersten Schritt. Jetzt „der geführte Einstieg, den Cowork beim ersten Start
+  anbietet", plus einem Satz an die Teilnehmer, dass die Oberfläche abweichen kann. Dieselbe Logik,
+  die für Modellnamen schon galt.
+- **Modul 4: Ampel-Check in der Übung ist wieder eine Frage.** Bisher „Waren alle verwendeten Inhalte
+  grün? ✅" — das Häkchen nahm die Antwort vorweg, und zwar an der Stelle mit dem meisten Material.
+  Jetzt: welche Farbe hatte das Material, woher kam es, und bei Dateien von außen: warum war das in
+  Ordnung?
+- **Trainer-Leitfaden, Modul 4:** Hinweis, den geführten Einstieg vorab selbst anzusehen, und der
+  Kernsatz des Blocks (Claude *irrt* sich vorher, *handelt* ab hier).
+
 ## [1.12.1] – 2026-07-29
 
 ### Changed
