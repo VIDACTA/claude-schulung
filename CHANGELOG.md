@@ -3,6 +3,36 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.17.0] – 2026-07-29
+
+### Fixed
+- **🔴 Sechs von 23 Copy-Buttons lieferten nur ein Bruchstück.** Beim Prüfen der Typografie
+  aufgefallen: Ein **gerades** `"` im `data-copy`-Attribut beendet den Attributwert vorzeitig. Der
+  Prompt in Modul 2 brach zum Beispiel bei „Kommunikation mit Patienten" ab — der Rest landete als
+  ungültiges Markup im Tag. Im Browser fällt das nicht auf, weil die Seite trotzdem rendert und der
+  Button vorhanden ist; nur der *kopierte* Text war unvollständig. Betroffen: Modul 2 (von heute,
+  v1.9.0), Vertiefung 1 (2×), Aufbau 3, 4 und 5. Alle Attribute aus dem sichtbaren Text
+  regeneriert — geprüft, dass Attribut und Text bei allen 23 Prompts jetzt zeichengleich sind.
+- **Einfache Anführungszeichen und Apostrophe vervollständigt (7 Stellen).** Nach den doppelten
+  waren auch diese halbfertig: 3 öffnende `‚` standen da, aber **null** schließende `‘` — dafür 7
+  gerade `'`. Davon waren drei Schließer (`‚Sie’` → `‚Sie‘`) und vier echte Auslassungs-Apostrophe
+  („So machen wir’s", „geht’s"), die U+2019 brauchen. Beide Fälle lassen sich sicher unterscheiden:
+  nach offenem `‚` ist es ein Schließer, zwischen zwei Buchstaben ein Apostroph.
+
+### Added
+- **Modul 8: Challenge-Variante D für Lehrkräfte** (Doppelstunde planen, Handout in einfacher
+  Sprache, fachliche Prüfung inkl. „keine erfundenen Normen"). A–C decken Marketing, Verwaltung und
+  Bewerbermanagement ab — der Schulbetrieb fehlte, und das wiegt in der Abschlussaufgabe schwerer
+  als in den Modulen davor.
+- **Konsistenz-Check um zwei Regelgruppen erweitert** (jetzt 10): einfache Anführungszeichen und
+  Apostrophe (die erste Fassung prüfte nur die doppelten und übersah 7 Stellen) sowie
+  **data-copy-Integrität** — genau der Fehler, den ein Browser-Test nicht sichtbar macht.
+
+### Changed
+- **Modul 8: kein Zertifikat-Versprechen mehr.** „Ein Abschluss-Vermerk / Zertifikat kann über das
+  Schulungs-Team ausgestellt werden" → „Wenn du einen Vermerk für deine Unterlagen brauchst, sprich
+  dein Schulungs-Team an." Der Trainer-Leitfaden führt das als *optional*.
+
 ## [1.16.0] – 2026-07-29
 
 ### Fixed

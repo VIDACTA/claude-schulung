@@ -1,10 +1,11 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.16.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.17.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
-**Konsistenz:** 9 Regelgruppen über alle 19 Seiten geprüft, 0 Befunde (Stand 29.07.)
+**Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.)
+**Copy-Buttons:** alle 23 Prompts geprüft, Attribut und sichtbarer Text zeichengleich
 **Mobil geprüft:** 320 / 375 / 414 px über alle 19 Seiten, kein Überlauf (erneut mit v1.7.0)
 **Content-Tiefe geprüft:** Audit aller Seiten am 27.07. (6 Reviewer + Gegenprobe), 49 Ergänzungen eingebaut
 
@@ -58,6 +59,10 @@ prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Inclu
 - [x] **v1.16.0 Modul 7 + Konsistenz-Check:** Ampel-Definition in Modul 7 und Deck an Modul 1
       angeglichen (Folgefehler aus v1.11.0), realistische Personendatensätze ersetzt, Ampel-Begründung
       auch im Pflichtmodul, Prompt-Injection-Tonalität mit Modul 4 abgeglichen
+- [x] **v1.17.0 Modul 8 + zwei Funde:** 6 von 23 Copy-Buttons lieferten ein Bruchstück (gerades `"`
+      beendete das `data-copy`-Attribut) — alle repariert und im Check verankert; einfache
+      Anführungszeichen und Apostrophe vervollständigt; Challenge-Variante D für Lehrkräfte;
+      kein Zertifikat-Versprechen mehr
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte

@@ -32,12 +32,19 @@ foreach ($d in $dateien) {
         Melde '1 Zeitangabe' $n $m.Value
     }
 
-    # 2 Deutsche Typografie: „…“ — gerade Zoll-Zeichen sind halbfertig, Paare müssen aufgehen
+    # 2 Deutsche Typografie: „…“ und ‚…‘ — gerade Zeichen sind halbfertig, Paare müssen aufgehen.
+    #   Auch die EINFACHEN Zeichen und Apostrophe prüfen: die erste Fassung dieses Checks tat das
+    #   nicht und hat 7 Stellen übersehen (3 Schließer + 4 Apostrophe wie „geht’s“).
     $ger = ([regex]::Matches($sichtbar, [regex]::Escape([char]0x0022))).Count
-    if ($ger -gt 0) { Melde '2 Typografie' $n "$ger gerade Anfuehrungszeichen" }
+    if ($ger -gt 0) { Melde '2 Typografie' $n "$ger gerade doppelte Anfuehrungszeichen" }
     $a = ([regex]::Matches($sichtbar, [regex]::Escape([char]0x201E))).Count
     $z = ([regex]::Matches($sichtbar, [regex]::Escape([char]0x201C))).Count
-    if ($a -ne $z) { Melde '2 Typografie' $n "unpaarig: $a Oeffner / $z Schliesser" }
+    if ($a -ne $z) { Melde '2 Typografie' $n "unpaarig doppelt: $a Oeffner / $z Schliesser" }
+    $eGer = ([regex]::Matches($sichtbar, [regex]::Escape([char]0x0027))).Count
+    if ($eGer -gt 0) { Melde '2 Typografie' $n "$eGer gerade einfache Zeichen (Apostroph oder Schliesser)" }
+    $eA = ([regex]::Matches($sichtbar, [regex]::Escape([char]0x201A))).Count
+    $eZ = ([regex]::Matches($sichtbar, [regex]::Escape([char]0x2018))).Count
+    if ($eA -ne $eZ) { Melde '2 Typografie' $n "unpaarig einfach: $eA Oeffner / $eZ Schliesser" }
 
     # 3 Keine realistischen Personendatensätze — das Repo ist PUBLIC (Org-Plan kann keine
     #   privaten Pages). Beispielnamen müssen erkennbar fiktiv sein ("Muster…").
@@ -103,6 +110,23 @@ foreach ($n in $defs.Keys) {
     if (-not $defs[$n].Indirekt) { Melde '9 Ampel-Definition' $n 'Hinweis auf indirekte Erkennbarkeit fehlt' }
 }
 
+# 10 data-copy-Integrität: Ein gerades " im Attributwert beendet das Attribut vorzeitig — der
+#    Copy-Button liefert dann nur ein Bruchstueck. Das war an 6 von 23 Prompts der Fall und faellt
+#    im Browser nicht auf, weil die Seite trotzdem rendert. Attribut und sichtbarer Text muessen
+#    identisch sein.
+foreach ($d in $dateien) {
+    $t = [System.IO.File]::ReadAllText($d.FullName)
+    foreach ($m in [regex]::Matches($t, 'data-copy="')) {
+        $ende = $t.IndexOf([char]0x0022, $m.Index + $m.Length)
+        if ($ende -lt 0) { continue }
+        $danach = if ($ende + 1 -lt $t.Length) { $t.Substring($ende + 1, [Math]::Min(12, $t.Length - $ende - 1)) } else { '' }
+        if ($danach -notmatch '^\s*(>|/>|[a-zA-Z\-]+=)') {
+            $vor = $t.Substring([Math]::Max(0, $ende - 28), [Math]::Min(28, $ende))
+            Melde '10 data-copy' $d.Name ("Attribut endet vorzeitig nach: …" + ($vor -replace '\s+', ' '))
+        }
+    }
+}
+
 Write-Host "`n🔍 KONSISTENZ-CHECK claude-schulung" -ForegroundColor Cyan
 Write-Host ("=" * 78) -ForegroundColor DarkGray
 if ($befunde.Count -eq 0) {
@@ -111,5 +135,5 @@ if ($befunde.Count -eq 0) {
     $befunde | Sort-Object Regel, Ort | Format-Table -AutoSize -Wrap
     Write-Host "Befunde: $($befunde.Count)" -ForegroundColor Yellow
 }
-Write-Host ("Geprueft: " + $dateien.Count + " Seiten, 9 Regelgruppen") -ForegroundColor DarkGray
+Write-Host ("Geprueft: " + $dateien.Count + " Seiten, 10 Regelgruppen") -ForegroundColor DarkGray
 Write-Host ""
