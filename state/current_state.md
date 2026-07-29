@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.28.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.29.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (0 gerade Schließer, 0 ohne Öffner) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 11 Regelgruppen über alle 20 Seiten, 0 Befunde (29.07.);
@@ -113,9 +113,13 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
       Adresse (`#13.1`), damit der Wiedereinstieg exakt möglich ist. Bedienung im
       Trainer-Leitfaden
 - [x] **v1.28.0 Sprechertexte:** ausformulierter Text für **alle 22 Folien** (~1.900 Wörter, grob
-      17 Min.), im Presenter links unter der Vorschau. Ausdrücklich „frei nachsprechen, nicht
-      vorlesen“. Sprechertext und Stichpunkte stehen im selben Notiz-Block und werden beim
-      Anzeigen getrennt — damit sie beim Pflegen nicht auseinanderlaufen
+      17 Min.). Ausdrücklich „frei nachsprechen, nicht vorlesen“. Sprechertext und Stichpunkte
+      stehen im selben Notiz-Block und werden beim Anzeigen getrennt — damit sie beim Pflegen
+      nicht auseinanderlaufen
+- [x] **v1.29.0 Presenter-Layout + Prüfwerkzeug:** Sprechertext liegt jetzt **rechts zwischen
+      Vorschau und Notizen** (Dominiks Vorschlag) — alles Textliche in einer Spalte, die Folie
+      links nutzt die volle Höhe. Dazu **`layout-check.html`** als dauerhafter Layout-Check über
+      15 Fenstergrößen
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
@@ -145,6 +149,21 @@ powershell -ExecutionPolicy Bypass -File .\konsistenz-check.ps1
 
 11 Regelgruppen über alle Seiten, Ziel „0 Befunde". Ergänzend die Typografie im Trockenlauf:
 `C:\Dev\.claude\scripts\fix-quotes.ps1 -Path . -Include '*.html'`
+
+**Nach Layout-Änderungen zusätzlich `layout-check.html`** — prüft das Deck und den Presenter über
+15 Fenstergrößen auf Überlauf, abgeschnittene Folien, Schrift unter 11 px, **kollabierte Flächen**
+und ob jede Folie Sprechertext und Hinweise hat. Braucht einen Webserver (per `file://` rendert der
+Messrahmen nur einen Schnappschuss ohne Layout, alle Werte sind dann 0):
+
+```bash
+php -S localhost:8931 -t . 
+```
+
+Dann `http://localhost:8931/layout-check.html` öffnen und starten — oder automatisiert mit
+`?auto` und Edge headless (`--dump-dom`), wenn niemand klicken kann. Der Check ist entstanden,
+weil dieselbe Messung dreimal von Hand aufgebaut wurde und weil sie eine Fehlerklasse fängt, die
+beim Draufschauen unsichtbar ist: Eine auf 0 kollabierte Fläche sieht im dunklen Layout wie
+„lädt noch" aus, und ein DOM-Vorhandensein-Check meldet Erfolg.
 
 ## Geklärte Entscheidungen
 

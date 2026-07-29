@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Layout-Check · Deck &amp; Presenter</title>
+  <link rel="icon" href="vidacta-mark.svg" type="image/svg+xml">
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; background: #0b1220; color: #dfe9f7;
+           font: 14px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 26px 20px 60px; }
+    h1 { font-size: 22px; margin: 0 0 6px; }
+    p.lead { color: #9db0cd; margin: 0 0 20px; }
+    button { background: #154e84; color: #fff; border: 0; border-radius: 10px;
+             padding: 11px 20px; font: inherit; font-weight: 700; cursor: pointer; }
+    button:hover { background: #2478c2; }
+    button[disabled] { opacity: .5; cursor: default; }
+    pre { background: #0a1020; border: 1px solid #24314c; border-radius: 10px;
+          padding: 14px 16px; overflow-x: auto; font: 12.5px/1.6 ui-monospace, Consolas, monospace;
+          white-space: pre-wrap; margin: 18px 0 0; }
+    .ok { color: #7fd8a4; } .bad { color: #ffb4a8; }
+    /* Messrahmen: bewusst sichtbar klein gehalten, gemessen wird im Iframe selbst. */
+    #frame { border: 1px solid #24314c; margin-top: 18px; transform-origin: top left; }
+    .note { color: #7d8ea8; font-size: 12.5px; margin-top: 20px; }
+    code { background: #16203a; padding: 1px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Layout-Check · Deck &amp; Presenter</h1>
+  <p class="lead">Prüft <code>praesentation.html</code> in beiden Betriebsarten über mehrere
+  Fenstergrößen: horizontaler Überlauf, abgeschnittene Folien, Schrift unter 11&nbsp;px,
+  kollabierte Flächen und ob jede Folie Sprechertext und Hinweise hat.</p>
+
+  <button id="go" type="button">Prüfung starten</button>
+  <pre id="out">Noch nicht gelaufen.</pre>
+
+  <p class="note">Muss über einen Webserver laufen (nicht per <code>file://</code>) – sonst
+  rendert der Rahmen nur einen statischen Schnappschuss ohne Layout, und alle Messwerte sind 0.
+  Lokal: <code>php -S localhost:8931 -t .</code>, dann diese Seite dort öffnen. Ergänzt die
+  beiden Skripte <code>konsistenz-check.ps1</code> (Inhalt) und <code>fix-quotes.ps1</code>
+  (Typografie) um die Layout-Seite.</p>
+</div>
+
+<iframe id="frame" title="Messrahmen"></iframe>
+
+<script>
+(function () {
+  "use strict";
+  var out = document.getElementById("out");
+  var frame = document.getElementById("frame");
+  var go = document.getElementById("go");
+
+  var DECK_SIZES = [[1920,1080],[1680,1000],[1366,768],[1280,800],[768,1024],[414,896],[375,812],[320,568]];
+  var PRES_SIZES = [[2560,1400],[2000,1015],[1920,1080],[1680,1000],[1280,800],[1100,760],[900,700]];
+  var MIN_FONT = 11;
+
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function load(src) {
+    frame.src = src;
+    return new Promise(function (r) { frame.addEventListener("load", r, { once: true }); })
+      .then(function () { return frame.contentDocument.fonts.ready; })
+      .then(function () { return wait(420); });
+  }
+
+  function size(w, h) {
+    /* Der Rahmen misst in echter Groesse, wird zur Anzeige aber heruntergerechnet –
+       sonst sprengt eine 2560er-Messung das Fenster. */
+    frame.style.width = w + "px";
+    frame.style.height = h + "px";
+    var k = Math.min(1, 620 / w);
+    frame.style.transform = "scale(" + k + ")";
+    return wait(230);
+  }
+
+  function tooSmall(doc, win, scope, label, found) {
+    scope.querySelectorAll("*").forEach(function (el) {
+      if (el.children.length || !el.textContent.trim()) return;
+      var fs = parseFloat(win.getComputedStyle(el).fontSize);
+      if (fs && fs < MIN_FONT) {
+        found.push("  " + label + ": " + el.tagName + "." + (el.className || "-") + " nur " + fs.toFixed(1) + "px");
+      }
+    });
+  }
+
+  function checkDeck(w, h) {
+    var doc = frame.contentDocument, win = frame.contentWindow, found = [];
+    var slides = Array.prototype.slice.call(doc.querySelectorAll(".slide"));
+    slides.forEach(function (s, i) {
+      slides.forEach(function (x) { x.classList.remove("active"); });
+      s.classList.add("active");
+      s.querySelectorAll(".frag").forEach(function (f) { f.classList.add("in"); });
+      void s.offsetHeight;
+      /* Unter 760px Breite bzw. 620px Hoehe duerfen Folien scrollen (so ist das CSS gebaut). */
+      var scrollOk = w <= 760 || h <= 620;
+      if (s.scrollHeight - s.clientHeight > 2 && !scrollOk) {
+        found.push("  F" + (i + 1) + ": " + (s.scrollHeight - s.clientHeight) + "px zu hoch bei overflow:hidden");
+      }
+      s.querySelectorAll("h1,h2,p,li,.box,.chip,.who,.what,.url-plate,.prompt,.ampel-card").forEach(function (el) {
+        if (el.scrollWidth > el.clientWidth + 2) {
+          found.push("  F" + (i + 1) + ": " + el.tagName + "." + (el.className || "-") + " +" + (el.scrollWidth - el.clientWidth) + "px breit");
+        }
+      });
+      tooSmall(doc, win, s, "F" + (i + 1), found);
+    });
+    return found;
+  }
+
+  function checkPresenter(w, h) {
+    var doc = frame.contentDocument, win = frame.contentWindow, found = [];
+    var pres = doc.querySelector(".pres");
+    if (!pres || pres.hasAttribute("hidden")) { return ["  .pres nicht sichtbar"]; }
+    if (doc.documentElement.scrollWidth > w + 2) found.push("  Seite " + (doc.documentElement.scrollWidth - w) + "px breit über");
+    if (doc.documentElement.scrollHeight > h + 2) found.push("  Seite " + (doc.documentElement.scrollHeight - h) + "px hoch über");
+
+    pres.querySelectorAll(".stage").forEach(function (st) {
+      /* Eine absichtlich ausgeblendete Buehne ist kein Befund, eine kollabierte schon. */
+      if (!st.offsetParent) return;
+      var r = st.getBoundingClientRect();
+      if (r.width < 80 || r.height < 60) {
+        found.push("  Bühne [" + st.dataset.stage + "] nur " + Math.round(r.width) + "x" + Math.round(r.height));
+      }
+      var ifr = st.querySelector("iframe");
+      if (ifr && !ifr.getAttribute("src")) found.push("  Bühne [" + st.dataset.stage + "] ohne src");
+    });
+
+    [["[data-pres-script]", "Sprechertext", 120], ["[data-pres-notes]", "Notizen", 60]].forEach(function (row) {
+      var el = pres.querySelector(row[0]);
+      if (!el) { found.push("  " + row[1] + "-Feld fehlt"); return; }
+      if (!el.textContent.trim()) found.push("  " + row[1] + " leer");
+      var hh = el.getBoundingClientRect().height;
+      if (hh < row[2]) found.push("  " + row[1] + "-Feld nur " + Math.round(hh) + "px hoch (min " + row[2] + ")");
+    });
+
+    tooSmall(doc, win, pres, "Presenter", found);
+    if (pres.querySelector("[data-pres-notes] .script")) found.push("  Sprechertext in den Notizen gelandet");
+    if (pres.querySelector("[data-pres-script] ul")) found.push("  Stichpunkte im Sprechertext gelandet");
+    return found;
+  }
+
+  /* Jede Folie einmal aufrufen und pruefen, dass Sprechertext und Hinweise da sind. */
+  function checkAllSlides() {
+    var doc = frame.contentDocument, win = frame.contentWindow, found = [];
+    var total = doc.querySelectorAll(".slide").length;
+    var i = 1;
+    function step() {
+      if (i > total) return Promise.resolve(found);
+      win.location.hash = "#" + i;
+      return wait(110).then(function () {
+        var script = doc.querySelector("[data-pres-script]").textContent.trim();
+        var notes = doc.querySelector("[data-pres-notes]").textContent.trim();
+        var words = script ? script.split(/\s+/).length : 0;
+        if (!script || script.indexOf("kein Sprechertext") > -1) found.push("  Folie " + i + ": Sprechertext fehlt");
+        else if (words < 25) found.push("  Folie " + i + ": Sprechertext nur " + words + " Wörter");
+        if (!notes || notes.indexOf("Keine zusätzlichen") > -1) found.push("  Folie " + i + ": Hinweise fehlen");
+        i++;
+        return step();
+      });
+    }
+    return step();
+  }
+
+  function line(label, found) {
+    var head = found.length
+      ? label + ": <span class=\"bad\">" + found.length + " Befund(e)</span>"
+      : label + ": <span class=\"ok\">OK</span>";
+    return [head].concat(found).join("\n");
+  }
+
+  /* ?auto startet ohne Klick – fuer automatisierte Laeufe (z. B. Edge headless mit
+     --dump-dom, wo niemand klicken kann). */
+  if (location.search.indexOf("auto") > -1) {
+    document.addEventListener("DOMContentLoaded", function () { go.click(); });
+    if (document.readyState !== "loading") setTimeout(function () { go.click(); }, 0);
+  }
+
+  go.addEventListener("click", function () {
+    go.disabled = true;
+    var log = [];
+    out.innerHTML = "läuft …";
+
+    function render() { out.innerHTML = log.join("\n"); }
+
+    load("praesentation.html").then(function () {
+      return DECK_SIZES.reduce(function (p, wh) {
+        return p.then(function () {
+          return size(wh[0], wh[1]).then(function () {
+            log.push(line("DECK " + wh[0] + "x" + wh[1], checkDeck(wh[0], wh[1])));
+            render();
+          });
+        });
+      }, Promise.resolve());
+    }).then(function () {
+      return load("praesentation.html?presenter#11");
+    }).then(function () {
+      return PRES_SIZES.reduce(function (p, wh) {
+        return p.then(function () {
+          return size(wh[0], wh[1]).then(function () {
+            log.push(line("PRESENTER " + wh[0] + "x" + wh[1], checkPresenter(wh[0], wh[1])));
+            render();
+          });
+        });
+      }, Promise.resolve());
+    }).then(function () {
+      return size(1680, 1000);
+    }).then(checkAllSlides).then(function (found) {
+      log.push(line("ALLE FOLIEN (Sprechertext + Hinweise)", found));
+      var bad = log.filter(function (l) { return l.indexOf("Befund") > -1; }).length;
+      log.push("");
+      log.push(bad ? "── " + bad + " Größe(n) mit Befunden ──" : "── Alles sauber ──");
+      render();
+      go.disabled = false;
+    }).catch(function (e) {
+      log.push("<span class=\"bad\">Abbruch: " + e.message + "</span>");
+      render();
+      go.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

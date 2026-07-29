@@ -283,15 +283,23 @@
       position: absolute; top: 0; left: 0; border: 0;
       transform-origin: top left;
     }
-    /* Beide Vorschauen brauchen einen Hoehenbezug: als Flex-Item mit flex:1 1 auto in
-       einem Panel, das selbst nur so hoch wie sein Inhalt ist, kollabiert die Buehne auf 0 –
-       der Rahmen bliebe schlicht leer. Seitenverhaeltnis wie die Buehne (1280x800).
-       Die Folie darf hier bewusst klein bleiben: der Trainer sieht sie am Beamer, im
-       Presenter-Fenster ist der Sprechertext das Wichtigere. */
-    .pres-main > .pres-panel:first-child { flex: 0 0 auto; }
-    .pres-main .stage { aspect-ratio: 16 / 10; flex: 0 0 auto; min-height: 150px; max-height: 46vh; }
-    .pres-side > .pres-panel:first-child { flex: 0 0 auto; }
-    .pres-side .stage { aspect-ratio: 16 / 10; flex: 0 0 auto; min-height: 90px; }
+    /* Links steht nur die aktuelle Folie und darf die ganze Hoehe nutzen. */
+    .pres-main > .pres-panel { flex: 1 1 auto; }
+    .pres-main .stage { flex: 1 1 auto; min-height: 0; }
+
+    /* Rechts drei Panels untereinander. Die Vorschau der naechsten Folie bekommt eine feste
+       Hoehe und ihre Breite daraus (Buehne ist 16:10) – mit aspect-ratio ueber die volle
+       Spaltenbreite waere sie auf einem breiten Monitor mehrere hundert Pixel hoch und
+       wuerde den Platz fressen, den Sprechertext und Notizen brauchen. Zentriert, damit die
+       klein skalierte Folie nicht versetzt in einem toten Rahmen sitzt. */
+    .pres-side > [data-panel="next"]   { flex: 0 0 auto; }
+    .pres-side > [data-panel="script"] { flex: 1 1 auto; min-height: 0; }
+    .pres-side > [data-panel="notes"]  { flex: 0 1 auto; min-height: 0; max-height: 38%; }
+    .pres-side .stage {
+      flex: 0 0 auto; aspect-ratio: auto;
+      height: 21vh; min-height: 90px;
+      width: calc(21vh * 1.6); max-width: 100%; margin: 0 auto;
+    }
 
     /* Sprechertext: das Feld, auf das der Trainer beim Reden schaut. Deutlich groesser
        gesetzt als die Stichpunkte und mit ruhiger Zeilenhoehe, damit man die Zeile beim
@@ -353,22 +361,23 @@
     @media (max-width: 1080px), (max-height: 720px) {
       .pres {
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(0, 1fr) auto auto;
+        grid-template-rows: auto minmax(0, 1fr) auto;
         padding: 10px; gap: 10px;
       }
       .pres-main { grid-row: 1; grid-column: 1; }
       .pres-side { grid-row: 2; grid-column: 1; }
       .pres-bar  { grid-row: 3; grid-column: 1; }
-      /* Hoehe vorgeben und die Breite daraus rechnen (Buehne ist 16:10), sonst spannt sich
-         die Buehne ueber die volle Spaltenbreite und die klein skalierte Folie sitzt in
-         einem breiten toten Rahmen. */
+      /* Auch links jetzt Hoehe vorgeben und Breite daraus rechnen: einspaltig waere die
+         Buehne sonst so hoch wie die Spalte breit ist und liesse fuer den Text nichts uebrig. */
+      .pres-main > .pres-panel { flex: 0 0 auto; }
       .pres-main .stage {
-        aspect-ratio: auto; height: 26vh; min-height: 120px; max-height: none;
+        flex: 0 0 auto; height: 26vh; min-height: 120px;
         width: calc(26vh * 1.6); max-width: 100%; margin: 0 auto;
       }
-      .pres-main > .pres-panel:last-child { min-height: 150px; }
-      .pres-side > .pres-panel:first-child { display: none; }
-      .pres-side > .pres-panel:last-child { flex: 0 0 auto; max-height: 34vh; min-height: 96px; }
+      /* Die naechste Folie ist bei kleinem Fenster Luxus – der Platz gehoert dem Text. */
+      .pres-side > [data-panel="next"]   { display: none; }
+      .pres-side > [data-panel="script"] { flex: 1 1 auto; min-height: 150px; }
+      .pres-side > [data-panel="notes"]  { flex: 0 1 auto; max-height: 34vh; min-height: 96px; }
       .pres-panel > h3 .badge { display: none; }
     }
   </style>
@@ -732,22 +741,24 @@
        zwei zusaetzliche Kopien der Praesentation laden. -->
   <div class="pres" hidden>
     <div class="pres-main">
-      <div class="pres-panel">
+      <div class="pres-panel" data-panel="slide">
         <h3>Jetzt auf dem Beamer <span class="badge" data-pres-chapter></span></h3>
         <div class="stage" data-stage="current"><iframe title="Aktuelle Folie"></iframe></div>
       </div>
-      <div class="pres-panel" style="flex:1 1 auto;">
-        <h3>Sprechertext <span class="badge">frei nachsprechen, nicht vorlesen</span></h3>
-        <div class="pres-script" data-pres-script></div>
-      </div>
     </div>
 
+    <!-- Rechte Spalte: alles Textliche untereinander, damit das Auge beim Sprechen nicht
+         zwischen den Spalten springen muss. Die Folie links bekommt dadurch die volle Höhe. -->
     <div class="pres-side">
-      <div class="pres-panel">
+      <div class="pres-panel" data-panel="next">
         <h3>Als Nächstes <span class="badge" data-pres-nextnum></span></h3>
         <div class="stage" data-stage="next"><iframe title="Nächste Folie"></iframe></div>
       </div>
-      <div class="pres-panel" style="flex:1 1 auto;">
+      <div class="pres-panel" data-panel="script">
+        <h3>Sprechertext <span class="badge">frei nachsprechen, nicht vorlesen</span></h3>
+        <div class="pres-script" data-pres-script></div>
+      </div>
+      <div class="pres-panel" data-panel="notes">
         <h3>Notizen</h3>
         <div class="pres-notes" data-pres-notes></div>
       </div>

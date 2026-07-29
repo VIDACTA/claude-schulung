@@ -3,6 +3,30 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.29.0] – 2026-07-29
+
+### Changed
+- **Presenter-Layout umgestellt (Dominiks Vorschlag):** Der Sprechertext liegt jetzt **rechts
+  zwischen „Als Nächstes" und den Notizen**, nicht mehr links unter der Folienvorschau. Damit steht
+  alles Textliche in einer Spalte — das Auge springt beim Sprechen nicht zwischen den Spalten — und
+  die **aktuelle Folie nutzt links die volle Höhe** statt sich den Platz zu teilen. Auf einem
+  breiten Monitor war die alte Aufteilung erkennbar verschwendet: Sprechertext und Notizen hatten
+  je über die Hälfte ungenutzte Fläche, während die Folie nur halbhoch war.
+- Die Vorschau der nächsten Folie bekommt in der Textspalte eine **feste Höhe mit daraus
+  gerechneter Breite** (16:10, zentriert). Mit `aspect-ratio` über die volle Spaltenbreite wäre sie
+  auf einem breiten Monitor mehrere hundert Pixel hoch geworden und hätte genau den Platz gefressen,
+  der für Sprechertext und Notizen gedacht ist.
+
+### Added
+- **`layout-check.html` als dauerhaftes Prüfwerkzeug.** Prüft `praesentation.html` in beiden
+  Betriebsarten über 15 Fenstergrößen (Deck 320–1920 px, Presenter 900–2560 px) auf horizontalen
+  Überlauf, abgeschnittene Folien, Schrift unter 11 px, **kollabierte Flächen** und ob jede Folie
+  Sprechertext und Hinweise hat. Läuft im Browser (Knopf) oder automatisiert (`?auto`).
+  Entstanden, weil dieselbe Messung heute dreimal von Hand aufgebaut wurde — und weil sie genau
+  die Fehlerklasse fängt, die dabei dreimal zugeschlagen hat: Flächen, die auf 0 kollabieren, sehen
+  in einem dunklen Layout wie „lädt noch" aus, und ein DOM-Check meldet brav Erfolg. Ergänzt
+  `konsistenz-check.ps1` (Inhalt) und `fix-quotes.ps1` (Typografie) um die Layout-Seite.
+
 ## [1.28.0] – 2026-07-29
 
 ### Added
