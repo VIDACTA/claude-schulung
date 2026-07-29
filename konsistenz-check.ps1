@@ -60,7 +60,9 @@ foreach ($d in $dateien) {
         'saubere Tabelle bauen',                    # irreführendes Skill-Beispiel (v1.14.0)
         'gibt es einen eigenen, tieferen Aufbaukurs',# Kurs existiert noch nicht (v1.15.0)
         'interne Dokumente ohne Namen',             # in Modul 1 nach Grün verschoben (v1.11.0)
-        'interne Texte ohne Namen'                  # dito, Modul 7 + Deck (v1.16.0)
+        'interne Texte ohne Namen',                 # dito, Modul 7 + Deck (v1.16.0)
+        'gilt für Bild, Video &amp; Text',          # Claim-Regel ohne Text/Bild-Trennung (v1.21.0)
+        '„Schulgeldfrei!" im Anzeigentext'          # war als Fehler geführt, ist aber erlaubt (v1.21.0)
     )
     foreach ($b in $alt) { if ($sichtbar -match [regex]::Escape($b)) { Melde '4 Veralteter Begriff' $n $b } }
 
@@ -118,6 +120,25 @@ foreach ($n in $defs.Keys) {
     if (-not $defs[$n].Indirekt)          { Melde '9 Ampel-Definition' $n 'Hinweis auf indirekte Erkennbarkeit fehlt' }
 }
 
+# 11 Claim-Regeln müssen vollständig bleiben. Aufbau 5 ist das Claim-Modul; die Regeln stehen im
+#    Rechts-Register (legal/themen/werbe-claims.md, Stand 27.07.2026). Beim Durchgang am 29.07. fehlten
+#    dort drei Verbote und die komplette Positivliste, und „schulgeldfrei" war pauschal verboten,
+#    obwohl es im Anzeigentext freigegeben ist (Festlegung Dominik 14.07.2026). Diese Regel merkt es,
+#    wenn eines davon wieder verschwindet.
+$claimDatei = Join-Path $repo 'aufbau-5.html'
+if (Test-Path $claimDatei) {
+    $ct = [System.IO.File]::ReadAllText($claimDatei)
+    $pflicht = @{
+        'Text/Bild-Trennung bei schulgeldfrei' = 'im Anzeigentext erlaubt'
+        'Verbot Förder-Zusagen'               = 'Förder-Zusagen'
+        'Verbot Wirkversprechen'              = 'Wirkversprechen'
+        'Positivliste (freigegebene Angaben)' = 'staatlich anerkannter Abschluss'
+    }
+    foreach ($k in $pflicht.Keys) {
+        if ($ct -notmatch [regex]::Escape($pflicht[$k])) { Melde '11 Claim-Regel' 'aufbau-5.html' "fehlt: $k" }
+    }
+} else { Melde '11 Claim-Regel' 'aufbau-5.html' 'Datei fehlt — Claim-Abgleich nicht moeglich' }
+
 # 10 data-copy-Integrität: Ein gerades " im Attributwert beendet das Attribut vorzeitig — der
 #    Copy-Button liefert dann nur ein Bruchstueck. Das war an 6 von 23 Prompts der Fall und faellt
 #    im Browser nicht auf, weil die Seite trotzdem rendert. Attribut und sichtbarer Text muessen
@@ -143,5 +164,5 @@ if ($befunde.Count -eq 0) {
     $befunde | Sort-Object Regel, Ort | Format-Table -AutoSize -Wrap
     Write-Host "Befunde: $($befunde.Count)" -ForegroundColor Yellow
 }
-Write-Host ("Geprueft: " + $dateien.Count + " Seiten, 10 Regelgruppen") -ForegroundColor DarkGray
+Write-Host ("Geprueft: " + $dateien.Count + " Seiten, 11 Regelgruppen") -ForegroundColor DarkGray
 Write-Host ""

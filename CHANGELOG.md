@@ -3,6 +3,36 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.21.0] – 2026-07-29
+
+### Fixed
+- **🔴 Die Schulung verbot etwas, das freigegeben ist.** Abgleich mit `legal/themen/werbe-claims.md`
+  (Stand 27.07.): Dort ist **„schulgeldfrei" im Anzeigen-TEXT erlaubt** (Primary Text, Headline, RSA)
+  und nur **im Bild/Overlay verboten** — Festlegung Dominik vom 14.07.2026. Diese Unterscheidung fehlte
+  auf der ganzen Site (null Treffer). Aufbau 5 trug sogar die Überschrift „gilt für Bild, Video **&
+  Text**" und führte in der Fehler-Tabelle *„‚Schulgeldfrei!' im Anzeigentext"* als typischen Fehler auf
+  — die Schulung lehrte damit aktiv, dass etwas falsch sei, was ausdrücklich freigegeben ist, und nahm
+  dem Marketing ein starkes Argument. Jetzt differenziert in Aufbau 5 (eigener Sonderfall-Kasten),
+  Aufbau 2 (Kurzfassung mit Verweis) und Aufbau 4 (Klarstellung, warum im Voiceover trotzdem die
+  strengere Regel gilt: gesprochenes Wort gehört zum Creative). **Aufbau 3 war bereits korrekt**
+  („Auf Bild/Video dürfen keine Aussagen zu Geld stehen") und blieb unverändert.
+
+### Added
+- **Aufbau 5, Regel 2 vollständig aufgebaut.** Drei Verbote aus dem Register fehlten komplett:
+  - **Förder-Zusagen** („mit Bildungsgutschein förderfähig") — im Register der einzige rot markierte
+    Claim, weil **Trägerzulassung ≠ Maßnahmenzulassung**. Seit der AZAV-Zulassung vom 07.07. der
+    naheliegendste Claim überhaupt; „AZAV" kam auf der Site vorher nicht ein einziges Mal vor.
+  - **Vergütungs-Zusagen** waren nur als „Vergütung" in einer Aufzählung genannt, jetzt mit Begründung.
+  - **Gesundheitliche Wirkversprechen** („wir bilden aus, wir behandeln nicht").
+- **Die Positivliste — das eigentlich Fehlende.** Die Seite sagte nur, was verboten ist. Jetzt als
+  grüner Block: *staatlich anerkannter Abschluss · Standorte · Lernplattform und 3D-Anatomie ·
+  Praxispartner · Capital-Auszeichnung* — plus dem Satz, dass diese Liste genauso wichtig ist wie die
+  Verbote. Dasselbe Muster wie bei der Ampel-Begründung heute: Ein Verbot ohne die positive Seite
+  macht mutlos oder wird umgangen.
+- **Konsistenz-Check: Regel 11 für Claim-Vollständigkeit** (jetzt 11 Regelgruppen). Prüft, dass Aufbau 5
+  die Text/Bild-Trennung, die drei Verbote und die Positivliste enthält — mit Positiv- und Negativprobe
+  getestet. Dazu ein Rückverweis im Register: wer die Claim-Regeln ändert, muss die Schulung mitziehen.
+
 ## [1.20.0] – 2026-07-29
 
 ### Fixed

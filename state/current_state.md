@@ -1,7 +1,7 @@
 # Current State — Claude-Schulung
 
 **Stand:** 2026-07-29
-**Version:** 1.20.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
+**Version:** 1.21.0 (lokal verifiziert; Deploy = Push auf `main`, GitHub Pages)
 **Typografie:** deutsche Anführungszeichen vollständig (274 Paare, 0 gerade Zeichen im Text) —
 prüfbar mit `.claude/scripts/fix-quotes.ps1 -Path C:\Dev\claude-schulung -Include '*.html'`
 **Konsistenz:** `konsistenz-check.ps1` — 10 Regelgruppen über alle 19 Seiten, 0 Befunde (29.07.);
@@ -73,6 +73,10 @@ Regeln prüfen Muster statt exakter Sätze, mit Positiv-/Negativprobe getestet
 - [x] **v1.20.0 Aufbau 1:** zwei Ampel-Checks nahmen die Antwort vorweg (Muster aus Modul 4 gewandert —
       Check prüft jetzt das Muster, nicht den Satz); Handgriff-Regel „Erweiterung schließen, bevor du ins
       Postfach wechselst"; Prompt Injection mit Modul 4/7 verknüpft statt neu eingeführt
+- [x] **v1.21.0 Aufbau 2/4/5 — Claim-Regeln gegen das Rechts-Register abgeglichen:** „schulgeldfrei" ist
+      im Anzeigentext freigegeben (war site-weit pauschal verboten, in Aufbau 5 sogar als Fehler-Beispiel);
+      drei fehlende Verbote ergänzt (Förder-Zusagen als rot markiertes, Vergütung, Wirkversprechen);
+      Positivliste der freigegebenen Angaben eingefügt; Check-Regel 11 sichert die Vollständigkeit
 - [x] Live: https://vidacta.github.io/claude-schulung/
 
 ## Offen / nächste Schritte
