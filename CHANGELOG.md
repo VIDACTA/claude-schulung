@@ -3,6 +3,35 @@
 Alle nennenswerten Änderungen an diesem Projekt.
 Format nach [Keep a Changelog](https://keepachangelog.com/de/1.0.0/), Versionierung nach SemVer.
 
+## [1.16.0] – 2026-07-29
+
+### Fixed
+- **Ampel-Definition in Modul 7 und im Deck an Modul 1 angeglichen.** Drei Befunde waren
+  Folgefehler der eigenen Änderungen von heute: v1.11.0 hatte „interne Dokumente ohne Personenbezug"
+  in Modul 1 von Gelb nach **Grün** verschoben — Modul 7 und die Deck-Folie führten sie weiter unter
+  Gelb. Damit war dasselbe Material auf drei Seiten unterschiedlich einsortiert, und zwar genau in
+  den Modulen, die die Ampel definieren. Beide nachgezogen, dazu der Hinweis auf **indirekte**
+  Erkennbarkeit (Herkunft + Ereignis), der bislang nur in Modul 1 stand.
+- **Realistische Personendatensätze aus Modul 7 und dem Deck entfernt.** „Frau Santos, geb.
+  12.03.1991, … wohnhaft in Essen" → „Maria Musterfrau" (wie in Modul 1 seit v1.10.0), und die
+  Quiz-Fälle „Frau Müller, geb. 1988, Diagnose …" beschreiben den Fall jetzt statt einen Datensatz
+  vorzuführen („eine E-Mail, in der Name, Geburtsdatum und eine Diagnose stehen") — für ein Quiz
+  genauso anschaulich. **Behalten** wurden die Herkunftsangaben in Modul 7 („die Bewerberin aus
+  Kolumbien"): dort ist die Herkunft nicht schmückendes Detail, sondern der Lerngegenstand — die
+  Beispiele zeigen ja gerade, dass Herkunft + Ereignis eine Person identifizierbar machen.
+- **Fünfte Gender-Variante geglättet:** „Datenschutzbeauftragte**:r**" in der Checkliste. Die
+  Suche in v1.10.0 hatte nur die `:n`-Form erfasst.
+
+### Changed
+- **Modul 7 begründet die Ampel jetzt selbst.** Das Pflichtmodul wiederholte die Regel, ohne den
+  Grund zu nennen — der Ausklapper dazu stand nur in Modul 1. Neuer Kurz-Kasten mit dem
+  entscheidenden Punkt: Es geht **nicht** ums Training, sondern darum, dass jeder Upload Daten aus
+  dem Haus gibt. Mit Anker-Verweis auf die Langfassung.
+- **Prompt Injection klingt in Modul 7 und Modul 4 nicht mehr unterschiedlich.** Modul 7 sagte
+  „Claude ist darauf trainiert, das zu unterscheiden", Modul 4 (v1.13.0) „die Grenze ist nicht
+  trennscharf". Modul 7 ist der Anker, auf den Modul 4 verweist — jetzt gleiche Tonalität, plus
+  Rückverweis auf den Agenten-Modus.
+
 ## [1.15.0] – 2026-07-29
 
 ### Fixed

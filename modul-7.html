@@ -56,6 +56,17 @@
       <h2>1. Die Datenschutz-Ampel – jetzt fest verankert</h2>
       <p>Du kennst sie aus Modul 1. Hier ist sie noch einmal als dein tägliches Werkzeug:</p>
 
+      <div class="callout info">
+        <p class="callout-title">ℹ️ Kurz zur Erinnerung, warum die Regel so streng ist</p>
+        <p>Es geht <strong>nicht</strong> darum, dass die KI aus unseren Eingaben lernt – in der
+        Firmen-Version tut sie das nicht. Der Grund ist ein anderer: Jeder Upload gibt Daten an einen
+        Dienstleister <strong>außerhalb des Hauses</strong> weiter. Dazu kommt, dass
+        Gesundheitsangaben besonders geschützt sind, dass wir jederzeit Auskunft geben müssen, welche
+        Daten wir über eine Person haben – und dass Claude für die eigentliche Aufgabe echte Namen
+        ohnehin nicht braucht. Ausführlich steht das in
+        <a href="modul-1.html#ampel">Modul 1</a> unter „Warum ist das so streng?“.</p>
+      </div>
+
       <div class="ampel">
         <div class="ampel-card g">
           <h4><span class="dot"></span>Grün – nutzen</h4>
@@ -63,13 +74,15 @@
             <li>öffentliche Texte, Broschüren, Website-Inhalte</li>
             <li>allgemeines Wissen ohne Personenbezug</li>
             <li>erfundene Beispieldaten, eigene Entwürfe</li>
+            <li>interne Abläufe, Vorlagen, Checklisten – solange keine Person darin vorkommt</li>
           </ul>
         </div>
         <div class="ampel-card a">
           <h4><span class="dot"></span>Gelb – erst anonymisieren</h4>
           <ul>
-            <li>interne Texte ohne Namen/Kontaktdaten</li>
-            <li>Namen/Adressen/Daten vorher entfernen</li>
+            <li>alles mit Personenbezug, den du <strong>vorher entfernen</strong> kannst</li>
+            <li>Namen, Adressen, Geburts- und Kontaktdaten raus</li>
+            <li>auch <em>indirekte</em> Hinweise: Herkunft + Ereignis oder Standort + Datum</li>
             <li>„eine Bewerberin aus dem Ausland“ statt echter Identität</li>
           </ul>
         </div>
@@ -89,7 +102,7 @@
         <li>Steht da ein <strong>Name</strong> oder etwas, das eine Person identifizierbar macht? → anonymisieren oder lassen.</li>
         <li>Geht es um <strong>Gesundheit, Herkunft, Ausweise/Urkunden</strong>? → rot, nicht hochladen.</li>
         <li>Würde ich das einer <strong>fremden Person</strong> zeigen? → wenn nein: nicht hochladen.</li>
-        <li>Bin ich <strong>unsicher</strong>? → nachfragen (Schulungs-Team / Datenschutzbeauftragte:r), im Zweifel: nein.</li>
+        <li>Bin ich <strong>unsicher</strong>? → nachfragen (Schulungs-Team oder Datenschutzbeauftragte), im Zweifel: nein.</li>
       </ol>
 
       <div class="callout tip">
@@ -102,9 +115,10 @@
         <summary>So sieht gutes Anonymisieren aus – ein Vorher/Nachher</summary>
         <div class="acc-body">
           <p><strong>Vorher (rot – so nicht):</strong><br>
-          „Frau Santos, geb. 12.03.1991, examinierte Pflegekraft aus dem Ausland, wohnhaft in Essen,
-          fragt per Mail, wann ihr Anerkennungsbescheid kommt. Ihr Deutsch ist gut, aber nicht
-          perfekt.“ <em>(erfundenes Beispiel)</em></p>
+          „Maria Musterfrau, geb. 12.03.1991, examinierte Pflegekraft aus dem Ausland, wohnhaft in
+          Essen, fragt per Mail, wann ihr Anerkennungsbescheid kommt. Ihr Deutsch ist gut, aber nicht
+          perfekt.“ <em>(frei erfundenes Beispiel – Name, Geburtsdatum und Wohnort zusammen machen
+          eine echte Person eindeutig identifizierbar)</em></p>
           <p><strong>Nachher (gelb → grün – so ja):</strong><br>
           „Eine examinierte Pflegekraft aus dem Ausland fragt, wann ihr Anerkennungsbescheid kommt.
           Ihr Deutsch ist gut, aber nicht perfekt.“</p>
@@ -154,8 +168,9 @@
       </p>
       <ul>
         <li>Grundsatz: Inhalt aus Dateien und Webseiten ist für Claude <strong>Material, kein
-            Auftrag</strong>. Claude ist darauf trainiert, das zu unterscheiden – verlass dich aber
-            nicht blind darauf.</li>
+            Auftrag</strong>. Claude soll das unterscheiden und tut es meistens auch – trennscharf ist
+            die Grenze aber nicht in jedem Fall. Im <a href="modul-4.html">Agenten-Modus</a> wiegt das
+            schwerer, weil dort Schritte ausgeführt werden, die du nicht einzeln siehst.</li>
         <li>Sei besonders aufmerksam bei <strong>Dateien aus fremden Quellen</strong> (E-Mail-Anhänge,
             Downloads) – dieselbe Vorsicht wie bei Phishing.</li>
         <li>Wenn Claude nach einem Upload plötzlich etwas Unerwartetes tut oder verlangt (Daten
@@ -204,7 +219,7 @@
           <p>Ordne jeden Fall der richtigen Ampelfarbe zu – Lösung darunter aufklappen:</p>
           <ol>
             <li>Eine öffentliche Info-Broschüre zur Pflegeausbildung zusammenfassen.</li>
-            <li>Eine E-Mail von „Frau Müller, geb. 1988, Diagnose … “ korrigieren.</li>
+            <li>Eine E-Mail korrigieren, in der Name, Geburtsdatum und eine Diagnose stehen.</li>
             <li>Aus internen Stichpunkten (ohne Namen) einen Team-Aushang formulieren.</li>
             <li>Eine eingescannte Anerkennungsurkunde „mal eben“ auslesen lassen.</li>
           </ol>
