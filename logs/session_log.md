@@ -126,3 +126,7 @@ vergessen) · ein selbst erzeugtes kaputtes `data-copy` · Prüf-Prompts nach v1
   dbf0133 (1.12.1), c23c5a8 (1.13.0), 60f2ca0 (1.14.0), 435e3d4 (1.15.0), 045cf6d (1.16.0),
   51776d5 (Check-Script), 6f354da (1.17.0), 6472ff2 (1.18.0), c8826e6 (1.19.0), b965688 (1.20.0),
   2168d96 (1.21.0), 1d78e1c (1.22.0), 1c601ad (1.23.0), 3b6ed8b (1.24.0).
+
+## 2026-08-05 — Präsentationstechnik-Learnings aus dem Workspace-Brain
+- docs/learnings-praesentationstechnik.md neu (8 Gotchas/Lessons, Migration ADR-018)
+- Commits: 18cd5de
